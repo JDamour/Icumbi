@@ -3,10 +3,14 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-8" style=" margin-top: 10vw; background-color: #E5E7F9; padding-left: 2vw;>
             <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
-
+                  <div class="panel-title text-center">
+                <h1 class="card-header">Login</h1>
+                                        <hr />
+                                    </div>
+               <!--  <div class="card-header">{{ __('Login') }}</div>
+ -->
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}" aria-label="{{ __('Login') }}">
                         @csrf
@@ -54,7 +58,7 @@
                         <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
-                                    {{ __('Login') }}
+                                    {{ __('Submit') }}
                                 </button>
 
                                 <a class="btn btn-link" href="{{ route('password.request') }}">

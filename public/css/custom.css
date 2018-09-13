@@ -6,6 +6,19 @@
  * Author URL: https://probootstrap.com
  * License: Released for free under the Creative Commons Attribution 3.0 license (probootstrap.com/license)
  */
+ footer {
+    position: fixed;
+    background-color: red;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    margin-bottom: 0px;
+}
+
+#container {
+    margin-bottom:50px;
+}
+
 @font-face {
   font-family: 'icomoon';
   src: url("../fonts/icomoon/icomoon.eot?1z9v6x");
@@ -17,12 +30,13 @@
 html {
   overflow-x: hidden;
   font-size: 1em;
+  font-family: 'Old Standard TT', serif;
 }
 
 body {
   background: #fff;
   font-size: 16px;
-  font-family: "Open Sans", sans-serif;
+  font-family: 'Old Standard TT', serif;
   line-height: 1.5;
   color: #7e8890;
 }
@@ -110,12 +124,11 @@ a.hover-reverse:hover, a.hover-reverse:focus, a.hover-reverse:active {
   float: left;
   color: #2866AB;
   padding-left: 20px;
-  font-size: 20px;
+  font-size: 22px;
   display: block;
   text-transform: uppercase;
   font-weight: 900;
-  font-family: "Open Sans", sans-serif;
-}
+  font-family: 'Old Standard TT', serif;
 
 .probootstrap-logo:hover, .probootstrap-logo:focus, .probootstrap-logo:active {
   color: #2866AB;
@@ -2483,7 +2496,7 @@ a.hover-reverse:hover, a.hover-reverse:focus, a.hover-reverse:active {
   top: 0px;
   width: 100vw;
   height: 100vh;
-  z-index: 9999;
+  z-index: 99;
   background: #ffffff url(../img/preloader.gif) center no-repeat;
 }
 
