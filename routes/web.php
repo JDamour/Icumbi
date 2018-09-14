@@ -32,6 +32,10 @@ Route::get('/addresscart', function () {
     return view('addresscart');
 });
 
+Route::get('/form', function () {
+    return view('form');
+});
+
 Auth::routes();
 
 # view routes
