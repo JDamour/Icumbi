@@ -76,7 +76,7 @@ Route::prefix('admin')->group(function () {
 });
 
 # houseOwner routes
-Route::prefix('owner')->group(function () {
+Route::group(['prefix' => 'owner', 'middleware' =>'auth'], function(){
     
   # house controller
   Route::resource('houses', 'OwnerHouseController');
@@ -88,6 +88,14 @@ Route::prefix('owner')->group(function () {
   Route::post('/uploads', 'OwnerUploadsController@store')->name('owner.uploads.store') ;
   Route::delete('/uploads/{id}', 'OwnerUploadsController@destroy')->name('owner.uploads.delete') ;
   
+  #report  
+  Route::resource('reports', 'ReportsController');  
+
+  #message
+  Route::get('message', 'MessagesController@create');
+  Route::post('message', 'MessagesController@saveMessage');
+
+    
 });
 
 // Route::get('/home', 'HomeController@index');
@@ -102,3 +110,7 @@ Route::get('/indexx', 'PaymentModeController@index');
 Route::get('/edit', 'PaymentModeController@edit');
 Route::get('/del', 'PaymentModeController@destroy');
 
+#MASTER LAYOUT
+Route::get('/master', function(){
+    return view('layouts.master');
+    });

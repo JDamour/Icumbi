@@ -15,9 +15,21 @@ use Faker\Generator as Faker;
 
 $factory->define(App\User::class, function (Faker $faker) {
     return [
-        'name' => $faker->name,
+        
+//      'name' => $faker->name,
         'email' => $faker->unique()->safeEmail,
-        'password' => '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm', // secret
+        'password' => Hash::make('password'),
         'remember_token' => str_random(10),
+        'firstName' => $faker->firstname,
+        'lastName' => $faker->lastname,
+        'phoneNumber' => $faker->phoneNumber,
+        'gender' => $faker->randomElements(['male', 'female'])[0],
+        'dateOfBirth' => $faker->date($format ='Y-m-d', $max ='now'),
+        'accountConfirmationCode' => $faker->creditCardNumber,
+        'amount' => $faker->numberBetween($min =500, $max =50000),
+        'roleId' => $faker->numberBetween($min =1, $max =5),
+        'national_id'=>$faker->creditCardNumber,
+        'createdBy' =>$faker->dateTime($max = 'now'),
+        'updatedBy' =>$faker->dateTime($max = 'now'),
     ];
 });
