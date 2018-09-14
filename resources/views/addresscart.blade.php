@@ -73,12 +73,7 @@
 		</div>
 
 		<div id="header">	
-			<ul>
-				<li><a href="">Home</a></li>
-				<li><a href="">BRANDS</a></li>
-				<li><a href="">DESIGNERS</a></li>
-				<li><a href="">CONTACT</a></li>                                              
-			</ul>		
+				
 		</div>
 
 		<div id="sidebar">
@@ -124,7 +119,7 @@
 				</ul>    -->     
 			</div>
 
-			<h3>Additional Needs</h3>
+			<h3>Additional Properties</h3>
 			<div class="checklist sizes">
 				<ul>
 					<li><a href=""><span></span>Parking</a></li>
@@ -158,16 +153,16 @@
 		<div id="grid">
 			<div class="product">
 				<div class="info-large">
-					<h4>FLUTED HEM DRESS</h4>
+					<h4>Villa</h4>
 					<div class="sku">
-						PRODUCT SKU: <strong>89356</strong>
+						Location: <strong>Kigali, Kimironko</strong>
 					</div>
 
 					<div class="price-big">
-						<span>$43</span> $39
+						<span>Price:</span> Rwf 300,000
 					</div>
 
-					<h3>COLORS</h3>
+					<h3></h3>
 					<div class="colors-large">
 						<ul>
 							<li><a href="" style="background:#222"><span></span></a></li>
@@ -193,26 +188,23 @@
 				<div class="make3D">
 					<div class="product-front">
 						<div class="shadow"></div>
-						<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/245657/1.jpg" alt="" />
+						<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQB1QdMebHouOq3UmMFFxs4AMfL7HKNZMcGQqWIapqt1pEycN3b0Q" alt="" />
 						<div class="image_overlay"></div>
 						<div class="add_to_cart">Add to cart</div>
 						<div class="view_gallery">View gallery</div>                
 						<div class="stats">        	
 							<div class="stats-container">
-								<span class="product_price">$39</span>
-								<span class="product_name">FLUTED HEM DRESS</span>    
-								<p>Summer dress</p>                                            
+								<span class="product_price">Rwf 100,000</span>
+								<span class="product_name">VILLA</span>    
+								<p></p>                                            
 
 								<div class="product-options">
-									<strong>SIZES</strong>
-									<span>XS, S, M, L, XL, XXL</span>
-									<strong>COLORS</strong>
-									<div class="colors">
-										<div class="c-blue"><span></span></div>
-										<div class="c-red"><span></span></div>
-										<div class="c-white"><span></span></div>
-										<div class="c-green"><span></span></div>
-									</div>
+									<strong>Number of Rooms:</strong>
+									<span>5</span>
+									<strong>Additional properties:</strong>
+									<span>Parking and Pool</span>
+									<strong>Location:</strong>
+									<span>Kigali, Kimironko</span>
 								</div>                       
 							</div>                         
 						</div>
