@@ -343,7 +343,7 @@ desired effect
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form class="form-horizontal" method="post" action="{{route('houses.destroy', $id)}}">
+            <form class="form-horizontal" method="post" action="{{route('admin.houses.destroy', $id)}}">
               <input type="hidden" name="_method" value="DELETE">
               <input type="hidden" name="_token" value="{{csrf_token()}}">
               <div class="box-body">

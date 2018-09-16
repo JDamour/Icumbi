@@ -339,7 +339,7 @@ desired effect
         <div class="box box-info">
             <div class="box-header with-border">
               <h3 class="box-title">Display House</h3>
-              <p class="pull-right"><a class="btn btn-sm bg-olive" href="{{route('houses.edit', $house->id)}}">
+              <p class="pull-right"><a class="btn btn-sm bg-olive" href="{{route('admin.houses.edit', $house->id)}}">
                 <i class="fa fa-edit"></i> Edit</a> <a class="btn btn-sm bg-olive" href="{{route('admin.uploads.index', $house->id)}}">
                 <i class="fa fa-camera"></i> View house photos</a></p>
             </div>

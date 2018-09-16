@@ -342,7 +342,7 @@ desired effect
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form class="form-horizontal" method="post" action="{{ route('houses.update', $data['house']->id)}}">
+            <form class="form-horizontal" method="post" action="{{ route('admin.houses.update', $data['house']->id)}}">
               <input type="hidden" name="_method" value="PUT">
               <div class="box-body">
                 <div class="form-group">

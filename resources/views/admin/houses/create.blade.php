@@ -342,7 +342,7 @@ desired effect
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form class="form-horizontal" method="post" action="{{ route('houses.store')}}">
+            <form class="form-horizontal" method="post" action="{{ route('admin.houses.store')}}">
               <div class="box-body">
                 <div class="form-group">
                   <label for="" class="col-sm-2 control-label">House Price</label>

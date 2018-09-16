@@ -369,7 +369,7 @@ desired effect
                         <td>{{count($house->reports)}}</td>
                         <td><span class="label label-success">Active</span></td>
                         <td>
-                          <span class="label bg-purple"><a style="color:white" href="{{route('houses.show', $house->id)}}">open</a></span>
+                          <span class="label bg-purple"><a style="color:white" href="{{route('admin.houses.show', $house->id)}}">open</a></span>
                           <span class="label bg-maroon"><a style="color:white" href="{{route('admin.houses.delete', $house->id)}}">Delete</a></span></td>
                       </tr>
                       @endforeach

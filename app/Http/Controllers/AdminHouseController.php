@@ -67,10 +67,11 @@ class AdminHouseController extends Controller
      * @param  \App\House  $house
      * @return \Illuminate\Http\Response
      */
-    public function show(House $house)
+    public function show($house)
     {
         //
-        $house = House::where('id', $house->id)->first();
+        $house = House::where('id', $house)->first();
+        // die($house);
         return view('admin.houses.show', compact('house'));
     }
 
@@ -80,10 +81,11 @@ class AdminHouseController extends Controller
      * @param  \App\House  $house
      * @return \Illuminate\Http\Response
      */
-    public function edit(House $house)
+    public function edit($house)
     {
         //
-        $house = House::where('id', $house->id)->first();
+        $house = House::where('id', $house)->first();
+        // die(print_r($house));
         $data = [
             "countries" => Country::all(),
             "paymentfrequency" => Paymentfrequency::all(),
@@ -99,11 +101,11 @@ class AdminHouseController extends Controller
      * @param  \App\House  $house
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, House $house)
+    public function update(Request $request, $house)
     {
         //
-        $id = $house->id;
-        $house = House::where('id', $house->id)->update([
+        // $id = $house->id;
+        $house = House::where('id', $house)->update([
             "houseLocation" => $request->input('houseLocation'),
             "streetCode" => $request->input('streetCode'),
             "housePrice" => $request->input('housePrice'),
@@ -112,7 +114,7 @@ class AdminHouseController extends Controller
             "cell_id" => $request->input('cell')
         ]);
         if ($house) {
-          return redirect()->route('houses.show', $id);
+          return redirect()->route('admin.houses.show', $id);
         } else {
           return back()->withInput();
         }
@@ -124,10 +126,10 @@ class AdminHouseController extends Controller
      * @param  \App\House  $house
      * @return \Illuminate\Http\Response
      */
-    public function destroy(House $house)
+    public function destroy($house)
     {
         //
-        $house = House::find($house->id);
+        $house = House::find($house);
         if (!isset($house)) {
             return back()->withInput();
         }
@@ -140,7 +142,7 @@ class AdminHouseController extends Controller
             }
         }
         if ($house->delete()) {
-          return redirect()->route('houses.index');
+          return redirect()->route('admin.houses.index');
         } else {
           return back()->withInput();
         }

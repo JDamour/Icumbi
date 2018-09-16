@@ -70,7 +70,14 @@ Route::get('/cells/{id}', function($id) {
 Route::prefix('admin')->group(function () {
     
     # house controller
-    Route::resource('houses', 'AdminHouseController');
+    // Route::resource('houses', 'AdminHouseController');
+    Route::get('/houses', 'AdminHouseController@index')->name('admin.houses.index');
+    Route::get('/houses/create', 'AdminHouseController@create')->name('admin.houses.create');
+    Route::get('/houses/{id}', 'AdminHouseController@show')->name('admin.houses.show');
+    Route::post('/houses', 'AdminHouseController@store')->name('admin.houses.store');
+    Route::get('/houses/{id}/edit', 'AdminHouseController@edit')->name('admin.houses.edit');
+    Route::put('/houses/{id}', 'AdminHouseController@update')->name('admin.houses.update');
+    Route::delete('/houses/{id}', 'AdminHouseController@destroy')->name('admin.houses.destroy');
     Route::get('/houses/delete/{id}', 'AdminHouseController@delete')->name('admin.houses.delete');
     
     # uploads controller
