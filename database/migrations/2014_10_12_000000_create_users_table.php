@@ -21,11 +21,11 @@ class CreateUsersTable extends Migration
             $table->string('phoneNumber');
             $table->enum('gender', ['Male', 'Female']);	
             $table->date('dateOfBirth');
-            $table->string('accountConfirmationCode');
-            $table->double('amount');
-            $table->integer('roleId')->unsigned();
-            $table->string('createdBy');
-            $table->string('updatedBy');
+            $table->string('accountConfirmationCode')->default(001);
+            $table->double('amount')->default(01);
+            $table->integer('roleId')->unsigned()->default(3);
+            $table->string('createdBy')->default('admin');
+            $table->string('updatedBy')->default('admin');
             $table->string('email')->unique();
             $table->string('password');
             $table->rememberToken();
