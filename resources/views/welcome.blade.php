@@ -33,7 +33,7 @@
         <nav role="navigation" class="probootstrap-nav hidden-xs">
           <ul class="probootstrap-main-nav">
             <li class="active"><a href="/">Home</a></li>
-            <li><a href="properties.html">Properties</a></li>
+            <li><a href="/house">Houses</a></li>
             <li><a href="agents.html">Agents</a></li>
             <li><a href="about.html">About</a></li>
             <li><a href="contact.html">Contact</a></li>
@@ -62,14 +62,15 @@
           <div class="col-md-8 col-md-offset-2">
 
             <div class="probootstrap-home-search probootstrap-animate">
-              <form action="" method="post">
+              <form action="/search" method="POST" role="search">
                 <h2 class="heading">Search your next dream home here</h2>
                 <div class="probootstrap-field-group">
                   <div class="probootstrap-fields">
                     
                     <div class="search-field">
                       <i class="icon-location2"></i>
-                      <input type="text" class="form-control" placeholder="Enter address, ZIP code, Neighborhoods">
+                      <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                      <input type="text" class="form-control" placeholder="Enter address, ZIP code, Neighborhoods" name="search">
                     </div>
                     <div class="search-category">
                       <i class="icon-chevron-down"></i>
@@ -82,6 +83,7 @@
                   <button class="btn btn-success" type="submit"><i class="icon-magnifying-glass t2"></i> Start Search</button>
                 </div>
               </form>
+              
              <!--  <p class="mb0 text-left"><small>A free HTML5 template by <a href="https://uicookies.com/">uicookies.com</a> under license <a href="https://uicookies.com/license">Creative Commons 3.0</a></small> </p> -->
             </div>
 
