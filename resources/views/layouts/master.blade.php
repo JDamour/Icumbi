@@ -33,8 +33,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <![endif]-->
 
   <!-- Google Font -->
-  <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+  <link href="https://fonts.googleapis.com/css?family=Old+Standard+TT" rel="stylesheet">
 </head>
 <!--
 BODY TAG OPTIONS:
@@ -180,17 +179,17 @@ desired effect
             <!-- Menu Toggle Button -->
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <!-- The user image in the navbar-->
-              <img src="{{asset('dist/img/user2-160x160.jp')}}g" class="user-image" alt="User Image">
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9-cOiD6RJ2wCYMxHAWZCS6GDdwsCAQ61V_mLzUNsQeACHR8OCqA" class="user-image" alt="User Image">
               <!-- hidden-xs hides the username on small devices so only the image appears. -->
-              <span class="hidden-xs">Alexander Pierce</span>
+              <span class="hidden-xs">Leonard MBONIMPA</span>
             </a>
             <ul class="dropdown-menu">
               <!-- The user image in the menu -->
               <li class="user-header">
-                <img src="{{asset('dist/img/user2-160x160.jpg')}}" class="img-circle" alt="User Image">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9-cOiD6RJ2wCYMxHAWZCS6GDdwsCAQ61V_mLzUNsQeACHR8OCqA" class="img-circle" alt="User Image">
 
                 <p>
-                  Alexander Pierce - Web Developer
+                  Leonard MBONIMPA - House Owner
                   <small>Member since Nov. 2012</small>
                 </p>
               </li>
@@ -237,10 +236,10 @@ desired effect
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="{{asset('dist/img/user2-160x160.jpg')}}" class="img-circle" alt="User Image">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9-cOiD6RJ2wCYMxHAWZCS6GDdwsCAQ61V_mLzUNsQeACHR8OCqA" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p>Alexander Pierce</p>
+          <p>Leonard MBONIMPA</p>
           <!-- Status -->
           <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
@@ -262,8 +261,8 @@ desired effect
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">Navigation</li>
         <!-- Optionally, you can add icons to the links -->
-		<li class="active"><a href="#"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
-		<li class="treeview">
+    <li class="active"><a href="#"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
+    <li class="treeview">
           <a href="#"><i class="fa fa-users"></i> <span>Account</span>
             <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
@@ -272,10 +271,10 @@ desired effect
           <ul class="treeview-menu">
             <li><a href="#"><i class="fa fa-circle-o"></i> New</a></li>
             <li><a href="#"><i class="fa fa-circle-o"></i> View All</a></li>
-			<li><a href="#"><i class="fa fa-circle-o"></i> Deactivated</a></li>
+      <li><a href="#"><i class="fa fa-circle-o"></i> Deactivated</a></li>
           </ul>
         </li>
-		<li class="treeview">
+    <li class="treeview">
           <a href="#"><i class="fa fa-home"></i> <span>House</span>
             <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
@@ -284,11 +283,11 @@ desired effect
           <ul class="treeview-menu">
             <li><a href="{{action('OwnerHouseController@create')}}"><i class="fa fa-circle-o"></i> New</a></li>
             <li><a href="{{action('OwnerHouseController@index')}}"><i class="fa fa-circle-o"></i> View All</a></li>
-			<li><a href="#"><i class="fa fa-circle-o"></i> Booked</a></li>
-			<li><a href="#"><i class="fa fa-circle-o"></i> Reported</a></li>
+      <li><a href="#"><i class="fa fa-circle-o"></i> Booked</a></li>
+      <li><a href="#"><i class="fa fa-circle-o"></i> Reported</a></li>
           </ul>
         </li>
-		<li class="treeview">
+    <li class="treeview">
           <a href="#"><i class="fa fa-heart"></i> <span>Services</span>
             <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
@@ -299,7 +298,7 @@ desired effect
             <li><a href="#"><i class="fa fa-circle-o"></i> View All</a></li>
           </ul>
         </li>
-		<li class="treeview">
+    <li class="treeview">
           <a href="#"><i class="fa fa-envelope"></i> <span>Report</span>
             <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
@@ -332,14 +331,14 @@ desired effect
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-      <h1>
+     <!--  <h1>
         Page Header
         <small>Optional description</small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
         <li class="active">Here</li>
-      </ol>
+      </ol> -->
     </section>
 
     <!-- Main content -->

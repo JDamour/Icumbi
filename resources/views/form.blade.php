@@ -4,7 +4,7 @@
 
 <html>
     <head>
-        <title>Derwiki's Stripe Payment form + checkout'</title>
+        <title>Icumbi</title>
 
     </head>
     <body>
@@ -40,6 +40,18 @@
                 <input autocomplete='off' class='form-control card-number' size='20' type='text'>
               </div>
             </div>
+            <div class='form-row'>
+              <div class='form-group card required'>
+                  <label class='control-label'>Phone Number</label>
+                <input autocomplete='off' class='form-control card-number' size='20' type='text'>
+              </div>
+            </div> <div class='form-row'>
+              <div class='form-group card required'>
+                  <label class='control-label'>Email</label>
+                <input autocomplete='off' class='form-control card-number' size='20' type='text'>
+              </div>
+            </div>
+          
              <div class='form-row'>
               <div class='form-group card required'>
                 <label class='control-label'>Billing Address</label>
