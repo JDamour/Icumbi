@@ -41,6 +41,28 @@ class User extends Authenticatable
     public function messagesAdmin() {
         return $this->hasMany('App\Message', 'administratorId');
     }
+    public function isAdmin()
+    {
+        if($this->roleId == 1)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+        public function isOwner()
+    {
+        if($this->roleId == 2)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 
     public function house()
     {

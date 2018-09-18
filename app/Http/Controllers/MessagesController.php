@@ -9,7 +9,6 @@ use App\Events\SendMessage;
 
 class MessagesController extends Controller
 {
-
     public function create()
     {
         //
