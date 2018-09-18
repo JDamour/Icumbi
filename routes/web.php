@@ -16,12 +16,14 @@ use App\Cell;
 use App\District;
 
 
-
+Route::get('/checkUser', 'MessagesController@index');
 
 Route::get('/', function () {
     return view('welcome');
 });
-
+// Route::get('users',['middleware' => 'Role:superadmin|admin', function () {
+//     return view('why');
+// }]);
 // Route::get('/create', function () {
 //     return view('payments.create');
 // });
@@ -67,7 +69,7 @@ Route::get('/cells/{id}', function($id) {
 })->name('get_cells') ;
 
 # admin routes
-Route::prefix('admin')->group(function () {
+Route::group(['prefix' => 'admin', 'middleware' =>'auth.admin'],function () {
     
     # house controller
     // Route::resource('houses', 'AdminHouseController');
@@ -89,7 +91,7 @@ Route::prefix('admin')->group(function () {
 });
 
 # houseOwner routes
-Route::group(['prefix' => 'owner', 'middleware' =>'auth'], function(){
+Route::group(['prefix' => 'owner', 'middleware' =>'auth.owner'], function(){
     
   # house controller
   Route::resource('houses', 'OwnerHouseController');
