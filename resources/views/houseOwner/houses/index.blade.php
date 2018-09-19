@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('title', 'add house')
 @section('content')
-<div class="row">
+        <div class="row">
             <div class="col-sm-10 col-sm-offset-1">
                 <div class="box">
                   <div class="box-header">
@@ -34,7 +34,13 @@
                         <td>{{$house->paymentfrequency->name}}</td>
                         <td>{{count($house->service)}}</td>
                         <td>{{count($house->reports)}}</td>
+                        @if($house->status == 1)
                         <td><span class="label label-success">Active</span></td>
+                        @elseif($house->status == 2)
+                        <td><span class="label label-warning">Booked</span></td>
+                        @else
+                        <td><span class="label label-danger">Disabled</span></td>
+                        @endif
                         <td>
                           <span class="label bg-purple"><a style="color:white" href="{{route('houses.show', $house->id)}}">open</a></span>
                           <span class="label bg-maroon"><a style="color:white" href="{{route('owner.houses.delete', $house->id)}}">Delete</a></span></td>

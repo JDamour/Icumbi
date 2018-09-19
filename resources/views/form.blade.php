@@ -16,9 +16,35 @@
             <div class="row">
                 <div class="col-sm-6">
                 <div class="tab-content">
-  <div id="stripe" class="tab-pane fade in active">
-                       <script src='https://js.stripe.com/v2/' type='text/javascript'></script>
-          <form accept-charset="UTF-8" action="/" class="require-validation" data-cc-on-file="false" data-stripe-publishable-key="pk_bQQaTxnaZlzv4FnnuZ28LFHccVSaj" id="payment-form" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="✓" /><input name="_method" type="hidden" value="PUT" /><input name="authenticity_token" type="hidden" value="qLZ9cScer7ZxqulsUWazw4x3cSEzv899SP/7ThPCOV8=" /></div>
+                <div id="stripe" class="tab-pane fade in active">
+
+                <form class="" method="POST" action="{{ route('service.store')}}">
+                  <div class='form-row'>
+                    <div class='form-group card required'>
+                        <label class='control-label'>Phone Number</label>
+                      <input autocomplete='off' class='form-control card-number' type='text' name="phone">
+                    </div>
+                  </div> 
+                  <div class='form-row'>
+                    <div class='form-group card required'>
+                        <label class='control-label'>Email</label>
+                      <input autocomplete='off' class='form-control card-number' type='email' name="email">
+                    </div>
+                  </div>
+                  <div class='form-row'>
+                    <div class='form-group card required'>
+                    <input type="hidden" name="house_id" value="100">
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                    <button class='form-control btn btn-primary' type='submit'> Continue →</button>
+                    </div>
+                  </div>
+                </form>
+          <script src='https://js.stripe.com/v2/' type='text/javascript'></script>
+          <form accept-charset="UTF-8" action="/" class="require-validation" data-cc-on-file="false" data-stripe-publishable-key="pk_bQQaTxnaZlzv4FnnuZ28LFHccVSaj" id="payment-form" method="post">
+          <div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="✓" />
+          <input name="_method" type="hidden" value="PUT" />
+          <input name="authenticity_token" type="hidden" value="qLZ9cScer7ZxqulsUWazw4x3cSEzv899SP/7ThPCOV8=" />
+          </div>
             <br>
             <h1 style="margin-top: 2vw;">Welcome to our checkout</h1>
           <div class='form-row'>
@@ -28,13 +54,13 @@
                   Please correct the errors and try again.
               
               </div>
-            </div>
+            <!--</div>
                 <label class='control-label'>Name on Card</label>
                 <input class='form-control' size='4' type='text'>
-              </div>
+              </div>-->
                     
             </div>
-            <div class='form-row'>
+            <!-- <div class='form-row'>
               <div class='form-group card required'>
                   <label class='control-label'>Card Number</label>
                 <input autocomplete='off' class='form-control card-number' size='20' type='text'>
@@ -50,15 +76,15 @@
                   <label class='control-label'>Email</label>
                 <input autocomplete='off' class='form-control card-number' size='20' type='text'>
               </div>
-            </div>
+            </div> -->
           
-             <div class='form-row'>
+             <!-- <div class='form-row'>
               <div class='form-group card required'>
                 <label class='control-label'>Billing Address</label>
                 <input autocomplete='off' class='form-control' size='20' type='text'>
-              </div>
+              </div> -->
             </div>
-            <div class='form-row'>
+            <!--<div class='form-row'>
               <div class='form-group cvc required'>
                 <label class='control-label'>CVC</label>
                 <input autocomplete='off' class='form-control card-cvc' placeholder='ex. 311' size='4' type='text'>
@@ -71,14 +97,14 @@
                 <label class='control-label'>Year</label>
                 <input class='form-control card-expiry-year' placeholder='YYYY' size='4' type='text'>
               </div>
-            </div>
+            </div> -->
     
            
             <div class='form-row'>
               <div class='form-group'>
                          <label class='control-label'></label>
                       
-               <button class='form-control btn btn-primary' type='submit'> Continue →</button>
+               <!-- <button class='form-control btn btn-primary' type='submit'> Continue →</button> -->
           
               </form>    
                 

@@ -29,7 +29,7 @@ Route::get('/', function () {
 // });
 Route::get('/show', function () {
     return view('show');
-});
+})->name('root');
 Route::get('/addresscart', function () {
     return view('addresscart');
 });
@@ -42,16 +42,17 @@ Auth::routes();
 
 # view routes
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/view', 'ViewController@index');
 Route::get('/view/{id}', 'ViewController@show')->name('get_view');
 Route::post('/view/{id}', 'ViewController@store')->name('set_view');
 
 
 # service routes
-Route::get('/service/create/{house_id}', 'ServiceController@create')->name('create_service');
-Route::post('/service', 'ServiceController@store')->name('store_service');
-Route::post('/service/callback/{service_id}', 'ServiceController@callback')->name('callback_service');
-Route::get('/service/{service_id}', 'ServiceController@show')->name('show_service');
-Route::post('/service/{service_id}', 'ServiceController@update')->name('update_service');
+// Route::get('/service/create/{house_id}', 'ServiceController@create')->name('create_service');
+Route::post('/service', 'ServiceController@store')->name('service.store');
+Route::post('/service/callback/{service_id}', 'ServiceController@callback')->name('service.callback');
+Route::get('/service/{service_id}', 'ServiceController@show')->name('service.show');
+Route::post('/service/{service_id}', 'ServiceController@update')->name('service.update');
 
 # location routes
 Route::get('/provinces/{id}', function($id) {

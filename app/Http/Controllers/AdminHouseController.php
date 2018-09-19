@@ -6,6 +6,7 @@ use App\House;
 use App\Country;
 use App\Paymentfrequency;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AdminHouseController extends Controller
 {
@@ -51,7 +52,7 @@ class AdminHouseController extends Controller
             "streetCode" => $request->input('streetCode'),
             "housePrice" => $request->input('housePrice'),
             "paymentfrequency_id" => $request->input('payfreq'),
-            "user_id" => 1,
+            "user_id" => Auth::user()->id,
             "cell_id" => $request->input('cell')
         ]);
         if ($house) {
@@ -101,16 +102,16 @@ class AdminHouseController extends Controller
      * @param  \App\House  $house
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $house)
+    public function update(Request $request, $id)
     {
         //
         // $id = $house->id;
-        $house = House::where('id', $house)->update([
+        $house = House::where('id', $id)->update([
             "houseLocation" => $request->input('houseLocation'),
             "streetCode" => $request->input('streetCode'),
             "housePrice" => $request->input('housePrice'),
             "paymentfrequency_id" => $request->input('payfreq'),
-            "user_id" => 1,
+            "user_id" => Auth::user()->id,
             "cell_id" => $request->input('cell')
         ]);
         if ($house) {

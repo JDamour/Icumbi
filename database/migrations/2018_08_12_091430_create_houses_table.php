@@ -16,8 +16,9 @@ class CreateHousesTable extends Migration
         Schema::create('houses', function (Blueprint $table) {
             $table->increments('id');
             $table->string('houseLocation');
-            $table->float('housePrice');
+            $table->double('housePrice');
             $table->string('streetCode');
+            $table->enum('status', ['1', '2', '3'])->default('1');
             $table->integer('user_id')->unsigned();
             $table->integer('paymentfrequency_id')->unsigned();
             $table->integer('cell_id')->unsigned();

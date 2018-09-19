@@ -6,6 +6,7 @@ use App\House;
 use App\Country;
 use App\Paymentfrequency;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class OwnerHouseController extends Controller
 {
@@ -17,7 +18,7 @@ class OwnerHouseController extends Controller
     public function index()
     {
         //
-        $houses = House::all();
+        $houses = Auth::user()->house;
         
         return view('houseOwner.houses.index', compact('houses'));
     }
@@ -51,7 +52,7 @@ class OwnerHouseController extends Controller
             "streetCode" => $request->input('streetCode'),
             "housePrice" => $request->input('housePrice'),
             "paymentfrequency_id" => $request->input('payfreq'),
-            "user_id" => 1,
+            "user_id" => Auth::user()->id,
             "cell_id" => $request->input('cell')
         ]);
         if ($house) {
@@ -70,7 +71,9 @@ class OwnerHouseController extends Controller
     public function show(House $house)
     {
         //
-        $house = House::where('id', $house->id)->first();
+        $house = House::where([
+            ['id', $house->id],
+            ['user_id', Auth::user()->id]])->first();
         return view('houseOwner.houses.show', compact('house'));
     }
 
@@ -83,7 +86,9 @@ class OwnerHouseController extends Controller
     public function edit(House $house)
     {
         //
-        $house = House::where('id', $house->id)->first();
+        $house = House::where([
+            ['id', $house->id],
+            ['user_id', Auth::user()->id]])->first();
         $data = [
             "countries" => Country::all(),
             "paymentfrequency" => Paymentfrequency::all(),
@@ -103,12 +108,14 @@ class OwnerHouseController extends Controller
     {
         //
         $id = $house->id;
-        $house = House::where('id', $house->id)->update([
+        $house = House::where([
+            ['id', $house->id],
+            ['user_id', Auth::user()->id]])->update([
             "houseLocation" => $request->input('houseLocation'),
             "streetCode" => $request->input('streetCode'),
             "housePrice" => $request->input('housePrice'),
             "paymentfrequency_id" => $request->input('payfreq'),
-            "user_id" => 1,
+            "user_id" => Auth::user()->id,
             "cell_id" => $request->input('cell')
         ]);
         if ($house) {
@@ -127,7 +134,9 @@ class OwnerHouseController extends Controller
     public function destroy(House $house)
     {
         //
-        $house = House::find($house->id);
+        $house = House::where([
+            ['id', $house->id],
+            ['user_id', Auth::user()->id]])->first();;
         if (!isset($house)) {
             return back()->withInput();
         }

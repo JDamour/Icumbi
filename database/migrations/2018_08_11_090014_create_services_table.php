@@ -19,7 +19,7 @@ class CreateServicesTable extends Migration
             $table->string('phone_number', 50);
             $table->enum('refunded', ['true', 'false'])->default('false');
             $table->unsignedInteger('house_id');
-            $table->unsignedInteger('payment_id');
+            $table->unsignedInteger('payment_id')->nullable();
             $table->timestamps();
             
 //            $table->foreign('house_id')->references('id')->on('houses');

@@ -283,8 +283,6 @@ desired effect
           <ul class="treeview-menu">
             <li><a href="{{action('OwnerHouseController@create')}}"><i class="fa fa-circle-o"></i> New</a></li>
             <li><a href="{{action('OwnerHouseController@index')}}"><i class="fa fa-circle-o"></i> View All</a></li>
-      <li><a href="#"><i class="fa fa-circle-o"></i> Booked</a></li>
-      <li><a href="#"><i class="fa fa-circle-o"></i> Reported</a></li>
           </ul>
         </li>
     <li class="treeview">
@@ -458,6 +456,17 @@ desired effect
 <script src="{{asset('bower_components/datatables.net/js/jquery.dataTables.min.js')}}"></script>
 <script src="{{asset('bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js')}}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+<!-- SlimScroll -->
+<script src="{{asset('bower_components/jquery-slimscroll/jquery.slimscroll.min.js')}}"></script>
+<!-- FastClick -->
+<script src="{{asset('bower_components/fastclick/lib/fastclick.js')}}"></script>
+
+<script type="text/javascript">
+  $(function () {
+    $('#table_houses').DataTable();
+  })  
+  
+</script>
 
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
      Both of these plugins are recommended to enhance the
