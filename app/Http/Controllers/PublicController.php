@@ -15,10 +15,15 @@ class PublicController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function DisplayHousesOnHOusePage()
     {
         $houses = House::all();
         return view('client.index', compact('houses'));
+    }
+    public function DisplayHousesOnHomePage()
+    {
+        $houses = House::all();
+        return view('welcome', compact('houses'));
     }
 
     /**
@@ -59,12 +64,17 @@ class PublicController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(house $house)
     {
         //
+        $house = House::find($house->id);
+        
+        return view('client.show', compact('house'));
+        // return view('client.show', ['house'=>$house]);
     }
-
+    
     /**
+     * 
      * Show the form for editing the specified resource.
      *
      * @param  int  $id

@@ -80,18 +80,19 @@
   </section>
   <!-- END: slider  -->
   @if(isset($details))
-        <p> The Search results for your query <b> {{ $query }} </b> are :</p>
-    <h2>List of Houses matching your search key</h2>
-    @foreach($details as $house)
+        
   <section class="probootstrap-section probootstrap-section-lighter">
+    <h2>List of Houses matching your search key " <b> {{ $query }} "</b></h2>
+    @foreach($details as $house)
     <div class="container">
+
       <div class="row">
         <div class="col-md-4 col-sm-6">
           <div class="probootstrap-card probootstrap-listing">
             <div class="probootstrap-card-media">
               
               <img src="img/slider_1.jpg" class="img-responsive" alt="Free HTML5 Template by uicookies.com">
-              <a href="#" class="probootstrap-love"><i class="icon-heart"></i></a>
+              <a href="/houseShow" class="probootstrap-love"><i class="icon-heart"></i></a>
             </div>
             <div class="probootstrap-card-text">
               <h2 class="probootstrap-card-heading"><a href="#">{{ $house->id }}</a></h2>
@@ -102,60 +103,36 @@
               <div class="probootstrap-listing-price"><strong>{{ $house->housePrice }}/{{ $house->paymentfrequency_id }}</strong></div>
             </div>
             <div class="probootstrap-card-extra">
-              <ul>
-                <li>
-                  Address
-                  <span>{{ $house->streetCode }}</span>
-                </li>
-                <li>
-                  Beds
-                  <span>{{ $house->id }}</span>
-                </li>
-                <li>
-                  Baths
-                  <span>{{ $house->id }}</span>
-                </li>
-                <li>
-                  Garages
-                  <span>{{ $house->id }}</span>
-                </li>
-              </ul>
+              
             </div>
           </div>
           @endforeach
-          <!-- END listing -->
-        
-          <!-- END listing -->
         </div>
       </div>
     </div>
   </section>
  @endif
-
-  
-
-  
   <!-- END: section -->
 
-  <section class="probootstrap-half reverse">
-    <div class="image-wrap">
-      <div class="image" style="background-image: url(img/slider_5.jpg);"></div>
-    </div>
-    <div class="text">
-      <p class="mb10 subtitle">Why Choose Us</p>
-      <h3 class="mt0 mb40">You Will Love Our Services</h3>
-      <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
-      <p class="mb50">A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
-      <p><a href="#" class="btn btn-primary mb10">Find out more</a></p>
-    </div>
-  </section>
+<!-- //   <section class="probootstrap-half reverse">
+//     <div class="image-wrap">
+//       <div class="image" style="background-image: url(img/slider_5.jpg);"></div>
+//     </div>
+//     <div class="text">
+//       <p class="mb10 subtitle">Why Choose Us</p>
+//       <h3 class="mt0 mb40">You Will Love Our Services</h3>
+//       <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
+//       <p class="mb50">A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
+//       <p><a href="#" class="btn btn-primary mb10">Find out more</a></p>
+//     </div>
+//   </section> -->
 
   <footer class="probootstrap-footer probootstrap-bg" style="background-image: url(img/slider_3.jpg)">
     <div class="container">
       <div class="row mb60">
         <div class="col-md-3">
           <div class="probootstrap-footer-widget">
-            <h4 class="heading">About Haus.</h4>
+            <h4 class="heading">About Icumbi.</h4>
             <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. </p>
             <p><a href="#">Read more...</a></p>
           </div> 
@@ -164,7 +141,7 @@
           <div class="probootstrap-footer-widget probootstrap-link-wrap">
             <h4 class="heading">Quick Links</h4>
             <ul class="stack-link">
-              <li><a href="#">Property Listing</a></li>
+              <li><a href="/house">House</a></li>
               <li><a href="#">Rent Properties</a></li>
               <li><a href="#">Sell Properties</a></li>
               <li><a href="#">Agents</a></li>
@@ -176,11 +153,11 @@
           <div class="probootstrap-footer-widget">
             <h4 class="heading">Popular Cities</h4>
             <ul class="stack-link">
-              <li><a href="#">New York <small>(320 properties)</small></a></li>
-              <li><a href="#">San Francisco <small>(294 properties)</small></a></li>
-              <li><a href="#">Brooklyn <small>(300 properties)</small></a></li>
-              <li><a href="#">Chicago <small>(268 properties)</small></a></li>
-              <li><a href="#">Los Angeles <small>(342 properties)</small></a></li>
+              <li><a href="#">Nyarugenge <small>(320 properties)</small></a></li>
+              <li><a href="#">Gasabo <small>(294 properties)</small></a></li>
+              <li><a href="#">Kicukiro <small>(300 properties)</small></a></li>
+              <li><a href="#">Rwamagana <small>(268 properties)</small></a></li>
+              <li><a href="#">Huye <small>(342 properties)</small></a></li>
             </ul>
           </div> 
         </div>
@@ -200,7 +177,7 @@
       <div class="row copyright">
         <div class="col-md-6">
           <div class="probootstrap-footer-widget">
-            <p>&copy; 2017 <a href="https://uicookies.com/">uiCookies:Haus</a>. Designed by <a href="https://uicookies.com/">uicookies.com</a> <br> Demo Photos from <a href="https://pixabay.com/">Pixabay</a> &amp; <a href="https://unsplash.com/">Unsplash</a></p>
+            <p>&copy; 2018 <a href="https://icumbiApp.com/">tres:Icumbi</a>. Designed by <a href="https://icumbiApp.com/">tres:Icumbi</a> <br> Demo Photos from <a href="https://pixabay.com/">Pixabay</a> &amp; <a href="https://unsplash.com/">Unsplash</a></p>
           </div>
         </div>
         <div class="col-md-6">
