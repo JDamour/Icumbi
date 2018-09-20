@@ -33,7 +33,7 @@
         <nav role="navigation" class="probootstrap-nav hidden-xs">
           <ul class="probootstrap-main-nav">
             <li class="active"><a href="/">Home</a></li>
-            <li><a href="properties.html">Properties</a></li>
+            <li><a href="/house">Houses</a></li>
             <li><a href="agents.html">Agents</a></li>
             <li><a href="about.html">About</a></li>
             <li><a href="contact.html">Contact</a></li>
@@ -91,14 +91,15 @@
           <div class="col-md-8 col-md-offset-2">
 
             <div class="probootstrap-home-search probootstrap-animate">
-              <form action="" method="post">
+              <form action="/search" method="POST" role="search">
                 <h2 class="heading">Search your next dream home here</h2>
                 <div class="probootstrap-field-group">
                   <div class="probootstrap-fields">
                     
                     <div class="search-field">
                       <i class="icon-location2"></i>
-                      <input type="text" class="form-control" placeholder="Enter address, ZIP code, Neighborhoods">
+                      <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                      <input type="text" class="form-control" placeholder="Enter address, ZIP code, Neighborhoods" name="search">
                     </div>
                     <div class="search-category">
                       <i class="icon-chevron-down"></i>
@@ -111,6 +112,7 @@
                   <button class="btn btn-success" type="submit"><i class="icon-magnifying-glass t2"></i> Start Search</button>
                 </div>
               </form>
+              
              <!--  <p class="mb0 text-left"><small>A free HTML5 template by <a href="https://uicookies.com/">uicookies.com</a> under license <a href="https://uicookies.com/license">Creative Commons 3.0</a></small> </p> -->
             </div>
 
@@ -245,7 +247,7 @@
         <h2 class="mt0 mb50 text-center">Featured Listing</h2>
       </div>
       <div class="row">
-        <div class="col-md-4 col-sm-6">
+        <!-- <div class="col-md-4 col-sm-6">
           <div class="probootstrap-card probootstrap-listing">
             <div class="probootstrap-card-media">
               <img src="https://uicookies.com/demo/theme/haus/img/slider_1.jpg" class="img-responsive" alt="Free HTML5 Template by uicookies.com">
@@ -279,196 +281,35 @@
                 </li>
               </ul>
             </div>
-          </div>
+          </div> 
           <!-- END listing -->
         </div>
-        <div class="col-md-4 col-sm-6">
-          <div class="probootstrap-card probootstrap-listing">
-            <div class="probootstrap-card-media">
-              <img src="https://uicookies.com/demo/theme/haus/img/slider_2.jpg" class="img-responsive" alt="Free HTML5 Template by uicookies.com">
-              <a href="#" class="probootstrap-love"><i class="icon-heart"></i></a>
-            </div>
-            <div class="probootstrap-card-text">
-              <h2 class="probootstrap-card-heading"><a href="#">3 Bed Room Property for Sale</a></h2>
-              <div class="probootstrap-listing-location">
-                <i class="icon-location2"></i> <span>Mamba, KG 680 St, Kigali</span>
+        @foreach($houses as $house)
+        <section class="probootstrap-section probootstrap-section-lighter">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-4 col-sm-6">
+                <div class="probootstrap-card probootstrap-listing">
+                  <div class="probootstrap-card-media"> 
+                    <img src="img/slider_1.jpg" class="img-responsive" alt="Free HTML5 Template by uicookies.com">
+                    <a href="/houseShow" class="probootstrap-love"><i class="icon-heart"></i></a>
+                  </div>
+                  <div class="probootstrap-card-text">
+                   <h2 class="probootstrap-card-heading"><a href="#">{{ $house->id }}</a></h2>
+                   <div class="probootstrap-listing-location">
+                      <i class="icon-location2"></i> <span>{{ $house->houseLocation }}</span>
+                    </div>
+                    <div class="probootstrap-listing-category for-sale"><span>For Rent</span></div>
+                    <div class="probootstrap-listing-price"><strong>{{ $house->housePrice }}/{{ $house->paymentfrequency_id }}</strong></div>
+                  </div>
+                  <div class="probootstrap-card-extra">
+                  </div>
+                </div>
               </div>
-              <div class="probootstrap-listing-category for-sale"><span>for sale</span></div>
-              <div class="probootstrap-listing-price"><strong>$ 250,000</strong> / month</div>
-            </div>
-            <div class="probootstrap-card-extra">
-              <ul>
-                <li>
-                  Area
-                  <span>2400 m2</span>
-                </li>
-                <li>
-                  Beds
-                  <span>3</span>
-                </li>
-                <li>
-                  Baths
-                  <span>2</span>
-                </li>
-                <li>
-                  Garages
-                  <span>1</span>
-                </li>
-              </ul>
             </div>
           </div>
-          <!-- END listing -->
-        </div>
-        <div class="clearfix visible-sm-block"></div>
-        <div class="col-md-4 col-sm-6">
-          <div class="probootstrap-card probootstrap-listing">
-            <div class="probootstrap-card-media">
-              <img src="https://uicookies.com/demo/theme/haus/img/slider_3.jpg" class="img-responsive" alt="Free HTML5 Template by uicookies.com">
-              <a href="#" class="probootstrap-love"><i class="icon-heart"></i></a>
-            </div>
-            <div class="probootstrap-card-text">
-              <h2 class="probootstrap-card-heading"><a href="#">3 Bed Room Property for Sale</a></h2>
-              <div class="probootstrap-listing-location">
-                <i class="icon-location2"></i> <span>Mamba, KG 680 St, Kigali</span>
-              </div>
-              <div class="probootstrap-listing-category for-rent"><span>for rent</span></div>
-              <div class="probootstrap-listing-price"><strong>RWF 600,000</strong> / month</div>
-            </div>
-            <div class="probootstrap-card-extra">
-              <ul>
-                <li>
-                  Area
-                  <span>2400 m2</span>
-                </li>
-                <li>
-                  Beds
-                  <span>3</span>
-                </li>
-                <li>
-                  Baths
-                  <span>2</span>
-                </li>
-                <li>
-                  Garages
-                  <span>1</span>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <!-- END listing -->
-        </div>
-        <div class="col-md-4 col-sm-6">
-          <div class="probootstrap-card probootstrap-listing">
-            <div class="probootstrap-card-media">
-              <img src="https://uicookies.com/demo/theme/haus/img/slider_1.jpg" class="img-responsive" alt="Free HTML5 Template by uicookies.com">
-              <a href="#" class="probootstrap-love"><i class="icon-heart"></i></a>
-            </div>
-            <div class="probootstrap-card-text">
-              <h2 class="probootstrap-card-heading"><a href="#">3 Bed Room Property for Sale</a></h2>
-              <div class="probootstrap-listing-location">
-                <i class="icon-location2"></i> <span>Nyarugenge, Nyamirambo, Biryogo</span>
-              </div>
-              <div class="probootstrap-listing-category for-rent"><span>for rent</span></div>
-              <div class="probootstrap-listing-price"><strong>RWF 115,000</strong> / month</div>
-            </div>
-            <div class="probootstrap-card-extra">
-              <ul>
-                <li>
-                  Area
-                  <span>2400 m2</span>
-                </li>
-                <li>
-                  Beds
-                  <span>3</span>
-                </li>
-                <li>
-                  Baths
-                  <span>2</span>
-                </li>
-                <li>
-                  Garages
-                  <span>1</span>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <!-- END listing -->
-        </div>
-        <div class="clearfix visible-sm-block"></div>
-        <div class="col-md-4 col-sm-6">
-          <div class="probootstrap-card probootstrap-listing">
-            <div class="probootstrap-card-media">
-              <img src="https://uicookies.com/demo/theme/haus/img/slider_4.jpg" class="img-responsive" alt="Free HTML5 Template by uicookies.com">
-              <a href="#" class="probootstrap-love"><i class="icon-heart"></i></a>
-            </div>
-            <div class="probootstrap-card-text">
-              <h2 class="probootstrap-card-heading"><a href="#">3 Bed Room Property for Sale</a></h2>
-              <div class="probootstrap-listing-location">
-                <i class="icon-location2"></i> <span>Gasabo, Kimironko, Zindiro</span>
-              </div>
-              <div class="probootstrap-listing-category for-rent"><span>for rent</span></div>
-              <div class="probootstrap-listing-price"><strong>RWF 400,000</strong> / month</div>
-            </div>
-            <div class="probootstrap-card-extra">
-              <ul>
-                <li>
-                  Area
-                  <span>2400 m2</span>
-                </li>
-                <li>
-                  Beds
-                  <span>3</span>
-                </li>
-                <li>
-                  Baths
-                  <span>2</span>
-                </li>
-                <li>
-                  Garages
-                  <span>1</span>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <!-- END listing -->
-        </div>
-        <div class="col-md-4 col-sm-6">
-          <div class="probootstrap-card probootstrap-listing">
-            <div class="probootstrap-card-media">
-              <img src="https://uicookies.com/demo/theme/haus/img/slider_3.jpg" class="img-responsive" alt="Free HTML5 Template by uicookies.com">
-              <a href="#" class="probootstrap-love"><i class="icon-heart"></i></a>
-            </div>
-            <div class="probootstrap-card-text">
-              <h2 class="probootstrap-card-heading"><a href="#">3 Bed Room Property for Sale</a></h2>
-              <div class="probootstrap-listing-location">
-                <i class="icon-location2"></i> <span>360 W Wellington Chicago, IL 60657</span>
-              </div>
-              <div class="probootstrap-listing-category for-sale"><span>for sale</span></div>
-              <div class="probootstrap-listing-price"><strong>RWF 125,000</strong> / month</div>
-            </div>
-            <div class="probootstrap-card-extra">
-              <ul>
-                <li>
-                  Area
-                  <span>2400 m2</span>
-                </li>
-                <li>
-                  Beds
-                  <span>3</span>
-                </li>
-                <li>
-                  Baths
-                  <span>2</span>
-                </li>
-                <li>
-                  Garages
-                  <span>1</span>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <!-- END listing -->
-        </div>
+        </section>
+        @endforeach
       </div>
     </div>
   </section>
@@ -607,7 +448,7 @@
       <div class="row mb60">
         <div class="col-md-3">
           <div class="probootstrap-footer-widget">
-            <h4 class="heading">About Icumbi</h4>
+            <h4 class="heading">About Icumbi.</h4>
             <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. </p>
             <p><a href="#">Read more...</a></p>
           </div> 
@@ -616,7 +457,7 @@
           <div class="probootstrap-footer-widget probootstrap-link-wrap">
             <h4 class="heading">Quick Links</h4>
             <ul class="stack-link">
-              <li><a href="#">Property Listing</a></li>
+              <li><a href="/house">House</a></li>
               <li><a href="#">Rent Properties</a></li>
               <li><a href="#">Sell Properties</a></li>
               <li><a href="#">Agents</a></li>
@@ -628,11 +469,11 @@
           <div class="probootstrap-footer-widget">
             <h4 class="heading">Popular Cities</h4>
             <ul class="stack-link">
-              <li><a href="#">New York <small>(320 properties)</small></a></li>
-              <li><a href="#">San Francisco <small>(294 properties)</small></a></li>
-              <li><a href="#">Brooklyn <small>(300 properties)</small></a></li>
-              <li><a href="#">Chicago <small>(268 properties)</small></a></li>
-              <li><a href="#">Los Angeles <small>(342 properties)</small></a></li>
+              <li><a href="#">Nyarugenge <small>(320 properties)</small></a></li>
+              <li><a href="#">Gasabo <small>(294 properties)</small></a></li>
+              <li><a href="#">Kicukiro <small>(300 properties)</small></a></li>
+              <li><a href="#">Rwamagana <small>(268 properties)</small></a></li>
+              <li><a href="#">Huye <small>(342 properties)</small></a></li>
             </ul>
           </div> 
         </div>
@@ -652,7 +493,7 @@
       <div class="row copyright">
         <div class="col-md-6">
           <div class="probootstrap-footer-widget">
-            <p>&copy; 2018 <a href="tres.rw">Trust Engineering Solutions</a></p>
+            <p>&copy; 2018 <a href="https://icumbiApp.com/">tres:Icumbi</a>. Designed by <a href="https://icumbiApp.com/">tres:Icumbi</a> <br> Demo Photos from <a href="https://pixabay.com/">Pixabay</a> &amp; <a href="https://unsplash.com/">Unsplash</a></p>
           </div>
         </div>
         <div class="col-md-6">
@@ -669,10 +510,9 @@
   </footer>
 
   <div class="gototop js-top">
-    <a href="/" class="js-gotop"><i class="icon-chevron-thin-up"></i></a>
+    <a href="#" class="js-gotop"><i class="icon-chevron-thin-up"></i></a>
   </div>
   
-
   <script src="js/scripts.min.js"></script>
   <script src="js/main.min.js"></script>
   <script src="js/custom.js"></script>

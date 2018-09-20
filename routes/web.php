@@ -13,6 +13,8 @@
 use App\Province;
 use App\Sector;
 use App\Cell;
+use App\House;
+use Illuminate\Support\Facades\Input;
 use App\District;
 
 
@@ -129,3 +131,24 @@ Route::get('/del', 'PaymentModeController@destroy');
 Route::get('/master', function(){
     return view('layouts.master');
     });
+
+
+    #Public
+    Route::get('/house', 'PublicController@DisplayHousesOnHOusePage');
+    Route::get('/', 'PublicController@DisplayHousesOnHomePage');
+    Route::any('/houseShow', 'PublicController@show');
+
+    Route::any('/search', function(){
+        $search = Input::get('search');
+        if ($search != "") {
+            $house = House::where('houselocation','LIKE','%'.$search.'%')
+            ->orWhere('housePrice','LIKE','%'.$search.'%')
+            ->orWhere('paymentfrequency_id','LIKE','%'.$search.'%')
+            ->get();
+        if(count($house)>0)
+            return view('client.search')->withDetails($house)->withQuery ( $search );
+
+        }
+        return view('client.search')->withMessage("No results found " );
+    });
+    
