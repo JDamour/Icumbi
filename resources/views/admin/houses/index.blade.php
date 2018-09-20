@@ -279,10 +279,8 @@ desired effect
               </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="#"><i class="fa fa-circle-o"></i> New</a></li>
-            <li><a href="#"><i class="fa fa-circle-o"></i> View All</a></li>
-			<li><a href="#"><i class="fa fa-circle-o"></i> Booked</a></li>
-			<li><a href="#"><i class="fa fa-circle-o"></i> Reported</a></li>
+            <li><a href="{{ route('admin.houses.create') }}"><i class="fa fa-circle-o"></i> New</a></li>
+            <li><a href="{{ route('admin.houses.index') }}"><i class="fa fa-circle-o"></i> View All</a></li>
           </ul>
         </li>
 		<li class="treeview">
@@ -367,7 +365,13 @@ desired effect
                         <td>{{$house->paymentfrequency->name}}</td>
                         <td>{{count($house->service)}}</td>
                         <td>{{count($house->reports)}}</td>
+                        @if($house->status == 1)
                         <td><span class="label label-success">Active</span></td>
+                        @elseif($house->status == 2)
+                        <td><span class="label label-warning">Booked</span></td>
+                        @else
+                        <td><span class="label label-danger">Disabled</span></td>
+                        @endif
                         <td>
                           <span class="label bg-purple"><a style="color:white" href="{{route('admin.houses.show', $house->id)}}">open</a></span>
                           <span class="label bg-maroon"><a style="color:white" href="{{route('admin.houses.delete', $house->id)}}">Delete</a></span></td>

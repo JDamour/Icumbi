@@ -41,15 +41,28 @@ class ServiceController extends Controller
      */
     public function store(Request $request)
     {
-        // process payment form from client
-        $service = Service::create([
-            "email" => $request->input('email'),
-            "phone_number" => $request->input('tel'),
-            "house_id" => $request->input('house_id'),
-        ]);
+        // record client details
+        // die(json_encode($request));
+        // die($request->input('email') . $request->input('phone') . $request->input('house_id'));
+        try {
+            $service = Service::create([
+                "email" => $request->input('email'),
+                "phone_number" => $request->input('phone'),
+                "house_id" => $request->input('house_id'),
+                "payment_id" => "100"
+            ]);
+        } catch(Exception $e) {
+            return back()->withInput();
+        }
         
+        
+        // save client's service and send email if payment was successful
+        // redirect to display service 
         if ($service) {
-            // redirect to payment api
+            die("service was saved");
+        } else {
+            // return to house form with errors
+            return back()->withInput();
         }
     }
 
@@ -70,6 +83,7 @@ class ServiceController extends Controller
             $time_diff = $latest_timestamp + (60 * 60 * 24 * 2);
             if ($current_timestamp < $time_diff){
                 // @todo return service timed out error
+                return redirect()->route('root');
                 return;
             }
             if ($service->payment_id) {
