@@ -23,6 +23,9 @@ Route::get('/checkUser', 'MessagesController@index');
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/navbar', function () {
+    return view('layouts.frontend');
+});
 
 Route::get('/service', function () {
     return view('service');
@@ -157,3 +160,8 @@ Route::get('/master', function(){
         return view('client.search')->withMessage("No results found " );
     });
     
+#frontend view
+Route::get('/agents', 'clientController@agents');
+Route::get('/properties', 'clientController@properties');
+Route::get('/about', 'clientController@about');
+Route::get('/contact', 'clientController@contact');
