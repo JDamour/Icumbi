@@ -23,6 +23,10 @@ Route::get('/checkUser', 'MessagesController@index');
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/service', function () {
+    return view('service');
+});
 // Route::get('users',['middleware' => 'Role:superadmin|admin', function () {
 //     return view('why');
 // }]);
