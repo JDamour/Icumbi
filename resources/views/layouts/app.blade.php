@@ -8,9 +8,9 @@
     <meta name="keywords" content="free website templates, free bootstrap themes, free template, free bootstrap, free website template">
     <link href="https://fonts.googleapis.com/css?family=Old+Standard+TT" rel="stylesheet">
     
-    <link rel="stylesheet" href="css/styles-merged.css">
-    <link rel="stylesheet" href="css/style.min.css">
-    <link rel="stylesheet" href="css/custom.css">
+    <link rel="stylesheet" href="{{asset('css/styles-merged.css')}}">
+    <link rel="stylesheet" href="{{asset('css/style.min.css')}}">
+    <link rel="stylesheet" href="{{asset('css/custom.css')}}">
 
     
 
@@ -100,9 +100,9 @@
     </div>
 </body>
 
-<script src="js/scripts.min.js"></script>
-<script src="js/main.min.js"></script>
-<script src="js/custom.js"></script>
+<script src="{{asset('js/scripts.min.js')}}"></script>
+<script src="{{asset('js/main.min.js')}}"></script>
+<script src="{{asset('js/custom.js')}}"></script>
 </html>
 
 
