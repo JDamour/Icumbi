@@ -19,11 +19,15 @@
         "lodash": "^4.17.4",
         "vue": "^2.5.7"
     },
-    
     "extra": {
-    "laravel": {
-        "dont-discover": [
-            "laravel/dusk"
-        ]
+        "laravel": {
+            "dont-discover": [
+                "laravel/dusk"
+            ]
+        }
+    },
+    "dependencies": {
+        "laravel-echo": "^1.4.0",
+        "pusher-js": "^4.3.1"
     }
 }
