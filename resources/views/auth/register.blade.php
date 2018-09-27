@@ -17,7 +17,7 @@
                         @csrf
 
                         <div class="form-group row">
-                            <label for="firstName" class="col-md-4 col-form-label text-md-right">{{ __('firstName') }}</label>
+                            <label for="firstName" class="col-md-4 col-form-label text-md-right">{{ __('First Name') }}</label>
 
                             <div class="col-md-6">
                                 <input id="firstName" type="text" class="form-control{{ $errors->has('firstName') ? ' is-invalid' : '' }}" name="firstName" value="{{ old('firstName') }}" required autofocus>
@@ -31,7 +31,7 @@
                         </div>
                         
                          <div class="form-group row">
-                            <label for="lastName" class="col-md-4 col-form-label text-md-right">{{ __('lastName') }}</label>
+                            <label for="lastName" class="col-md-4 col-form-label text-md-right">{{ __('Last Name') }}</label>
 
                             <div class="col-md-6">
                                 <input id="lastName" type="text" class="form-control{{ $errors->has('lastName') ? ' is-invalid' : '' }}" name="lastName" value="{{ old('lastName') }}" required autofocus>
@@ -45,7 +45,7 @@
                         </div> 
                         
                          <div class="form-group row">
-                            <label for="gender" class="col-md-4 col-form-label text-md-right">{{ __('gender') }}</label>
+                            <label for="gender" class="col-md-4 col-form-label text-md-right">{{ __('Gender') }}</label>
 
                             <div class="col-md-6">
                                 <select id="gender" class="form-control{{ $errors->has('gender') ? ' is-invalid' : '' }}" name="gender" value="{{ old('gender') }}"
@@ -67,7 +67,7 @@
                             <label for="dateOfBirth" class="col-md-4 col-form-label text-md-right">{{ __('date Of Birth') }}</label>
 
                             <div class="col-md-6">
-                                <input id="dateOfBirth" type="date" class="form-control{{ $errors->has('dateOfBirth') ? ' is-invalid' : '' }}" name="dateOfBirth" value="{{ old('dateOfBirth') }}" required autofocus>
+                                <input id="dateOfBirth" type="date" class="form-control{{ $errors->has('Date Of Birth') ? ' is-invalid' : '' }}" name="dateOfBirth" value="{{ old('dateOfBirth') }}" required autofocus>
 
                                 @if ($errors->has('dateOfBirth'))
                                     <span class="invalid-feedback" role="alert">
@@ -77,8 +77,28 @@
                             </div>
                         </div>
                         
+
+                         <div class="form-group row">
+                            <label for="gender" class="col-md-4 col-form-label text-md-right">{{ __('Role') }}</label>
+
+                            <div class="col-md-6">
+                                <select id="role" class="form-control{{ $errors->has('role') ? ' is-invalid' : '' }}" name="roleId" value="{{ old('role') }}"
+                                 required autofocus>
+                                <option value="">role</option>
+                                <option value="3">user</option>
+                                <option value="2">house owner</option>
+                                </select>
+
+                                @if ($errors->has('role'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('role') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
                         <div class="form-group row">
-                            <label for="national_id" class="col-md-4 col-form-label text-md-right">{{ __('national_id') }}</label>
+                            <label for="national_id" class="col-md-4 col-form-label text-md-right">{{ __('National Identity') }}</label>
 
                             <div class="col-md-6">
                                 <input id="national_id" type="text" class="form-control{{ $errors->has('national_id') ? ' is-invalid' : '' }}" name="national_id" value="{{ old('national_id') }}" required autofocus>
@@ -92,7 +112,7 @@
                         </div>                                                 
  
                          <div class="form-group row">
-                            <label for="phoneNumber" class="col-md-4 col-form-label text-md-right">{{ __('phoneNumber') }}</label>
+                            <label for="phoneNumber" class="col-md-4 col-form-label text-md-right">{{ __('Phone Number') }}</label>
 
                             <div class="col-md-6">
                                 <input id="phoneNumber" type="text" class="form-control{{ $errors->has('phoneNumber') ? ' is-invalid' : '' }}" name="phoneNumber" value="{{ old('phoneNumber') }}" required autofocus>
