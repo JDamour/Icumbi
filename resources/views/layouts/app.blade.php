@@ -32,7 +32,7 @@
         <a href="#" class="probootstrap-burger-menu visible-xs" ><i>Menu</i></a>
         <div class="mobile-menu-overlay"></div>
 
-        <nav role="navigation" class="probootstrap-nav hidden-xs">
+        <nav role="navigation" class="probootstrap-nav hidden-xs .navbar-fixed-top">
           <ul class="probootstrap-main-nav">
             <li class="active"><a href="/">Home</a></li>
             <li><a href="properties.html">Properties</a></li>
@@ -92,6 +92,14 @@
         </nav>
 
 
+        <footer class="main-footer" style="height:40px; color: white; background: #6C7D80;">
+          <!-- To the right -->
+          <div class="pull-right hidden-xs">
+            <!-- Anything you want -->
+          </div>
+          <!-- Default to the left -->
+          <strong>Copyright &copy; 2018 <a href="#" style="color: white;">ITEME</a>.</strong> All rights reserved.
+        </footer>
 
 
         <main class="py-4">
