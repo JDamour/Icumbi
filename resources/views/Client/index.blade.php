@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>uiCookies:Haus &mdash; Free Bootstrap Theme, Free Responsive Bootstrap Website Template</title>
+    <title>Icumbi|House</title>
     <meta name="description" content="Free Bootstrap Theme by uicookies.com">
     <meta name="keywords" content="free website templates, free bootstrap themes, free template, free bootstrap, free website template">
     
@@ -85,9 +85,15 @@
         <div class="col-md-4 col-sm-6">
           <div class="probootstrap-card probootstrap-listing">
             <div class="probootstrap-card-media">
+              @foreach($house->uploads as $upload)
               
-              <img src="img/slider_1.jpg" class="img-responsive" alt="Free HTML5 Template by uicookies.com">
-              <a href="/houseShow" class="probootstrap-love"><i class="icon-heart"></i></a>
+              
+              {{ $upload->id }}
+              <img src="images/HouseUploads{{ asset($upload->source) }}">
+              {{ $upload->title }}
+              <a href="{{route('houseshow.show', $house->id)}}" class="probootstrap-love"><i class="icon-heart"></i></a>
+              @endforeach
+              
             </div>
             <div class="probootstrap-card-text">
               <h2 class="probootstrap-card-heading"><a href="#">{{ $house->id }}</a></h2>
@@ -95,7 +101,7 @@
                 <i class="icon-location2"></i> <span>{{ $house->houseLocation }}</span>
               </div>
               <div class="probootstrap-listing-category for-sale"><span>For Rent</span></div>
-              <div class="probootstrap-listing-price"><strong>{{ $house->housePrice }}/{{ $house->paymentfrequency_id }}</strong></div>
+              <div class="probootstrap-listing-price"><strong>{{ $house->housePrice }}/{{ $house->paymentfrequency['name'] }}</strong></div>
             </div>
             <div class="probootstrap-card-extra">
               
@@ -111,7 +117,7 @@
   @endforeach
 
 <!--   
-
+C:/xampp/htdocs/PROJECTS/Tres/icumbi/images/Capture.PNG
   <section class="probootstrap-section">
     <div class="container">
       <div class="row heading">

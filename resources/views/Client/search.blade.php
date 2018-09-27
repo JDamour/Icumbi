@@ -38,6 +38,18 @@
             <li><a href="agents.html">Agents</a></li>
             <li><a href="about.html">About</a></li>
             <li><a href="contact.html">Contact</a></li>
+            <form action="/search" method="POST" role="search">
+                <div class="probootstrap-field-group">
+                  
+                    
+                      <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                      <input type="text" placeholder="Search" name="search">
+                    
+                  
+                  <button type="submit"><i class="icon-magnifying-glass t2"></i> Start Search</button>
+                </div>
+            </form>
+
           </ul>
           <div class="extra-text visible-xs"> 
             <a href="#" class="probootstrap-burger-menu"><i>Menu</i></a>
@@ -54,29 +66,18 @@
     </div>
   </header>
   <!-- END: header -->
-  <section class="probootstrap-slider flexslider2 page-inner">
-    <div class="overlay"></div>
-    <div class="probootstrap-wrap-banner">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-8">
-
-            <div class="page-title probootstrap-animate">
-              <div class="probootstrap-breadcrumbs">
-                <a href="#">Home</a><span>search</span>
-              </div>
-              <h1>Search</h1>
-            </div>
-
+  <section >
+    <div >
+      <div >
+        <div class="page-title probootstrap-animate">
+          <div class="probootstrap-breadcrumbs">
+            <a href="#">Home</a><span>search</span>
           </div>
-        </div>
+            <h1>Search</h1>
+          </div>
       </div>
     </div>
-    <ul class="slides">
-      <li style="background-image: url(img/slider_1.jpg);"></li>
-      <li style="background-image: url(img/slider_4.jpg);"></li>
-      <li style="background-image: url(img/slider_2.jpg);"></li>
-    </ul>
+    
   </section>
   <!-- END: slider  -->
   @if(isset($details))
@@ -92,7 +93,7 @@
             <div class="probootstrap-card-media">
               
               <img src="img/slider_1.jpg" class="img-responsive" alt="Free HTML5 Template by uicookies.com">
-              <a href="/houseShow" class="probootstrap-love"><i class="icon-heart"></i></a>
+              <a href="{{route('houseshow.show', $house->id)}}" class="probootstrap-love"><i class="icon-heart"></i></a>
             </div>
             <div class="probootstrap-card-text">
               <h2 class="probootstrap-card-heading"><a href="#">{{ $house->id }}</a></h2>

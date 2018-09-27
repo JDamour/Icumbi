@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Icumbi</title>
+    <title>Icumbi | Home</title>
     <meta name="description" content="Free Bootstrap Theme by uicookies.com">
     <meta name="keywords" content="free website templates, free bootstrap themes, free template, free bootstrap, free website template">
     <link href="https://fonts.googleapis.com/css?family=Old+Standard+TT" rel="stylesheet">
@@ -292,7 +292,7 @@
                 <div class="probootstrap-card probootstrap-listing">
                   <div class="probootstrap-card-media"> 
                     <img src="img/slider_1.jpg" class="img-responsive" alt="Free HTML5 Template by uicookies.com">
-                    <a href="/houseShow" class="probootstrap-love"><i class="icon-heart"></i></a>
+                    <a href="{{route('houseshow.show', $house->id)}}" class="probootstrap-love"><i class="icon-heart"></i></a>
                   </div>
                   <div class="probootstrap-card-text">
                    <h2 class="probootstrap-card-heading"><a href="#">{{ $house->id }}</a></h2>
@@ -300,7 +300,7 @@
                       <i class="icon-location2"></i> <span>{{ $house->houseLocation }}</span>
                     </div>
                     <div class="probootstrap-listing-category for-sale"><span>For Rent</span></div>
-                    <div class="probootstrap-listing-price"><strong>{{ $house->housePrice }}/{{ $house->paymentfrequency_id }}</strong></div>
+                    <div class="probootstrap-listing-price"><strong>{{ $house->housePrice }}/{{ $house->paymentfrequency['name'] }}</strong></div>
                   </div>
                   <div class="probootstrap-card-extra">
                   </div>

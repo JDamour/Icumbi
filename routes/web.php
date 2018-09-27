@@ -141,7 +141,7 @@ Route::get('/master', function(){
     #Public
     Route::get('/house', 'PublicController@DisplayHousesOnHOusePage');
     Route::get('/', 'PublicController@DisplayHousesOnHomePage');
-    Route::any('/houseShow', 'PublicController@show');
+    Route::any('/houseShow/{id}', 'PublicController@show')->name('houseshow.show');
 
     Route::any('/search', function(){
         $search = Input::get('search');
@@ -156,4 +156,3 @@ Route::get('/master', function(){
         }
         return view('client.search')->withMessage("No results found " );
     });
-    
