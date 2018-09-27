@@ -18,7 +18,10 @@ use Illuminate\Support\Facades\Input;
 use App\District;
 
 
-Route::get('/checkUser', 'MessagesController@index');
+//Route::post('/send', 'MessagesController@send');
+//Route::get('/chat', 'MessagesController@chat');
+
+Route::get('sendNotification', 'MailController@sendNotification');
 
 Route::get('/', function () {
     return view('welcome');
