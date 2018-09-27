@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Service;
 use App\House;
 use App\Payment;
+use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Http\Request;
 
@@ -19,7 +20,22 @@ class ServiceController extends Controller
     {
         // view all service; meant for system admins only
         $services = Service::all();
+        // die(print_r($services));
         return view('services.index', compact('services'));
+        
+    }
+
+    public function ownerIndex() {
+        $services = [];
+        $houses = Auth::user()->house;
+        foreach($houses as $house) {
+            foreach($house->service as $service) {
+                array_push($services, $service);
+            }
+        }
+        // die(print_r($services));
+        return view('services.ownerIndex', compact('services'));
+        
     }
 
     /**
@@ -59,7 +75,7 @@ class ServiceController extends Controller
         // save client's service and send email if payment was successful
         // redirect to display service 
         if ($service) {
-            die("service was saved");
+            return redirect()->route('service.show', $service->id);
         } else {
             // return to house form with errors
             return back()->withInput();
@@ -72,33 +88,38 @@ class ServiceController extends Controller
      * @param  \App\Service  $service
      * @return \Illuminate\Http\Response
      */
-    public function show(Service $service)
+    public function show($service)
     {
+        // die("Trying to display house with id: " . $service);
         //disaply house after was succesful
-        $service = Service::find($service->id);
+        $service = Service::find($service);
         if ($service) {
             // check if the service is not more than two days old.
             $current_timestamp = $_SERVER['REQUEST_TIME'];
             $latest_timestamp = strtotime($service->updated_at);
-            $time_diff = $latest_timestamp + (60 * 60 * 24 * 2);
-            if ($current_timestamp < $time_diff){
+            $time_diff = $latest_timestamp + (60 * 1);
+            
+            if ($current_timestamp > $time_diff){
                 // @todo return service timed out error
+                die('service expired');
                 return redirect()->route('root');
                 return;
             }
-            if ($service->payment_id) {
+            // if ($service->payment_id) {
+                
                 $house = House::find($service->house_id);
-                $payment = Payment::find($service->payment_id);
+                //$payment = Payment::find($service->payment_id);
                 $data = [
-                    "house" => $house,
-                    "payment" => $payment
+                    "house" => $house //,
+                    // "payment" => $payment
                 ];
-                if ($house && $payment) {
+                
+                if ($house /*&& $payment*/) {
                     return view('services.show', compact('data'));
                 }
-            } else {
-                // @todo redirect to payment page
-            }
+            // } else {
+            //     // @todo redirect to payment page
+            // }
         }
         
         // @todo show error page
