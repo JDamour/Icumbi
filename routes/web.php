@@ -26,7 +26,7 @@ Route::get('/', function () {
 
 Route::get('/service', function () {
     return view('service');
-});
+})->name('show_house_details');
 // Route::get('users',['middleware' => 'Role:superadmin|admin', function () {
 //     return view('why');
 // }]);
@@ -54,7 +54,7 @@ Route::post('/view/{id}', 'ViewController@store')->name('set_view');
 
 
 # service routes
-// Route::get('/service/create/{house_id}', 'ServiceController@create')->name('create_service');
+Route::get('/service/create/{house_id}', 'ServiceController@create')->name('service.create');
 Route::post('/service', 'ServiceController@store')->name('service.store');
 Route::post('/service/callback/{service_id}', 'ServiceController@callback')->name('service.callback');
 Route::get('/service/{service_id}', 'ServiceController@show')->name('service.show');
@@ -78,6 +78,10 @@ Route::get('/cells/{id}', function($id) {
 # admin routes
 Route::group(['prefix' => 'admin', 'middleware' =>'auth.admin'],function () {
     
+    #Service controller
+    Route::get('/services', 'ServiceController@index')->name('admin.services.index');
+
+
     # house controller
     // Route::resource('houses', 'AdminHouseController');
     Route::get('/houses', 'AdminHouseController@index')->name('admin.houses.index');
@@ -99,7 +103,9 @@ Route::group(['prefix' => 'admin', 'middleware' =>'auth.admin'],function () {
 
 # houseOwner routes
 Route::group(['prefix' => 'owner', 'middleware' =>'auth.owner'], function(){
-    
+
+    #house owner, house controller
+    Route::get('/services', 'ServiceController@ownerIndex')->name('owner.services.index');
   # house controller
   Route::resource('houses', 'OwnerHouseController');
   Route::get('/houses/delete/{id}', 'OwnerHouseController@delete')->name('owner.houses.delete');
