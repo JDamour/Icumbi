@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use App\House;
 use App\Country;
+use App\Uploads;
 use App\Paymentfrequency;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
@@ -24,6 +26,12 @@ class PublicController extends Controller
     {
         $houses = House::all();
         return view('welcome', compact('houses'));
+    }
+
+    public function upload()
+    {
+        $uploads = Upload::all();
+        return view('client.index', compact('uploads'));
     }
 
     /**
@@ -64,12 +72,13 @@ class PublicController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(house $house)
+    public function show($id)
     {
         //
-        $house = House::find($house->id);
-        
+        $house = House::find($id);
         return view('client.show', compact('house'));
+
+
         // return view('client.show', ['house'=>$house]);
     }
     
