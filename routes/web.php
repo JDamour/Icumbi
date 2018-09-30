@@ -18,27 +18,17 @@ use Illuminate\Support\Facades\Input;
 use App\District;
 
 
-//Route::post('/send', 'MessagesController@send');
-//Route::get('/chat', 'MessagesController@chat');
 
 Route::get('sendNotification', 'MailController@sendNotification');
 
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/navbar', function () {
-    return view('layouts.frontend');
-});
 
 Route::get('/service', function () {
     return view('service');
 });
-// Route::get('users',['middleware' => 'Role:superadmin|admin', function () {
-//     return view('why');
-// }]);
-// Route::get('/create', function () {
-//     return view('payments.create');
-// });
+
 Route::get('/show', function () {
     return view('show');
 })->name('root');
