@@ -16,6 +16,7 @@ use App\Cell;
 use App\House;
 use Illuminate\Support\Facades\Input;
 use App\District;
+use App\User;
 
 
 Route::get('/checkUser', 'MessagesController@index');

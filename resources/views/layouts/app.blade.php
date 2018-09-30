@@ -27,7 +27,7 @@
 
   <header role="banner" class="probootstrap-header">
     <div class="container">
-        <a href="index.html" class="probootstrap-logo">ICUMBI</a>
+        <a href="/" class="probootstrap-logo">ICUMBI</a>
         
         <a href="#" class="probootstrap-burger-menu visible-xs" ><i>Menu</i></a>
         <div class="mobile-menu-overlay"></div>
@@ -35,10 +35,10 @@
         <nav role="navigation" class="probootstrap-nav hidden-xs .navbar-fixed-top">
           <ul class="probootstrap-main-nav">
             <li class="active"><a href="/">Home</a></li>
-            <li><a href="properties.html">Properties</a></li>
-            <li><a href="agents.html">Agents</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="contact.html">Contact</a></li>
+            <li><a href="/house">House</a></li>
+            <li><a href="/agents">Agents</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/contact">Contact</a></li>
              <li><a href="/login">Login</a></li>
             <li><a href="/register">SignUp</a></li>
           </ul>

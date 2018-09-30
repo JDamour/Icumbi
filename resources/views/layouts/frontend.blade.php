@@ -35,7 +35,7 @@
           <ul class="probootstrap-main-nav">
             <li class="active"><a href="/">Home</a></li>
             <li><a href="{{url('house')}}">Houses</a></li>
-            @yield('link')
+            <!-- @yield('link') -->
             <li><a href="{{url('agents')}}">Agents</a></li>
             <li><a href="{{url('about')}}">About</a></li>
             <li><a href="{{url('contact')}}">Contact</a></li>
