@@ -1,3 +1,4 @@
+
 @extends('layouts.frontend')
 @section('title', 'search')
 @section('link')
@@ -22,7 +23,7 @@
           </div>
       </div>
     </div>
-    
+
   </section>
   @if(isset($details))
         
@@ -60,4 +61,5 @@
     </div>
   </section>
  @endif
+
 @endsection

@@ -41,9 +41,11 @@
           <div class="probootstrap-card probootstrap-listing">
             <div class="probootstrap-card-media">
               @foreach($house->uploads as $upload)
+
                 <img src="/images/HouseUploads/{{ $upload->source }}">
                 @break;
               @endforeach
+
             </div>
             <div class="probootstrap-card-text">
               <h2 class="probootstrap-card-heading"><a href="#">House Id: {{ $house->id }}</a></h2>

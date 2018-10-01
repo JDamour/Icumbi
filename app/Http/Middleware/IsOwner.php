@@ -16,7 +16,7 @@ class IsOwner
      */
     public function handle($request, Closure $next)
     {
-     if (!(Auth::check() && Auth::user()->IsOwner()))
+     if (!(Auth::check() && Auth::user()->IsOwner() || Auth::check() && Auth::user()->IsAdmin()))
         {
             if ($request->ajax())
             {
