@@ -3,10 +3,10 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8" style=" margin-top: 120px; background-color: #E5E7F9; margin-left: 50pt; margin-right: 50pt; margin-bottom: 100pt;>
+        <div class="col-md-8" style=" margin-top: 120px; background-color: #E5E7F9; margin-left: 50pt; margin-right: 50pt; margin-bottom: 100pt;  border-radius: 40px;>
             <div class="card">
                   <div class="panel-title text-center">
-                    <img class="logo" src="https://9szsua.db.files.1drv.com/y4mu_9zQCPwwpmmZnCXJ7Oww61G5Gl-X3FMIhb4whIKRPjMCw6w2AjeUvq_oaaMXORWKQUeegf4DtebjDDk_0MnCgLj3EanYSKHZaUzowQLDhINnqgprTm2RYH8UT-_RXGi3OMxneHL_9roSyp6lSj56GsQUYXxxzSGyqirhXYUAnyns1ZU3ANqvivMVVERno6JPEl5U4bCJ_SRQ0dFVOQAyw?width=945&height=709&cropmode=none" width="200" height="100" style="border-radius: 50%; margin-bottom: -5px;"/>
+                    <!-- <img class="logo" src="https://9szsua.db.files.1drv.com/y4mu_9zQCPwwpmmZnCXJ7Oww61G5Gl-X3FMIhb4whIKRPjMCw6w2AjeUvq_oaaMXORWKQUeegf4DtebjDDk_0MnCgLj3EanYSKHZaUzowQLDhINnqgprTm2RYH8UT-_RXGi3OMxneHL_9roSyp6lSj56GsQUYXxxzSGyqirhXYUAnyns1ZU3ANqvivMVVERno6JPEl5U4bCJ_SRQ0dFVOQAyw?width=945&height=709&cropmode=none" width="200" height="100" style="border-radius: 50%; margin-bottom: -5px;"/> -->
                 <h1 class="card-header">Login</h1>
                                         <hr />
                                     </div>
