@@ -7,7 +7,7 @@
     <title>uiCookies:Haus &mdash; Free Bootstrap Theme, Free Responsive Bootstrap Website Template</title>
     <meta name="description" content="Free Bootstrap Theme by uicookies.com">
     <meta name="keywords" content="free website templates, free bootstrap themes, free template, free bootstrap, free website template">
-    
+
     <!-- <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet"> -->
     <link rel="stylesheet" href="css/styles-merged.css">
     <link rel="stylesheet" href="css/style.min.css">
@@ -21,13 +21,13 @@
   <body>
 
   <!-- START: header -->
-  
+
   <div class="probootstrap-loader"></div>
 
   <header role="banner" class="probootstrap-header">
     <div class="container">
         <a href="/" class="probootstrap-logo">Icumbi<span></span></a>
-        
+
         <a href="#" class="probootstrap-burger-menu visible-xs" ><i>Menu</i></a>
         <div class="mobile-menu-overlay"></div>
 
@@ -41,18 +41,18 @@
             <li><a href="contact.html">Contact</a></li>
             <form action="/search" method="POST" role="search">
                 <div class="probootstrap-field-group">
-                  
-                    
+
+
                       <input type="hidden" name="_token" value="{{ csrf_token() }}">
                       <input type="text" placeholder="Search" name="search">
-                    
-                  
+
+
                   <button type="submit"><i class="icon-magnifying-glass t2"></i> Start Search</button>
                 </div>
             </form>
 
           </ul>
-          <div class="extra-text visible-xs"> 
+          <div class="extra-text visible-xs">
             <a href="#" class="probootstrap-burger-menu"><i>Menu</i></a>
             <h5>Address</h5>
             <p>198 West 21th Street, Suite 721 New York NY 10016</p>
@@ -100,7 +100,7 @@
           </div>
       </div>
     </div>
-    
+
   </section>
   <!-- END: slider  -->
   @if(isset($details))

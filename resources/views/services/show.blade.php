@@ -5,7 +5,7 @@
 			<div class="container-fluid">
 				<div class="wrapper row">
 					<div class="preview col-md-6">
-						
+
 						<div class="preview-pic tab-content">
 						  <div class="tab-pane active" id="pic-1"><img src="https://upload.wikimedia.org/wikipedia/commons/9/96/Vasskertentrance.jpg" /></div>
 						  <div class="tab-pane" id="pic-2"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTklPtHzpvHSDudP2ylwvhFRZdWxrYsVaUVWDyEYqHB0CEha6wX" /></div>
@@ -20,7 +20,7 @@
 						  <li><a data-target="#pic-4" data-toggle="tab"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgA1h2JI8EBjH3yr9tCMREPDYsqbyluKlc23B5ishk65UVhcN9fQ" /></a></li>
 						  <li><a data-target="#pic-5" data-toggle="tab"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfabSsuuqJy1_9yZp2rF2bFBOEWB-tljIDtPqKiW03XZR7haHCzQ" /></a></li>
 						</ul>
-						
+
 					</div>
 					<div class="details col-md-6">
 						<h3 class="product-title">Here is your house!</h3>
@@ -60,8 +60,8 @@
 							<form>
 							<input class="add-to-cart btn btn-default" type="button" value="View more houses" onclick="window.location.href='/'" />
 							</form>
-							
-							
+
+
 
 						</div>
 					</div>
@@ -75,12 +75,12 @@
                         $lat_lng = explode(':', $data["house"]->houseLocation);
                         $lat = $lat_lng[0];
                         $lng = $lat_lng[1];
-                        
+
                     @endphp
 		        	<iframe width="100%" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?q={{$lat}},{{$lng}}&hl=en;z=14&amp;output=embed"></iframe>
 		    	</div>
-		    	
-		      	
+
+
 		    </div>
 	</div>
   </body>

@@ -8,7 +8,7 @@
     <meta name="description" content="Free Bootstrap Theme by uicookies.com">
     <meta name="keywords" content="free website templates, free bootstrap themes, free template, free bootstrap, free website template">
     <link href="https://fonts.googleapis.com/css?family=Old+Standard+TT" rel="stylesheet">
-    
+
     <link rel="stylesheet" href="css/styles-merged.css">
     <link rel="stylesheet" href="css/style.min.css">
     <link rel="stylesheet" href="css/custom.css">
@@ -21,13 +21,13 @@
   <body>
 
   <!-- START: header -->
-  
+
   <div class="probootstrap-loader"></div>
 
   <header role="banner" class="probootstrap-header">
     <div class="container">
         <a href="index.html" class="probootstrap-logo">ICUMBI</a>
-        
+
         <a href="#" class="probootstrap-burger-menu visible-xs" ><i>Menu</i></a>
         <div class="mobile-menu-overlay"></div>
 
@@ -65,12 +65,12 @@
                                 </div>
                             </li>
                         @endguest
-                 
+
 
 
 
           </ul>
-          <div class="extra-text visible-xs"> 
+          <div class="extra-text visible-xs">
             <a href="#" class="probootstrap-burger-menu"><i>Menu</i></a>
             <h5>Address</h5>
             <p>Rwanda, Kigali, Kimironko</p>

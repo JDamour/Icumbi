@@ -22,7 +22,7 @@ class ServiceController extends Controller
         $services = Service::all();
         // die(print_r($services));
         return view('services.index', compact('services'));
-        
+
     }
 
     public function ownerIndex() {
@@ -35,7 +35,7 @@ class ServiceController extends Controller
         }
         // die(print_r($services));
         return view('services.ownerIndex', compact('services'));
-        
+
     }
 
     /**
@@ -98,7 +98,7 @@ class ServiceController extends Controller
             $current_timestamp = $_SERVER['REQUEST_TIME'];
             $latest_timestamp = strtotime($service->updated_at);
             $time_diff = $latest_timestamp + (60 * 1);
-            
+
             if ($current_timestamp > $time_diff){
                 // @todo return service timed out error
                 die('service expired');
@@ -106,14 +106,14 @@ class ServiceController extends Controller
                 return;
             }
             // if ($service->payment_id) {
-                
+
                 $house = House::find($service->house_id);
                 //$payment = Payment::find($service->payment_id);
                 $data = [
                     "house" => $house //,
                     // "payment" => $payment
                 ];
-                
+
                 if ($house /*&& $payment*/) {
                     return view('services.show', compact('data'));
                 }

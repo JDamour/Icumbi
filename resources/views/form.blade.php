@@ -106,7 +106,7 @@
                       
                <!-- <button class='form-control btn btn-primary' type='submit'> Continue →</button> -->
           
-            <!--   </form>    
+            <!--   </form>
                 
               </div>
             </div>    

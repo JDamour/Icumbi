@@ -7,7 +7,7 @@
     <title>Icumbi|House</title>
     <meta name="description" content="Free Bootstrap Theme by uicookies.com">
     <meta name="keywords" content="free website templates, free bootstrap themes, free template, free bootstrap, free website template">
-    
+
     <!-- <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet"> -->
     <link rel="stylesheet" href="css/styles-merged.css">
     <link rel="stylesheet" href="css/style.min.css">
@@ -21,13 +21,13 @@
   <body>
 
   <!-- START: header -->
-  
+
   <div class="probootstrap-loader"></div>
 
   <header role="banner" class="probootstrap-header">
     <div class="container">
         <a href="index.html" class="probootstrap-logo">Icumbi<span></span></a>
-        
+
         <a href="#" class="probootstrap-burger-menu visible-xs" ><i>Menu</i></a>
         <div class="mobile-menu-overlay"></div>
 
@@ -39,7 +39,7 @@
             <li><a href="about.html">About</a></li>
             <li><a href="contact.html">Contact</a></li>
           </ul>
-          <div class="extra-text visible-xs"> 
+          <div class="extra-text visible-xs">
             <a href="#" class="probootstrap-burger-menu"><i>Menu</i></a>
             <h5>Address</h5>
             <p>198 West 21th Street, Suite 721 New York NY 10016</p>
@@ -95,14 +95,14 @@
           <div class="probootstrap-card probootstrap-listing">
             <div class="probootstrap-card-media">
               @foreach($house->uploads as $upload)
-              
-              
+
+
               {{ $upload->id }}
               <img src="images/HouseUploads{{ asset($upload->source) }}">
               {{ $upload->title }}
               <a href="{{route('houseshow.show', $house->id)}}" class="probootstrap-love"><i class="icon-heart"></i></a>
               @endforeach
-              
+
             </div>
             <div class="probootstrap-card-text">
               <h2 class="probootstrap-card-heading"><a href="#">{{ $house->id }}</a></h2>
