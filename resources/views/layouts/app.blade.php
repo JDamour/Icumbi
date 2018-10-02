@@ -92,7 +92,7 @@
         </nav>
 
 
-        <footer class="main-footer" style="height:40px; color: white; background: #6C7D80;">
+        <footer class="main-footer" style="height:40px; color: white; background: #6C7D80; z-index:1;">
           <!-- To the right -->
           <div class="pull-right hidden-xs">
             <!-- Anything you want -->
