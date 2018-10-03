@@ -181,7 +181,7 @@ desired effect
               <!-- The user image in the navbar-->
               <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9-cOiD6RJ2wCYMxHAWZCS6GDdwsCAQ61V_mLzUNsQeACHR8OCqA" class="user-image" alt="User Image">
               <!-- hidden-xs hides the username on small devices so only the image appears. -->
-              <span class="hidden-xs">Leonard MBONIMPA</span>
+              <span class="hidden-xs">{{ Auth::user()->firstName.' '.Auth::user()->lastName }}</span>
             </a>
             <ul class="dropdown-menu">
               <!-- The user image in the menu -->
@@ -189,7 +189,7 @@ desired effect
                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9-cOiD6RJ2wCYMxHAWZCS6GDdwsCAQ61V_mLzUNsQeACHR8OCqA" class="img-circle" alt="User Image">
 
                 <p>
-                  Leonard MBONIMPA - House Owner
+                  {{ Auth::user()->firstName.' '.Auth::user()->lastName }} - House Owner
                   <small>Member since Nov. 2012</small>
                 </p>
               </li>
@@ -214,7 +214,14 @@ desired effect
                   <a href="#" class="btn btn-default btn-flat">Profile</a>
                 </div>
                 <div class="pull-right">
-                  <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                  <a class="btn btn-default btn-flat"href="{{ route('logout') }}"
+                       onclick="event.preventDefault();
+                        document.getElementById('logout-form').submit();">
+                        {{ __('Sign out') }}</a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                  @csrf
+                 </form>
+
                 </div>
               </li>
             </ul>
@@ -239,7 +246,7 @@ desired effect
           <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9-cOiD6RJ2wCYMxHAWZCS6GDdwsCAQ61V_mLzUNsQeACHR8OCqA" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p>Leonard MBONIMPA</p>
+          <p>{{ Auth::user()->firstName.' '.Auth::user()->lastName }}</p>
           <!-- Status -->
           <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
@@ -292,8 +299,8 @@ desired effect
               </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="#"><i class="fa fa-circle-o"></i> Latest</a></li>
-            <li><a href="#"><i class="fa fa-circle-o"></i> View All</a></li>
+            <li><a href="{{ route('owner.services.index') }}"><i class="fa fa-circle-o"></i> Latest</a></li>
+            <li><a href="{{ route('owner.services.index') }}"><i class="fa fa-circle-o"></i> View All</a></li>
           </ul>
         </li>
     <li class="treeview">

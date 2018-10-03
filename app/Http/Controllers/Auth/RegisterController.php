@@ -28,7 +28,24 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/';
+        public function redirectTo(){
+
+    // User role
+    $role = Auth::user()->roleId;
+
+    // Check user role
+    switch ($role) {
+        case 1:
+                return '/admin/houses';
+            break;
+        case 2:
+                return '/owner/houses';
+            break;
+        default:
+                return '/';
+            break;
+    }
+}
 
     /**
      * Create a new controller instance.
@@ -55,6 +72,7 @@ class RegisterController extends Controller
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
             'dateOfBirth' => 'required',
+            'roleId' => 'required',
             'national_id' => 'required|numeric',
         ]);
     }
@@ -75,6 +93,7 @@ class RegisterController extends Controller
             'dateOfBirth' => $data['dateOfBirth'],
             'phoneNumber' => $data['phoneNumber'],
             'email' => $data['email'],
+            'roleId' => $data['roleId'],
             'password' => Hash::make($data['password']),
         ]);
     }

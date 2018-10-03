@@ -9,6 +9,10 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
+import Vue from 'vue'
+import VueChatScroll from 'vue-chat-scroll'
+Vue.use(VueChatScroll)
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -16,9 +20,56 @@ window.Vue = require('vue');
  */
 
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
+Vue.component('message', require('./components/message.vue'));
 
 const app = new Vue({
-    el: '#app'
+    el: '#app',
+    data:{
+        message:'',
+        chat:{
+            message:[],
+            user:[],
+            color:[]
+        }
+    },
+    methods:{
+        send(){
+            if(this.message.length != 0)
+                {
+                    this.chat.message.push(this.message)
+                    this.chat.user.push('you')
+                    this.chat.color.push('success')
+
+                    axios.post('/send', {
+                    message:this.message
+                  })
+                  .then(response=> {
+                    console.log(response);
+                    this.message =''
+                  })
+                  .catch(error=> {
+                    console.log(error);
+                  });
+                }
+        }
+    },
+    watch:{
+      message(){
+          Echo.channel('chat')
+                .whisper('typing', {
+                    name: this.message
+                });
+                }
+    },
+        mounted(){
+        Echo.channel('chat')
+            .listen('ChatEvent', (e) => {
+            this.chat.message.push(e.message)
+            this.chat.user.push(e.user)
+            this.chat.color.push('info')
+//                console.log(e);
+            });
+    }
 });
 
 

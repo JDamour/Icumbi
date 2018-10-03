@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Service;
 use App\House;
 use App\Payment;
+use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Http\Request;
 
@@ -17,9 +18,21 @@ class ServiceController extends Controller
      */
     public function index()
     {
-        // view all service; meant for system admins only
         $services = Service::all();
         return view('services.index', compact('services'));
+
+    }
+
+    public function ownerIndex() {
+        $services = [];
+        $houses = Auth::user()->house;
+        foreach($houses as $house) {
+            foreach($house->service as $service) {
+                array_push($services, $service);
+            }
+        }
+        return view('services.ownerIndex', compact('services'));
+
     }
 
     /**
@@ -30,7 +43,29 @@ class ServiceController extends Controller
     public function create($house_id)
     {
         // show service payment form
-        return view('services.create', compact('house_id'));
+        $service = Service::where('house_id', $house_id)
+            ->orderBy('updated_at', 'desc')
+            ->first();
+        $current_timestamp = $_SERVER['REQUEST_TIME'];
+        $latest_timestamp = strtotime($service->updated_at);
+        $time_diff = $latest_timestamp + (2 * 24 * 60 * 60);
+
+
+        if ($current_timestamp > $time_diff) {
+            $data = [
+                "house_id" => $house_id,
+                "booked" => false
+            ];
+            return view('services.create', compact('data'));
+        } else {
+            $data = [
+                "house_id" => $house_id,
+                "booked" => true
+            ];
+            return view('services.create', compact('data'));
+        }
+
+        
     }
 
     /**
@@ -42,28 +77,39 @@ class ServiceController extends Controller
     public function store(Request $request)
     {
         // record client details
-        // die(json_encode($request));
-        // die($request->input('email') . $request->input('phone') . $request->input('house_id'));
-        try {
-            $service = Service::create([
-                "email" => $request->input('email'),
-                "phone_number" => $request->input('phone'),
-                "house_id" => $request->input('house_id'),
-                "payment_id" => "100"
-            ]);
-        } catch(Exception $e) {
-            return back()->withInput();
-        }
-        
-        
-        // save client's service and send email if payment was successful
-        // redirect to display service 
-        if ($service) {
-            die("service was saved");
+        $service = Service::where('house_id', $request->input('house_id'))
+            ->orderBy('updated_at', 'desc')
+            ->first();
+        $current_timestamp = $_SERVER['REQUEST_TIME'];
+        $latest_timestamp = strtotime($service->updated_at);
+        $time_diff = $latest_timestamp + (2 * 24 * 60 * 60);
+
+
+        if ($current_timestamp > $time_diff) {
+            try {
+                $service = Service::create([
+                    "email" => $request->input('email'),
+                    "phone_number" => $request->input('phone'),
+                    "house_id" => $request->input('house_id'),
+                    "payment_id" => "100"
+                ]);
+            } catch(Exception $e) {
+                return back()->withInput();
+            }
+            
+            
+            // save client's service and send email if payment was successful
+            // redirect to display service 
+            if ($service) {
+                return redirect()->route('custom.service.preshow', $service->id);
+            } else {
+                // return to house form with errors
+                return back()->withInput();
+            }
         } else {
-            // return to house form with errors
             return back()->withInput();
         }
+        
     }
 
     /**
@@ -72,33 +118,38 @@ class ServiceController extends Controller
      * @param  \App\Service  $service
      * @return \Illuminate\Http\Response
      */
-    public function show(Service $service)
+    public function show(Request $request, $service)
     {
         //disaply house after was succesful
-        $service = Service::find($service->id);
+        $service = Service::where([
+            "id" => $service,
+            "email" => $request->input('email')
+        ])->first();
         if ($service) {
             // check if the service is not more than two days old.
             $current_timestamp = $_SERVER['REQUEST_TIME'];
             $latest_timestamp = strtotime($service->updated_at);
-            $time_diff = $latest_timestamp + (60 * 60 * 24 * 2);
-            if ($current_timestamp < $time_diff){
-                // @todo return service timed out error
-                return redirect()->route('root');
-                return;
+            $time_diff = $latest_timestamp + (2 * 24 * 60 * 60);
+            $time_diff = $latest_timestamp + (60 * 1);
+            if ($current_timestamp > $time_diff){
+                // return service timed out error
+                return view('services.timeout');
             }
-            if ($service->payment_id) {
+            // if ($service->payment_id) {
+
                 $house = House::find($service->house_id);
-                $payment = Payment::find($service->payment_id);
+                //$payment = Payment::find($service->payment_id);
                 $data = [
-                    "house" => $house,
-                    "payment" => $payment
+                    "house" => $house //,
+                    // "payment" => $payment
                 ];
-                if ($house && $payment) {
+
+                if ($house /*&& $payment*/) {
                     return view('services.show', compact('data'));
                 }
-            } else {
-                // @todo redirect to payment page
-            }
+            // } else {
+            //     // @todo redirect to payment page
+            // }
         }
         
         // @todo show error page
@@ -123,32 +174,41 @@ class ServiceController extends Controller
      * @param  \App\Service  $service
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Service $service)
+    public function update(Request $request, $service)
     {
         // perform refunding
-        $service = Service::find($service->id);
+        $service = Service::where([
+            "id" => $service,
+            "refunded" => 'false'
+        ])->first();
+
         if ($service) {
             
-            // check if the service is not more than two days old
+            // check if the service is not more than two days old.
             $current_timestamp = $_SERVER['REQUEST_TIME'];
             $latest_timestamp = strtotime($service->updated_at);
-            $time_diff = $latest_timestamp + (60 * 60 * 24 * 2);
-            if ($current_timestamp < $time_diff){
-                // @todo return service timed out error
-                return;
+            $time_diff = $latest_timestamp + (2 * 24 * 60 * 60);
+
+            if ($current_timestamp > $time_diff){
+                // return service timed out error
+                return view('services.timeout');
             }
-            if (!$service->refunded) {
-               $update = $service->update([
-                    "refunded" => "true",
-                    "house_id" => $request->input("house_id")
-                ]);
-                if ($update) {
-                    
-                }
+            
+            if ($service->refunded == false) {
+                return view('custom404');
             }
+
+            $update = Service::where('id', $service->id)->update([
+                "refunded" => "true",
+                "house_id" => $request->input("house_id")
+            ]);
+            if ($update) {
+                return redirect()->route('custom.service.preshow', $service->id);
+            }
+        } else {
+            die("service not found");
+            return view('custom404');
         }
-        
-        // @todo display error message
     }
 
     /**
@@ -169,5 +229,45 @@ class ServiceController extends Controller
         // @todo insert payment details in the database
         // @todo update service table add payment id
         // @todo send email to client and show payment status to client
+    }
+
+    public function preshow($service) {
+        $service = Service::find($service);
+        if ($service) {
+            // check if the service is not more than two days old.
+            $current_timestamp = $_SERVER['REQUEST_TIME'];
+            $latest_timestamp = strtotime($service->updated_at);
+            $time_diff = $latest_timestamp + (2 * 24 * 60 * 60);
+            
+            if ($current_timestamp > $time_diff){
+                return view('services.timeout');
+            }
+            $data = $service->id;
+            return view('services.preshow', compact('data'));
+        } else {
+            return view('custom404');
+        }
+    }
+
+    public function prerefund($house) {
+        return view('services.prerefund', compact('house'));
+    }
+
+    public function refund(Request $request) {
+
+        $services = Service::where('email', $request->input('email'))
+        ->orderBy('updated_at', 'desc')
+        ->get();
+
+        if ($services) {
+            $data = [
+                "services" => $services,
+                "house_id" =>$request->input('house_id')
+            ];
+            return view('services.refund', compact('data'));
+        }else {
+            return view('custom404');
+        }
+
     }
 }

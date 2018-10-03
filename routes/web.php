@@ -16,9 +16,11 @@ use App\Cell;
 use App\House;
 use Illuminate\Support\Facades\Input;
 use App\District;
+use App\User;
 
 
-Route::get('/checkUser', 'MessagesController@index');
+
+Route::get('sendNotification', 'MailController@sendNotification');
 
 Route::get('/', function () {
     return view('welcome');
@@ -27,12 +29,6 @@ Route::get('/', function () {
 Route::get('/service', function () {
     return view('service');
 });
-// Route::get('users',['middleware' => 'Role:superadmin|admin', function () {
-//     return view('why');
-// }]);
-// Route::get('/create', function () {
-//     return view('payments.create');
-// });
 Route::get('/show', function () {
     return view('show');
 })->name('root');
@@ -53,12 +49,15 @@ Route::get('/view/{id}', 'ViewController@show')->name('get_view');
 Route::post('/view/{id}', 'ViewController@store')->name('set_view');
 
 
-# service routes
-// Route::get('/service/create/{house_id}', 'ServiceController@create')->name('create_service');
-Route::post('/service', 'ServiceController@store')->name('service.store');
-Route::post('/service/callback/{service_id}', 'ServiceController@callback')->name('service.callback');
-Route::get('/service/{service_id}', 'ServiceController@show')->name('service.show');
-Route::post('/service/{service_id}', 'ServiceController@update')->name('service.update');
+# public service routes
+Route::get('/service/create/{house_id}', 'ServiceController@create')->name('custom.service.create');
+Route::post('/service', 'ServiceController@store')->name('custom.service.store');
+Route::post('/service/callback/{service_id}', 'ServiceController@callback')->name('custom.service.callback');
+Route::get('/service/{service_id}', 'ServiceController@preshow')->name('custom.service.preshow');
+Route::get('/service/refund/{house_id}', 'ServiceController@prerefund')->name('custom.service.prerefund');
+Route::post('/service/refund', 'ServiceController@refund')->name('custom.service.refund');
+Route::post('/service/{service_id}', 'ServiceController@show')->name('custom.service.show');
+Route::put('/service/{service_id}', 'ServiceController@update')->name('custom.service.update');
 
 # location routes
 Route::get('/provinces/{id}', function($id) {
@@ -78,6 +77,10 @@ Route::get('/cells/{id}', function($id) {
 # admin routes
 Route::group(['prefix' => 'admin', 'middleware' =>'auth.admin'],function () {
     
+    #Service controller
+    Route::get('/services', 'ServiceController@index')->name('admin.services.index');
+
+
     # house controller
     // Route::resource('houses', 'AdminHouseController');
     Route::get('/houses', 'AdminHouseController@index')->name('admin.houses.index');
@@ -99,7 +102,9 @@ Route::group(['prefix' => 'admin', 'middleware' =>'auth.admin'],function () {
 
 # houseOwner routes
 Route::group(['prefix' => 'owner', 'middleware' =>'auth.owner'], function(){
-    
+
+    #house owner, house controller
+    Route::get('/services', 'ServiceController@ownerIndex')->name('owner.services.index');
   # house controller
   Route::resource('houses', 'OwnerHouseController');
   Route::get('/houses/delete/{id}', 'OwnerHouseController@delete')->name('owner.houses.delete');
@@ -141,7 +146,7 @@ Route::get('/master', function(){
     #Public
     Route::get('/house', 'PublicController@DisplayHousesOnHOusePage');
     Route::get('/', 'PublicController@DisplayHousesOnHomePage');
-    Route::any('/houseShow', 'PublicController@show');
+    Route::any('/houseShow/{id}', 'PublicController@show')->name('houseshow.show');
 
     Route::any('/search', function(){
         $search = Input::get('search');
@@ -156,4 +161,11 @@ Route::get('/master', function(){
         }
         return view('client.search')->withMessage("No results found " );
     });
+
     
+#frontend view
+Route::get('/agents', 'clientController@agents');
+Route::get('/properties', 'clientController@properties');
+Route::get('/about', 'clientController@about');
+Route::get('/contact', 'clientController@contact');
+
