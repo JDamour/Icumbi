@@ -18,7 +18,10 @@
                 <div class="tab-content">
                 <div id="stripe" class="tab-pane fade in active">
 
-                <form class="" method="POST" action="{{ route('service.store')}}">
+                @if($data['booked'])
+                <div class=""></div>
+                @else
+                <form class="" method="POST" action="{{ route('custom.service.store')}}">
                   <div class='form-row'>
                     <div class='form-group card required'>
                         <label class='control-label'>Phone Number</label>
@@ -33,12 +36,13 @@
                   </div>
                   <div class='form-row'>
                     <div class='form-group card required'>
-                    <input type="hidden" name="house_id" value="{{ $house_id }}">
+                    <input type="hidden" name="house_id" value="{{ $data['house_id'] }}">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <button class='form-control btn btn-primary' type='submit'> Continue →</button>
                     </div>
                   </div>
                 </form>
+                @endif
           <script src='https://js.stripe.com/v2/' type='text/javascript'></script>
           <form accept-charset="UTF-8" action="/" class="require-validation" data-cc-on-file="false" data-stripe-publishable-key="pk_bQQaTxnaZlzv4FnnuZ28LFHccVSaj" id="payment-form" method="post">
           <div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="✓" />
@@ -46,7 +50,11 @@
           <input name="authenticity_token" type="hidden" value="qLZ9cScer7ZxqulsUWazw4x3cSEzv899SP/7ThPCOV8=" />
           </div>
             <br>
-            <h1 style="margin-top: 2vw;">Welcome to our checkout</h1>
+            @if($data['booked'])
+            <div class=""><h1>House has been booked</h1></div>
+            @else
+            <div class="centered title"><h1>Welcome to our checkout.</h1></div>
+            @endif
           <div class='form-row'>
               <div class='form-group required'>
                 <div class='error form-group hide'>
