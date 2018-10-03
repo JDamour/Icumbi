@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
+<meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Icumbi</title>
     <meta name="description" content="Free Bootstrap Theme by uicookies.com">
@@ -34,8 +34,8 @@
           <ul class="probootstrap-main-nav">
             <li class="active"><a href="/">Home</a></li>
             <li><a href="/house">Houses</a></li>
-            <li><a href="agents.html">Agents</a></li>
-            <li><a href="about.html">About</a></li>
+          <!--   <li><a href="agents.html">Agents</a></li>
+            <li><a href="about.html">About</a></li> -->
             <li><a href="contact.html">Contact</a></li>
                         <!-- Authentication Links -->
                         @guest
@@ -52,11 +52,11 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                    <button><a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
-                                    </a>
+                                    </a></button>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
@@ -121,9 +121,9 @@
       </div>
     </div>
     <ul class="slides">
-      <li style="background-image: url(https://kafgw.com/wp-content/uploads/home-buying-big-houses-making-comeback_535580.jpg); opacity:1;"></li>
-      <li style="background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS41gD1AzskrBe56NsrakcQlzalS2_tFRoa_tm-BNxuZcwWEzgIkg);"></li>
-      <li style="background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR58xeOdRxzZwGfofxuDbqrEUSCUoFT5flWSLLUnD6sjeYzkwmP);"></li>
+      <li style="background-image: url(http://www.centremarembo.org/uploads/1/5/2/2/15226860/abatuje_orig.jpg); opacity:1;"></li>
+      <li style="background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRtUjmIBDp5eq_xWCOvUMR8sI1iWUqvnYy0geFnef4B_DVHO7SvA);"></li>
+      <li style="background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTWAS81vWcZaxSIL7vrf-3qu-Tg09ls3UHKwZ_x1VFnGp3Soapl);"></li>
     </ul>
   </section>
   <!-- END: slider  -->
@@ -180,7 +180,7 @@
       <div class="row probootstrap-gutter10">
         <div class="col-md-6 col-sm-6">
           <a href="#" class="probootstrap-hover-overlay">
-            <img src="https://kafgw.com/wp-content/uploads/home-buying-big-houses-making-comeback_535580.jpg" alt="Free Bootstrap Template by uicookies.com" class="img-responsive">
+            <img style="width: 100%; height: 50vh;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTem5V2NHTNbn1a4LeifPBLff5p6ga2lIspXGJJU3V3rpPcF1E-" alt="Free Bootstrap Template by uicookies.com" class="img-responsive">
             <div class="probootstrap-text-overlay">
               <h3>Kigali City</h3>
               <p>430 Properties</p>
@@ -189,7 +189,7 @@
         </div>
         <div class="col-md-6 col-sm-6">
           <a href="#" class="probootstrap-hover-overlay">
-             <img src="https://uicookies.com/demo/theme/haus/img/slider_1.jpg" class="img-responsive">
+             <img style="width: 100%; height: 50vh;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZAeiR_D38ColSjKBlTwPl5TvwBBO0dxqyGUVpxNp-GOSupWlh" class="img-responsive">
             <div class="probootstrap-text-overlay">
               <h3>Western Province</h3>
               <p>294 Properties</p>
@@ -200,7 +200,7 @@
 
         <div class="col-md-4 col-sm-6">
           <a href="#" class="probootstrap-hover-overlay">
-            <img src="https://uicookies.com/demo/theme/haus/img/slider_3.jpg" alt="Free Bootstrap Template by uicookies.com" class="img-responsive">
+            <img style="width: 100%; height: 50vh;" src ="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTNU00sittj9DHb2NQ6xOZ5H86W8M6jwUfGO1uQbcFyvNL0Z8BDg" alt="Free Bootstrap Template by uicookies.com" class="img-responsive">
             <div class="probootstrap-text-overlay">
               <h3>Northern Province</h3>
               <p>300 Properties</p>
@@ -209,7 +209,7 @@
         </div>
         <div class="col-md-4 col-sm-6">
           <a href="#" class="probootstrap-hover-overlay">
-            <img src="https://uicookies.com/demo/theme/haus/img/slider_2.jpg" alt="Free Bootstrap Template by uicookies.com" class="img-responsive">
+            <img style="width: 100%; height: 50vh;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4fSpE-Dvarah3A851jqa7WyCvmj2ifuAEPwlkM6V_Vt9gqMwyJQ" alt="Free Bootstrap Template by uicookies.com" class="img-responsive">
             <div class="probootstrap-text-overlay">
               <h3>Eastern Province</h3>
               <p>268 Properties</p>
@@ -219,7 +219,7 @@
         <div class="clearfix visible-sm-block"></div>
         <div class="col-md-4 col-sm-6">
           <a href="#" class="probootstrap-hover-overlay">
-            <img src="https://uicookies.com/demo/theme/haus/img/slider_4.jpg" alt="Free Bootstrap Template by uicookies.com" class="img-responsive">
+            <img style="width: 100%; height: 50vh;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSoArxpqX_PewtkgYZK-s7Tj3mggRmwDHl7NaTPXVySA7TlUEwe" alt="Free Bootstrap Template by uicookies.com" class="img-responsive">
             <div class="probootstrap-text-overlay">
               <h3>Southern Province</h3>
               <p>342 Properties</p>
@@ -232,9 +232,9 @@
   </section>
   <!-- END: section -->
 
-  <section class="probootstrap-section probootstrap-bg" style="background-image: url(http://petspokane.org/wp-content/uploads/2018/06/24-best-modern-houses-with-curb-appeal-architecture-house-plans-3.jpg);">
+  <section class="probootstrap-section probootstrap-bg" style="background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhgaDqc9rEnNNt9CnqMIKxhPfGmLmw7AUpdZgsj1dkt7OlANXKRQ);">
     <div class="container text-center probootstrap-animate" data-animate-effect="fadeIn">
-      <h2 class="heading">Best Home &amp; Properties</h2>
+      <h2 class="heading" style="font-family: 'Old Standard TT', serif;">Best Home &amp; Properties</h2>
       <p class="sub-heading">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
       <p><a href="#" class="btn btn-primary mb10">Find out more</a></p>
     </div>
@@ -246,7 +246,7 @@
       <div class="row heading">
         <h2 class="mt0 mb50 text-center">Featured Listing</h2>
       </div>
-      <div class="row">
+      <!-- <div class="row"> -->
         <!-- <div class="col-md-4 col-sm-6">
           <div class="probootstrap-card probootstrap-listing">
             <div class="probootstrap-card-media">
@@ -283,7 +283,7 @@
             </div>
           </div> 
           <!-- END listing -->
-        </div>
+        <!-- </div> -->
         @foreach($houses as $house)
         <section class="probootstrap-section probootstrap-section-lighter">
           <div class="container">
@@ -295,12 +295,12 @@
                     <a href="/houseShow" class="probootstrap-love"><i class="icon-heart"></i></a>
                   </div>
                   <div class="probootstrap-card-text">
-                   <h2 class="probootstrap-card-heading"><a href="#">{{ $house->id }}</a></h2>
+                  <!--  <h2 class="probootstrap-card-heading"><a href="#">{{ $house->id }}</a></h2> -->
                    <div class="probootstrap-listing-location">
-                      <i class="icon-location2"></i> <span>{{ $house->houseLocation }}</span>
+                      <i class="icon-location2"></i><span style="color: black;">{{ $house->houseLocation }}</span>
                     </div>
                     <div class="probootstrap-listing-category for-sale"><span>For Rent</span></div>
-                    <div class="probootstrap-listing-price"><strong>{{ $house->housePrice }}/{{ $house->paymentfrequency_id }}</strong></div>
+                    <div class="probootstrap-listing-price" style="color: black;">Price: <strong>{{ $house->housePrice }}/{{ $house->paymentfrequency_id }}</strong></div>
                   </div>
                   <div class="probootstrap-card-extra">
                   </div>

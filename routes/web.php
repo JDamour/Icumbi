@@ -16,9 +16,11 @@ use App\Cell;
 use App\House;
 use Illuminate\Support\Facades\Input;
 use App\District;
+use App\User;
 
 
-Route::get('/checkUser', 'MessagesController@index');
+
+Route::get('sendNotification', 'MailController@sendNotification');
 
 Route::get('/', function () {
     return view('welcome');
@@ -26,13 +28,7 @@ Route::get('/', function () {
 
 Route::get('/service', function () {
     return view('service');
-})->name('show_house_details');
-// Route::get('users',['middleware' => 'Role:superadmin|admin', function () {
-//     return view('why');
-// }]);
-// Route::get('/create', function () {
-//     return view('payments.create');
-// });
+});
 Route::get('/show', function () {
     return view('show');
 })->name('root');
@@ -150,7 +146,7 @@ Route::get('/master', function(){
     #Public
     Route::get('/house', 'PublicController@DisplayHousesOnHOusePage');
     Route::get('/', 'PublicController@DisplayHousesOnHomePage');
-    Route::any('/houseShow', 'PublicController@show');
+    Route::any('/houseShow/{id}', 'PublicController@show')->name('houseshow.show');
 
     Route::any('/search', function(){
         $search = Input::get('search');
@@ -165,4 +161,11 @@ Route::get('/master', function(){
         }
         return view('client.search')->withMessage("No results found " );
     });
+
     
+#frontend view
+Route::get('/agents', 'clientController@agents');
+Route::get('/properties', 'clientController@properties');
+Route::get('/about', 'clientController@about');
+Route::get('/contact', 'clientController@contact');
+

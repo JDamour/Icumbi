@@ -363,7 +363,7 @@ desired effect
                                 <a style="color:white" href="{{route('admin.houses.show', $service->house_id)}}">View House</a>
                             </span>
                         </td>
-                        
+
                       </tr>
                       @endforeach
                       </tbody>
@@ -496,12 +496,12 @@ desired effect
 <script type="text/javascript">
   $(function () {
     $('#table_houses').DataTable();
-  })  
-  
+  })
+
 </script>
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
      Both of these plugins are recommended to enhance the
      user experience. -->
-  
+
 </body>
 </html>
