@@ -30,15 +30,10 @@ class CreateHousesTable extends Migration
             $table->enum('toilet', ['1', '2'])->default('1');
             $table->enum('fanced', ['1', '2'])->default('1');
 
-//            $table->foreign('user_id')->references('id')->on('users');
-//            $table->foreign('paymentfrequency_id')->references('id')->on('paymentfrequency');
-//            $table->foreign('cell_id')->references('id')->on('cells');
             $table->timestamps();
         });
        Schema::table('houses', function (Blueprint $table) {
-//           $table->foreign('user_id')->references('id')->on('users');
-//           $table->foreign('paymentfrequency_id')->references('id')->on('paymentfrequency');
-//           $table->foreign('cell_id')->references('id')->on('cells');
+           //
        });
     }
 
