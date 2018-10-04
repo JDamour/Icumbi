@@ -22,6 +22,14 @@ class CreateHousesTable extends Migration
             $table->integer('user_id')->unsigned();
             $table->integer('paymentfrequency_id')->unsigned();
             $table->integer('cell_id')->unsigned();
+            $table->integer('numberOfRooms')->unsigned();
+            $table->decimal('length', 8, 2);
+            $table->decimal('width', 8, 2);
+            $table->enum('water', ['1', '2'])->default('1');
+            $table->enum('bathRoom', ['1', '2'])->default('1');
+            $table->enum('toilet', ['1', '2'])->default('1');
+            $table->enum('fanced', ['1', '2'])->default('1');
+
 //            $table->foreign('user_id')->references('id')->on('users');
 //            $table->foreign('paymentfrequency_id')->references('id')->on('paymentfrequency');
 //            $table->foreign('cell_id')->references('id')->on('cells');
