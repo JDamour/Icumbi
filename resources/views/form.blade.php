@@ -9,7 +9,7 @@
     </head>
     <body>
         <div class="container">
-        <div class="centered title"><h1>Welcome to our checkout.</h1></div>
+        <!-- <div class="centered title"><h1>Welcome to our checkout.</h1></div> -->
      </div>
      <hr class="featurette-divider"></hr>
          <div class="container">
@@ -39,21 +39,21 @@
                     </div>
                   </div>
                 </form>
-          <script src='https://js.stripe.com/v2/' type='text/javascript'></script>
+         <!--  <script src='https://js.stripe.com/v2/' type='text/javascript'></script>
           <form accept-charset="UTF-8" action="/" class="require-validation" data-cc-on-file="false" data-stripe-publishable-key="pk_bQQaTxnaZlzv4FnnuZ28LFHccVSaj" id="payment-form" method="post">
           <div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="✓" />
           <input name="_method" type="hidden" value="PUT" />
-          <input name="authenticity_token" type="hidden" value="qLZ9cScer7ZxqulsUWazw4x3cSEzv899SP/7ThPCOV8=" />
+          <input name="authenticity_token" type="hidden" value="qLZ9cScer7ZxqulsUWazw4x3cSEzv899SP/7ThPCOV8=" /> -->
           </div>
             <br>
-            <h1 style="margin-top: 2vw;">Welcome to our checkout</h1>
+           <!--  <h1 style="margin-top: 2vw;">Welcome to our checkout</h1>
           <div class='form-row'>
               <div class='form-group required'>
                 <div class='error form-group hide'>
                 <div class='alert-danger alert'>
                   Please correct the errors and try again.
               
-              </div>
+              </div> -->
             <!--</div>
                 <label class='control-label'>Name on Card</label>
                 <input class='form-control' size='4' type='text'>
@@ -100,22 +100,23 @@
             </div> -->
     
            
-            <div class='form-row'>
+        <!--     <div class='form-row'>
               <div class='form-group'>
-                         <label class='control-label'></label>
+                         <label class='control-label'></label> -->
                       
                <!-- <button class='form-control btn btn-primary' type='submit'> Continue →</button> -->
           
-              </form>    
+            <!--   </form>
                 
               </div>
             </div>    
             
-              </div>
+              </div> -->
+          <!--     paypalllll -->
               
-                <div id="paypal" class="tab-pane fade">
+                <<!-- div id="paypal" class="tab-pane fade">
                 <form action="?" id="paypalForm" method="POST">
-                <div class="paypalResult"><!-- content will load here --></div>
+                <div class="paypalResult"> --><!-- content will load here --><!-- </div>
                <br>
                 <input type="hidden" id="action" value="paypal"></input>
                 <input type="hidden" id="token" value="token-supersecuretoken123123123"></input>
@@ -127,10 +128,10 @@
             
             
           
-        </div>   
+        </div>    -->
      
-        <div class="col-sm-6">
-           <label class='control-label'></label><!-- spacing -->
+       <!--  <div class="col-sm-6">
+           <label class='control-label'></label>
         
           <div class="alert alert-info"">Please choose your method of payment and hit continue. You will then be sent down to pay using your selected payment option.</div>
        <br>
@@ -152,7 +153,7 @@
      
           
             <br><br><br>
-        </div>
+        </div> -->
                     
                     
                     

@@ -27,7 +27,7 @@
                         <label class='control-label'>Phone Number</label>
                       <input autocomplete='off' class='form-control card-number' type='text' name="phone">
                     </div>
-                  </div> 
+                  </div>
                   <div class='form-row'>
                     <div class='form-group card required'>
                         <label class='control-label'>Email</label>
@@ -60,13 +60,13 @@
                 <div class='error form-group hide'>
                 <div class='alert-danger alert'>
                   Please correct the errors and try again.
-              
+
               </div>
             <!--</div>
                 <label class='control-label'>Name on Card</label>
                 <input class='form-control' size='4' type='text'>
               </div>-->
-                    
+
             </div>
             <!-- <div class='form-row'>
               <div class='form-group card required'>
@@ -85,7 +85,7 @@
                 <input autocomplete='off' class='form-control card-number' size='20' type='text'>
               </div>
             </div> -->
-          
+
              <!-- <div class='form-row'>
               <div class='form-group card required'>
                 <label class='control-label'>Billing Address</label>
@@ -106,21 +106,21 @@
                 <input class='form-control card-expiry-year' placeholder='YYYY' size='4' type='text'>
               </div>
             </div> -->
-    
-           
+
+
             <div class='form-row'>
               <div class='form-group'>
                          <label class='control-label'></label>
-                      
+
                <!-- <button class='form-control btn btn-primary' type='submit'> Continue →</button> -->
-          
-              </form>    
-                
+
+              </form>
+
               </div>
-            </div>    
-            
+            </div>
+
               </div>
-              
+
                 <div id="paypal" class="tab-pane fade">
                 <form action="?" id="paypalForm" method="POST">
                 <div class="paypalResult"><!-- content will load here --></div>
@@ -132,47 +132,47 @@
                   <button class='form-control btn btn-primary submit-button' type='submit'> Continue →</button>
               </div>
             </div>
-            
-            
-          
-        </div>   
-     
+
+
+
+        </div>
+
         <div class="col-sm-6">
            <label class='control-label'></label><!-- spacing -->
-        
+
           <div class="alert alert-info"">Please choose your method of payment and hit continue. You will then be sent down to pay using your selected payment option.</div>
        <br>
          <div class="btn-group-vertical btn-block">
              <a class="btn btn-default" style="text-align: left;" data-toggle="tab" href="#stripe">Stripe/Credit Card</a>
           <a class="btn btn-default" style="text-align: left;" data-toggle="tab" href="#paypal">PayPal</a>
           </div>
-          
+
           <br><br><br>
-         
+
          <div class="jumbotron jumbotron-flat">
     <div class="center"><h2><i>BALANCE DUE:</i></h2></div>
            <div class="paymentAmt">$100</div>
-           
-                 
-          
+
+
+
         </div>
-        
-     
-          
+
+
+
             <br><br><br>
         </div>
-                    
-                    
-                    
+
+
+
                 </div>
-                
-                
-                
+
+
+
             </div>
         </div>
-        
-        
+
+
         </form>
-        
+
     </body>
 </html>
