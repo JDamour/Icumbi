@@ -385,7 +385,7 @@
 
   <!-- END: section -->
 
-  <section class="probootstrap-section probootstrap-section-lighter">
+ <!--  <section class="probootstrap-section probootstrap-section-lighter">
     <div class="container">
       <div class="row heading">
         <h2 class="mt0 mb50 text-center">Our Agents</h2>
@@ -441,7 +441,7 @@
         </div>
       </div>
     </div>
-  </section>
+  </section> -->
 
   <footer class="probootstrap-footer probootstrap-bg" style="background-image: url(img/slider_3.jpg)">
     <div class="container">
