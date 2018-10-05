@@ -15,7 +15,7 @@ class CountiesTableSeeder extends Seeder
         //
         $igihugu = [
             ['name'=>'Rwanda'],
-        	['name'=>'Burundi'],
+
         ];
         foreach($igihugu as $igihu){
             Country::create($igihu);
