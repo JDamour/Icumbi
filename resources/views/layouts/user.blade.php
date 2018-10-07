@@ -270,37 +270,14 @@ desired effect
         <!-- Optionally, you can add icons to the links -->
     <li class="active"><a href="#"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
     <li class="treeview">
-          <a href="#"><i class="fa fa-users"></i> <span>Account</span>
+          <a href="#"><i class="fa fa-heart"></i> <span>houses</span>
             <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
               </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="#"><i class="fa fa-circle-o"></i> New</a></li>
-            <li><a href="#"><i class="fa fa-circle-o"></i> View All</a></li>
-      <li><a href="#"><i class="fa fa-circle-o"></i> Deactivated</a></li>
-          </ul>
-        </li>
-    <li class="treeview">
-          <a href="#"><i class="fa fa-home"></i> <span>House</span>
-            <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-              </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="{{action('OwnerHouseController@create')}}"><i class="fa fa-circle-o"></i> New</a></li>
-            <li><a href="{{action('OwnerHouseController@index')}}"><i class="fa fa-circle-o"></i> View All</a></li>
-          </ul>
-        </li>
-    <li class="treeview">
-          <a href="#"><i class="fa fa-heart"></i> <span>Services</span>
-            <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-              </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="{{ route('owner.services.index') }}"><i class="fa fa-circle-o"></i> Latest</a></li>
-            <li><a href="{{ route('owner.services.index') }}"><i class="fa fa-circle-o"></i> View All</a></li>
+            <li><a href="{{ route('owner.services.index') }}"><i class="fa fa-circle-o"></i> visited</a></li>
+            <li><a href="{{ route('owner.services.index') }}"><i class="fa fa-circle-o"></i> booked</a></li>
           </ul>
         </li>
     <li class="treeview">
@@ -310,22 +287,11 @@ desired effect
               </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="{{action('ReportsController@create')}}"><i class="fa fa-circle-o"></i> new</a></li>
+            <li><a href="{{action('ReportsController@create')}}"><i class="fa fa-circle-o"></i> report issue</a></li>
             <li><a href="{{action('ReportsController@index')}}"><i class="fa fa-circle-o"></i> View All</a></li>
           </ul>
         </li>
 <!--        message-->
-       <li class="treeview">
-          <a href="#"><i class="fa fa-envelope"></i> <span>Message</span>
-            <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-              </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="{{action('MessagesController@create')}}"><i class="fa fa-circle-o"></i> Chat</a></li>
-          </ul>
-        </li>
-        <li><a href="#"><i class="fa fa-dollar"></i> <span>Transactions</span></a></li>
       </ul>
       <!-- /.sidebar-menu -->
     </section>
@@ -358,19 +324,6 @@ desired effect
           
 
     </section>
-    <!--Start of Tawk.to Script-->
-<script type="text/javascript">
-var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-(function(){
-var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-s1.async=true;
-s1.src='https://embed.tawk.to/5bb638f3b033e9743d0250d7/default';
-s1.charset='UTF-8';
-s1.setAttribute('crossorigin','*');
-s0.parentNode.insertBefore(s1,s0);
-})();
-</script>
-<!--End of Tawk.to Script-->
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->

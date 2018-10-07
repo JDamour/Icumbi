@@ -25,6 +25,9 @@ Route::get('sendNotification', 'MailController@sendNotification');
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/check', function () {
+    return view('layouts.user');
+});
 
 Route::get('/service', function () {
     return view('service');

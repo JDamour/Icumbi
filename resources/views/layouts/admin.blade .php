@@ -189,7 +189,7 @@ desired effect
                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9-cOiD6RJ2wCYMxHAWZCS6GDdwsCAQ61V_mLzUNsQeACHR8OCqA" class="img-circle" alt="User Image">
 
                 <p>
-                  {{ Auth::user()->firstName.' '.Auth::user()->lastName }} - House Owner
+                  {{ Auth::user()->firstName.' '.Auth::user()->lastName }} - Admin
                   <small>Member since Nov. 2012</small>
                 </p>
               </li>
@@ -267,20 +267,7 @@ desired effect
       <!-- Sidebar Menu -->
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">Navigation</li>
-        <!-- Optionally, you can add icons to the links -->
-    <li class="active"><a href="#"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
-    <li class="treeview">
-          <a href="#"><i class="fa fa-users"></i> <span>Account</span>
-            <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-              </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="#"><i class="fa fa-circle-o"></i> New</a></li>
-            <li><a href="#"><i class="fa fa-circle-o"></i> View All</a></li>
-      <li><a href="#"><i class="fa fa-circle-o"></i> Deactivated</a></li>
-          </ul>
-        </li>
+
     <li class="treeview">
           <a href="#"><i class="fa fa-home"></i> <span>House</span>
             <span class="pull-right-container">
@@ -288,8 +275,8 @@ desired effect
               </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="{{action('OwnerHouseController@create')}}"><i class="fa fa-circle-o"></i> New</a></li>
-            <li><a href="{{action('OwnerHouseController@index')}}"><i class="fa fa-circle-o"></i> View All</a></li>
+            <li><a href="{{action('AdminHouseController@create')}}"><i class="fa fa-circle-o"></i> New</a></li>
+            <li><a href="{{action('AdminHouseController@index')}}"><i class="fa fa-circle-o"></i> View All</a></li>
           </ul>
         </li>
     <li class="treeview">
@@ -299,8 +286,8 @@ desired effect
               </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="{{ route('owner.services.index') }}"><i class="fa fa-circle-o"></i> Latest</a></li>
-            <li><a href="{{ route('owner.services.index') }}"><i class="fa fa-circle-o"></i> View All</a></li>
+            <li><a href="{{ route('admin.services.index') }}"><i class="fa fa-circle-o"></i> Latest</a></li>
+            <li><a href="{{ route('admin.services.index') }}"><i class="fa fa-circle-o"></i> View All</a></li>
           </ul>
         </li>
     <li class="treeview">
@@ -358,19 +345,6 @@ desired effect
           
 
     </section>
-    <!--Start of Tawk.to Script-->
-<script type="text/javascript">
-var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-(function(){
-var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-s1.async=true;
-s1.src='https://embed.tawk.to/5bb638f3b033e9743d0250d7/default';
-s1.charset='UTF-8';
-s1.setAttribute('crossorigin','*');
-s0.parentNode.insertBefore(s1,s0);
-})();
-</script>
-<!--End of Tawk.to Script-->
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
