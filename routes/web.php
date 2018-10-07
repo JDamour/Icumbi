@@ -141,9 +141,12 @@ Route::get('/del', 'PaymentModeController@destroy');
 Route::get('/master', function(){
     return view('layouts.master');
     });
-
+    Route::get('/client.test', function(){
+        return view('client.test');
+        });
 
     #Public
+    // Route::get('', 'PublicController@DisplayHousesOnHOusePage');
     Route::get('/house', 'PublicController@DisplayHousesOnHOusePage');
     Route::get('/', 'PublicController@DisplayHousesOnHomePage');
     Route::any('/houseShow/{id}', 'PublicController@show')->name('houseshow.show');
@@ -160,6 +163,20 @@ Route::get('/master', function(){
 
         }
         return view('client.search')->withMessage("No results found " );
+    });
+
+    Route::any('/client.kigali', function(){
+        $search = Input::get('search');
+        if ($search != "") {
+            $house = House::where('houselocation','LIKE','%'.kimironko.'%')
+            // ->orWhere('housePrice','LIKE','%'.$search.'%')
+            // ->orWhere('paymentfrequency_id','LIKE','%'.$search.'%')
+            ->get();
+        if(count($house)>0)
+            return view('client.kigali')->withDetails($house)->withQuery ( $search );
+
+        }
+        return view('client.kigali')->withMessage("No results found " );
     });
 
     

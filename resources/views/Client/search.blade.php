@@ -2,7 +2,6 @@
 @extends('layouts.frontend')
 @section('title', 'search')
 @section('link')
-<!-- <li><a href="{{url('properties')}}">properties</a></li> -->
 @endsection
 @section('content')
   <section class="probootstrap-slider flexslider2 page-inner">
