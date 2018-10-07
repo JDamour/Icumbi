@@ -52,12 +52,15 @@ Route::get('/view/{id}', 'ViewController@show')->name('get_view');
 Route::post('/view/{id}', 'ViewController@store')->name('set_view');
 
 
-# service routes
-Route::get('/service/create/{house_id}', 'ServiceController@create')->name('service.create');
-Route::post('/service', 'ServiceController@store')->name('service.store');
-Route::post('/service/callback/{service_id}', 'ServiceController@callback')->name('service.callback');
-Route::get('/service/{service_id}', 'ServiceController@show')->name('service.show');
-Route::post('/service/{service_id}', 'ServiceController@update')->name('service.update');
+# public service routes
+Route::get('/service/create/{house_id}', 'ServiceController@create')->name('custom.service.create');
+Route::post('/service', 'ServiceController@store')->name('custom.service.store');
+Route::post('/service/callback/{service_id}', 'ServiceController@callback')->name('custom.service.callback');
+Route::get('/service/{service_id}', 'ServiceController@preshow')->name('custom.service.preshow');
+Route::get('/service/refund/{house_id}', 'ServiceController@prerefund')->name('custom.service.prerefund');
+Route::post('/service/refund', 'ServiceController@refund')->name('custom.service.refund');
+Route::post('/service/{service_id}', 'ServiceController@show')->name('custom.service.show');
+Route::put('/service/{service_id}', 'ServiceController@update')->name('custom.service.update');
 
 # location routes
 Route::get('/provinces/{id}', function($id) {

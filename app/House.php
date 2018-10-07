@@ -12,6 +12,13 @@ class House extends Model
         'housePrice',
         'streetCode',
         'user_id',
+        'numberOfRooms',
+        'fanced',
+        'bathRoomInside',
+        'toiletInside',
+        'length',
+        'width',
+        'water',
         'paymentfrequency_id',
         'cell_id'
 
