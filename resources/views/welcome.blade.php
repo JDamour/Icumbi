@@ -246,53 +246,19 @@
       <div class="row heading">
         <h2 class="mt0 mb50 text-center">Featured Listing</h2>
       </div>
-      <!-- <div class="row"> -->
-        <!-- <div class="col-md-4 col-sm-6">
-          <div class="probootstrap-card probootstrap-listing">
-            <div class="probootstrap-card-media">
-              <img src="https://uicookies.com/demo/theme/haus/img/slider_1.jpg" class="img-responsive" alt="Free HTML5 Template by uicookies.com">
-              <a href="#" class="probootstrap-love"><i class="icon-heart"></i></a>
-            </div>
-            <div class="probootstrap-card-text">
-              <h2 class="probootstrap-card-heading"><a href="#">3 Bed Room Property for Sale</a></h2>
-              <div class="probootstrap-listing-location">
-                <i class="icon-location2"></i> <span>Mamba, KG 680 St, Kigali</span>
-              </div>
-              <div class="probootstrap-listing-category for-sale"><span>for sale</span></div>
-              <div class="probootstrap-listing-price"><strong>$ 1,121,000</strong> / month</div>
-            </div>
-            <div class="probootstrap-card-extra">
-              <ul>
-                <li>
-                  Area
-                  <span>2400 m2</span>
-                </li>
-                <li>
-                  Beds
-                  <span>3</span>
-                </li>
-                <li>
-                  Baths
-                  <span>2</span>
-                </li>
-                <li>
-                  Garages
-                  <span>1</span>
-                </li>
-              </ul>
-            </div>
-          </div> 
-          <!-- END listing -->
-        <!-- </div> -->
-        @foreach($houses as $house)
+
+        
         <section class="probootstrap-section probootstrap-section-lighter">
           <div class="container">
             <div class="row">
+            @foreach($houses as $house)
               <div class="col-md-4 col-sm-6">
                 <div class="probootstrap-card probootstrap-listing">
                   <div class="probootstrap-card-media"> 
-                    <img src="img/slider_1.jpg" class="img-responsive" alt="Free HTML5 Template by uicookies.com">
-                    <a href="/houseShow" class="probootstrap-love"><i class="icon-heart"></i></a>
+                  @foreach($house->uploads as $upload)
+                    <img src="/images/HouseUploads/{{ $upload->source }}">
+                    @break;
+                  @endforeach
                   </div>
                   <div class="probootstrap-card-text">
                   <!--  <h2 class="probootstrap-card-heading"><a href="#">{{ $house->id }}</a></h2> -->
@@ -300,16 +266,17 @@
                       <i class="icon-location2"></i><span style="color: black;">{{ $house->houseLocation }}</span>
                     </div>
                     <div class="probootstrap-listing-category for-sale"><span>For Rent</span></div>
-                    <div class="probootstrap-listing-price" style="color: black;">Price: <strong>{{ $house->housePrice }}/{{ $house->paymentfrequency_id }}</strong></div>
-                  </div>
+                    <div class="probootstrap-listing-price" style="color: black;">Price: <strong>{{ $house->housePrice }}/{{ $house->paymentfrequency['name'] }}</strong></div>
+                  </div>Have liked the house <a href="{{route('houseshow.show', $house->id)}}" class="probootstrap-love"><i class="icon-heart"></i></a>
+                  
                   <div class="probootstrap-card-extra">
                   </div>
                 </div>
               </div>
+        @endforeach
             </div>
           </div>
         </section>
-        @endforeach
       </div>
     </div>
   </section>

@@ -1,0 +1,20 @@
+==================BY Jules Fabien=====================
+
+INSERT INTO `roles` (`id`, `roleName`, `createdBy`, `updatedBy`, `created_at`, `updated_at`) VALUES ('1', 'Admin', 'Admin', 'Admin', '2018-10-02 00:00:00', '2018-10-02 00:00:00');
+INSERT INTO `roles` (`id`, `roleName`, `createdBy`, `updatedBy`, `created_at`, `updated_at`) VALUES ('2', 'Owner', 'Admin', 'Admin', '2018-10-02 00:00:00', '2018-10-02 00:00:00');
+
+INSERT INTO `users` (`id`, `national_id`, `firstName`, `lastName`, `phoneNumber`, `gender`, `dateOfBirth`, `accountConfirmationCode`, `amount`, `roleId`, `createdBy`, `updatedBy`, `email`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES (1, '1197880486377052', 'kwizera', 'patrick', '0785126331', 'Male', '2018-09-05', '213443', '5000', '1', 'admin', 'admin', 'patrick1@gmail.com', 'password', 'dcdc', '2018-10-02 00:00:00', '2018-10-02 00:00:00');
+INSERT INTO `users` (`id`, `national_id`, `firstName`, `lastName`, `phoneNumber`, `gender`, `dateOfBirth`, `accountConfirmationCode`, `amount`, `roleId`, `createdBy`, `updatedBy`, `email`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES (2, '1197880486317052', 'Shema', 'Mike', '0785126331', 'Male', '2018-09-05', '213443', '5000', '2', 'admin', 'admin', 'shema1@gmail.com', 'password', 'dcdc', '2018-10-02 00:00:00', '2018-10-02 00:00:00');
+
+==================BY Matthew =====================
+
+INSERT INTO `houses` (`id`, `houseLocation`, `housePrice`, `streetCode`, `user_id`, `paymentfrequency_id`, `cell_id`, `created_at`, `updated_at`) VALUES (NULL, 'Kimisagara', '95000', 'KG 55 ST', '2', '2', '1', '2018-10-02 00:00:00', '2018-10-02 00:00:00');
+INSERT INTO `paymentfrequency` (`id`, `name`, `created_at`, `updated_at`) VALUES (NULL, 'Monthly', '2018-10-02 00:00:00', '2018-10-02 00:00:00');
+INSERT INTO `cells` (`id`, `name`, `sector_id`, `created_at`, `updated_at`) VALUES (NULL, 'Umwezi', '1', '2018-10-02 00:00:00', '2018-10-02 00:00:00');
+==================Mail credentials=====================
+MAIL_DRIVER=smtp
+MAIL_HOST=smtp.gmail.com
+MAIL_PORT=587 
+MAIL_USERNAME=tressda2018@gmail.com
+MAIL_PASSWORD=yivwmwxbaziencnl
+MAIL_ENCRYPTION=tls
