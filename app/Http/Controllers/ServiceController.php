@@ -6,6 +6,8 @@ use App\Service;
 use App\House;
 use App\Payment;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\HouseBookingMail;
 
 use Illuminate\Http\Request;
 
@@ -46,25 +48,32 @@ class ServiceController extends Controller
         $service = Service::where('house_id', $house_id)
             ->orderBy('updated_at', 'desc')
             ->first();
-        $current_timestamp = $_SERVER['REQUEST_TIME'];
-        $latest_timestamp = strtotime($service->updated_at);
-        $time_diff = $latest_timestamp + (2 * 24 * 60 * 60);
 
+        if ($service) {
+            $current_timestamp = $_SERVER['REQUEST_TIME'];
+            $latest_timestamp = strtotime($service->updated_at);
+            $time_diff = $latest_timestamp + (2 * 24 * 60 * 60);
+            if ($current_timestamp > $time_diff) {
+                $data = [
+                    "house_id" => $house_id,
+                    "booked" => false
+                ];
+                return view('services.create', compact('data'));
+            } else {
+                $data = [
+                    "house_id" => $house_id,
+                    "booked" => true
+                ];
+                return view('services.create', compact('data'));
+            }
 
-        if ($current_timestamp > $time_diff) {
+        } else {
             $data = [
                 "house_id" => $house_id,
                 "booked" => false
             ];
             return view('services.create', compact('data'));
-        } else {
-            $data = [
-                "house_id" => $house_id,
-                "booked" => true
-            ];
-            return view('services.create', compact('data'));
         }
-
         
     }
 
@@ -80,12 +89,40 @@ class ServiceController extends Controller
         $service = Service::where('house_id', $request->input('house_id'))
             ->orderBy('updated_at', 'desc')
             ->first();
-        $current_timestamp = $_SERVER['REQUEST_TIME'];
-        $latest_timestamp = strtotime($service->updated_at);
-        $time_diff = $latest_timestamp + (2 * 24 * 60 * 60);
+
+        if ($service) {
+            $current_timestamp = $_SERVER['REQUEST_TIME'];
+            $latest_timestamp = strtotime($service->updated_at);
+            $time_diff = $latest_timestamp + (2 * 24 * 60 * 60);
 
 
-        if ($current_timestamp > $time_diff) {
+            if ($current_timestamp > $time_diff) {
+                try {
+                    $service = Service::create([
+                        "email" => $request->input('email'),
+                        "phone_number" => $request->input('phone'),
+                        "house_id" => $request->input('house_id'),
+                        "payment_id" => "100"
+                    ]);
+                } catch(Exception $e) {
+                    return back()->withInput();
+                }
+                
+                
+                // save client's service and send email if payment was successful
+                // redirect to display service 
+                if ($service) {
+                    Mail::to($service->house->user->email)->send(new HouseBookingMail(route('custom.service.preshow', $service->id)));
+                    Mail::to($service->email)->send(new HouseBookingMail(route('custom.service.preshow', $service->id)));
+                    return redirect()->route('custom.service.preshow', $service->id);
+                } else {
+                    // return to house form with errors
+                    return back()->withInput();
+                }
+            } else {
+                return back()->withInput();
+            }
+        } else {
             try {
                 $service = Service::create([
                     "email" => $request->input('email'),
@@ -101,13 +138,13 @@ class ServiceController extends Controller
             // save client's service and send email if payment was successful
             // redirect to display service 
             if ($service) {
+                Mail::to($service->house->user->email)->send(new HouseBookingMail(route('custom.service.preshow', $service->id)));
+                Mail::to($service->email)->send(new HouseBookingMail(route('custom.service.preshow', $service->id)));
                 return redirect()->route('custom.service.preshow', $service->id);
             } else {
                 // return to house form with errors
                 return back()->withInput();
             }
-        } else {
-            return back()->withInput();
         }
         
     }
@@ -130,7 +167,6 @@ class ServiceController extends Controller
             $current_timestamp = $_SERVER['REQUEST_TIME'];
             $latest_timestamp = strtotime($service->updated_at);
             $time_diff = $latest_timestamp + (2 * 24 * 60 * 60);
-            $time_diff = $latest_timestamp + (60 * 1);
             if ($current_timestamp > $time_diff){
                 // return service timed out error
                 return view('services.timeout');
@@ -203,6 +239,8 @@ class ServiceController extends Controller
                 "house_id" => $request->input("house_id")
             ]);
             if ($update) {
+                Mail::to($service->house->user->email)->send(new HouseBookingMail(route('custom.service.preshow', $service->id)));
+                Mail::to($service->email)->send(new HouseBookingMail(route('custom.service.preshow', $service->id)));
                 return redirect()->route('custom.service.preshow', $service->id);
             }
         } else {
