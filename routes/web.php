@@ -21,6 +21,8 @@ use App\User;
 
 
 Route::get('sendNotification', 'MailController@sendNotification');
+Route::post('contactmail', 'MailController@ContactMail');
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -62,7 +64,7 @@ Route::put('/service/{service_id}', 'ServiceController@update')->name('custom.se
 # location routes
 Route::get('/provinces/{id}', function($id) {
   echo (json_encode(Province::where('country_id', $id)->get()));
-        
+
 })->name('get_provinces');
 Route::get('/districts/{id}', function($id) {
   echo (json_encode(District::where('province_id', $id)->get()));
@@ -76,7 +78,7 @@ Route::get('/cells/{id}', function($id) {
 
 # admin routes
 Route::group(['prefix' => 'admin', 'middleware' =>'auth.admin'],function () {
-    
+
     #Service controller
     Route::get('/services', 'ServiceController@index')->name('admin.services.index');
 
@@ -91,13 +93,13 @@ Route::group(['prefix' => 'admin', 'middleware' =>'auth.admin'],function () {
     Route::put('/houses/{id}', 'AdminHouseController@update')->name('admin.houses.update');
     Route::delete('/houses/{id}', 'AdminHouseController@destroy')->name('admin.houses.destroy');
     Route::get('/houses/delete/{id}', 'AdminHouseController@delete')->name('admin.houses.delete');
-    
+
     # uploads controller
     Route::get('/uploads/{house_id}', 'AdminUploadsController@index')->name('admin.uploads.index');
     Route::get('/uploads/{house_id}/create', 'AdminUploadsController@create')->name('admin.uploads.create') ;
     Route::post('/uploads', 'AdminUploadsController@store')->name('admin.uploads.store') ;
     Route::delete('/uploads/{id}', 'AdminUploadsController@destroy')->name('admin.uploads.delete') ;
-    
+
 });
 
 # houseOwner routes
@@ -108,21 +110,21 @@ Route::group(['prefix' => 'owner', 'middleware' =>'auth.owner'], function(){
   # house controller
   Route::resource('houses', 'OwnerHouseController');
   Route::get('/houses/delete/{id}', 'OwnerHouseController@delete')->name('owner.houses.delete');
-  
+
   # uploads controller
   Route::get('/uploads/{house_id}', 'OwnerUploadsController@index')->name('owner.uploads.index');
   Route::get('/uploads/{house_id}/create', 'OwnerUploadsController@create')->name('owner.uploads.create') ;
   Route::post('/uploads', 'OwnerUploadsController@store')->name('owner.uploads.store') ;
   Route::delete('/uploads/{id}', 'OwnerUploadsController@destroy')->name('owner.uploads.delete') ;
-  
-  #report  
-  Route::resource('reports', 'ReportsController');  
+
+  #report
+  Route::resource('reports', 'ReportsController');
 
   #message
   Route::get('message', 'MessagesController@create');
   Route::post('message', 'MessagesController@saveMessage');
 
-    
+
 });
 
 // Route::get('/home', 'HomeController@index');
@@ -162,7 +164,7 @@ Route::get('/master', function(){
         return view('client.search')->withMessage("No results found " );
     });
 
-    
+
 #frontend view
 Route::get('/agents', 'clientController@agents');
 Route::get('/properties', 'clientController@properties');
