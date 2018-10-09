@@ -25,9 +25,6 @@ Route::get('sendNotification', 'MailController@sendNotification');
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/check', function () {
-    return view('layouts.user');
-});
 
 Route::get('/service', function () {
     return view('service');
@@ -164,7 +161,9 @@ Route::get('/master', function(){
         }
         return view('client.search')->withMessage("No results found " );
     });
+#user routes
 
+Route::get('dashboard', 'UserController@index');
     
 #frontend view
 Route::get('/agents', 'clientController@agents');
