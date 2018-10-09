@@ -228,13 +228,7 @@
       </div>
     </div>
   </section>
-  <?php
-  if(isset($_POST["south"])) {
-    echo "South is set";    
-}else{  
-    echo "N0, mail is not set";
-}
-  ?>
+ 
   <!-- END: section -->
 
   <section class="probootstrap-section probootstrap-bg" style="background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhgaDqc9rEnNNt9CnqMIKxhPfGmLmw7AUpdZgsj1dkt7OlANXKRQ);">

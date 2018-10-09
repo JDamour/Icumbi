@@ -146,7 +146,13 @@ Route::get('/master', function(){
         });
 
     #Public
-    // Route::get('', 'PublicController@DisplayHousesOnHOusePage');
+    
+    // Route::get('autocomplete-search',array('as'=>'autocomplete.search','uses'=>'AutoCompleteController@index'));
+    // Route::get('autocomplete-ajax',array('as'=>'autocomplete.ajax','uses'=>'AutoCompleteController@ajaxData'));
+
+    //the above routes are test of autocomplete search
+    Route::view('/search-suggestion', '/client.autocomplete');
+    Route::get('/client/autocomplete', 'PublicController@searchSuggestion');
     Route::get('/house', 'PublicController@DisplayHousesOnHOusePage');
     Route::get('/', 'PublicController@DisplayHousesOnHomePage');
     Route::any('/houseShow/{id}', 'PublicController@show')->name('houseshow.show');

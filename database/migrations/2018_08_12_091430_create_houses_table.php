@@ -21,6 +21,10 @@ class CreateHousesTable extends Migration
             $table->enum('status', ['1', '2', '3'])->default('1');
             $table->integer('user_id')->unsigned();
             $table->integer('paymentfrequency_id')->unsigned();
+            $table->integer('country_id')->unsigned();
+            $table->integer('province_id')->unsigned();
+            $table->integer('district_id')->unsigned();
+            $table->integer('sector_id')->unsigned();
             $table->integer('cell_id')->unsigned();
             $table->integer('numberOfRooms')->unsigned();
             $table->decimal('length', 8, 2);

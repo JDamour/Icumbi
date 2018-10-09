@@ -10,28 +10,18 @@ use App\Paymentfrequency;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 
-class PublicController extends Controller
+class AutoCompleteController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function DisplayHousesOnHOusePage()
+    public function index()
     {
-        $houses = House::paginate(3);
-        return view('client.index', compact('houses'));
-    }
-    public function DisplayHousesOnHomePage()
-    {
-        $houses = House::all();
-        return view('welcome', compact('houses'));
-    }
+        // return view('client.tests');
+        return view('autocomplete');
 
-    public function upload()
-    {
-        $uploads = Upload::all();
-        return view('client.index', compact('uploads'));
     }
 
     /**
@@ -39,21 +29,18 @@ class PublicController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function search()
+    public function create()
     {
-        $search = Input::get('search');
-        if ($search != "") {
-            $house = House::where('houselocation','LIKE','%'.$search.'%')
-            ->orWhere('housePrice','LIKE','%'.$search.'%')
-            ->orWhere('paymentfrequency_id','LIKE','%'.$search.'%')
-            ->get();
-        if(count($house)>0)
-            return view('client.search')->withDetails($house)->withQuery ( $search );
+        //
+    }
 
-        }
-        return view('client.search')->withMessage("No results found " );
+    public function ajaxData(Request $request){
+        $query = $request->get('query','');        
+        $houses = House::where('houselocation','LIKE','%'.$query.'%')->get();        
+        return response()->json($houses);
     }
     
+        
 
     /**
      * Store a newly created resource in storage.
@@ -61,16 +48,6 @@ class PublicController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function searchSuggestion(Request $request)
-    {
-         return House::where('houselocation', 'LIKE', '%'.$request->q.'%')->get();
-
-        //  $house = House::where('houselocation','LIKE','%'.$search.'%')
-        //     ->orWhere('housePrice','LIKE','%'.$search.'%')
-        //     ->orWhere('paymentfrequency_id','LIKE','%'.$search.'%')
-        //     ->get();
-    }
-
     public function store(Request $request)
     {
         //
@@ -85,13 +62,9 @@ class PublicController extends Controller
     public function show($id)
     {
         //
-        $house = House::find($id);
-        return view('client.show', compact('house'));
-        // return view('client.show', ['house'=>$house]);
     }
-    
+
     /**
-     * 
      * Show the form for editing the specified resource.
      *
      * @param  int  $id

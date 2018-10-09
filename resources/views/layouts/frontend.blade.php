@@ -11,12 +11,6 @@
     <link rel="stylesheet" href="{{asset('css/styles-merged.css')}}">
     <link rel="stylesheet" href="{{asset('css/style.min.css')}}">
     <link rel="stylesheet" href="{{asset('css/custom.css')}}">
-    
-
-    <!--[if lt IE 9]>
-      <script src="js/vendor/html5shiv.min.js"></script>
-      <script src="js/vendor/respond.min.js"></script>
-    <![endif]-->
   </head>
   <body>
 
@@ -39,6 +33,7 @@
             <li><a href="{{url('agents')}}">Agents</a></li>
             <li><a href="{{url('about')}}">About</a></li>
             <li><a href="{{url('contact')}}">Contact</a></li>
+            
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
@@ -59,10 +54,11 @@
                                     </form>
                             </li>
                         @endguest
-                 
-
-
-
+                        <form action="/search" method="POST" role="search">
+                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                <input type="text" placeholder="Enter address, price, Neighborhoods" name="search">
+                <button type="submit"><i class="icon-magnifying-glass t2"></i></button>
+            </form>
           </ul>
           <div class="extra-text visible-xs"> 
             <a href="#" class="probootstrap-burger-menu"><i>Menu</i></a>
