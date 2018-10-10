@@ -163,8 +163,9 @@ Route::get('/master', function(){
         }
         return view('client.search')->withMessage("No results found " );
     });
-
-
+#user routes
+Route::get('dashboard', 'UserController@index');
+    
 #frontend view
 Route::get('/agents', 'clientController@agents');
 Route::get('/properties', 'clientController@properties');
