@@ -53,7 +53,18 @@ class AdminHouseController extends Controller
             "housePrice" => $request->input('housePrice'),
             "paymentfrequency_id" => $request->input('payfreq'),
             "user_id" => Auth::user()->id,
-            "cell_id" => $request->input('cell')
+            "cell" => $request->input('cell'),
+            "sector_id" => $request->input('sector'),
+            "district_id" => $request->input('district'),
+            "province_id" => $request->input('province'),
+            "country_id" => $request->input('country'),
+            "fenced" => $request->input('fenced'),
+            "water" => $request->input('water'),
+            "toilet" => $request->input('toilet'),
+            "bathroom" => $request->input('bathroom'),
+            "numberOfRooms" => $request->input('rooms'),
+            "length" => $request->input('length'),
+            "width" => $request->input('width')
         ]);
         if ($house) {
           return redirect()->route('admin.uploads.create', $house->id);
@@ -112,7 +123,18 @@ class AdminHouseController extends Controller
             "housePrice" => $request->input('housePrice'),
             "paymentfrequency_id" => $request->input('payfreq'),
             "user_id" => Auth::user()->id,
-            "cell_id" => $request->input('cell')
+            "cell" => $request->input('cell'),
+            "sector_id" => $request->input('sector'),
+            "district_id" => $request->input('district'),
+            "province_id" => $request->input('province'),
+            "country_id" => $request->input('country'),
+            "fenced" => $request->input('fenced'),
+            "water" => $request->input('water'),
+            "toilet" => $request->input('toilet'),
+            "bathroom" => $request->input('bathroom'),
+            "numberOfRooms" => $request->input('rooms'),
+            "length" => $request->input('length'),
+            "width" => $request->input('width')
         ]);
         if ($house) {
           return redirect()->route('admin.houses.show', $id);

@@ -26,12 +26,15 @@
     </ul>
   </section>
   <!-- END: slider  -->
-  
+
   <section class="probootstrap-section">
     <div class="container">
       <div class="row">
         <div class="col-md-8">
-          <form action="#" method="post" class="probootstrap-form mb60">
+                @include('partials.success')
+                @include('partials.error')
+        <form action="{{url('contactmail')}}" method="post" class="probootstrap-form mb60">
+        <input type="hidden" name="_token" value="{{csrf_token()}}">
             <div class="row">
               <div class="col-md-6">
                 <div class="form-group">
@@ -73,6 +76,6 @@
         </div>
       </div>
     </div>
-  </section>  
+  </section>
   <div id="map"></div>
 @endsection
