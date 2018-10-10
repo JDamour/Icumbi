@@ -65,3 +65,22 @@ INSERT INTO `users` (`id`, `national_id`, `firstName`, `lastName`, `phoneNumber`
 
 INSERT INTO `views` (`id`, `ip_address`, `house_id`, `created_at`, `updated_at`) VALUES
 (1, '127.0.0.1', 100, '2018-09-19 15:39:58', '2018-09-19 15:39:58');
+
+
+
+================alliace peace=====================
+please update the houses table with the following queries
+these changes have also been made in the migration's file
+
+ALTER TABLE houses ADD COLUMN country_id int(10) unsigned NOT NULL AFTER paymentfrequency_id;
+ALTER TABLE houses ADD COLUMN province_id int(10) unsigned NOT NULL AFTER country_id;
+ALTER TABLE houses ADD COLUMN district_id int(10) unsigned NOT NULL AFTER province_id;
+ALTER TABLE houses ADD COLUMN sector_id int(10) unsigned NOT NULL AFTER district_id;
+ALTER TABLE houses ADD COLUMN numberOfRooms int(10) unsigned NOT NULL AFTER cell_id;
+ALTER TABLE houses ADD COLUMN length decimal(8,2) AFTER numberOfRooms;
+ALTER TABLE houses ADD COLUMN width decimal(8,2) AFTER length;
+ALTER TABLE houses ADD COLUMN water ENUM('1','2') NOT NULL DEFAULT '1' AFTER width;
+ALTER TABLE houses ADD COLUMN bathroom ENUM('1','2') NOT NULL DEFAULT '1' AFTER water;
+ALTER TABLE houses ADD COLUMN toilet ENUM('1','2') NOT NULL DEFAULT '1' AFTER bathroom;
+ALTER TABLE houses ADD COLUMN fenced ENUM('1','2') NOT NULL DEFAULT '1' AFTER toilet;
+ALTER TABLE `houses` CHANGE `cell_id` `cell` VARCHAR(191) NOT NULL;
