@@ -1,7 +1,5 @@
-
-
-@extends('layouts.app')
-
+@extends('layouts.frontend')
+@section('content')
 <div class="container">
   <div class="card">
     <div class="container-fliud">
@@ -58,9 +56,11 @@
           <!-- <p class="vote"><strong>91%</strong> liked this house! <strong>(87 votes)</strong></p> -->
           
           <div class="action">
-            <form>
-              <!-- <input class="add-to-cart btn btn-default" type="button" value="Request House Adress" onclick="window.location.href='/form'" /> -->
-            </form>
+              <form action="">
+              <!-- <input type="submit" name="btn" value=""> -->
+              <input class="add-to-cart btn btn-default" type="button" value="House Address" onclick="window.location.href='{{route('custom.service.create',$house->id)}}'" />
+              <input class="add-to-cart btn btn-success" type="button" value="Refund" onclick="window.location.href='{{route('custom.service.prerefund',$house->id)}}'"/>
+            </form> 
           </div>
         </div>
       </div>
@@ -69,3 +69,4 @@
 
 
 
+@endsection

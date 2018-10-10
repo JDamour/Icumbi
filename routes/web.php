@@ -143,9 +143,18 @@ Route::get('/del', 'PaymentModeController@destroy');
 Route::get('/master', function(){
     return view('layouts.master');
     });
-
+    Route::get('/client.test', function(){
+        return view('client.test');
+        });
 
     #Public
+    
+    // Route::get('autocomplete-search',array('as'=>'autocomplete.search','uses'=>'AutoCompleteController@index'));
+    // Route::get('autocomplete-ajax',array('as'=>'autocomplete.ajax','uses'=>'AutoCompleteController@ajaxData'));
+
+    //the above routes are test of autocomplete search
+    Route::view('/search-suggestion', '/client.autocomplete');
+    Route::get('/client/autocomplete', 'PublicController@searchSuggestion');
     Route::get('/house', 'PublicController@DisplayHousesOnHOusePage');
     Route::get('/', 'PublicController@DisplayHousesOnHomePage');
     Route::any('/houseShow/{id}', 'PublicController@show')->name('houseshow.show');
@@ -163,9 +172,11 @@ Route::get('/master', function(){
         }
         return view('client.search')->withMessage("No results found " );
     });
+
+
 #user routes
 Route::get('dashboard', 'UserController@index');
-    
+   
 #frontend view
 Route::get('/agents', 'clientController@agents');
 Route::get('/properties', 'clientController@properties');
