@@ -12,7 +12,7 @@
     <title>Search | autocomplete</title>
  
     <!-- Bootstrap core CSS -->
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet"> -->
  
     <!-- Custom styles for this template -->
     <link href="{{asset('starter-template.css')}}" rel="stylesheet">

@@ -22,11 +22,12 @@ class House extends Model
         'paymentfrequency_id',
 
         //  the atributes below  are foreign kies from other tables
-        'country',
-        'province',
-        'district',
-        'sector',
+        'country_id',
+        'province_id',
+        'district_id',
+        'sector_id',
         'cell_id'
+        
 
     ];
     public function reports()
