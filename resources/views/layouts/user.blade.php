@@ -7,14 +7,17 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Icumbi| [user names]</title>
+  <meta name="csrf-token" content="{{ csrf_token() }}">
+  <title>Icumbi| @yield('title')</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-  <link rel="stylesheet" href="{{ asset('bower_components/bootstrap/dist/css/bootstrap.min.css')}}">
+  <link rel="stylesheet" href="{{asset('bower_components/bootstrap/dist/css/bootstrap.min.css')}}">
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="{{ asset('bower_components/font-awesome/css/font-awesome.min.css')}}">
+  <link rel="stylesheet" href="{{asset('bower_components/font-awesome/css/font-awesome.min.css')}}">
   <!-- Ionicons -->
   <link rel="stylesheet" href="{{asset('bower_components/Ionicons/css/ionicons.min.css')}}">
+  <!--  fancybox-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">  
   <!-- Theme style -->
   <link rel="stylesheet" href="{{asset('dist/css/AdminLTE.min.css')}}">
   <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
@@ -30,9 +33,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <![endif]-->
 
   <!-- Google Font -->
-  <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
-  
+  <link href="https://fonts.googleapis.com/css?family=Old+Standard+TT" rel="stylesheet">
 </head>
 <!--
 BODY TAG OPTIONS:
@@ -178,17 +179,17 @@ desired effect
             <!-- Menu Toggle Button -->
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <!-- The user image in the navbar-->
-              <img src="{{asset('dist/img/user2-160x160.jpg')}}" class="user-image" alt="User Image">
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9-cOiD6RJ2wCYMxHAWZCS6GDdwsCAQ61V_mLzUNsQeACHR8OCqA" class="user-image" alt="User Image">
               <!-- hidden-xs hides the username on small devices so only the image appears. -->
-              <span class="hidden-xs">Alexander Pierce</span>
+              <span class="hidden-xs">{{ Auth::user()->firstName.' '.Auth::user()->lastName }}</span>
             </a>
             <ul class="dropdown-menu">
               <!-- The user image in the menu -->
               <li class="user-header">
-                <img src="{{asset('dist/img/user2-160x160.jpg')}}" class="img-circle" alt="User Image">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9-cOiD6RJ2wCYMxHAWZCS6GDdwsCAQ61V_mLzUNsQeACHR8OCqA" class="img-circle" alt="User Image">
 
                 <p>
-                  Alexander Pierce - Web Developer
+                  {{ Auth::user()->firstName.' '.Auth::user()->lastName }} - House Owner
                   <small>Member since Nov. 2012</small>
                 </p>
               </li>
@@ -213,7 +214,14 @@ desired effect
                   <a href="#" class="btn btn-default btn-flat">Profile</a>
                 </div>
                 <div class="pull-right">
-                  <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                  <a class="btn btn-default btn-flat"href="{{ route('logout') }}"
+                       onclick="event.preventDefault();
+                        document.getElementById('logout-form').submit();">
+                        {{ __('Sign out') }}</a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                  @csrf
+                 </form>
+
                 </div>
               </li>
             </ul>
@@ -235,10 +243,10 @@ desired effect
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="{{asset('dist/img/user2-160x160.jpg')}}" class="img-circle" alt="User Image">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9-cOiD6RJ2wCYMxHAWZCS6GDdwsCAQ61V_mLzUNsQeACHR8OCqA" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p>Alexander Pierce</p>
+          <p>{{ Auth::user()->firstName.' '.Auth::user()->lastName }}</p>
           <!-- Status -->
           <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
@@ -260,55 +268,30 @@ desired effect
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">Navigation</li>
         <!-- Optionally, you can add icons to the links -->
-		<li class=""><a href="#"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
-		<li class="treeview">
-          <a href="#"><i class="fa fa-users"></i> <span>Account</span>
+    <li class="active"><a href="#"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
+    <li class="treeview">
+          <a href="#"><i class="fa fa-heart"></i> <span>houses</span>
             <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
               </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="#"><i class="fa fa-circle-o"></i> New</a></li>
-            <li><a href="#"><i class="fa fa-circle-o"></i> View All</a></li>
-			<li><a href="#"><i class="fa fa-circle-o"></i> Deactivated</a></li>
+            <li><a href="{{ route('owner.services.index') }}"><i class="fa fa-circle-o"></i> visited</a></li>
+            <li><a href="{{ route('owner.services.index') }}"><i class="fa fa-circle-o"></i> booked</a></li>
           </ul>
         </li>
-		<li class="treeview active">
-          <a href="#"><i class="fa fa-home"></i> <span>House</span>
+    <li class="treeview">
+          <a href="#"><i class="fa fa-envelope"></i> <span>Report</span>
             <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
               </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="#"><i class="fa fa-circle-o"></i> New</a></li>
-            <li><a href="#"><i class="fa fa-circle-o"></i> View All</a></li>
-			<li><a href="#"><i class="fa fa-circle-o"></i> Booked</a></li>
-			<li><a href="#"><i class="fa fa-circle-o"></i> Reported</a></li>
+            <li><a href="{{action('ReportsController@create')}}"><i class="fa fa-circle-o"></i> report issue</a></li>
+            <li><a href="{{action('ReportsController@index')}}"><i class="fa fa-circle-o"></i> View All</a></li>
           </ul>
         </li>
-		<li class="treeview">
-          <a href="#"><i class="fa fa-heart"></i> <span>Services</span>
-            <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-              </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="#"><i class="fa fa-circle-o"></i> Latest</a></li>
-            <li><a href="#"><i class="fa fa-circle-o"></i> View All</a></li>
-          </ul>
-        </li>
-		<li class="treeview">
-          <a href="#"><i class="fa fa-envelope"></i> <span>Message</span>
-            <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-              </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="#"><i class="fa fa-circle-o"></i> Unread</a></li>
-            <li><a href="#"><i class="fa fa-circle-o"></i> View All</a></li>
-          </ul>
-        </li>
-        <li><a href="#"><i class="fa fa-dollar"></i> <span>Transactions</span></a></li>
+<!--        message-->
       </ul>
       <!-- /.sidebar-menu -->
     </section>
@@ -319,14 +302,14 @@ desired effect
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-      <h1>
-        House
-        <small>Display</small>
+     <!--  <h1>
+        Page Header
+        <small>Optional description</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> house</a></li>
-        <li class="active">show</li>
-      </ol>
+        <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
+        <li class="active">Here</li>
+      </ol> -->
     </section>
 
     <!-- Main content -->
@@ -335,136 +318,10 @@ desired effect
       <!--------------------------
         | Your Page Content Here |
         -------------------------->
-
-        <div class="box box-info">
-            <div class="box-header with-border">
-              <h3 class="box-title">Display House</h3>
-              <p class="pull-right"><a class="btn btn-sm bg-olive" href="{{route('admin.houses.edit', $house->id)}}">
-                <i class="fa fa-edit"></i> Edit</a> <a class="btn btn-sm bg-olive" href="{{route('admin.uploads.index', $house->id)}}">
-                <i class="fa fa-camera"></i> View house photos</a></p>
-            </div>
-            <!-- /.box-header -->
-            <!-- form start -->
-            <form class="form-horizontal" method="" action="">
-              <div class="box-body">
-                <div class="form-group">
-                  <label for="" class="col-sm-2 control-label" style="text-align:left">House Price</label>
-
-                  <div class="col-sm-10 col-md-8 col-lg-6">
-                    <div class="input-group">
-                        <span class="input-group-addon">RWF</span>
-                        <input type="text" class="form-control" id="" value="{{$house->housePrice}}" disabled>
-                        <span class="input-group-addon">.00</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="" class="col-sm-2 control-label" style="text-align:left">Street code</label>
-
-                  <div class="col-sm-10 col-md-8 col-lg-6">
-                    <input type="text" class="form-control" id="" placeholder="KN 01St" value="{{$house->streetCode}}" disabled>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="" class="col-sm-2 control-label"  style="text-align:left">Number of rooms</label>
-
-                  <div class="col-sm-10 col-md-8 col-lg-6">
-                    <input type="number" class="form-control" id="" placeholder="" name="rooms" value="{{$house->numberOfRooms}}" disabled>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="" class="col-sm-2 control-label"  style="text-align:left">Length x Width (in meters)</label>
-
-                  <div class="col-sm-10 col-md-8 col-lg-6">
-                    <span> {{$house->length}} <span> x <span> {{$house->width}} </span>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-2 control-label" style="text-align:left">Payment Frequency</label>
-                  <div class="col-sm-10 col-md-8 col-lg-6">
-                    <input type="text" class="form-control" value="{{$house->paymentfrequency->name}}" disabled>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-2 control-label" style="text-align:left">Country</label>
-                  <div class="col-sm-10 col-md-8 col-lg-6">
-                    <input type="text" class="form-control" value="{{$house->country->name}}" disabled>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-2 control-label" style="text-align:left">Province</label>
-                  <div class="col-sm-10 col-md-8 col-lg-6">
-                    <input type="text" class="form-control" value="{{$house->province->name}}" disabled>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-2 control-label" style="text-align:left">District</label>
-                  <div class="col-sm-10 col-md-8 col-lg-6">
-                    <input type="text" class="form-control" value="{{$house->district->name}}" disabled>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-2 control-label" style="text-align:left">Sector</label>
-                  <div class="col-sm-10 col-md-8 col-lg-6">
-                    <input type="text" class="form-control" value="{{$house->sector->name}}" disabled>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-2 control-label" style="text-align:left">Cell</label>
-                  <div class="col-sm-10 col-md-8 col-lg-6">
-                    <input type="text" class="form-control" value="{{$house->cell}}" disabled>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-2 control-label" style="text-align:left">Extra</label>
-                  <div class="col-sm-10 col-md-8 col-lg-6">
-                      @if ($house->water == 1)
-                        <span class="label label-success">Water</span>
-                        @endif
-                        @if ($house->fenced == 1)
-                        <span class="label label-success">Fenced</span>
-                        @endif
-                        @if ($house->toilet == 1)
-                        <span class="label label-success">Toiled</span>
-                        @endif
-                        @if ($house->bathroom == 1)
-                        <span class="label label-success">Bathroom</span>
-                        @endif
-                  </div>
-                </div>
-              </div>
-              <div class="form-group">
-                <label class="col-sm-2 control-label"></label>
-                <div class="col-sm-10 col-md-8 col-lg-6">
-                  <label>House Location</label>
-                  <div id="mapLocation" style="height:300px">
-                  </div>
-                </div>
-                <script src="http://maps.google.com/maps/api/js"></script>
-                <script src="{{asset('js/gmaps.js')}}"></script>
-                <script type="text/javascript">
-                  function getPosition() {
-                    map = new GMaps({
-                      div: '#mapLocation',
-                      zoom: 16,
-                      lat: parseFloat("{{explode(':', $house->houseLocation)[0]}}"),
-                      lng: parseFloat("{{explode(':', $house->houseLocation)[1]}}")
-                    });
-                    map.addMarker({
-                      lat: parseFloat("{{explode(':', $house->houseLocation)[0]}}"),
-                      lng: parseFloat("{{explode(':', $house->houseLocation)[1]}}"),
-                      title: 'House Location',
-                      infoWindow: {
-                        content: '<p>House Location</p>'
-                      }
-                    });
-                  }
-                  getPosition();
-                  
-                </script>
-                </div>
-            </form>
-          </div>
+         @include('partials.success')
+         @include('partials.error')
+         @yield('content')
+          
 
     </section>
     <!-- /.content -->
@@ -569,6 +426,20 @@ desired effect
 <!-- AdminLTE App -->
 <script src="{{asset('dist/js/adminlte.min.js')}}"></script>
 
+<script src="{{asset('bower_components/datatables.net/js/jquery.dataTables.min.js')}}"></script>
+<script src="{{asset('bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js')}}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+<!-- SlimScroll -->
+<script src="{{asset('bower_components/jquery-slimscroll/jquery.slimscroll.min.js')}}"></script>
+<!-- FastClick -->
+<script src="{{asset('bower_components/fastclick/lib/fastclick.js')}}"></script>
+
+<script type="text/javascript">
+  $(function () {
+    $('#table_houses').DataTable();
+  })  
+  
+</script>
 
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
      Both of these plugins are recommended to enhance the

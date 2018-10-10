@@ -7,7 +7,9 @@
     <meta name="description" content="Free Bootstrap Theme by uicookies.com">
     <meta name="keywords" content="free website templates, free bootstrap themes, free template, free bootstrap, free website template">
     <link href="https://fonts.googleapis.com/css?family=Old+Standard+TT" rel="stylesheet">
-    
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <link rel="stylesheet" href="{{asset('css/styles-merged.css')}}">
     <link rel="stylesheet" href="{{asset('css/style.min.css')}}">
     <link rel="stylesheet" href="{{asset('css/custom.css')}}">
@@ -36,9 +38,9 @@
           <ul class="probootstrap-main-nav">
             <li class="active"><a href="/">Home</a></li>
             <li><a href="/house">House</a></li>
-            <li><a href="/agents">Agents</a></li>
-            <li><a href="/about">About</a></li>
-            <li><a href="/contact">Contact</a></li>
+          <!--   <li><a href="/agents">Agents</a></li> -->
+            <!-- <li><a href="/about">About</a></li>
+            <li><a href="/contact">Contact</a></li> -->
              <li><a href="/login">Login</a></li>
             <li><a href="/register">SignUp</a></li>
             <form action="/search" method="POST" role="search">

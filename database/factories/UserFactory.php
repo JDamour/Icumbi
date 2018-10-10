@@ -27,7 +27,7 @@ $factory->define(App\User::class, function (Faker $faker) {
         'dateOfBirth' => $faker->date($format ='Y-m-d', $max ='now'),
         'accountConfirmationCode' => $faker->creditCardNumber,
         'amount' => $faker->numberBetween($min =500, $max =50000),
-        'roleId' => $faker->numberBetween($min =1, $max =5),
+        'roleId' => $faker->numberBetween($min =1, $max =3),
         'national_id'=>$faker->creditCardNumber,
         'createdBy' =>$faker->dateTime($max = 'now'),
         'updatedBy' =>$faker->dateTime($max = 'now'),

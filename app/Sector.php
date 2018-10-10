@@ -17,4 +17,8 @@ class Sector extends Model
     public function district(){
         return $this->belongsTo('App\District');
     }
+    public function houses()
+    {
+        return $this->hasMany('App\House');
+    }
 }
