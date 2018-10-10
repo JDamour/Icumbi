@@ -17,4 +17,8 @@ class Province extends Model
     public function country(){
         return $this->belongsTo('App\Country');
     }
+    public function houses()
+    {
+        return $this->hasMany('App\House');
+    }
 }
