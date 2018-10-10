@@ -14,8 +14,8 @@ class Cell extends Model
     public function sector(){
         return $this->belongsTo('App\Sector');
     }
-    public function house()
+    public function houses()
     {
-        return $this->belongsTo('App\House');
+        return $this->hasMany('App\House');
     }
 }

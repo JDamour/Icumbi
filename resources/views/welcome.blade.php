@@ -46,6 +46,12 @@
                                 <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                             </li>
                         @else
+
+                           @if(Auth::user()->isUser())
+                                                       <li class="nav-item">
+                                <a class="nav-link" href="{{ url('dashboard') }}">{{ __('Dashboard') }}</a>
+                            </li>
+                            @endif
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>
@@ -351,7 +357,7 @@
 
   <!-- END: section -->
 
-  <section class="probootstrap-section probootstrap-section-lighter">
+ <!--  <section class="probootstrap-section probootstrap-section-lighter">
     <div class="container">
       <div class="row heading">
         <h2 class="mt0 mb50 text-center">Our Agents</h2>
@@ -407,7 +413,7 @@
         </div>
       </div>
     </div>
-  </section>
+  </section> -->
 
   <footer class="probootstrap-footer probootstrap-bg" style="background-image: url(img/slider_3.jpg)">
     <div class="container">

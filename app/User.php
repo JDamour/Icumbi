@@ -30,9 +30,62 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
     
-     public function role() {
-        return $this->belongsTo('App\Role');
-    }
+     public function roles()
+     {
+         return $this->belongsToMany('App\Role', 'role_user');
+     }
+
+     public function assignRole($role)
+        {
+            return $this->roles()->attach($role);
+        }
+    //get user role by name
+        public function isAdmin()
+        {
+            foreach ($this->roles()->get() as $role)
+            {
+                if ($role->name == 'Admin')
+                {
+                    return true;
+                }
+            }
+        }
+    // get user role by id
+//        public function isAdmin()
+//    {
+//       return $this->roles()->where('role_id', 1)->first();
+////       return in_array(1, $this->roles()->pluck('role_id')->all());
+//    }
+
+        //get user role by name
+        public function isOwner()
+        {
+            foreach ($this->roles()->get() as $role)
+            {
+                if ($role->name == 'Owner')
+                {
+                    return true;
+                }
+            }
+        }
+    // get user role by id
+//        public function isOwner()
+//    {
+//       return $this->roles()->where('role_id', 2)->first();
+////       return in_array(2, $this->roles()->pluck('role_id')->all());
+//    }
+            //get user role by name
+        public function isUser()
+        {
+            foreach ($this->roles()->get() as $role)
+            {
+                if ($role->name == 'User')
+                {
+                    return true;
+                }
+            }
+        }
+
     public function messagesHouseOwner()
     {
         return $this->hasMany('App\Message', 'houseOwnerId');
@@ -41,28 +94,7 @@ class User extends Authenticatable
     public function messagesAdmin() {
         return $this->hasMany('App\Message', 'administratorId');
     }
-    public function isAdmin()
-    {
-        if($this->roleId == 1)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
-        public function isOwner()
-    {
-        if($this->roleId == 2)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
+
 
     public function house()
     {
