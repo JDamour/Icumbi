@@ -217,9 +217,31 @@ desired effect
     </nav>
   </header>
   <!-- Left side column. contains the logo and sidebar -->
- 
+  <aside class="main-sidebar">
+  <section class="sidebar">
 
-    <!-- sidebar: style can be found in sidebar.less -->
+    <ul class="sidebar-menu" data-widget="tree">
+      <li class="header">Navigation</li>
+      <!-- Optionally, you can add icons to the links -->
+      
+      <li class="treeview active">
+        <a href="#"><i class="fa fa-home"></i> <span>House</span>
+          <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+        </a>
+        <ul class="treeview-menu">
+          <li><a href="{{ route('houses.create') }}"><i class="fa fa-circle-o"></i> New</a></li>
+          <li><a href="{{ route('houses.index') }}"><i class="fa fa-circle-o"></i> View All</a></li>
+        </ul>
+      </li>
+      <li><a href="{{ route('owner.services.index') }}"><i class="fa fa-dollar"></i> <span>Services</span></a></li>
+    </ul>
+    <!-- /.sidebar-menu -->
+  </section>
+  
+  <!-- /.sidebar -->
+</aside>
     
     <!-- /.sidebar -->
   
