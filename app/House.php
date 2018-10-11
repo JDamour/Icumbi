@@ -26,7 +26,7 @@ class House extends Model
         'province_id',
         'district_id',
         'sector_id',
-        'cell_id'
+        'cell'
         
 
     ];
