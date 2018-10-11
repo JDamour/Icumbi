@@ -1,7 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container-fluid" style=" margin-top: 100px; width:100vw; background-image: url(https://www.wspa.co.uk/wp-content/uploads/2015/04/wspa-home-background-2-1484x989.jpg); background-position: cover; background-size: cover">
+
             <div class="row main">
                 <div class="main-login main-center">
 
