@@ -150,7 +150,7 @@ desired effect
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">Navigation</li>
         <!-- Optionally, you can add icons to the links -->
-		<li class=""><a href="#"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
+		<!-- <li class=""><a href="#"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li> -->
 		<li class="treeview">
           <a href="#"><i class="fa fa-users"></i> <span>Account</span>
             <span class="pull-right-container">
@@ -175,19 +175,7 @@ desired effect
           </ul>
         </li>
 		<li><a href="{{route('admin.services.index')}}"><i class="fa fa-dollar"></i> <span>Services</span></a></li>
-		<li class="treeview">
-          <a href="#"><i class="fa fa-envelope"></i> <span>Message</span>
-            <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-              </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="#"><i class="fa fa-circle-o"></i> Unread</a></li>
-            <li><a href="#"><i class="fa fa-circle-o"></i> View All</a></li>
-          </ul>
-        </li>
-        <li><a href="#"><i class="fa fa-dollar"></i> <span>Transactions</span></a></li>
-      </ul>
+		</ul>
       <!-- /.sidebar-menu -->
     </section>
     <!-- /.sidebar -->
