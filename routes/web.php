@@ -166,6 +166,7 @@ Route::get('/master', function(){
 #user routes
 Route::group(['middleware' => 'auth.user'], function(){
     Route::get('dashboard', 'UserController@index');
+    Route::resource('reports', 'ReportsController');
 });
 
 #frontend view
