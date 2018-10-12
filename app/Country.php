@@ -13,4 +13,8 @@ class Country extends Model
     public function provinces(){
         return $this->hasMany('App\Province');
     }
+    public function houses()
+    {
+        return $this->hasMany('App\House');
+    }
 }

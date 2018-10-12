@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\MailController;
 use App\User;
 use App\House;
 use App\Country;
@@ -53,7 +54,7 @@ class PublicController extends Controller
         }
         return view('client.search')->withMessage("No results found " );
     }
-    
+
 
     /**
      * Store a newly created resource in storage.
@@ -65,6 +66,7 @@ class PublicController extends Controller
     {
         //
     }
+
 
     /**
      * Display the specified resource.
@@ -81,9 +83,9 @@ class PublicController extends Controller
 
         // return view('client.show', ['house'=>$house]);
     }
-    
+
     /**
-     * 
+     *
      * Show the form for editing the specified resource.
      *
      * @param  int  $id

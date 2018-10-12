@@ -28,6 +28,63 @@
                   </div>
                 </div>
                 <div class="form-group">
+                  <label for="" class="col-sm-2 control-label">Number of rooms</label>
+
+                  <div class="col-sm-10 col-md-8 col-lg-6">
+                    <input type="number" class="form-control" id="" placeholder="" name="rooms" value="" required>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="" class="col-sm-2 control-label">Length (in meters)</label>
+
+                  <div class="col-sm-10 col-md-8 col-lg-6">
+                    <input type="text" class="form-control" id="" placeholder="" name="length" required>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="" class="col-sm-2 control-label">Width (in meters)</label>
+
+                  <div class="col-sm-10 col-md-8 col-lg-6">
+                    <input type="text" class="form-control" id="" placeholder="" name="width" required>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 control-label">Water</label>
+                  <div class="col-sm-10 col-md-8 col-lg-6">
+                    <select class="form-control" name="water" id="" required>
+                      <option value="1" selected>True</option>
+                      <option value="2">False</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 control-label">Bathroom inside</label>
+                  <div class="col-sm-10 col-md-8 col-lg-6">
+                    <select class="form-control" name="bathroom" id="" required>
+                      <option value="1" selected>True</option>
+                      <option value="2">False</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 control-label">Toilet inside</label>
+                  <div class="col-sm-10 col-md-8 col-lg-6">
+                    <select class="form-control" name="toilet" id="" required>
+                      <option value="1" selected>True</option>
+                      <option value="2">False</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 control-label">Fenced</label>
+                  <div class="col-sm-10 col-md-8 col-lg-6">
+                    <select class="form-control" name="fenced" id="" required>
+                      <option value="1" selected>True</option>
+                      <option value="2">False</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group">
                   <label class="col-sm-2 control-label">Payment Frequency</label>
                   <div class="col-sm-10 col-md-8 col-lg-6">
                     <select class="form-control" name="payfreq" required>
@@ -76,8 +133,7 @@
                 <div class="form-group">
                   <label class="col-sm-2 control-label">Cell</label>
                   <div class="col-sm-10 col-md-8 col-lg-6">
-                    <select class="form-control" name="cell" id="select_cells" required>
-                    </select>
+                    <input type="text" class="form-control" id="" placeholder="type cell name" name="cell" required>
                   </div>
                 </div>
                 <script>
@@ -85,7 +141,6 @@
                     var provinces_el = document.getElementById('select_provinces');
                     var districts_el = document.getElementById('select_districts');
                     var sectors_el = document.getElementById('select_sectors');
-                    var cells_el = document.getElementById('select_cells');
                     function render_provinces() {
                      fetch("{{ url('/') }}" + "/provinces/" + countries_el.value, {
                           method: "GET"
@@ -131,7 +186,6 @@
                               return "<option value = '"+ value.id +"'>" + value.name +"</option>"
                             });
                             sectors_el.innerHTML = res;
-                            render_cells();
                         }).catch(function (e) {
                             console.log(e);
                             sectors_el.innerHTML = "";
@@ -156,7 +210,6 @@
                       countries_el.addEventListener('change', render_provinces);
                       provinces_el.addEventListener('change', render_districts);
                       districts_el.addEventListener('change', render_sectors);
-                      sectors_el.addEventListener('change', render_cells);
                       render_provinces();
                   </script>
               </div>
