@@ -163,7 +163,10 @@ Route::get('/master', function(){
     });
 #user routes
 
-Route::get('dashboard', 'UserController@index');
+Route::group(['middleware' => 'auth.user'], function(){
+    Route::get('dashboard', 'UserController@index');
+});
+
     
 #frontend view
 Route::get('/agents', 'clientController@agents');
