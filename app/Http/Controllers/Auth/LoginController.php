@@ -26,24 +26,24 @@ class LoginController extends Controller
      *
      * @var string
      */
-    public function redirectTo(){
+         public function redirectTo(){
 
     // User role
-    $role = Auth::user()->roleId;
+
 
     // Check user role
-    switch ($role) {
-        case 1:
-                return '/admin/houses';
-            break;
-        case 2:
-                return '/owner/houses';
-            break;
-        default:
-                return '/';
-            break;
+    if(Auth()->user()->isAdmin())
+         {
+            return '/admin/houses';
+         }
+
+     elseif(Auth()->user()->isOwner())
+          {
+            return '/owner/houses';
+          }
+     else
+          return '/';
     }
-}
 
     /**
      * Create a new controller instance.

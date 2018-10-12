@@ -46,6 +46,12 @@
                                 <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                             </li>
                         @else
+
+                           @if(Auth::user()->isUser())
+                                                       <li class="nav-item">
+                                <a class="nav-link" href="{{ url('dashboard') }}">{{ __('Dashboard') }}</a>
+                            </li>
+                            @endif
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>
@@ -177,9 +183,10 @@
       <div class="row heading">
         <h2 class="mt0 mb50 text-center">Explore Our Neighborhoods</h2>
       </div>
+      
       <div class="row probootstrap-gutter10">
         <div class="col-md-6 col-sm-6">
-          <a href="#" class="probootstrap-hover-overlay">
+          <a href="/client.kigali" class="probootstrap-hover-overlay">
             <img style="width: 100%; height: 50vh;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTem5V2NHTNbn1a4LeifPBLff5p6ga2lIspXGJJU3V3rpPcF1E-" alt="Free Bootstrap Template by uicookies.com" class="img-responsive">
             <div class="probootstrap-text-overlay">
               <h3>Kigali City</h3>
@@ -196,8 +203,6 @@
             </div>
           </a>
         </div>
-        <div class="clearfix visible-sm-block"></div>
-
         <div class="col-md-4 col-sm-6">
           <a href="#" class="probootstrap-hover-overlay">
             <img style="width: 100%; height: 50vh;" src ="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTNU00sittj9DHb2NQ6xOZ5H86W8M6jwUfGO1uQbcFyvNL0Z8BDg" alt="Free Bootstrap Template by uicookies.com" class="img-responsive">
@@ -216,9 +221,8 @@
             </div>
           </a>
         </div>
-        <div class="clearfix visible-sm-block"></div>
-        <div class="col-md-4 col-sm-6">
-          <a href="#" class="probootstrap-hover-overlay">
+        <div class="col-md-4 col-sm-6" name="south">
+          <a href="/client.test" class="probootstrap-hover-overlay">
             <img style="width: 100%; height: 50vh;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSoArxpqX_PewtkgYZK-s7Tj3mggRmwDHl7NaTPXVySA7TlUEwe" alt="Free Bootstrap Template by uicookies.com" class="img-responsive">
             <div class="probootstrap-text-overlay">
               <h3>Southern Province</h3>
@@ -230,6 +234,7 @@
       </div>
     </div>
   </section>
+ 
   <!-- END: section -->
 
   <section class="probootstrap-section probootstrap-bg" style="background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhgaDqc9rEnNNt9CnqMIKxhPfGmLmw7AUpdZgsj1dkt7OlANXKRQ);">

@@ -6,7 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Role extends Model
 {
-  public function user() {
-        return $this->hasMany('App\User', 'roleId');
-    }
+     public function users()
+     {
+         return $this->belongsToMany('App\User', 'role_user');
+     }
+
 }

@@ -2,7 +2,6 @@
 @extends('layouts.frontend')
 @section('title', 'search')
 @section('link')
-<!-- <li><a href="{{url('properties')}}">properties</a></li> -->
 @endsection
 @section('content')
   <section class="probootstrap-slider flexslider2 page-inner">
@@ -24,7 +23,7 @@
   @if(isset($details))
         
   <section class="probootstrap-section probootstrap-section-lighter">
-    <h2>List of Houses matching your search key " <b> {{ $query }} "</b></h2>
+    <h2 style="text-align:center"> <u>List of Houses matching your search key " <b> {{ $query }} "</u></b></h2>
     @foreach($details as $house)
     <div class="container">
 

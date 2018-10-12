@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use App\Role;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -29,24 +30,26 @@ class RegisterController extends Controller
      *
      * @var string
      */
-        public function redirectTo(){
+
+     public function redirectTo(){
 
     // User role
-    $role = Auth::user()->roleId;
+
 
     // Check user role
-    switch ($role) {
-        case 1:
-                return '/admin/houses';
-            break;
-        case 2:
-                return '/owner/houses';
-            break;
-        default:
-                return '/';
-            break;
+    if(Auth()->user()->isAdmin())
+         {
+            return '/admin/houses';
+         }
+
+     elseif(Auth()->user()->isOwner())
+          {
+            return '/owner/houses';
+          }
+     else
+          return '/';
     }
-}
+
 
     /**
      * Create a new controller instance.
@@ -74,7 +77,7 @@ class RegisterController extends Controller
             'password' => 'required|string|min:6|confirmed',
             'dateOfBirth' => 'required',
             'roleId' => 'required',
-            'national_id' => 'required|numeric',
+//            'national_id' => 'required|numeric',
         ]);
     }
 
@@ -86,16 +89,29 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'national_id' => $data['national_id'],
+        $user = User::create([
+//            'national_id' => $data['national_id'],
             'firstName' => $data['firstName'],
             'lastName' => $data['lastName'],
-            'gender' => $data['gender'],
+//            'gender' => $data['gender'],
             'dateOfBirth' => $data['dateOfBirth'],
             'phoneNumber' => $data['phoneNumber'],
             'email' => $data['email'],
-            'roleId' => $data['roleId'],
+//            'roleId' => $data['roleId'],
             'password' => Hash::make($data['password']),
         ]);
+        switch($data['roleId'])
+        {
+            case 'Admin':
+                $role = Role::where('name', 'Admin')->first();
+                break;
+            case 'Owner':
+                $role = Role::where('name', 'Owner')->first();
+                break;
+            default:
+                $role = Role::where('name', 'User')->first();
+        }
+        $user->assignRole($role);
+        return $user;
     }
 }

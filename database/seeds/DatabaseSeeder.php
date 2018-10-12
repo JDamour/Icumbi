@@ -18,5 +18,6 @@ class DatabaseSeeder extends Seeder
          $this->call(SectorsTableSeeder::class);
          $this->call(CellsTableSeeder::class);
          $this->call(FrequencySeederTable::class);
+         $this->call(RolesTableSeeder::class);
     }
 }

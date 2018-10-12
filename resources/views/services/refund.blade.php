@@ -35,11 +35,11 @@
                         $time_diff = $latest_timestamp + (2 * 24 * 60 * 60);
 
                         @endphp
-                        @if($current_timestamp < $time_diff && $service->refunded == false)
+                        @if($current_timestamp < $time_diff && $service->refunded == 'false')
                         <tr>
                             <td>{{ $service->house->housePrice }}</td>
                             <td>{{ $service->house->streetCode }}</td>
-                            <td>{{ $service->house->cell->sector->district->name }}</td>
+                            <td>{{ $service->house->district->name }}</td>
                             <td>
                                 <form method="POST" action="{{ route('custom.service.update', $service->id)}}">
                                     <input type="hidden" name="_method" value="PUT">

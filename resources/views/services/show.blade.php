@@ -37,12 +37,18 @@
 						<address>
 							<strong>House Adress:</strong>
 							<br>
-							{{$data["house"]->cell->name}}<br>
-							{{$data["house"]->cell->sector->name}}<br>
-							{{$data["house"]->cell->sector->district->name}}<br>
-							{{$data["house"]->cell->sector->district->province->name}}<br>
-                            {{$data["house"]->cell->sector->district->province->country->name}}<br>
-							{{$data["house"]->streetCode}}<br>
+							Cell: {{$data["house"]->cell}}<br>
+							Sector: {{$data["house"]->sector->name}}<br>
+							District: {{$data["house"]->district->name}}<br>
+							Province: {{$data["house"]->province->name}}<br>
+                            Country: {{$data["house"]->country->name}}<br>
+							StreetCode: {{$data["house"]->streetCode}}<br>
+							Number Of Rooms: {{$data["house"]->numberOfRooms}}<br>
+							Width x Length: {{$data["house"]->width}} x {{$data["house"]->length}}<br>
+							Water: @if($data["house"]->water == 1) Yes @else No @endif <br>
+							Inside Bathroom: @if($data["house"]->bathroom == 1) Yes @else No @endif<br>
+							Inside Toilet: @if($data["house"]->toilet == 1) Yes @else No @endif<br>
+							Fenced: @if($data["house"]->fenced == 1) Yes @else No @endif<br>
 							<br title="Phone">Phone Number (House Owner):</br> {{$data["house"]->user->phoneNumber}}
 						</address>
 						<!-- <h5 class="sizes">sizes:

@@ -20,7 +20,7 @@ class PublicController extends Controller
      */
     public function DisplayHousesOnHOusePage()
     {
-        $houses = House::all();
+        $houses = House::paginate(3);
         return view('client.index', compact('houses'));
     }
     public function DisplayHousesOnHomePage()
@@ -62,6 +62,16 @@ class PublicController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    public function searchSuggestion(Request $request)
+    {
+         return House::where('houselocation', 'LIKE', '%'.$request->q.'%')->get();
+
+        //  $house = House::where('houselocation','LIKE','%'.$search.'%')
+        //     ->orWhere('housePrice','LIKE','%'.$search.'%')
+        //     ->orWhere('paymentfrequency_id','LIKE','%'.$search.'%')
+        //     ->get();
+    }
+
     public function store(Request $request)
     {
         //
@@ -79,8 +89,6 @@ class PublicController extends Controller
         //
         $house = House::find($id);
         return view('client.show', compact('house'));
-
-
         // return view('client.show', ['house'=>$house]);
     }
 
