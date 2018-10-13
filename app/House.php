@@ -20,11 +20,15 @@ class House extends Model
         'width',
         'water',
         'paymentfrequency_id',
-        'cell',
+
+        //  the atributes below  are foreign kies from other tables
         'country_id',
         'province_id',
         'district_id',
-        'sector_id'
+        'sector_id',
+        'cell'
+        
+
     ];
     public function reports()
     {
@@ -65,5 +69,4 @@ class House extends Model
     {
         return $this->belongsTo('App\User');
     }
-
 }

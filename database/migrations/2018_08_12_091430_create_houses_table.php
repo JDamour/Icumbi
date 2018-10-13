@@ -25,7 +25,7 @@ class CreateHousesTable extends Migration
             $table->integer('province_id')->unsigned();
             $table->integer('district_id')->unsigned();
             $table->integer('sector_id')->unsigned();
-            $table->integer('cell_id')->unsigned();
+            $table->string('cell');
             $table->integer('numberOfRooms')->unsigned();
             $table->decimal('length', 8, 2);
             $table->decimal('width', 8, 2);
