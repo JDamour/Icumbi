@@ -2,6 +2,8 @@
 @section('title', 'List house')
 @section('content')
 
+
+
 <div class="row">
   <div class="col-sm-10 col-sm-offset-1">
     <div class="box">
@@ -73,7 +75,7 @@
               </tr>
               @endforeach
             </tbody>
-            
+
           </table>
         </div>
         <!-- /.box-body -->

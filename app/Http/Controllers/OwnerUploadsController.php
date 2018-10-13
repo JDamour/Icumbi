@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Uploads;
 use App\House;
 use Illuminate\Http\Request;
-
+use Image;
 class OwnerUploadsController extends Controller
 {
     /**
@@ -42,12 +42,18 @@ class OwnerUploadsController extends Controller
     public function store(Request $request)
     {
         //
-        $destinationPath = public_path('/images/HouseUploads');
+        $destinationPath = public_path('\images\HouseUploads\\');
+        $large = public_path('\images\large\\');
         
         foreach($request->photos as $photo) {
-            $filename = time() . $photo->getClientOriginalName() . '.'. $photo->getClientOriginalExtension();
-            //die($filename);
-            $photo->move($destinationPath, $filename);
+             $filename = time() . $photo->getClientOriginalName();
+
+             $photo->move($destinationPath, $filename);
+            copy($destinationPath.$filename, $large.$filename);
+
+            $imagePath = $destinationPath.$filename;
+            $image = Image::make($imagePath)->resize(970, 750)->save();
+
             Uploads::create([
                 "house_id" => $request->input('house_id'),
                 "name" => "image",
@@ -107,6 +113,7 @@ class OwnerUploadsController extends Controller
             $house_id = $upload->house_id;
             if ($upload->delete()) {
                 @unlink(public_path('/images/HouseUploads/' . $src));
+                @unlink(public_path('/images/large/' . $src));
                 return redirect()->route('owner.uploads.index', $house_id);
             } else {
                 return back()->withInput();

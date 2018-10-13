@@ -69,15 +69,17 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
+//        $phonePattern = '/\b\d{3}[-.]?\d{3}[-.]?\d{4}\b/';
+         $phonePattern = '/\s*(?:\+?(\d{1,3}))?([-. (]*(\d{3})[-. )]*)?((\d{3})[-. ]*(\d{2,4})(?:[-.x ]*(\d+))?)\s*/';
+
         return Validator::make($data, [
             'firstName' => 'required|string|max:255',
             'lastName' => 'required|string|max:255',
-            'phoneNumber'=> 'required|numeric|digits_between:10,13',
+            'phoneNumber' => 'required|unique:users|min:10|max:15|regex:' . $phonePattern,
+//            'phoneNumber'=> 'required|numeric|min:10|unique:users||size:11',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
-            'dateOfBirth' => 'required',
             'roleId' => 'required',
-//            'national_id' => 'required|numeric',
         ]);
     }
 
@@ -90,14 +92,10 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         $user = User::create([
-//            'national_id' => $data['national_id'],
             'firstName' => $data['firstName'],
             'lastName' => $data['lastName'],
-//            'gender' => $data['gender'],
-            'dateOfBirth' => $data['dateOfBirth'],
             'phoneNumber' => $data['phoneNumber'],
             'email' => $data['email'],
-//            'roleId' => $data['roleId'],
             'password' => Hash::make($data['password']),
         ]);
         switch($data['roleId'])

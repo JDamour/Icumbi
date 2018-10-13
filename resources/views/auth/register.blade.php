@@ -91,22 +91,6 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="mobile" class="cols-sm-2 control-label required">{{ __('Date') }}</label>
-                            <div class="cols-sm-10">
-                                <div class="input-group">
-                                    <span class="input-group-addon"><i class="fa fa-calendar aria-hidden='true'"></i></span>
-                                    <input type="date" class="form-control{{ $errors->has('Date Of Birth') ? ' is-invalid' : '' }}" name="dateOfBirth" id="dateOfBirth"  placeholder="Your birth Date"value="{{ old('dateOfBirth') }}" required autofocus>
-
-                                </div>
-
-                                @if ($errors->has('dateOfBirth'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('dateOfBirth') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-                        <div class="form-group">
                             <label for="name" class="cols-sm-2 control-label">{{ __('Password') }}</label>
                             <div class="cols-sm-10">
                                 <div class="input-group">
