@@ -25,8 +25,9 @@ show pageeeeeeeeee*/
 searchhhhhhh*/
 #search {
     float: center;
-    margin-top: 9px;
-    width: 250px;
+    margin-top: 9pt;
+    width: 250pt;
+
 }
 
 .search {
@@ -37,13 +38,14 @@ searchhhhhhh*/
     left: -100px;
     float: left;
     line-height: 22px;
+    margin-left: 12vw;
 }
 
     .search input {
         position: absolute;
         width: 0px;
         float: Left;
-        margin-left: 210px;
+        margin-left: 120pt;
         -webkit-transition: all 0.7s ease-in-out;
         -moz-transition: all 0.7s ease-in-out;
         -o-transition: all 0.7s ease-in-out;
@@ -55,9 +57,9 @@ searchhhhhhh*/
     }
 
         .search:hover input, .search input:focus {
-            width: 400px;
-            margin-left: -200px;
-            height: 35px;
+            width: 20vw;
+            margin-left: -5vw;
+            height: 25pt;
         }
 
 .btn {
