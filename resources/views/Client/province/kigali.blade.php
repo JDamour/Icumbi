@@ -3,7 +3,6 @@
 @section('link')
 @endsection
 @section('content')
-
   <section class="probootstrap-slider flexslider2 page-inner">
     <div class="overlay"></div>
     <div class="probootstrap-wrap-banner">
@@ -13,9 +12,9 @@
 
             <div class="page-title probootstrap-animate">
               <div class="probootstrap-breadcrumbs">
-                <a href="#">Home</a><span>house</span>
+                <a href="#">Search</a><span>Kigali</span>
               </div>
-              <h1>Houses</h1>
+              <h1>Kigali</h1>
             </div>
 
           </div>
@@ -35,22 +34,17 @@
           <div class="probootstrap-card probootstrap-listing">
             <div class="probootstrap-card-media">
             <a href="{{route('houseshow.show', $house->id)}}">
-              @foreach($house->uploads as $upload)
-                <img src="/images/HouseUploads/{{ $upload->source }}">
-                @break;
-              @endforeach
+              
 
             </div></a>
             <div class="probootstrap-card-text">
             <h2 class="probootstrap-card-heading"><a href="{{route('houseshow.show', $house->id)}}">House Id: {{ $house->id }}</a></h2>
               <div class="probootstrap-listing-location">
-              <a href="{{route('houseshow.show', $house->id)}}">  <i class="icon-location2"></i> <span>Location:   {{ $house->sector['name'] }}</span>
+              <a href="{{route('houseshow.show', $house->id)}}">  <i class="icon-location2"></i> <span>Location: {{ $house->sector_id }}  </span>
               </div>
               <div class="probootstrap-listing-category for-sale"><span>For Rent</span></div>
-              <div class="probootstrap-listing-price"><strong>{{ $house->housePrice }}/{{ $house->paymentfrequency['name'] }}</strong></div>
+              <div class="probootstrap-listing-price"><strong>{{ $house->housePrice }}/{{ $house->paymentfrequency_id }}</strong></div>
             </div></a>
-             
-            
             <div class="probootstrap-card-extra">
             </div>
           </div>

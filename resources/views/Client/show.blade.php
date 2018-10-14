@@ -1,4 +1,4 @@
-@extends('layouts.frontend')
+@extends('layouts.app')
 @section('content')
 <div class="container">
   <div class="card">
@@ -50,7 +50,7 @@
           <p class="product-description">House Owner's Phone Number: {{ $house->user['phoneNumber'] }} </p>
           <p class="product-description">House Owner's Phone Email: {{ $house->user['email'] }} </p>
           
-          <p class="product-description">Cell: {{ $house->cell['name'] }}/{{ $house->houseLocation }}</p>
+          <p class="product-description">sector: {{ $house->sector['name'] }}/{{ $house->district['name'] }}</p>
           <p class="product-description">Street Code: {{ $house->streetCode}}</p>
 
           <!-- <p class="vote"><strong>91%</strong> liked this house! <strong>(87 votes)</strong></p> -->

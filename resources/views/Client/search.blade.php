@@ -1,5 +1,5 @@
 
-@extends('layouts.frontend')
+@extends('layouts.app')
 @section('title', 'search')
 @section('link')
 @endsection
