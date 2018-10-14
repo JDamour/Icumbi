@@ -37,11 +37,11 @@
         <nav role="navigation" class="probootstrap-nav hidden-xs .navbar-fixed-top">
           <ul class="probootstrap-main-nav">
              
-             <div class="search">
+             <div class="searchh">
               <form action="/search" method="POST" role="search" class="searchform">
              <input type="hidden" name="_token" value="{{ csrf_token() }}">
-             <input type="text"  placeholder="Enter address, price, Neighborhoods" name="search">
-              <button type="submit" class="btn btn-primary btn-sm">Search</button>
+             <input type="text"  placeholder="Enter location, price" name="search">
+              <button type="submit" class="btnn btn-primary btn-sm">Search</button>
              </form> 
              </div>
       
