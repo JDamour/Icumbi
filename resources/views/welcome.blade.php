@@ -36,7 +36,7 @@
             <li><a href="/house">Houses</a></li>
           <!--   <li><a href="agents.html">Agents</a></li>
             <li><a href="about.html">About</a></li> -->
-            <li><a href="contact.html">Contact</a></li>
+            <li><a href="/contact">Contact</a></li>
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
@@ -47,8 +47,16 @@
                             </li>
                         @else
 
-                           @if(Auth::user()->isUser())
-                                                       <li class="nav-item">
+                           @if(Auth::user()->isAdmin())
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url('/admin/houses') }}">{{ __('Dashboard') }}</a>
+                            </li>
+                            @elseif(Auth::user()->isOwner())
+                                                                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url('/owner/houses') }}">{{ __('Dashboard') }}</a>
+                            </li>
+                            @else
+                            <li class="nav-item">
                                 <a class="nav-link" href="{{ url('dashboard') }}">{{ __('Dashboard') }}</a>
                             </li>
                             @endif

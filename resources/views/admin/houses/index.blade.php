@@ -19,6 +19,7 @@
     <!-- Main content -->
     <section class="content container-fluid">
 
+
       <!--------------------------
         | Your Page Content Here |
         -------------------------->
@@ -95,7 +96,7 @@
                       </tr>
                       @endforeach
                       </tbody>
-                     
+
                     </table>
                   </div>
                   <!-- /.box-body -->
@@ -105,11 +106,13 @@
 
         </section>
     <!-- /.content -->
+
   </div>
+
 
 
   
 
- 
+
   
 @endsection
