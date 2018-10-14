@@ -1,4 +1,4 @@
-@extends('layouts.frontend')
+@extends('layouts.app')
 @section('title', 'properties')
 @section('content')
   <section class="probootstrap-slider flexslider2 page-inner">

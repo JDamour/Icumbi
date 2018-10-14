@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container-fluid" style=" margin-top: 100px; width:100vw; background-image: url(https://www.wspa.co.uk/wp-content/uploads/2015/04/wspa-home-background-2-1484x989.jpg); background-position: cover; background-size: cover">
+<div class="container-fluid" style=" margin-top: 100px; width:100vw;background-image: url(images/HouseUploads/backgroundimage.jpg); background-position: cover; background-size: cover">
 
             <div class="row main">
                 <div class="main-login main-center">
@@ -86,22 +86,6 @@
                                 @if ($errors->has('phoneNumber'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('phoneNumber') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="mobile" class="cols-sm-2 control-label required">{{ __('Date') }}</label>
-                            <div class="cols-sm-10">
-                                <div class="input-group">
-                                    <span class="input-group-addon"><i class="fa fa-calendar aria-hidden='true'"></i></span>
-                                    <input type="date" class="form-control{{ $errors->has('Date Of Birth') ? ' is-invalid' : '' }}" name="dateOfBirth" id="dateOfBirth"  placeholder="Your birth Date"value="{{ old('dateOfBirth') }}" required autofocus>
-
-                                </div>
-
-                                @if ($errors->has('dateOfBirth'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('dateOfBirth') }}</strong>
                                     </span>
                                 @endif
                             </div>

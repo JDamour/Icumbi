@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('title', 'houses')
+@section('title', 'search')
 @section('link')
 @endsection
 @section('content')

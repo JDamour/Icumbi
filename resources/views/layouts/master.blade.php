@@ -190,14 +190,14 @@ desired effect
 
                 <p>
                   {{ Auth::user()->firstName.' '.Auth::user()->lastName }} - House Owner
-                  
+
                 </p>
               </li>
               <!-- Menu Body -->
-             
+
               <!-- Menu Footer-->
               <li class="user-footer">
-                
+
                 <div class="pull-right">
                   <a class="btn btn-default btn-flat"href="{{ route('logout') }}"
                        onclick="event.preventDefault();
@@ -217,6 +217,7 @@ desired effect
     </nav>
   </header>
   <!-- Left side column. contains the logo and sidebar -->
+
   <aside class="main-sidebar">
   <section class="sidebar">
 
@@ -243,8 +244,9 @@ desired effect
   <!-- /.sidebar -->
 </aside>
     
+
     <!-- /.sidebar -->
-  
+
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -308,11 +310,11 @@ s0.parentNode.insertBefore(s1,s0);
   </footer>
 
   <!-- Control Sidebar -->
- 
+
   <!-- /.control-sidebar -->
   <!-- Add the sidebar's background. This div must be placed
   immediately after the control sidebar -->
- 
+
 </div>
 <!-- ./wrapper -->
 
