@@ -151,7 +151,7 @@
                     <select class="form-control" name="country" id="select_countries" required>
                       @if (count($data['countries']) > 0)
                         @foreach($data['countries'] as $country)
-                        @if($data['house']->country->id == $country->id) 
+                        @if($data['house']->country->id == $country->id)
                           <option value="{{$country->id}}" selected>{{$country->name}}</option>
                         @else
                           <option value="{{$country->id}}" >{{$country->name}}</option>
@@ -355,4 +355,6 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
+
+
 @endsection
