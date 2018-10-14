@@ -62,11 +62,11 @@ desired effect
   <header class="main-header">
 
     <!-- Logo -->
-    <a href="index2.html" class="logo">
+    <a href="/" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>I</b>app</span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>Icumbi</b> app</span>
+      <span class="logo-lg"><b>Icumbi</b></span>
     </a>
 
     <!-- Header Navbar -->
@@ -79,14 +79,7 @@ desired effect
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
           <!-- Messages: style can be found in dropdown.less-->
-          <li class="dropdown messages-menu">
-            <!-- Menu toggle button -->
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <i class="fa fa-envelope-o"></i>
-              <span class="label label-success">4</span>
-            </a>
-           
-          </li>
+          
           <!-- /.messages-menu -->
 
           <!-- Notifications Menu -->
@@ -108,7 +101,6 @@ desired effect
 
                 <p>
                   {{ Auth::user()->firstName.' '.Auth::user()->lastName }} - House Owner
-
                 </p>
               </li>
               <!-- Menu Body -->
@@ -143,7 +135,7 @@ desired effect
       <li class="header">Navigation</li>
       <!-- Optionally, you can add icons to the links -->
       
-      <li class="treeview active">
+      <!-- <li class="treeview active">
         <a href="#"><i class="fa fa-home"></i> <span>House</span>
           <span class="pull-right-container">
             <i class="fa fa-angle-left pull-right"></i>
@@ -154,7 +146,7 @@ desired effect
           <li><a href="{{ route('houses.index') }}"><i class="fa fa-circle-o"></i> View All</a></li>
         </ul>
       </li>
-      <li><a href="{{ route('owner.services.index') }}"><i class="fa fa-dollar"></i> <span>Services</span></a></li>
+      <li><a href="{{ route('owner.services.index') }}"><i class="fa fa-dollar"></i> <span>Services</span></a></li> -->
     </ul>
     <!-- /.sidebar-menu -->
   </section>

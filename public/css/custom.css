@@ -23,14 +23,14 @@ show pageeeeeeeeee*/
  */
 /*
 searchhhhhhh*/
-#search {
+#searchh {
     float: center;
     margin-top: 9pt;
     width: 250pt;
 
 }
 
-.search {
+.searchh {
     padding: 5px 0;
     width: 230px;
     height: 30px;
@@ -41,7 +41,7 @@ searchhhhhhh*/
     margin-left: 12vw;
 }
 
-    .search input {
+    .searchh input {
         position: absolute;
         width: 0px;
         float: Left;
@@ -56,18 +56,23 @@ searchhhhhhh*/
         border-radius:1px;
     }
 
-        .search:hover input, .search input:focus {
+        .searchh:hover input, .searchh input:focus {
             width: 20vw;
-            margin-left: -5vw;
+            position: absolute;
+            margin-left: -3.2vw;
             height: 25pt;
+            font-size: 12pt;
         }
 
-.btn {
-    height: 25px;
+.btnn {
+
+    height: 25pt;
+    font-size: 12pt;
     position: absolute;
     right: 0;
     top: 5px;
     border-radius:3px;
+    width: 80pt;
 }
 
 .card-container.card {
