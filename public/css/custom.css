@@ -374,7 +374,7 @@ img {
  */
 
 .main{
-  
+
   margin-top: 70px;
   color: black;
 
@@ -389,7 +389,7 @@ hr{
   width: 10%;
   color: #fff;
   color: black;
- 
+
 }
 
 .form-group{
@@ -408,7 +408,7 @@ label{
   margin-bottom: 14px;
   color: black;
 
- 
+
 }
 
 
@@ -417,7 +417,7 @@ label{
   border-radius: 10px;
   background: #eee;
   color: black;
-  font-size: 15px; 
+  font-size: 15px;
 }
 
 .main-center{
@@ -430,7 +430,7 @@ background-image: url("paper.gif");
 background-repeat: repeat-y;
 opacity: 5;
 
- 
+
 }
 
 .login-button{

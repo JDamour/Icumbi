@@ -108,14 +108,14 @@ desired effect
 
                 <p>
                   {{ Auth::user()->firstName.' '.Auth::user()->lastName }} - House Owner
-                  
+
                 </p>
               </li>
               <!-- Menu Body -->
-             
+
               <!-- Menu Footer-->
               <li class="user-footer">
-                
+
                 <div class="pull-right">
                   <a class="btn btn-default btn-flat"href="{{ route('logout') }}"
                        onclick="event.preventDefault();
@@ -135,12 +135,36 @@ desired effect
     </nav>
   </header>
   <!-- Left side column. contains the logo and sidebar -->
- 
 
-    <!-- sidebar: style can be found in sidebar.less -->
-    
-    <!-- /.sidebar -->
+  <aside class="main-sidebar">
+  <section class="sidebar">
+
+    <ul class="sidebar-menu" data-widget="tree">
+      <li class="header">Navigation</li>
+      <!-- Optionally, you can add icons to the links -->
+      
+      <li class="treeview active">
+        <a href="#"><i class="fa fa-home"></i> <span>House</span>
+          <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+        </a>
+        <ul class="treeview-menu">
+          <li><a href="{{ route('houses.create') }}"><i class="fa fa-circle-o"></i> New</a></li>
+          <li><a href="{{ route('houses.index') }}"><i class="fa fa-circle-o"></i> View All</a></li>
+        </ul>
+      </li>
+      <li><a href="{{ route('owner.services.index') }}"><i class="fa fa-dollar"></i> <span>Services</span></a></li>
+    </ul>
+    <!-- /.sidebar-menu -->
+  </section>
   
+  <!-- /.sidebar -->
+</aside>
+    
+
+    <!-- /.sidebar -->
+
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -204,11 +228,11 @@ s0.parentNode.insertBefore(s1,s0);
   </footer>
 
   <!-- Control Sidebar -->
- 
+
   <!-- /.control-sidebar -->
   <!-- Add the sidebar's background. This div must be placed
   immediately after the control sidebar -->
- 
+
 </div>
 <!-- ./wrapper -->
 

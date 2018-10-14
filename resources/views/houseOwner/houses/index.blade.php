@@ -2,53 +2,8 @@
 @section('title', 'List house')
 @section('content')
 
-<aside class="main-sidebar">
-  <section class="sidebar">
 
-    <ul class="sidebar-menu" data-widget="tree">
-      <li class="header">Navigation</li>
-      <!-- Optionally, you can add icons to the links -->
-      
-      <li class="treeview active">
-        <a href="#"><i class="fa fa-home"></i> <span>House</span>
-          <span class="pull-right-container">
-            <i class="fa fa-angle-left pull-right"></i>
-          </span>
-        </a>
-        <ul class="treeview-menu">
-          <li><a href="{{ route('admin.houses.create') }}"><i class="fa fa-circle-o"></i> New</a></li>
-          <li><a href="{{ route('admin.houses.index') }}"><i class="fa fa-circle-o"></i> View All</a></li>
-        </ul>
-      </li>
-      <li class="treeview">
-        <a href="#"><i class="fa fa-heart"></i> <span>Services</span>
-          <span class="pull-right-container">
-            <i class="fa fa-angle-left pull-right"></i>
-          </span>
-        </a>
-        <ul class="treeview-menu">
-          <li><a href="#"><i class="fa fa-circle-o"></i> Latest</a></li>
-          <li><a href="#"><i class="fa fa-circle-o"></i> View All</a></li>
-        </ul>
-      </li>
-      <li class="treeview">
-        <a href="#"><i class="fa fa-envelope"></i> <span>Message</span>
-          <span class="pull-right-container">
-            <i class="fa fa-angle-left pull-right"></i>
-          </span>
-        </a>
-        <ul class="treeview-menu">
-          <li><a href="#"><i class="fa fa-circle-o"></i> Unread</a></li>
-          <li><a href="#"><i class="fa fa-circle-o"></i> View All</a></li>
-        </ul>
-      </li>
-      <li><a href="#"><i class="fa fa-dollar"></i> <span>Transactions</span></a></li>
-    </ul>
-    <!-- /.sidebar-menu -->
-  </section>
-  
-  <!-- /.sidebar -->
-</aside>
+
 <div class="row">
   <div class="col-sm-10 col-sm-offset-1">
     <div class="box">
@@ -120,7 +75,7 @@
               </tr>
               @endforeach
             </tbody>
-            
+
           </table>
         </div>
         <!-- /.box-body -->
