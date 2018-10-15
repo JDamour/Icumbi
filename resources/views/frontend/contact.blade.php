@@ -1,6 +1,5 @@
 @extends('layouts.app')
-@section('title', 'houses')
-@section('content')
+
   <section class="probootstrap-slider flexslider2 page-inner">
     <div class="overlay"></div>
     <div class="probootstrap-wrap-banner">
@@ -78,4 +77,4 @@
     </div>
   </section>
   <div id="map"></div>
-@endsection
+
