@@ -12,10 +12,6 @@
     <link rel="stylesheet" href="css/style.min.css">
     <link rel="stylesheet" href="css/custom.css">
 
-    <!--[if lt IE 9]>
-      <script src="js/vendor/html5shiv.min.js"></script>
-      <script src="js/vendor/respond.min.js"></script>
-    <![endif]-->
   </head>
   <body>
 
@@ -34,8 +30,8 @@
           <ul class="probootstrap-main-nav">
             <li class="active"><a href="/">Home</a></li>
             <li><a href="/house">Houses</a></li>
-          <!--   <li><a href="agents.html">Agents</a></li>
-            <li><a href="about.html">About</a></li> -->
+          <!--   <li><a href="/agent">Agents</a></li>
+            <li><a href="/about">About</a></li> -->
             <li><a href="/contact">Contact</a></li>
                         <!-- Authentication Links -->
                         @guest
@@ -78,10 +74,6 @@
                                 </div>
                             </li>
                         @endguest
-                 
-
-
-
           </ul>
           <div class="extra-text visible-xs"> 
             <a href="#" class="probootstrap-burger-menu"><i>Menu</i></a>
@@ -198,7 +190,7 @@
             <img style="width: 100%; height: 50vh;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTem5V2NHTNbn1a4LeifPBLff5p6ga2lIspXGJJU3V3rpPcF1E-" alt="Free Bootstrap Template by uicookies.com" class="img-responsive">
             <div class="probootstrap-text-overlay">
               <h3>Kigali City</h3>
-              <p>430 Properties</p>
+              <p>430 Houses</p>
             </div>
           </a>
         </div>

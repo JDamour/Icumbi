@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-=======
-
->>>>>>> d33822c80fd4f67c91955296abfdc93a260c4358
 @extends('layouts.app')
 @section('title', 'houses')
 @section('link')
