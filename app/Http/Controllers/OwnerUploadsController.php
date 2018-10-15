@@ -42,7 +42,7 @@ class OwnerUploadsController extends Controller
     public function store(Request $request)
     {
         //
-        $destinationPath = public_path('\images\HouseUploads\\');
+        $destinationPath = public_path('\images\small\\');
         $large = public_path('\images\large\\');
         
         foreach($request->photos as $photo) {
@@ -112,7 +112,7 @@ class OwnerUploadsController extends Controller
             $src = $upload->source;
             $house_id = $upload->house_id;
             if ($upload->delete()) {
-                @unlink(public_path('/images/HouseUploads/' . $src));
+                @unlink(public_path('/images/small/' . $src));
                 @unlink(public_path('/images/large/' . $src));
                 return redirect()->route('owner.uploads.index', $house_id);
             } else {

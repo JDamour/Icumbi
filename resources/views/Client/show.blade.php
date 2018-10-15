@@ -1,8 +1,5 @@
 @extends('layouts.app')
-@section('content')
-<div class="container">
   <div class="card">
-    <div class="container-fliud">
       <div class="wrapper row">
       <div class="preview col-md-6">
 						
@@ -11,12 +8,12 @@
               $i=1;
             @endphp
               @foreach($house->uploads as $upload)
-						  <div class="tab-pane <?php echo ($i == 1) ? 'active' : '' ?>" id="pic-{{$i}}">
-              <img src="/images/HouseUploads/{{ $upload->source }}" />
-              </div>
-              @php 
-                $i++;
-              @endphp
+						    <div class="tab-pane <?php echo ($i == 1) ? 'active' : '' ?>" id="pic-{{$i}}">
+                  <img src="/images/HouseUploads/{{ $upload->source }}" />
+                </div>
+                @php 
+                  $i++;
+                @endphp
               @endforeach
 						  
               </div>
@@ -64,9 +61,4 @@
           </div>
         </div>
       </div>
-    </div>
-  </div>
-
-
-
-@endsection
+    

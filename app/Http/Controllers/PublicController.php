@@ -6,6 +6,7 @@ use App\User;
 use App\House;
 use App\Country;
 use App\Uploads;
+use App\Province;
 use App\Paymentfrequency;
 use App\Http\MailController;
 use Illuminate\Http\Request;
@@ -60,9 +61,14 @@ class PublicController extends Controller
     public function south()
     {
         // $houses = House::all();
-        $houses =DB::table('houses')->whereprovince_id(2)->get();
+        $houses =DB::table('houses')->where('province_id',2)->get();
         return view('client.province.south', compact('houses'));
         dd($house);
+    }
+    public function paymentfrequency()
+    {
+        $payments = Paymentfrequency::all();
+        return view('client.province.kigali', compact('payments'));
     }
     
     public function upload()
@@ -107,10 +113,7 @@ class PublicController extends Controller
     {
          return House::where('houselocation', 'LIKE', '%'.$request->q.'%')->get();
 
-        //  $house = House::where('houselocation','LIKE','%'.$search.'%')
-        //     ->orWhere('housePrice','LIKE','%'.$search.'%')
-        //     ->orWhere('paymentfrequency_id','LIKE','%'.$search.'%')
-        //     ->get();
+        
     }
 
     public function store(Request $request)
@@ -130,6 +133,13 @@ class PublicController extends Controller
         //
         $house = House::find($id);
         return view('client.show', compact('house'));
+        // return view('client.show', ['house'=>$house]);
+    }
+    public function showw($id)
+    {
+        //
+        $provinces = Province::find($id);
+        return view('client.province.kigali', compact('provinces'));
         // return view('client.show', ['house'=>$house]);
     }
 

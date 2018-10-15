@@ -174,6 +174,7 @@ Route::get('/master', function(){
     Route::get('/northern', 'PublicController@north');
     Route::get('/southern', 'PublicController@south');
     Route::get('/kigali', 'PublicController@kigali');
+    Route::get('/provinces/{id}', 'PublicController@showw');
     Route::get('/eastern', 'PublicController@east');
     Route::get('/western', 'PublicController@west');
 

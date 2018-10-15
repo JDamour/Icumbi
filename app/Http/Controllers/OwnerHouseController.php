@@ -165,7 +165,7 @@ class OwnerHouseController extends Controller
         foreach($house->uploads as $upload) {
             $src = $upload->source;
             if ($upload->delete()) {
-                @unlink(public_path('/images/HouseUploads/' . $src));
+                @unlink(public_path('/images/small/' . $src));
             } else {
                 return back()->withInput();
             }

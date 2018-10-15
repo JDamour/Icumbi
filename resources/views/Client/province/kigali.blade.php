@@ -1,8 +1,4 @@
 @extends('layouts.app')
-@section('title', 'houses')
-@section('title', 'search')
-@section('link')
-@endsection
 @section('content')
   <section class="probootstrap-slider flexslider2 page-inner">
     <div class="overlay"></div>
@@ -44,7 +40,9 @@
               <a href="{{route('houseshow.show', $house->id)}}">  <i class="icon-location2"></i> <span>Location: {{ $house->sector_id }}  </span>
               </div>
               <div class="probootstrap-listing-category for-sale"><span>For Rent</span></div>
-              <div class="probootstrap-listing-price"><strong>{{ $house->housePrice }}/{{ $house->paymentfrequency_id }}</strong></div>
+              <div class="probootstrap-listing-price"><strong>{{ $house->housePrice }}/
+              
+              </strong></div>
             </div></a>
             <div class="probootstrap-card-extra">
             </div>
