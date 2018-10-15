@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="{{asset('css/styles-merged.css')}}">
     <link rel="stylesheet" href="{{asset('css/style.min.css')}}">
     <link rel="stylesheet" href="{{asset('css/custom.css')}}">
+
   </head>
   <body>
 
@@ -25,11 +26,16 @@
         <a href="/" class="probootstrap-logo">ICUMBI</a>
         <nav role="navigation" class="probootstrap-nav hidden-xs .navbar-fixed-top">
           <ul class="probootstrap-main-nav">
+
              <div class="search">
+
+             
+             <div class="searchh">
+
               <form action="/search" method="POST" role="search" class="searchform">
              <input type="hidden" name="_token" value="{{ csrf_token() }}">
-             <input type="text"  placeholder="Enter address, price, Neighborhoods" name="search">
-              <button type="submit" class="btn btn-primary btn-sm">Search</button>
+             <input type="text"  placeholder="Enter location, price" name="search">
+              <button type="submit" class="btnn btn-primary btn-sm">Search</button>
              </form> 
              </div>
                 <li class="active"><a href="/">Home</a></li>

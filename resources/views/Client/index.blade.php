@@ -1,8 +1,6 @@
+
 @extends('layouts.app')
-@section('title', 'houses')
-@section('link')
-@endsection
-@section('content')
+
 
   <section class="probootstrap-slider flexslider2 page-inner">
     <div class="overlay"></div>
@@ -59,4 +57,3 @@
       </div>
     </div>
   </section>
-@endsection
