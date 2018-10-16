@@ -127,7 +127,7 @@ class OwnerHouseController extends Controller
             "housePrice" => $request->input('housePrice'),
             "paymentfrequency_id" => $request->input('payfreq'),
             "user_id" => Auth::user()->id,
-            "cell_id" => $request->input('cell'),
+            "cell" => $request->input('cell'),
             "sector_id" => $request->input('sector'),
             "district_id" => $request->input('district'),
             "province_id" => $request->input('province'),
@@ -166,6 +166,7 @@ class OwnerHouseController extends Controller
             $src = $upload->source;
             if ($upload->delete()) {
                 @unlink(public_path('/images/HouseUploads/' . $src));
+                @unlink(public_path('/images/large/' . $src));
             } else {
                 return back()->withInput();
             }

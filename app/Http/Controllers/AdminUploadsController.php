@@ -114,6 +114,7 @@ class AdminUploadsController extends Controller
             $house_id = $upload->house_id;
             if ($upload->delete()) {
                 @unlink(public_path('/images/HouseUploads/' . $src));
+                @unlink(public_path('/images/large/' . $src));
                 return redirect()->route('admin.uploads.index', $house_id);
             } else {
                 return back()->withInput();

@@ -171,6 +171,7 @@ class AdminHouseController extends Controller
             $src = $upload->source;
             if ($upload->delete()) {
                 @unlink(public_path('/images/HouseUploads/' . $src));
+                @unlink(public_path('/images/large/' . $src));
             } else {
                 return back()->withInput();
             }
