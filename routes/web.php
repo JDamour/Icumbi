@@ -27,7 +27,9 @@ Route::post('contactmail', 'MailController@ContactMail');
 Route::get('/', function () {
     return view('welcome');
 });
-
+Route::get('/housedoc', function () {
+    return view('housedoc');
+});
 Route::get('/service', function () {
     return view('service');
 });

@@ -438,6 +438,7 @@
             <h4 class="heading">Quick Links</h4>
             <ul class="stack-link">
               <li><a href="/house">House</a></li>
+              <li><a href="/housedoc">House Documentation</a></li>
               <li><a href="#">Rent Properties</a></li>
               <li><a href="#">Sell Properties</a></li>
               <li><a href="#">Agents</a></li>
