@@ -7,6 +7,7 @@ use App\Country;
 use App\Paymentfrequency;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\HouseFormRequest;
 
 class AdminHouseController extends Controller
 {
@@ -44,7 +45,7 @@ class AdminHouseController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(HouseFormRequest $request)
     {
         //
         $house = House::create([
@@ -113,7 +114,7 @@ class AdminHouseController extends Controller
      * @param  \App\House  $house
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(HouseFormRequest $request, $id)
     {
         //
         // $id = $house->id;

@@ -42,8 +42,8 @@
 
                       @foreach ($services as $service)
                       <tr>
-                        <td>{{$service->email}}</td>
-                        <td>{{$service->phone_number}}</td>
+                        <td>{{$service->user->firstName}} {{$service->user->lastName}}</td>
+                        <td>{{$service->user->phoneNumber}}</td>
                         <td>{{$service->payment_id}}</td>
                         <td>
                             <span class="label bg-purple">
