@@ -24,6 +24,7 @@
   <header role="banner" class="probootstrap-header">
     <div class="container">
         <a href="/" class="probootstrap-logo">ICUMBI</a>
+        <a href="#" class="probootstrap-burger-menu visible-xs" ><i>Menu</i></a>
         <nav role="navigation" class="probootstrap-nav hidden-xs .navbar-fixed-top">
           <ul class="probootstrap-main-nav">
 
