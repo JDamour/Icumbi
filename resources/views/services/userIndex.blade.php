@@ -1,8 +1,10 @@
-@extends('houseOwner.master')
-@section('title', 'List Booked Houses')
+@extends('layouts.user-p')
+@section('title', 'Booked houses')
 @section('content')
-<!-- Content Wrapper. Contains page content -->
-<div class="content-wrapper">
+
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
@@ -25,16 +27,16 @@
             <div class="col-sm-10 col-sm-offset-1">
                 <div class="box">
                   <div class="box-header">
-                    <h3 class="box-title">Houses</h3>
+                    <h3 class="box-title">Services</h3>
                   </div>
                   <!-- /.box-header -->
                   <div class="box-body">
                     <table id="table_houses" class="table table-bordered table-striped">
-                      <thead>
+                    <thead>
                       <tr>
-                        <th>Email</th>
-                        <th>Phone Number</th>
-                        <th>Payment Reference Number</th>
+                        <th>District</th>
+                        <th>Sector</th>
+                        <th>Price</th>
                         <th>Action</th>
                       </tr>
                       </thead>
@@ -42,18 +44,26 @@
 
                       @foreach ($services as $service)
                       <tr>
-                        <td>{{$service->email}}</td>
-                        <td>{{$service->phone_number}}</td>
-                        <td>{{$service->payment_id}}</td>
+                        <td>{{$service->house->district->name}}</td>
+                        <td>{{$service->house->sector->name}}</td>
+                        @if($service->payment_id != NULL)
+                        <td>Paid</td>
                         <td>
                             <span class="label bg-purple">
-                                <a style="color:white" href="{{route('houses.show', $service->house_id)}}">View House</a>
+                                <a style="color:white" href="{{route('custom.service.show', $service->id)}}">View House Details</a>
                             </span>
                         </td>
+                        @else
+                        <td>Unpaid</td>
+                        <td>
+                            <span class="label bg-purple">
+                                <a style="color:white" href="#" disabled>View House Details</a>
+                            </span>
+                        </td>
+                        @endif
                       </tr>
                       @endforeach
                       </tbody>
-                      <tfoot>
                     </table>
                   </div>
                   <!-- /.box-body -->
@@ -61,6 +71,10 @@
             </div>
         </div>
 
-      </section>
-    </div>
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+
+
 @endsection

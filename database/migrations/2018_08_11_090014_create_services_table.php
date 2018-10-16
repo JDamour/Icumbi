@@ -15,8 +15,7 @@ class CreateServicesTable extends Migration
     {
         Schema::create('services', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('email');
-            $table->string('phone_number', 50);
+            $table->unsignedInteger('user_id');
             $table->enum('refunded', ['true', 'false'])->default('false');
             $table->unsignedInteger('house_id');
             $table->unsignedInteger('payment_id')->nullable();

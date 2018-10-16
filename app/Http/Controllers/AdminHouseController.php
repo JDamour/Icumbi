@@ -143,6 +143,17 @@ class AdminHouseController extends Controller
         }
     }
 
+    public function updateStatus($house_id, $status) {
+        $house = House::where('id', $house_id)->update([
+            'status' => $status
+        ]);
+        if ($house) {
+            return redirect()->route('admin.houses.show', $house_id);
+        } else {
+            return back()->withInput();
+        }
+    }
+
     /**
      * Remove the specified resource from storage.
      *

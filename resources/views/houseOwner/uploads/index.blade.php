@@ -1,6 +1,27 @@
-@extends('layouts.master')
+@extends('houseOwner.master')
 @section('title', 'add house')
 @section('content')
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+        House
+        <small>Create</small>
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> house</a></li>
+        <li class="active">new</li>
+      </ol>
+    </section>
+
+    <!-- Main content -->
+    <section class="content container-fluid">
+
+      <!--------------------------
+        | Your Page Content Here |
+        -------------------------->
+        @include('partials.success')
+        @include('partials.error')
  <div class="row">
         <div class="col-sm-10 col-sm-offset-1">
           <div class="box box-info">
@@ -39,4 +60,7 @@
           </script>
         </div>
       </div>
+
+    </section>
+  </div>
 @endsection

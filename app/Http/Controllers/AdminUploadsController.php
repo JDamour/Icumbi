@@ -43,11 +43,18 @@ class AdminUploadsController extends Controller
     {
         //
         $destinationPath = public_path('/images/HouseUploads');
+        $large = public_path('/images/large/');
         
         foreach($request->photos as $photo) {
             $filename = time() . $photo->getClientOriginalName() . '.'. $photo->getClientOriginalExtension();
             //die($filename);
             $photo->move($destinationPath, $filename);
+            copy($destinationPath.'/'.$filename, $large.$filename);
+
+            $imagePath = $destinationPath.'/'.$filename;
+            $image = Image::make($imagePath)->resize(970, 750)->save();
+
+
             Uploads::create([
                 "house_id" => $request->input('house_id'),
                 "name" => "image",

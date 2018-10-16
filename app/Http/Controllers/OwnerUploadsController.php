@@ -42,16 +42,16 @@ class OwnerUploadsController extends Controller
     public function store(Request $request)
     {
         //
-        $destinationPath = public_path('\images\HouseUploads\\');
-        $large = public_path('\images\large\\');
+        $destinationPath = public_path('images/HouseUploads');
+        $large = public_path('/images/large/');
         
         foreach($request->photos as $photo) {
-             $filename = time() . $photo->getClientOriginalName();
+            $filename = time() . $photo->getClientOriginalName();
 
-             $photo->move($destinationPath, $filename);
-            copy($destinationPath.$filename, $large.$filename);
+            $photo->move($destinationPath, $filename);
+            copy($destinationPath.'/'.$filename, $large.$filename);
 
-            $imagePath = $destinationPath.$filename;
+            $imagePath = $destinationPath.'/'.$filename;
             $image = Image::make($imagePath)->resize(970, 750)->save();
 
             Uploads::create([

@@ -56,7 +56,7 @@
 
                       @foreach ($houses as $house)
                       <tr>
-                        <td>{{$house->user->national_id}}</td>
+                        <td>{{$house->user->firstName}} {{$house->user->lastName}}</td>
                         <td>{{$house->streetCode}}</td>
                         <td>{{$house->housePrice}}</td>
                         <td>{{$house->country->name}}</td>
@@ -84,14 +84,22 @@
                         <td>{{count($house->service)}}</td>
                         <td>{{count($house->reports)}}</td>
                         @if($house->status == 1)
-                        <td><span class="label label-success">Active</span></td>
+                        <td><span class="label label-warning">Created</span></td>
                         @elseif($house->status == 2)
-                        <td><span class="label label-warning">Booked</span></td>
+                        <td><span class="label label-success">Approved</span></td>
+                        @elseif($house->status == 3)
+                        <td><span class="label label-success">Booked</span></td>
                         @else
-                        <td><span class="label label-danger">Disabled</span></td>
+                        <td><span class="label label-danger">Blocked</span></td>
                         @endif
                         <td>
                           <span class="label bg-purple"><a style="color:white" href="{{route('admin.houses.show', $house->id)}}">open</a></span>
+                          @if($house->status == 1)
+                          <span class="label bg-purple"><a style="color:white" href="{{route('admin.houses.updateStatus', [$house->id, 2])}}">Approve House</a></span>
+                          @endif
+                          @if($house->status == 2)
+                          <span class="label bg-purple"><a style="color:white" href="{{route('admin.houses.updateStatus', [$house->id, 4])}}">Block House</a></span>
+                          @endif
                           <span class="label bg-maroon"><a style="color:white" href="{{route('admin.houses.delete', $house->id)}}">Delete</a></span></td>
                       </tr>
                       @endforeach

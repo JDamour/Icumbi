@@ -24,18 +24,6 @@
                 <form class="" method="POST" action="{{ route('custom.service.store')}}">
                   <div class='form-row'>
                     <div class='form-group card required'>
-                        <label class='control-label'>Phone Number</label>
-                      <input autocomplete='off' class='form-control card-number' type='text' name="phone">
-                    </div>
-                  </div>
-                  <div class='form-row'>
-                    <div class='form-group card required'>
-                        <label class='control-label'>Email</label>
-                      <input autocomplete='off' class='form-control card-number' type='email' name="email">
-                    </div>
-                  </div>
-                  <div class='form-row'>
-                    <div class='form-group card required'>
                     <input type="hidden" name="house_id" value="{{ $data['house_id'] }}">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <button class='form-control btn btn-primary' type='submit'> Continue →</button>

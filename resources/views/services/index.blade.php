@@ -33,8 +33,7 @@
                     <table id="table_houses" class="table table-bordered table-striped">
                     <thead>
                       <tr>
-                        <th>Email</th>
-                        <th>Phone Number</th>
+                        <th>User</th>
                         <th>House Owner</th>
                         <th>Payment Reference Number</th>
                         <th>Action</th>
@@ -44,10 +43,13 @@
 
                       @foreach ($services as $service)
                       <tr>
-                        <td>{{$service->email}}</td>
-                        <td>{{$service->phone_number}}</td>
+                        <td>{{$service->user->firstName}} {{$service->user->lastName}}</td>
                         <td>{{$service->house->user->firstName}} {{$service->house->user->lastName}} </td>
-                        <td>{{$service->payment_id}}</td>
+                        @if($service->payment_id != NULL)
+                        <td>Paid</td>
+                        @else
+                        <td>Unpaid</td>
+                        @endif
                         <td>
                             <span class="label bg-purple">
                                 <a style="color:white" href="{{route('admin.houses.show', $service->house_id)}}">View House</a>

@@ -1,9 +1,29 @@
-@extends('layouts.master')
+@extends('houseOwner.master')
 @section('title', 'List house')
 @section('content')
 
 
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+        House
+        <small>Create</small>
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> house</a></li>
+        <li class="active">new</li>
+      </ol>
+    </section>
 
+    <!-- Main content -->
+    <section class="content container-fluid">
+
+      <!--------------------------
+        | Your Page Content Here |
+        -------------------------->
+        @include('partials.success')
+        @include('partials.error')
 <div class="row">
   <div class="col-sm-10 col-sm-offset-1">
     <div class="box">
@@ -63,11 +83,13 @@
               <td>{{count($house->service)}}</td>
               <td>{{count($house->reports)}}</td>
               @if($house->status == 1)
-              <td><span class="label label-success">Active</span></td>
+              <td><span class="label label-warning">Created</span></td>
               @elseif($house->status == 2)
-              <td><span class="label label-warning">Booked</span></td>
+              <td><span class="label label-success">Approved</span></td>
+              @elseif($house->status == 3)
+              <td><span class="label label-success">Booked</span></td>
               @else
-              <td><span class="label label-danger">Disabled</span></td>
+              <td><span class="label label-danger">Blocked</span></td>
               @endif
               <td>
                 <span class="label bg-purple"><a style="color:white" href="{{route('houses.show', $house->id)}}">open</a></span>
@@ -81,5 +103,7 @@
         <!-- /.box-body -->
       </div>
     </div>
+  </div>
+  </section>
   </div>
   @endsection

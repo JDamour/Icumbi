@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Support\Facades\Auth;
 
 
-class isUser
+class IsUser
 {
     /**
      * Handle an incoming request.
