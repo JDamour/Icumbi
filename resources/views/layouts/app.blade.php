@@ -14,12 +14,6 @@
     <link rel="stylesheet" href="{{asset('css/style.min.css')}}">
     <link rel="stylesheet" href="{{asset('css/custom.css')}}">
 
-    
-
-    <!--[if lt IE 9]>
-      <script src="js/vendor/html5shiv.min.js"></script>
-      <script src="js/vendor/respond.min.js"></script>
-    <![endif]-->
   </head>
   <body>
 
@@ -30,54 +24,37 @@
   <header role="banner" class="probootstrap-header">
     <div class="container">
         <a href="/" class="probootstrap-logo">ICUMBI</a>
-        
-        <a href="#" class="probootstrap-burger-menu visible-xs" ><i>Menu</i></a>
-        <div class="mobile-menu-overlay"></div>
-
         <nav role="navigation" class="probootstrap-nav hidden-xs .navbar-fixed-top">
           <ul class="probootstrap-main-nav">
+
+             <div class="search">
+
              
              <div class="searchh">
+
               <form action="/search" method="POST" role="search" class="searchform">
              <input type="hidden" name="_token" value="{{ csrf_token() }}">
              <input type="text"  placeholder="Enter location, price" name="search">
               <button type="submit" class="btnn btn-primary btn-sm">Search</button>
              </form> 
              </div>
-      
-            
-            <li class="active"><a href="/">Home</a></li>
-            <li><a href="/house">House</a></li>
-          <!--   <li><a href="/agents">Agents</a></li> -->
-            <!-- <li><a href="/about">About</a></li> -->
-            <li><a href="/contact">Contact</a></li>
-             <li><a href="/login">Login</a></li>
-            <li><a href="/register">SignUp</a></li>
-            
-           
-
-           
+                <li class="active"><a href="/">Home</a></li>
+                <li><a href="/house">House</a></li>
+                <!--   <li><a href="/agents">Agents</a></li> -->
+                <!-- <li><a href="/about">About</a></li> -->
+                <li><a href="/contact">Contact</a></li>
+                <li><a href="/login">Login</a></li>
+                <li><a href="/register">SignUp</a></li>
           </ul>
-          <div class="extra-text visible-xs"> 
-            <a href="#" class="probootstrap-burger-menu"><i>Menu</i></a>
-            <h5>Address</h5>
-            <p>Rwanda, Kigali, Kimironko</p>
-            <h5>Connect</h5>
-            <ul class="social-buttons">
-              <li><a href="#"><i class="icon-twitter"></i></a></li>
-              <li><a href="#"><i class="icon-facebook2"></i></a></li>
-              <li><a href="#"><i class="icon-instagram2"></i></a></li>
-            </ul>
-          </div>
         </nav>
-    </div>
-  </header>
+      </div>
+    </header>
 
-                    <ul class="navbar-nav ml-auto">
+                    <!-- <ul class="navbar-nav ml-auto"> 
 
                 </div>
             </div>
-        </nav>
+        </nav>-->
 
 
         <footer class="main-footer" style="height:40px; color: white; background: #6C7D80; z-index:1;">
@@ -100,6 +77,3 @@
 <script src="{{asset('js/main.min.js')}}"></script>
 <script src="{{asset('js/custom.js')}}"></script>
 </html>
-
-
-
