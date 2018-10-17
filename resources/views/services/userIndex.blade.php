@@ -1,6 +1,7 @@
-@extends('admin.master')
-@section('title', 'List Services')
+@extends('layouts.user-p')
+@section('title', 'Booked houses')
 @section('content')
+
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -33,9 +34,9 @@
                     <table id="table_houses" class="table table-bordered table-striped">
                     <thead>
                       <tr>
-                        <th>User</th>
-                        <th>House Owner</th>
-                        <th>Payment Reference Number</th>
+                        <th>District</th>
+                        <th>Sector</th>
+                        <th>Price</th>
                         <th>Action</th>
                       </tr>
                       </thead>
@@ -43,19 +44,23 @@
 
                       @foreach ($services as $service)
                       <tr>
-                        <td>{{$service->user->firstName}} {{$service->user->lastName}}</td>
-                        <td>{{$service->house->user->firstName}} {{$service->house->user->lastName}} </td>
+                        <td>{{$service->house->district->name}}</td>
+                        <td>{{$service->house->sector->name}}</td>
                         @if($service->payment_id != NULL)
                         <td>Paid</td>
-                        @else
-                        <td>Unpaid</td>
-                        @endif
                         <td>
                             <span class="label bg-purple">
-                                <a style="color:white" href="{{route('admin.houses.show', $service->house_id)}}">View House</a>
+                                <a style="color:white" href="{{route('custom.service.show', $service->id)}}">View House Details</a>
                             </span>
                         </td>
-
+                        @else
+                        <td>Unpaid</td>
+                        <td>
+                            <span class="label bg-purple">
+                                <a style="color:white" href="#" disabled>View House Details</a>
+                            </span>
+                        </td>
+                        @endif
                       </tr>
                       @endforeach
                       </tbody>
@@ -70,4 +75,6 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
+
+
 @endsection

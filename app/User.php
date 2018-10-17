@@ -100,6 +100,10 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\House');
     }
+    public function services()
+    {
+        return $this->hasMany('App\Service');
+    }
 
     // public function messages() {
     //     if ($this->messagesAdmin->id == $this->id) {

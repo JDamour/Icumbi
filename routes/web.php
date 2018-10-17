@@ -51,16 +51,6 @@ Route::get('/view/{id}', 'ViewController@show')->name('get_view');
 Route::post('/view/{id}', 'ViewController@store')->name('set_view');
 
 
-# public service routes
-Route::get('/service/create/{house_id}', 'ServiceController@create')->name('custom.service.create');
-Route::post('/service', 'ServiceController@store')->name('custom.service.store');
-Route::post('/service/callback/{service_id}', 'ServiceController@callback')->name('custom.service.callback');
-Route::get('/service/{service_id}', 'ServiceController@preshow')->name('custom.service.preshow');
-Route::get('/service/refund/{house_id}', 'ServiceController@prerefund')->name('custom.service.prerefund');
-Route::post('/service/refund', 'ServiceController@refund')->name('custom.service.refund');
-Route::post('/service/{service_id}', 'ServiceController@show')->name('custom.service.show');
-Route::put('/service/{service_id}', 'ServiceController@update')->name('custom.service.update');
-
 # location routes
 Route::get('/provinces/{id}', function($id) {
   echo (json_encode(Province::where('country_id', $id)->get()));
@@ -85,6 +75,7 @@ Route::group(['prefix' => 'admin', 'middleware' =>'auth.admin'],function () {
 
     # house controller
     // Route::resource('houses', 'AdminHouseController');
+    Route::get('/houses/updatestatus/{house_id}/{status}', 'AdminHouseController@updateStatus')->name('admin.houses.updateStatus');
     Route::get('/houses', 'AdminHouseController@index')->name('admin.houses.index');
     Route::get('/houses/create', 'AdminHouseController@create')->name('admin.houses.create');
     Route::get('/houses/{id}', 'AdminHouseController@show')->name('admin.houses.show');
@@ -182,6 +173,15 @@ Route::get('/master', function(){
 Route::group(['middleware' => 'auth.user'], function(){
     Route::get('dashboard', 'UserController@index');
     Route::resource('reports', 'ReportsController');
+
+    # user service routes
+    Route::get('/service/create/{house_id}', 'ServiceController@create')->name('custom.service.create');
+    Route::post('/service', 'ServiceController@store')->name('custom.service.store');
+    Route::post('/service/callback/{service_id}', 'ServiceController@callback')->name('custom.service.callback');
+    Route::get('/service/refund/{house_id}', 'ServiceController@refund')->name('custom.service.refund');
+    Route::put('/service/{service_id}', 'ServiceController@update')->name('custom.service.update');
+    Route::get('user/services', 'ServiceController@userIndex')->name('user.services.index');
+    Route::get('/service/{service_id}', 'ServiceController@show')->name('custom.service.show');
 });
 
 
