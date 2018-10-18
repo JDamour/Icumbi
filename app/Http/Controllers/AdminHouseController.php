@@ -7,6 +7,7 @@ use App\Country;
 use App\Paymentfrequency;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\HouseFormRequest;
 
 class AdminHouseController extends Controller
 {
@@ -44,7 +45,7 @@ class AdminHouseController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(HouseFormRequest $request)
     {
         //
         $house = House::create([
@@ -113,7 +114,7 @@ class AdminHouseController extends Controller
      * @param  \App\House  $house
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(HouseFormRequest $request, $id)
     {
         //
         // $id = $house->id;
@@ -143,6 +144,17 @@ class AdminHouseController extends Controller
         }
     }
 
+    public function updateStatus($house_id, $status) {
+        $house = House::where('id', $house_id)->update([
+            'status' => $status
+        ]);
+        if ($house) {
+            return redirect()->route('admin.houses.show', $house_id);
+        } else {
+            return back()->withInput();
+        }
+    }
+
     /**
      * Remove the specified resource from storage.
      *
@@ -160,6 +172,7 @@ class AdminHouseController extends Controller
             $src = $upload->source;
             if ($upload->delete()) {
                 @unlink(public_path('/images/HouseUploads/' . $src));
+                @unlink(public_path('/images/large/' . $src));
             } else {
                 return back()->withInput();
             }

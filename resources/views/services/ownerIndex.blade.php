@@ -1,6 +1,26 @@
-@extends('layouts.master')
-@section('title', 'List house')
+@extends('houseOwner.master')
+@section('title', 'List Booked Houses')
 @section('content')
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+        Service
+        <small>List</small>
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Service</a></li>
+        <li class="active">view all</li>
+      </ol>
+    </section>
+
+    <!-- Main content -->
+    <section class="content container-fluid">
+
+      <!--------------------------
+        | Your Page Content Here |
+        -------------------------->
         <div class="row">
             <div class="col-sm-10 col-sm-offset-1">
                 <div class="box">
@@ -22,8 +42,8 @@
 
                       @foreach ($services as $service)
                       <tr>
-                        <td>{{$service->email}}</td>
-                        <td>{{$service->phone_number}}</td>
+                        <td>{{$service->user->firstName}} {{$service->user->lastName}}</td>
+                        <td>{{$service->user->phoneNumber}}</td>
                         <td>{{$service->payment_id}}</td>
                         <td>
                             <span class="label bg-purple">
@@ -34,17 +54,13 @@
                       @endforeach
                       </tbody>
                       <tfoot>
-                      <tr>
-                        <th>Email</th>
-                        <th>Phone Number</th>
-                        <th>Payment Reference Number</th>
-                        <th>Action</th>
-                      </tr>
-                      </tfoot>
                     </table>
                   </div>
                   <!-- /.box-body -->
                 </div>
             </div>
         </div>
+
+      </section>
+    </div>
 @endsection

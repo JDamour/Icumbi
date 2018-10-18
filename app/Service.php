@@ -8,14 +8,16 @@ class Service extends Model
 {
     //
     protected $fillable = [
-        'email',
-        'phone_number',
+        'user_id',
         'house_id',
         'payment_id'
     ];
     
     public function house() {
         return $this->belongsTo('App\House');
+    }
+    public function user() {
+        return $this->belongsTo('App\User');
     }
     
     public function payment() {
