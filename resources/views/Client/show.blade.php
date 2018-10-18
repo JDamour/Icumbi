@@ -1,4 +1,6 @@
 @extends('layouts.app')
+
+<div class="container-fluid">
   <div class="card">
       <div class="wrapper row">
       <div class="preview col-md-6">
@@ -91,4 +93,6 @@
           </div> -->
         </div>
       </div>
+    </div>
+  </div>
     

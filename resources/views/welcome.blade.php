@@ -6,8 +6,7 @@
     <title>Icumbi</title>
     <meta name="description" content="Free Bootstrap Theme by uicookies.com">
     <meta name="keywords" content="free website templates, free bootstrap themes, free template, free bootstrap, free website template">
-    <link href="https://fonts.googleapis.com/css?family=Old+Standard+TT" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css?family=Cormorant+Garamond|Gilda+Display|Old+Standard+TT|Pompiere" rel="stylesheet">
     <link rel="stylesheet" href="css/styles-merged.css">
     <link rel="stylesheet" href="css/style.min.css">
     <link rel="stylesheet" href="css/custom.css">
@@ -21,7 +20,7 @@
 
   <header role="banner" class="probootstrap-header">
     <div class="container">
-        <a href="index.html" class="probootstrap-logo">ICUMBI</a>
+        <a href="/" class="probootstrap-logo">ICUMBI</a>
         
         <a href="#" class="probootstrap-burger-menu visible-xs" ><i>Menu</i></a>
         <div class="mobile-menu-overlay"></div>
@@ -127,9 +126,9 @@
       </div>
     </div>
     <ul class="slides">
-      <li style="background-image: url(http://www.centremarembo.org/uploads/1/5/2/2/15226860/abatuje_orig.jpg); opacity:1;"></li>
-      <li style="background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRtUjmIBDp5eq_xWCOvUMR8sI1iWUqvnYy0geFnef4B_DVHO7SvA);"></li>
-      <li style="background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTWAS81vWcZaxSIL7vrf-3qu-Tg09ls3UHKwZ_x1VFnGp3Soapl);"></li>
+      <li style="background-image: url(images/HouseUploads/house2.jpg); opacity:1;"></li>
+      <li style="background-image: url(images/HouseUploads/house4.jpg);"></li>
+      <li style="background-image: url(images/HouseUploads/house9.jpg);"></li>
     </ul>
   </section>
   <!-- END: slider  -->
@@ -144,7 +143,7 @@
             </div>
             <div class="probootstrap-card-text">
               <h2 class="probootstrap-card-heading">Award Winning Brooker</h2>
-              <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+              <p>Win different amazing prices by registering as many houses as possible</p>
               <p><a href="#">Find out more</a></p>
             </div>
           </div>
@@ -156,7 +155,7 @@
             </div>
             <div class="probootstrap-card-text">
               <h2 class="probootstrap-card-heading">New Houses</h2>
-              <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+              <p>You have a new house and you want to sell or rent it? It is easy!!!! Just create an account, register the house, and let us take good care of the rest</p>
               <p><a href="#">Find out more</a></p>
             </div>
           </div>
@@ -168,7 +167,7 @@
             </div>
             <div class="probootstrap-card-text">
               <h2 class="probootstrap-card-heading">Affordable Houses</h2>
-              <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+              <p>You want an affordable house without wasting your time and other resources? Congratulations, you found yourself the right platform to help you get a house of your dreams!</p>
               <p><a href="#">Find out more</a></p>
             </div>
           </div>
@@ -268,12 +267,12 @@
 
             </div></a>
             <div class="probootstrap-card-text">
-            <h2 class="probootstrap-card-heading"><a href="{{route('houseshow.show', $house->id)}}">Number of Bed rooms: {{ $house->numberOfRooms }}</a></h2>
+            <h2 class="probootstrap-card-heading"><a href="{{route('houseshow.show', $house->id)}}">House Id: {{ $house->id }}</a></h2>
               <div class="probootstrap-listing-location">
-              <a href="{{route('houseshow.show', $house->id)}}">  <i class="icon-location2"></i> <span>Location:   {{ $house->sector['name'] }}/{{ $house->district['name'] }}</span>
+              <a href="{{route('houseshow.show', $house->id)}}">  <i class="icon-location2"></i> <span>Location:   {{ $house->sector['name'] }}</span>
               </div>
               <div class="probootstrap-listing-category for-sale"><span>For Rent</span></div>
-              <div class="probootstrap-listing-price"><strong>{{ $house->housePrice }} {{ $house->paymentfrequency['name'] }}</strong></div>
+              <div class="probootstrap-listing-price"><strong>{{ $house->housePrice }}/{{ $house->paymentfrequency['name'] }}</strong></div>
             </div></a>
              
             
@@ -291,18 +290,18 @@
 
   <section class="probootstrap-half reverse">
     <div class="image-wrap">
-      <div class="image" style="background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0TAQvR-xSGkcmDTd-5__FX5b8bkpwKB3rV1N406vHUUvDkBrRsw);"></div>
+      <div class="image" style="background-image: url(images/HouseUploads/iteme.jpeg); border-color: white;"></div>
     </div>
-    <div class="text">
-      <p class="mb10 subtitle">Why Choose Us</p>
-      <h3 class="mt0 mb40">You Will Love Our Services</h3>
-      <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
-      <p class="mb50">A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
+    <div class="text" style="font-family: 'Cormorant Garamond', serif;">
+      <p class="mb10 subtitle">Choose us</p>
+      <h3 class="mt0 mb40">You will love our Services</h3>
+      <p>Iteme is a software development group which is made of young innovative programmers who are totally driven by the idea of making Rwanda the first African technology hub.</p>
+      <p class="mb50">Teamwork, persistence, and passion are the main weapons they use to overcome different struggles and challenges they face throughout their journey towards excellency!</p>
       <p><a href="#" class="btn btn-primary mb10">Find out more</a></p>
     </div>
   </section>
 
-  <section class="probootstrap-section">
+  <section class="probootstrap-section" style="font-family: 'Cormorant Garamond', serif; color: black;">
     <div class="container">
       <div class="row heading">
         <h2 class="mt0 mb50 text-center">Our Services</h2>
@@ -312,14 +311,14 @@
           <div class="service text-center">
             <div class="icon"><i class="icon-list2"></i></div>
             <h2 class="heading">Property Listing</h2>
-            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+            <p>Icumbi app displays different houses from all the four provinces of Rwanda. Please hurry, you can find your house now!!</p>
           </div>
         </div>
         <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 probootstrap-animate">
           <div class="service text-center">
             <div class="icon"><i class="icon-power-cord"></i></div>
             <h2 class="heading">Property Management</h2>
-            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+            <p>You can change the status of your house from active to inactive (vice-versa) depending on whether it is occupied or not</p>
           </div>
         </div>
         <div class="clearfix visible-sm-block"></div>
@@ -327,7 +326,7 @@
           <div class="service text-center">
             <div class="icon"><i class="icon-price-tag2"></i></div>
             <h2 class="heading">Renting Properties</h2>
-            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+            <p>You can use Icumbi app to browse in different Rwandan neighbourhoods and get the exact address once you choose your dream house</p>
           </div>
         </div>
         <div class="clearfix visible-lg-block visible-md-block"></div>
@@ -335,7 +334,7 @@
           <div class="service text-center">
             <div class="icon"><i class="icon-direction"></i></div>
             <h2 class="heading">Selling Properties</h2>
-            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+            <p>Icumbi app gives you the priviledge of buying your dream house without wasting much time and other resources</p>
           </div>
         </div>
         <div class="clearfix visible-sm-block"></div>
@@ -343,14 +342,14 @@
           <div class="service text-center">
             <div class="icon"><i class="icon-home3"></i></div>
             <h2 class="heading">Brook A Property</h2>
-            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+            <p>Earn different prices and commissions by assisting different house owners in the registration processes</p>
           </div>
         </div>
         <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 probootstrap-animate">
           <div class="service text-center">
             <div class="icon"><i class="icon-magnifying-glass"></i></div>
             <h2 class="heading">Search Property</h2>
-            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+            <p>Use the search form to find your house as fast as possible by sorting houses using price or their locations</p>
           </div>
         </div>
         <div class="clearfix visible-lg-block visible-md-block"></div>
@@ -418,13 +417,13 @@
     </div>
   </section> -->
 
-  <footer class="probootstrap-footer probootstrap-bg" style="background-image: url(img/slider_3.jpg)">
+  <footer class="probootstrap-footer probootstrap-bg" style="background-image: url(img/slider_3.jpg);">
     <div class="container">
       <div class="row mb60">
         <div class="col-md-3">
           <div class="probootstrap-footer-widget">
-            <h4 class="heading">About Icumbi.</h4>
-            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. </p>
+            <h4 class="heading" style="font-family: 'Cormorant Garamond', serif;">About Icumbi.</h4>
+            <p>Icumbi is a Rwanda based application which was developed with the intention of linking house owners with house tenants (renters)</p>
             <p><a href="#">Read more...</a></p>
           </div> 
         </div>
@@ -455,7 +454,7 @@
         <div class="col-md-3">
           <div class="probootstrap-footer-widget probootstrap-link-wrap">
             <h4 class="heading">Subscribe</h4>
-            <p>Far far away behind the word mountains far from.</p>
+            <p>Receive a notification whenever a new house is uploaded</p>
             <form action="#">
               <div class="form-field">
                 <input type="text" class="form-control" placeholder="Enter your email">
@@ -468,7 +467,7 @@
       <div class="row copyright">
         <div class="col-md-6">
           <div class="probootstrap-footer-widget">
-            <p>&copy; 2018 <a href="https://icumbiApp.com/">tres:Icumbi</a>. Designed by <a href="https://icumbiApp.com/">tres:Icumbi</a> <br> Demo Photos from <a href="https://pixabay.com/">Pixabay</a> &amp; <a href="https://unsplash.com/">Unsplash</a></p>
+            <p>&copy; 2018 <a href="">Iteme</a></p>
           </div>
         </div>
         <div class="col-md-6">
@@ -491,6 +490,27 @@
   <script src="js/scripts.min.js"></script>
   <script src="js/main.min.js"></script>
   <script src="js/custom.js"></script>
+  <!--Start of Tawk.to Script-->
+  <script type="text/javascript">
+      var name = '{{ Auth::user()->firstName}}'
+      var email = '{{ Auth::user()->email}}'
+   var Tawk_API=Tawk_API||{};
+      Tawk_API.visitor = {
+  name : name,
+  email : email
+  };
+  Tawk_LoadStart=new Date();
+  (function(){
+  var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+  s1.async=true;
+  s1.src='https://embed.tawk.to/5bb638f3b033e9743d0250d7/default';
+  s1.charset='UTF-8';
+  s1.setAttribute('crossorigin','*');
+  s0.parentNode.insertBefore(s1,s0);
+  })();
+  </script>
+  <!--End of Tawk.to Script-->
+
 
   </body>
 </html>

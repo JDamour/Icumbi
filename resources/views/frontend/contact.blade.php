@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
-  <section class="probootstrap-slider flexslider2 page-inner">
+
+  <section class="probootstrap-slider flexslider2 page-inner" style="z-index: 0;">
+
     <div class="overlay"></div>
     <div class="probootstrap-wrap-banner">
       <div class="container">
@@ -9,7 +11,7 @@
 
             <div class="page-title probootstrap-animate">
               <div class="probootstrap-breadcrumbs">
-                <a href="#">Home</a><span>About</span>
+                <a href="/">Home</a>
               </div>
               <h1>Contact</h1>
             </div>
@@ -19,14 +21,14 @@
       </div>
     </div>
     <ul class="slides">
-      <li style="background-image: url(img/slider_1.jpg);"></li>
-      <li style="background-image: url(img/slider_4.jpg);"></li>
-      <li style="background-image: url(img/slider_2.jpg);"></li>
+      <li style="background-image: url(images/HouseUploads/house7.jpg);"></li>
+      <li style="background-image: url(images/HouseUploads/house5.jpg);"></li>
+      <li style="background-image: url(images/HouseUploads/house6.jpg);"></li>
     </ul>
   </section>
   <!-- END: slider  -->
 
-  <section class="probootstrap-section">
+  <section class="probootstrap-section" style="z-index: 0;">
     <div class="container">
       <div class="row">
         <div class="col-md-8">
@@ -61,20 +63,31 @@
             </div>
           </form>
         </div>
-        <div class="col-md-3 col-md-push-1">
+        <div class="col-md-3 col-md-push-1" style="color: black;">
           <h4>Contact Details</h4>
-          <ul class="with-icon colored">
-            <li><i class="icon-location2"></i> <span>198 West 21th Street, Suite 721 New York NY 10016</span></li>
-            <li><i class="icon-mail"></i><span>info@domain.com</span></li>
-            <li><i class="icon-phone2"></i><span>+123 456 7890</span></li>
+          <ul class="with-icon colored" style="color: black;">
+            <li><i class="icon-location2"></i> <span>KG 192 St, Bibare, Kimironko, Gasabo, Rwanda</span></li>
+            <li><i class="icon-mail"></i><span>iteme@tres.rw</span></li>
+            <li><i class="icon-phone2"></i><span>+250 788409447</span></li>
           </ul>
 
           <h4>Feedback</h4>
-          <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-          <p><a href="#">Learn More</a></p>
+          <p>In case you face an challenge while using this application, please fill free to contact us. Every bit counts</p>
+         <!--  <p><a href="#">Learn More</a></p> -->
         </div>
       </div>
     </div>
+
+
+    <div class="row-fluid">
+            <div class="span8">
+              <!-- <iframe width="100%" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?q=-1.951137,30.12514549999998&hl=en;z=14&amp;output=embed"></iframe> -->
+              <iframe width="100%" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3987.5076032960633!2d30.125495048391887!3d-1.95009341950088!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x19dca7b8e43d1f43%3A0xe82363189dd39dbd!2sTres+rwanda!5e0!3m2!1sen!2srw!4v1539869396371" allowfullscreen></iframe>
+          </div>
+          
+            
+        </div>
   </section>
-  <div id="map"></div>
+
+ 
 
