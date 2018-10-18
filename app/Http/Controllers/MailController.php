@@ -47,7 +47,7 @@ class MailController extends Controller
             'message' => $request->get('message')
         ];
 
-        Mail::to('mihigodieudo@gmail.com')->send(new SendContactEmail($messages));
+        Mail::to('tres@tres.rw')->send(new SendContactEmail($messages));
 
    return redirect()->back()->with('success', 'Email successful send');
     }
