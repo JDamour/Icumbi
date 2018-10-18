@@ -145,9 +145,7 @@ Route::get('/del', 'PaymentModeController@destroy');
 Route::get('/master', function(){
     return view('layouts.master');
     });
-    Route::get('/client.test', function(){
-        return view('client.test');
-        });
+    
 
     #Public
     
@@ -155,12 +153,12 @@ Route::get('/master', function(){
     // Route::get('autocomplete-ajax',array('as'=>'autocomplete.ajax','uses'=>'AutoCompleteController@ajaxData'));
 
     //the above routes are test of autocomplete search
+    
     Route::view('/search-suggestion', '/client.autocomplete');
     Route::get('/client/autocomplete', 'PublicController@searchSuggestion');
     Route::get('/house', 'PublicController@DisplayHousesOnHOusePage');
     Route::get('/', 'PublicController@DisplayHousesOnHomePage');
     Route::any('/houseShow/{id}', 'PublicController@show')->name('houseshow.show');
-
     Route::any('/search', function(){
         $search = Input::get('search');
         if ($search != "") {
@@ -170,11 +168,16 @@ Route::get('/master', function(){
             ->get();
         if(count($house)>0)
             return view('client.search')->withDetails($house)->withQuery ( $search );
-
         }
         return view('client.search')->withMessage("No results found " );
     });
 
+    
+    Route::get('/northern', 'PublicController@north');
+    Route::get('/southern', 'PublicController@south');
+    Route::get('/kigali', 'PublicController@kigali');
+    Route::get('/eastern', 'PublicController@east');
+    Route::get('/western', 'PublicController@west');
 
 #user routes
 Route::group(['middleware' => 'auth.user'], function(){
@@ -188,4 +191,3 @@ Route::get('/agents', 'clientController@agents');
 Route::get('/properties', 'clientController@properties');
 Route::get('/about', 'clientController@about');
 Route::get('/contact', 'clientController@contact');
-

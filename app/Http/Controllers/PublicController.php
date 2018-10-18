@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\MailController;
 use App\User;
 use App\House;
 use App\Country;
 use App\Uploads;
 use App\Paymentfrequency;
+use App\Http\MailController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\DB;
 
 class PublicController extends Controller
 {
@@ -20,19 +21,59 @@ class PublicController extends Controller
      */
     public function DisplayHousesOnHOusePage()
     {
-        $houses = House::paginate(3);
+        $houses = House::paginate(6);
         return view('client.index', compact('houses'));
     }
     public function DisplayHousesOnHomePage()
     {
-        $houses = House::all();
+        $houses = House::paginate(6);
         return view('welcome', compact('houses'));
     }
 
+    public function east()
+    {
+        $houses =DB::table('houses')->whereprovince_id(3)->get();
+        return view('client.province.east', compact('houses'));
+        // dd($house);
+    }
+    public function kigali()
+    {
+        // $houses = House::all();
+        $houses =DB::table('houses')->whereprovince_id(5)->get();
+        return view('client.province.kigali', compact('houses'));
+        // dd($houses);
+    }
+    public function north()
+    {
+        // $houses = House::all();
+        $houses =DB::table('houses')->whereprovince_id(1)->get();
+        return view('client.province.north', compact('houses'));
+        dd($house);
+    }
+    public function west()
+    {
+        // $houses = House::all();
+        $houses =DB::table('houses')->whereprovince_id(4)->get();
+        return view('client.province.west', compact('houses'));
+        dd($house);
+    }
+    public function south()
+    {
+        // $houses = House::all();
+        $houses =DB::table('houses')->whereprovince_id(2)->get();
+        return view('client.province.south', compact('houses'));
+        dd($house);
+    }
+    
     public function upload()
     {
         $uploads = Upload::all();
         return view('client.index', compact('uploads'));
+    }
+    public function uploadd()
+    {
+        $uploads = Upload::all();
+        return view('client.province.kigali', compact('uploads'));
     }
 
     /**

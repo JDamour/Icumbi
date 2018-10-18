@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Payment_mode;
+use DB;
 use Illuminate\Http\Request;
+// use Illuminate\Support\Facades\DB;
 
 class PaymentModeController extends Controller
 {

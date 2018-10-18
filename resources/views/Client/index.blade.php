@@ -1,5 +1,8 @@
+<<<<<<< HEAD
+=======
 
-@extends('layouts.frontend')
+>>>>>>> d33822c80fd4f67c91955296abfdc93a260c4358
+@extends('layouts.app')
 @section('title', 'houses')
 @section('link')
 @endsection
@@ -45,7 +48,7 @@
             <div class="probootstrap-card-text">
             <h2 class="probootstrap-card-heading"><a href="{{route('houseshow.show', $house->id)}}">House Id: {{ $house->id }}</a></h2>
               <div class="probootstrap-listing-location">
-              <a href="{{route('houseshow.show', $house->id)}}">  <i class="icon-location2"></i> <span>Location:   {{ $house->houseLocation }}</span>
+              <a href="{{route('houseshow.show', $house->id)}}">  <i class="icon-location2"></i> <span>Location:   {{ $house->sector['name'] }}</span>
               </div>
               <div class="probootstrap-listing-category for-sale"><span>For Rent</span></div>
               <div class="probootstrap-listing-price"><strong>{{ $house->housePrice }}/{{ $house->paymentfrequency['name'] }}</strong></div>

@@ -36,18 +36,27 @@
 
         <nav role="navigation" class="probootstrap-nav hidden-xs .navbar-fixed-top">
           <ul class="probootstrap-main-nav">
+             
+             <div class="searchh">
+              <form action="/search" method="POST" role="search" class="searchform">
+             <input type="hidden" name="_token" value="{{ csrf_token() }}">
+             <input type="text"  placeholder="Enter location, price" name="search">
+              <button type="submit" class="btnn btn-primary btn-sm">Search</button>
+             </form> 
+             </div>
+      
+            
             <li class="active"><a href="/">Home</a></li>
             <li><a href="/house">House</a></li>
           <!--   <li><a href="/agents">Agents</a></li> -->
-            <!-- <li><a href="/about">About</a></li>
-            <li><a href="/contact">Contact</a></li> -->
+            <!-- <li><a href="/about">About</a></li> -->
+            <li><a href="/contact">Contact</a></li>
              <li><a href="/login">Login</a></li>
             <li><a href="/register">SignUp</a></li>
-            <form action="/search" method="POST" role="search">
-                <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                <input type="text"  placeholder="Enter address, price, Neighborhoods" name="search">
-                <button type="submit"><i class="icon-magnifying-glass t2"></i></button>
-            </form>
+            
+           
+
+           
           </ul>
           <div class="extra-text visible-xs"> 
             <a href="#" class="probootstrap-burger-menu"><i>Menu</i></a>

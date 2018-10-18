@@ -36,7 +36,7 @@
             <li><a href="/house">Houses</a></li>
           <!--   <li><a href="agents.html">Agents</a></li>
             <li><a href="about.html">About</a></li> -->
-            <li><a href="contact.html">Contact</a></li>
+            <li><a href="/contact">Contact</a></li>
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
@@ -194,7 +194,7 @@
       
       <div class="row probootstrap-gutter10">
         <div class="col-md-6 col-sm-6">
-          <a href="/client.kigali" class="probootstrap-hover-overlay">
+          <a href="/kigali" class="probootstrap-hover-overlay">
             <img style="width: 100%; height: 50vh;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTem5V2NHTNbn1a4LeifPBLff5p6ga2lIspXGJJU3V3rpPcF1E-" alt="Free Bootstrap Template by uicookies.com" class="img-responsive">
             <div class="probootstrap-text-overlay">
               <h3>Kigali City</h3>
@@ -203,7 +203,7 @@
           </a>
         </div>
         <div class="col-md-6 col-sm-6">
-          <a href="#" class="probootstrap-hover-overlay">
+          <a href="/western" class="probootstrap-hover-overlay">
              <img style="width: 100%; height: 50vh;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZAeiR_D38ColSjKBlTwPl5TvwBBO0dxqyGUVpxNp-GOSupWlh" class="img-responsive">
             <div class="probootstrap-text-overlay">
               <h3>Western Province</h3>
@@ -212,7 +212,7 @@
           </a>
         </div>
         <div class="col-md-4 col-sm-6">
-          <a href="#" class="probootstrap-hover-overlay">
+          <a href="/northern" class="probootstrap-hover-overlay">
             <img style="width: 100%; height: 50vh;" src ="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTNU00sittj9DHb2NQ6xOZ5H86W8M6jwUfGO1uQbcFyvNL0Z8BDg" alt="Free Bootstrap Template by uicookies.com" class="img-responsive">
             <div class="probootstrap-text-overlay">
               <h3>Northern Province</h3>
@@ -221,7 +221,7 @@
           </a>
         </div>
         <div class="col-md-4 col-sm-6">
-          <a href="#" class="probootstrap-hover-overlay">
+          <a href="/eastern" class="probootstrap-hover-overlay">
             <img style="width: 100%; height: 50vh;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4fSpE-Dvarah3A851jqa7WyCvmj2ifuAEPwlkM6V_Vt9gqMwyJQ" alt="Free Bootstrap Template by uicookies.com" class="img-responsive">
             <div class="probootstrap-text-overlay">
               <h3>Eastern Province</h3>
@@ -230,7 +230,7 @@
           </a>
         </div>
         <div class="col-md-4 col-sm-6" name="south">
-          <a href="/client.test" class="probootstrap-hover-overlay">
+          <a href="/southern" class="probootstrap-hover-overlay">
             <img style="width: 100%; height: 50vh;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSoArxpqX_PewtkgYZK-s7Tj3mggRmwDHl7NaTPXVySA7TlUEwe" alt="Free Bootstrap Template by uicookies.com" class="img-responsive">
             <div class="probootstrap-text-overlay">
               <h3>Southern Province</h3>
@@ -265,27 +265,30 @@
           <div class="container">
             <div class="row">
             @foreach($houses as $house)
-              <div class="col-md-4 col-sm-6">
-                <div class="probootstrap-card probootstrap-listing">
-                  <div class="probootstrap-card-media"> 
-                  @foreach($house->uploads as $upload)
-                    <img src="/images/HouseUploads/{{ $upload->source }}">
-                    @break;
-                  @endforeach
-                  </div>
-                  <div class="probootstrap-card-text">
-                  <!--  <h2 class="probootstrap-card-heading"><a href="#">{{ $house->id }}</a></h2> -->
-                   <div class="probootstrap-listing-location">
-                      <i class="icon-location2"></i><span style="color: black;">{{ $house->houseLocation }}</span>
-                    </div>
-                    <div class="probootstrap-listing-category for-sale"><span>For Rent</span></div>
-                    <div class="probootstrap-listing-price" style="color: black;">Price: <strong>{{ $house->housePrice }}/{{ $house->paymentfrequency['name'] }}</strong></div>
-                  </div>Have liked the house <a href="{{route('houseshow.show', $house->id)}}" class="probootstrap-love"><i class="icon-heart"></i></a>
-                  
-                  <div class="probootstrap-card-extra">
-                  </div>
-                </div>
+        <div class="col-md-4 col-sm-6">
+          <div class="probootstrap-card probootstrap-listing">
+            <div class="probootstrap-card-media">
+            <a href="{{route('houseshow.show', $house->id)}}">
+              @foreach($house->uploads as $upload)
+                <img src="/images/HouseUploads/{{ $upload->source }}">
+                @break;
+              @endforeach
+
+            </div></a>
+            <div class="probootstrap-card-text">
+            <h2 class="probootstrap-card-heading"><a href="{{route('houseshow.show', $house->id)}}">House Id: {{ $house->id }}</a></h2>
+              <div class="probootstrap-listing-location">
+              <a href="{{route('houseshow.show', $house->id)}}">  <i class="icon-location2"></i> <span>Location:   {{ $house->sector['name'] }}</span>
               </div>
+              <div class="probootstrap-listing-category for-sale"><span>For Rent</span></div>
+              <div class="probootstrap-listing-price"><strong>{{ $house->housePrice }}/{{ $house->paymentfrequency['name'] }}</strong></div>
+            </div></a>
+             
+            
+            <div class="probootstrap-card-extra">
+            </div>
+          </div>
+        </div>
         @endforeach
             </div>
           </div>
