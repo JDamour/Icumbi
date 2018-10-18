@@ -12,7 +12,7 @@
           <div class="col-md-8">
             <div class="page-title probootstrap-animate">
               <div class="probootstrap-breadcrumbs">
-                <a href="#">Home</a><span>search</span>
+                <a href="/">Home</a><span>search</span>
               </div>
               <h1>Search</h1>
             </div>

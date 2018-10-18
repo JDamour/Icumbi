@@ -14,9 +14,9 @@
 
             <div class="page-title probootstrap-animate">
               <div class="probootstrap-breadcrumbs">
-                <a href="#">Home</a><span>house</span>
+                <a href="/">Home</a><span>South</span>
               </div>
-              <h1>Houses</h1>
+              <h1>South</h1>
             </div>
 
           </div>

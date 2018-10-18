@@ -14,7 +14,7 @@ class FrequencySeederTable extends Seeder
     {
         //
         $frequency = [
-            ['name'=>'Dayly'],
+            ['name'=>'Daily'],
             ['name'=>'Weekely'],
             ['name'=>'Monthly'],
 

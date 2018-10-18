@@ -9,7 +9,7 @@
 
             <div class="page-title probootstrap-animate">
               <div class="probootstrap-breadcrumbs">
-                <a href="#">Search</a><span>Kigali</span>
+                <a href="/">Home</a><span>Kigali</span>
               </div>
               <h1>Kigali</h1>
             </div>
@@ -35,12 +35,12 @@
 
             </div></a>
             <div class="probootstrap-card-text">
-            <h2 class="probootstrap-card-heading"><a href="{{route('houseshow.show', $house->id)}}">House Id: {{ $house->id }}</a></h2>
+            <h2 class="probootstrap-card-heading"><a href="{{route('houseshow.show', $house->id)}}">Number of Bed rooms: {{ $house->numberOfRooms }}</a></h2>
               <div class="probootstrap-listing-location">
               <a href="{{route('houseshow.show', $house->id)}}">  <i class="icon-location2"></i> <span>Location: {{ $house->sector_id }}  </span>
               </div>
               <div class="probootstrap-listing-category for-sale"><span>For Rent</span></div>
-              <div class="probootstrap-listing-price"><strong>{{ $house->housePrice }}/
+              <div class="probootstrap-listing-price"><strong>{{ $house->housePrice }}
               
               </strong></div>
             </div></a>
