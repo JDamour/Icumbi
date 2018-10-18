@@ -37,6 +37,11 @@ class ServiceController extends Controller
 
     }
 
+    public function userIndex() {
+        $services = Auth::user()->services;
+        return view('services.userIndex', compact('services')); 
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -99,8 +104,7 @@ class ServiceController extends Controller
             if ($current_timestamp > $time_diff) {
                 try {
                     $service = Service::create([
-                        "email" => $request->input('email'),
-                        "phone_number" => $request->input('phone'),
+                        "user_id" => Auth::user()->id,
                         "house_id" => $request->input('house_id'),
                         "payment_id" => "100"
                     ]);
@@ -112,9 +116,9 @@ class ServiceController extends Controller
                 // save client's service and send email if payment was successful
                 // redirect to display service 
                 if ($service) {
-                    Mail::to($service->house->user->email)->send(new HouseBookingMail(route('custom.service.preshow', $service->id)));
-                    Mail::to($service->email)->send(new HouseBookingMail(route('custom.service.preshow', $service->id)));
-                    return redirect()->route('custom.service.preshow', $service->id);
+                    Mail::to($service->house->user->email)->send(new HouseBookingMail(route('custom.service.show', $service->id)));
+                    Mail::to($service->email)->send(new HouseBookingMail(route('custom.service.show', $service->id)));
+                    return redirect()->route('custom.service.show', $service->id);
                 } else {
                     // return to house form with errors
                     return back()->withInput();
@@ -125,8 +129,7 @@ class ServiceController extends Controller
         } else {
             try {
                 $service = Service::create([
-                    "email" => $request->input('email'),
-                    "phone_number" => $request->input('phone'),
+                    "user_id" => Auth::user()->id,
                     "house_id" => $request->input('house_id'),
                     "payment_id" => "100"
                 ]);
@@ -138,9 +141,9 @@ class ServiceController extends Controller
             // save client's service and send email if payment was successful
             // redirect to display service 
             if ($service) {
-                Mail::to($service->house->user->email)->send(new HouseBookingMail(route('custom.service.preshow', $service->id)));
-                Mail::to($service->email)->send(new HouseBookingMail(route('custom.service.preshow', $service->id)));
-                return redirect()->route('custom.service.preshow', $service->id);
+                Mail::to($service->house->user->email)->send(new HouseBookingMail(route('custom.service.show', $service->id)));
+                Mail::to($service->user->email)->send(new HouseBookingMail(route('custom.service.show', $service->id)));
+                return redirect()->route('custom.service.show', $service->id);
             } else {
                 // return to house form with errors
                 return back()->withInput();
@@ -158,10 +161,7 @@ class ServiceController extends Controller
     public function show(Request $request, $service)
     {
         //disaply house after was succesful
-        $service = Service::where([
-            "id" => $service,
-            "email" => $request->input('email')
-        ])->first();
+        $service = Service::find($service);
         if ($service) {
             // check if the service is not more than two days old.
             $current_timestamp = $_SERVER['REQUEST_TIME'];
@@ -239,9 +239,9 @@ class ServiceController extends Controller
                 "house_id" => $request->input("house_id")
             ]);
             if ($update) {
-                Mail::to($service->house->user->email)->send(new HouseBookingMail(route('custom.service.preshow', $service->id)));
-                Mail::to($service->email)->send(new HouseBookingMail(route('custom.service.preshow', $service->id)));
-                return redirect()->route('custom.service.preshow', $service->id);
+                Mail::to($service->house->user->email)->send(new HouseBookingMail(route('custom.service.show', $service->id)));
+                Mail::to($service->user->email)->send(new HouseBookingMail(route('custom.service.show', $service->id)));
+                return redirect()->route('custom.service.show', $service->id);
             }
         } else {
             die("service not found");
@@ -269,38 +269,16 @@ class ServiceController extends Controller
         // @todo send email to client and show payment status to client
     }
 
-    public function preshow($service) {
-        $service = Service::find($service);
-        if ($service) {
-            // check if the service is not more than two days old.
-            $current_timestamp = $_SERVER['REQUEST_TIME'];
-            $latest_timestamp = strtotime($service->updated_at);
-            $time_diff = $latest_timestamp + (2 * 24 * 60 * 60);
-            
-            if ($current_timestamp > $time_diff){
-                return view('services.timeout');
-            }
-            $data = $service->id;
-            return view('services.preshow', compact('data'));
-        } else {
-            return view('custom404');
-        }
-    }
+    public function refund(Request $request, $house_id) {
 
-    public function prerefund($house) {
-        return view('services.prerefund', compact('house'));
-    }
-
-    public function refund(Request $request) {
-
-        $services = Service::where('email', $request->input('email'))
+        $services = Service::where('user_id', Auth::user()->id)
         ->orderBy('updated_at', 'desc')
         ->get();
 
         if ($services) {
             $data = [
                 "services" => $services,
-                "house_id" =>$request->input('house_id')
+                "house_id" =>$house_id
             ];
             return view('services.refund', compact('data'));
         }else {

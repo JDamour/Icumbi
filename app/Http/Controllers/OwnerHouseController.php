@@ -7,6 +7,7 @@ use App\Country;
 use App\Paymentfrequency;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\HouseFormRequest;
 
 class OwnerHouseController extends Controller
 {
@@ -44,7 +45,7 @@ class OwnerHouseController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(HouseFormRequest $request)
     {
         //
         $house = House::create([
@@ -115,7 +116,7 @@ class OwnerHouseController extends Controller
      * @param  \App\House  $house
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, House $house)
+    public function update(HouseFormRequest $request, House $house)
     {
         //
         $id = $house->id;
@@ -127,7 +128,7 @@ class OwnerHouseController extends Controller
             "housePrice" => $request->input('housePrice'),
             "paymentfrequency_id" => $request->input('payfreq'),
             "user_id" => Auth::user()->id,
-            "cell_id" => $request->input('cell'),
+            "cell" => $request->input('cell'),
             "sector_id" => $request->input('sector'),
             "district_id" => $request->input('district'),
             "province_id" => $request->input('province'),
@@ -165,6 +166,8 @@ class OwnerHouseController extends Controller
         foreach($house->uploads as $upload) {
             $src = $upload->source;
             if ($upload->delete()) {
+                @unlink(public_path('/images/HouseUploads/' . $src));
+                @unlink(public_path('/images/large/' . $src));
                 @unlink(public_path('/images/small/' . $src));
             } else {
                 return back()->withInput();

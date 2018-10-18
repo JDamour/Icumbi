@@ -84,3 +84,9 @@ ALTER TABLE houses ADD COLUMN bathroom ENUM('1','2') NOT NULL DEFAULT '1' AFTER 
 ALTER TABLE houses ADD COLUMN toilet ENUM('1','2') NOT NULL DEFAULT '1' AFTER bathroom;
 ALTER TABLE houses ADD COLUMN fenced ENUM('1','2') NOT NULL DEFAULT '1' AFTER toilet;
 ALTER TABLE `houses` CHANGE `cell_id` `cell` VARCHAR(191) NOT NULL;
+
+
+======= alliance peace 15/10/2018==========================
+ ALTER TABLE `services` DROP `email`;
+ ALTER TABLE `services` DROP `phone_number`;
+ ALTER TABLE `services` ADD `user_id` INT UNSIGNED NOT NULL AFTER `id`;

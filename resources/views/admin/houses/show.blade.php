@@ -26,9 +26,16 @@
         <div class="box box-info">
             <div class="box-header with-border">
               <h3 class="box-title">Display House</h3>
-              <p class="pull-right"><a class="btn btn-sm bg-olive" href="{{route('admin.houses.edit', $house->id)}}">
-                <i class="fa fa-edit"></i> Edit</a> <a class="btn btn-sm bg-olive" href="{{route('admin.uploads.index', $house->id)}}">
-                <i class="fa fa-camera"></i> View house photos</a></p>
+              <p class="pull-right">
+                @if($house->status == 1)
+                <a class="btn btn-sm bg-olive" href="{{ route('admin.houses.updateStatus', [$house->id, 2])}}"> <i class="fa fa-check-circle"></i> Approve House</a>
+                @endif
+                @if($house->status == 2)
+                <a class="btn btn-sm bg-olive" href="{{ route('admin.houses.updateStatus', [$house->id, 4])}}"> <i class="fa fa-stop"></i> Block House</a>
+                @endif
+                <a class="btn btn-sm bg-olive" href="{{route('admin.houses.edit', $house->id)}}"> <i class="fa fa-edit"></i> Edit</a> 
+                <a class="btn btn-sm bg-olive" href="{{route('admin.uploads.index', $house->id)}}"> <i class="fa fa-camera"></i> View house photos</a>
+              </p>
             </div>
             <!-- /.box-header -->
             <!-- form start -->

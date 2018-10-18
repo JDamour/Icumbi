@@ -69,4 +69,7 @@ class House extends Model
     {
         return $this->belongsTo('App\User');
     }
+    public function views() {
+        return $this->hasMany('App\View');
+    }
 }

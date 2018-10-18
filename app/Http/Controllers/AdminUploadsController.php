@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Uploads;
 use App\House;
 use Illuminate\Http\Request;
+use App\Http\Requests\UploadsFormRequest;
+use Image;
 
 class AdminUploadsController extends Controller
 {
@@ -39,21 +41,38 @@ class AdminUploadsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UploadsFormRequest $request)
     {
         //
         $destinationPath = public_path('/images/HouseUploads');
+        $large = public_path('/images/large/');
         
         foreach($request->photos as $photo) {
-            $filename = time() . $photo->getClientOriginalName() . '.'. $photo->getClientOriginalExtension();
-            //die($filename);
-            $photo->move($destinationPath, $filename);
-            Uploads::create([
-                "house_id" => $request->input('house_id'),
-                "name" => "image",
-                "title" => "image",
-                "source" => $filename
-            ]);
+            $allowedfileExtension=['jpeg','jpg','png'];
+            $extension = $photo->getClientOriginalExtension();
+ 
+            $check=in_array($extension,$allowedfileExtension);
+
+            if ($check) {
+                $filename = time() . $photo->getClientOriginalName() . '.'. $photo->getClientOriginalExtension();
+                //die($filename);
+                $photo->move($destinationPath, $filename);
+                copy($destinationPath.'/'.$filename, $large.$filename);
+    
+                $imagePath = $destinationPath.'/'.$filename;
+                $image = Image::make($imagePath)->resize(970, 750)->save();
+    
+    
+                Uploads::create([
+                    "house_id" => $request->input('house_id'),
+                    "name" => "image",
+                    "title" => "image",
+                    "source" => $filename
+                ]);
+            } else {
+                return back()->withErrors(['The photos must be a file of type: jpeg, jpg, png.']);
+            }
+            
         }
         return redirect()->route('admin.uploads.index', $request->input('house_id'));
     }
@@ -107,6 +126,7 @@ class AdminUploadsController extends Controller
             $house_id = $upload->house_id;
             if ($upload->delete()) {
                 @unlink(public_path('/images/HouseUploads/' . $src));
+                @unlink(public_path('/images/large/' . $src));
                 return redirect()->route('admin.uploads.index', $house_id);
             } else {
                 return back()->withInput();

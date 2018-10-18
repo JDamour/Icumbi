@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use App\Uploads;
 use App\House;
 use Illuminate\Http\Request;
+use App\Http\Requests\UploadsFormRequest;
 use Image;
+
+
 class OwnerUploadsController extends Controller
 {
     /**
@@ -39,27 +42,39 @@ class OwnerUploadsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UploadsFormRequest $request)
     {
+        
         //
-        $destinationPath = public_path('\images\small\\');
-        $large = public_path('\images\large\\');
+        $destinationPath = public_path('images/HouseUploads');
+        $large = public_path('/images/large/');
         
         foreach($request->photos as $photo) {
-             $filename = time() . $photo->getClientOriginalName();
 
-             $photo->move($destinationPath, $filename);
-            copy($destinationPath.$filename, $large.$filename);
+            $allowedfileExtension=['jpeg','jpg','png'];
+            $extension = $photo->getClientOriginalExtension();
+ 
+            $check=in_array($extension,$allowedfileExtension);
 
-            $imagePath = $destinationPath.$filename;
-            $image = Image::make($imagePath)->resize(970, 750)->save();
+            if ($check) {
+                $filename = time() . $photo->getClientOriginalName();
 
-            Uploads::create([
-                "house_id" => $request->input('house_id'),
-                "name" => "image",
-                "title" => "image",
-                "source" => $filename
-            ]);
+                $photo->move($destinationPath, $filename);
+                copy($destinationPath.'/'.$filename, $large.$filename);
+    
+                $imagePath = $destinationPath.'/'.$filename;
+                $image = Image::make($imagePath)->resize(970, 750)->save();
+    
+                Uploads::create([
+                    "house_id" => $request->input('house_id'),
+                    "name" => "image",
+                    "title" => "image",
+                    "source" => $filename
+                ]);
+            } else {
+                return back()->withErrors(['The photos must be a file of type: jpeg, jpg, png.']);
+            }
+            
         }
         return redirect()->route('owner.uploads.index', $request->input('house_id'));
     }
