@@ -21,9 +21,9 @@
       </div>
     </div>
     <ul class="slides">
-      <li style="background-image: url(http://rw.one.un.org/sites/default/files/styles/blog_large/public/media/IMG_9925.JPG?itok=ZfaE6GOn);"></li>
-      <li style="background-image: url(https://kariburwanda.com/image2.php?img=components/com_mtree/img/listings/534_2DSCN4538.JPG);"></li>
-      <li style="background-image: url(https://www.newtimes.co.rw/sites/default/files/styles/mystyle/public/main/articles/2017/11/22/15113858881.jpg?itok=C-AoH-xD);"></li>
+      <li style="background-image: url(images/HouseUploads/house7.jpg);"></li>
+      <li style="background-image: url(images/HouseUploads/house5.jpg);"></li>
+      <li style="background-image: url(images/HouseUploads/house6.jpg);"></li>
     </ul>
   </section>
   <!-- END: slider  -->
@@ -66,9 +66,9 @@
         <div class="col-md-3 col-md-push-1" style="color: black;">
           <h4>Contact Details</h4>
           <ul class="with-icon colored" style="color: black;">
-            <li><i class="icon-location2"></i> <span>198 West 21th Street, Suite 721 New York NY 10016</span></li>
-            <li><i class="icon-mail"></i><span>info@domain.com</span></li>
-            <li><i class="icon-phone2"></i><span>+123 456 7890</span></li>
+            <li><i class="icon-location2"></i> <span>KG 192 St, Bibare, Kimironko, Gasabo, Rwanda</span></li>
+            <li><i class="icon-mail"></i><span>iteme@tres.rw</span></li>
+            <li><i class="icon-phone2"></i><span>+250 788409447</span></li>
           </ul>
 
           <h4>Feedback</h4>
@@ -81,7 +81,8 @@
 
     <div class="row-fluid">
             <div class="span8">
-              <iframe width="100%" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?q=-1.951137,30.12514549999998&hl=en;z=14&amp;output=embed"></iframe>
+              <!-- <iframe width="100%" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?q=-1.951137,30.12514549999998&hl=en;z=14&amp;output=embed"></iframe> -->
+              <iframe width="100%" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3987.5076032960633!2d30.125495048391887!3d-1.95009341950088!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x19dca7b8e43d1f43%3A0xe82363189dd39dbd!2sTres+rwanda!5e0!3m2!1sen!2srw!4v1539869396371" allowfullscreen></iframe>
           </div>
           
             
