@@ -81,7 +81,7 @@
 
     <div class="row-fluid">
             <div class="span8">
-              <!-- <iframe width="100%" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?q=-1.951137,30.12514549999998&hl=en;z=14&amp;output=embed"></iframe> -->
+            
               <iframe width="100%" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3987.5076032960633!2d30.125495048391887!3d-1.95009341950088!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x19dca7b8e43d1f43%3A0xe82363189dd39dbd!2sTres+rwanda!5e0!3m2!1sen!2srw!4v1539869396371" allowfullscreen></iframe>
           </div>
           
