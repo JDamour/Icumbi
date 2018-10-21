@@ -39,7 +39,7 @@ class PublicController extends Controller
     }
     public function kigali()
     {
-        // $houses = House::all();
+
         $houses =DB::table('houses')->whereprovince_id(5)->get();
         return view('client.province.kigali', compact('houses'));
         // dd($houses);

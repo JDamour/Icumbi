@@ -34,7 +34,7 @@
             <div class="probootstrap-card-media">
             <a href="{{route('houseshow.show', $house->id)}}">
               @foreach($house->uploads as $upload)
-                <img src="/images/small/{{ $upload->source }}">
+                <img src="/images/HouseUploads/{{ $upload->source }}">
                 @break;
               @endforeach
 

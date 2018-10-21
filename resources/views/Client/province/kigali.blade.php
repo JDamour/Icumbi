@@ -26,6 +26,7 @@
     <div class="container">
     
       <div class="row">
+
       @foreach($houses as $house)
         <div class="col-md-4 col-sm-6">
           <div class="probootstrap-card probootstrap-listing">

@@ -53,7 +53,9 @@ Route::post('/view/{id}', 'ViewController@store')->name('set_view');
 
 # location routes
 Route::get('/provinces/{id}', function($id) {
-  echo (json_encode(Province::where('country_id', $id)->get()));
+    $provinces =Province::where('country_id', $id)->get();
+
+  echo (json_encode($provinces));
 
 })->name('get_provinces');
 Route::get('/districts/{id}', function($id) {
@@ -165,7 +167,7 @@ Route::get('/master', function(){
     Route::get('/northern', 'PublicController@north');
     Route::get('/southern', 'PublicController@south');
     Route::get('/kigali', 'PublicController@kigali');
-    Route::get('/provinces/{id}', 'PublicController@showw');
+//    Route::get('/provinces/{id}', 'PublicController@showw');
     Route::get('/eastern', 'PublicController@east');
     Route::get('/western', 'PublicController@west');
 

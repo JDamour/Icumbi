@@ -359,63 +359,6 @@
 
   <!-- END: section -->
 
- <!--  <section class="probootstrap-section probootstrap-section-lighter">
-    <div class="container">
-      <div class="row heading">
-        <h2 class="mt0 mb50 text-center">Our Agents</h2>
-      </div>
-      <div class="row">
-        <div class="col-md-3">
-          <div class="probootstrap-card probootstrap-person text-left">
-            <div class="probootstrap-card-media">
-              <img src="img/person_1.jpg" class="img-responsive" alt="Free HTML5 Template by uicookies.com">
-            </div>
-            <div class="probootstrap-card-text">
-              <h2 class="probootstrap-card-heading mb0">Jeremy Slater</h2>
-              <p><small>Real Estate Brooker</small></p>
-              <p><a href="#">View Details</a></p>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-3">
-          <div class="probootstrap-card probootstrap-person text-left">
-            <div class="probootstrap-card-media">
-              <img src="img/person_2.jpg" class="img-responsive" alt="Free HTML5 Template by uicookies.com">
-            </div>
-            <div class="probootstrap-card-text">
-              <h2 class="probootstrap-card-heading mb0">James Butterly</h2>
-              <p><small>Buying Agent</small></p>
-              <p><a href="#">View Details</a></p>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-3">
-          <div class="probootstrap-card probootstrap-person text-left">
-            <div class="probootstrap-card-media">
-              <img src="img/person_3.jpg" class="img-responsive" alt="Free HTML5 Template by uicookies.com">
-            </div>
-            <div class="probootstrap-card-text">
-              <h2 class="probootstrap-card-heading mb0">James Smith</h2>
-              <p><small>Real Estate Brooker</small></p>
-              <p><a href="#">View Details</a></p>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-3">
-          <div class="probootstrap-card probootstrap-person text-left">
-            <div class="probootstrap-card-media">
-              <img src="img/person_4.jpg" class="img-responsive" alt="Free HTML5 Template by uicookies.com">
-            </div>
-            <div class="probootstrap-card-text">
-              <h2 class="probootstrap-card-heading mb0">Chris White</h2>
-              <p><small>Selling Agent</small></p>
-              <p><a href="#">View Details</a></p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section> -->
 
   <footer class="probootstrap-footer probootstrap-bg" style="background-image: url(img/slider_3.jpg);">
     <div class="container">
@@ -491,9 +434,17 @@
   <script src="js/main.min.js"></script>
   <script src="js/custom.js"></script>
   <!--Start of Tawk.to Script-->
+  @php
+  $name1 ="";
+  $email1 ="";
+  if(Auth::user()){
+  $name1 =Auth::user()->firstName;
+  $email1 =Auth::user()->email;
+  }
+  @endphp
   <script type="text/javascript">
-      var name = '{{ Auth::user()->firstName}}'
-      var email = '{{ Auth::user()->email}}'
+      var name = '{{ $name1 }}'
+      var email = '{{ $email1 }}'
    var Tawk_API=Tawk_API||{};
       Tawk_API.visitor = {
   name : name,
