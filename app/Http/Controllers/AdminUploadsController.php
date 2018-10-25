@@ -54,7 +54,7 @@ class AdminUploadsController extends Controller
             $check=in_array($extension,$allowedfileExtension);
 
             if ($check) {
-                $filename = time() . $photo->getClientOriginalName() . '.'. $photo->getClientOriginalExtension();
+                $filename = time() . $photo->getClientOriginalName();
                 //die($filename);
                 $photo->move($destinationPath, $filename);
                 copy($destinationPath.'/'.$filename, $large.$filename);

@@ -168,7 +168,6 @@ class OwnerHouseController extends Controller
             if ($upload->delete()) {
                 @unlink(public_path('/images/HouseUploads/' . $src));
                 @unlink(public_path('/images/large/' . $src));
-                @unlink(public_path('/images/small/' . $src));
             } else {
                 return back()->withInput();
             }
