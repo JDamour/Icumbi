@@ -17,34 +17,36 @@
               <h1>Search</h1>
             </div>
           </div>
+        </div>
       </div>
     </div>
   </section>
-  @if(isset($details))
-        
-  <section class="probootstrap-section probootstrap-section-lighter">
-    <h2 style="text-align:center"> <u>List of Houses matching your search key " <b> {{ $query }} "</u></b></h2>
-    @foreach($details as $house)
-    <div class="container">
 
+  <section class="probootstrap-section probootstrap-section-lighter">
+    <h2 style="text-align:center"> <div class="probootstrap-listing-category for-sale"><span>List of Houses matching your search key " <b> {{ $query }} "</b></span></div></h2>
+    @if(isset($details))
+  @foreach($details as $house)
+    <div class="container">
       <div class="row">
         <div class="col-md-4 col-sm-6">
           <div class="probootstrap-card probootstrap-listing">
             <div class="probootstrap-card-media">
               @foreach($house->uploads as $upload)
+              <a href="{{route('houseshow.show', $house->id)}}">
                   <img src="images/HouseUploads/{{ $upload->source }}">
+              </a>
+                  @break
               @endforeach
             </div>
             <div class="probootstrap-card-text">
-              <h2 class="probootstrap-card-heading"><a href="#">{{ $house->id }}</a></h2>
-              <div class="probootstrap-listing-location">
-                <i class="icon-location2"></i> <span>{{ $house->houseLocation }}</span>
-              </div>
-              <div class="probootstrap-listing-category for-sale"><span>For Rent</span></div>
-              <div class="probootstrap-listing-price"><strong>{{ $house->housePrice }}/{{ $house->paymentfrequency['name'] }}</strong></div>
-            </div>
-                Have liked the house <a href="{{route('houseshow.show', $house->id)}}" class="probootstrap-love"><i class="icon-heart"></i></a>
+            <!-- <h2 class="probootstrap-card-heading"><a href="{{route('houseshow.show', $house->id)}}">house id: {{ $house->id }}</a></h2> -->
             
+            <h2 class="probootstrap-card-heading"><a href="{{route('houseshow.show', $house->id)}}">Number of Bed rooms: {{ $house->numberOfRooms }}</a></h2>
+              <a href="{{route('houseshow.show', $house->id)}}">  <i class="icon-location2"></i> <span>Location:   {{ $house->sector['name'] }}/{{ $house->district['name'] }}</span>
+              <div class="probootstrap-listing-category for-sale"><span>For Rent</span></div>
+              <div class="probootstrap-listing-price"><strong>{{ $house->housePrice }} {{ $house->paymentfrequency['name'] }}</strong></div>
+            </div>
+                
           </div>
           @endforeach
         </div>

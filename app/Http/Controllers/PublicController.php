@@ -6,6 +6,8 @@ use App\User;
 use App\House;
 use App\Country;
 use App\Uploads;
+use App\Sector;
+use App\District;
 use App\Province;
 use App\Paymentfrequency;
 use App\Http\MailController;
@@ -22,49 +24,30 @@ class PublicController extends Controller
      */
     public function DisplayHousesOnHOusePage()
     {
-        $houses = House::paginate(6);
+        // $houses = House::paginate(6);
+        $houses = House::all();
         return view('client.index', compact('houses'));
     }
     public function DisplayHousesOnHomePage()
     {
-        $houses = House::paginate(6);
+        // $houses = House::paginate(6);
+        $houses = House::all();
         return view('welcome', compact('houses'));
     }
-
-    public function east()
+    public function districtHouses($id)
     {
-        $houses =DB::table('houses')->whereprovince_id(3)->get();
-        return view('client.province.east', compact('houses'));
+       $houses = House::where("district_id","=",$id)->get();
+        return view('client.districts', compact('houses'));
         // dd($house);
     }
-    public function kigali()
+    public function provinceHouses($id)
     {
-
-        $houses =DB::table('houses')->whereprovince_id(5)->get();
-        return view('client.province.kigali', compact('houses'));
-        // dd($houses);
+    //     $houses =DB::table('houses')->whereprovince_id(3)->get();
+        $houses = House::where("province_id","=",$id)->get();
+        return view('client.provinces', compact('houses'));
+        
     }
-    public function north()
-    {
-        // $houses = House::all();
-        $houses =DB::table('houses')->whereprovince_id(1)->get();
-        return view('client.province.north', compact('houses'));
-        dd($house);
-    }
-    public function west()
-    {
-        // $houses = House::all();
-        $houses =DB::table('houses')->whereprovince_id(4)->get();
-        return view('client.province.west', compact('houses'));
-        dd($house);
-    }
-    public function south()
-    {
-        // $houses = House::all();
-        $houses =DB::table('houses')->where('province_id',2)->get();
-        return view('client.province.south', compact('houses'));
-        dd($house);
-    }
+    
     public function paymentfrequency()
     {
         $payments = Paymentfrequency::all();
