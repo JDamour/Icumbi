@@ -117,14 +117,14 @@ class ServiceController extends Controller
                 // redirect to display service 
                 if ($service) {
                     Mail::to($service->house->user->email)->send(new HouseBookingMail(route('custom.service.show', $service->id)));
-                    Mail::to($service->email)->send(new HouseBookingMail(route('custom.service.show', $service->id)));
+                    Mail::to($service->user->email)->send(new HouseBookingMail(route('custom.service.show', $service->id)));
                     return redirect()->route('custom.service.show', $service->id);
                 } else {
                     // return to house form with errors
-                    return back()->withInput();
+                    return back()->withErrors(['House Booking Failed. Contact customer care.']);
                 }
             } else {
-                return back()->withInput();
+                return back()->withErrors(['House is already booked.']);
             }
         } else {
             try {
@@ -146,7 +146,7 @@ class ServiceController extends Controller
                 return redirect()->route('custom.service.show', $service->id);
             } else {
                 // return to house form with errors
-                return back()->withInput();
+                return back()->withErrors(['House Booking Failed. Please Contact Customer Care.']);
             }
         }
         
@@ -244,7 +244,6 @@ class ServiceController extends Controller
                 return redirect()->route('custom.service.show', $service->id);
             }
         } else {
-            die("service not found");
             return view('custom404');
         }
     }
