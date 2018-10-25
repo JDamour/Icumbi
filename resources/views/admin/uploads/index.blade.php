@@ -41,7 +41,7 @@
                   <input type="hidden" name="_token" value="{{csrf_token()}}">
                   <button type="submit" class="btn btn-flat btn-danger btn-sm"><i class="fa fa-close"></i></button>
                 </form>
-                <img class="img-responsive" style="height:150px;object-fit:contain" src="{{asset('images/small/' . $pic->source)}}" title="{{$pic->title}}"/>
+                <img class="img-responsive" style="height:150px;object-fit:contain" src="{{asset('images/large/' . $pic->source)}}" title="{{$pic->title}}"/>
                 
               </div>
             @endforeach

@@ -7,27 +7,31 @@
 					<div class="preview col-md-6">
 
 						<div class="preview-pic tab-content">
+						
 						@php 
-						$counter = 0;
+							$i=1;
 						@endphp
 						@foreach($data["house"]->uploads as $upload)
-						@php
-						$counter += 1
-						@endphp
-						  <div class="tab-pane active" id="pic-{{$counter}}"><img src="{{asset('images/large/' . $upload->source)}}" title="{{$upload->title}}" /></div>
-						@endforeach
-						</div>
-						<ul class="preview-thumbnail nav nav-tabs">
-						@php 
-						$counter = 0;
-						@endphp
-						@foreach($data["house"]->uploads as $upload)
-						@php
-						$counter += 1
-						@endphp
-						  <li class="active"><a data-target="#pic-{{$counter}}" data-toggle="tab"><img src="{{asset('images/HouseUploads/' . $upload->source)}}" title="{{$upload->title}}" /></a></li>
-						@endforeach
-						</ul>
+						    <div class="tab-pane <?php echo ($i == 1) ? 'active' : '' ?>" id="pic-{{$i}}">
+								<img src="/images/HouseUploads/{{ $upload->source }}" />
+							</div>
+							@php 
+								$i++;
+							@endphp
+							@endforeach
+							</div>
+							<ul class="preview-thumbnail nav nav-tabs">
+							@php 
+								$y=1;
+							@endphp
+							@foreach($data["house"]->uploads as $upload)
+							<li class="<?php echo ($y === 1) ? 'active' : '' ?>"><a data-target="#pic-{{$y}}" data-toggle="tab"><img src="/images/HouseUploads/{{ $upload->source }}" /></a></li>
+							@php
+								$y++;
+							@endphp
+							@endforeach
+							</ul>
+						
 
 					</div>
 					<div class="details col-md-6">
@@ -43,7 +47,7 @@
 							<span class="review-no">{{count($data['house']->views)}} Views</span>
 						</div>
 						<address>
-							<strong>House Adress:</strong>
+							<strong>House Adress:{{$data["house"]->houseLocation}}</strong>
 							<br>
 							Cell: {{$data["house"]->cell}}<br>
 							Sector: {{$data["house"]->sector->name}}<br>
@@ -53,6 +57,7 @@
 							StreetCode: {{$data["house"]->streetCode}}<br>
 							Number Of Rooms: {{$data["house"]->numberOfRooms}}<br>
 							Width x Length: {{$data["house"]->width}} x {{$data["house"]->length}}<br>
+							
 							Water: @if($data["house"]->water == 1) Yes @else No @endif <br>
 							Inside Bathroom: @if($data["house"]->bathroom == 1) Yes @else No @endif<br>
 							Inside Toilet: @if($data["house"]->toilet == 1) Yes @else No @endif<br>

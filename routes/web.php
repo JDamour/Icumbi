@@ -10,19 +10,17 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-use App\Province;
-use App\Sector;
 use App\Cell;
-use App\House;
-use Illuminate\Support\Facades\Input;
-use App\District;
 use App\User;
-
-
+use App\House;
+use App\Sector;
+use App\District;
+use App\Province;
+use App\Paymentfrequency;
+use Illuminate\Support\Facades\Input;
 
 Route::get('sendNotification', 'MailController@sendNotification');
 Route::post('contactmail', 'MailController@ContactMail');
-
 
 Route::get('/', function () {
     return view('welcome');
@@ -152,24 +150,42 @@ Route::get('/master', function(){
     Route::any('/houseShow/{id}', 'PublicController@show')->name('houseshow.show');
     Route::any('/search', function(){
         $search = Input::get('search');
+        // Search by sector, district, paymentfrequency, amount, No of Rooms
+            $sector="";
+            $district="";
+            $pf="";
         if ($search != "") {
-            $house = House::where('houselocation','LIKE','%'.$search.'%')
+              $district="";
+              if ($search =='gasabo' || $search =='Gasabo') {
+                  $district=28;
+                  
+              }
+              elseif($search =='kicukiro' || $search =='Kicukiro') {
+                  $district=29;
+                  
+              }
+              elseif($search =='nyarugenge' || $search =='Nyarugenge') {
+                $district=30;
+            }        
+            $house = House::where('numberOfRooms','LIKE','%'.$search.'%')
             ->orWhere('housePrice','LIKE','%'.$search.'%')
-            ->orWhere('paymentfrequency_id','LIKE','%'.$search.'%')
+            ->orWhere('paymentfrequency_id','LIKE',$pf)
+            ->orWhere('district_id','LIKE','%'.$district.'%')
+            ->orWhere('sector_id','LIKE','%'.$search.'%')
             ->get();
-        if(count($house)>0)
-            return view('client.search')->withDetails($house)->withQuery ( $search );
+            if(count($house)>0){
+                return view('client.search')->withDetails($house)->withQuery ( $search );
+                
+            }
         }
+        // dd($house);
         return view('client.search')->withMessage("No results found " );
     });
 
     
-    Route::get('/northern', 'PublicController@north');
-    Route::get('/southern', 'PublicController@south');
-    Route::get('/kigali', 'PublicController@kigali');
-//    Route::get('/provinces/{id}', 'PublicController@showw');
-    Route::get('/eastern', 'PublicController@east');
-    Route::get('/western', 'PublicController@west');
+    Route::get('/province/{id}', 'PublicController@provinceHouses');
+    // Route::get('/southern', 'PublicController@south');
+    Route::get('/district/{id}', 'PublicController@districtHouses');
 
 #user routes
 Route::group(['middleware' => 'auth.user'], function(){

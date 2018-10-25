@@ -11,7 +11,7 @@
             @endphp
               @foreach($house->uploads as $upload)
 						    <div class="tab-pane <?php echo ($i == 1) ? 'active' : '' ?>" id="pic-{{$i}}">
-                  <img src="/images/large/{{ $upload->source }}" />
+                  <img src="/images/HouseUploads/{{ $upload->source }}" />
                 </div>
                 @php 
                   $i++;
