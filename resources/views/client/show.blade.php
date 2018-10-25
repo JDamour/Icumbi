@@ -80,11 +80,13 @@
                   </tr>
                 </table>
             </div>
-                    <form action="">
-                      <!-- <input type="submit" name="btn" value=""> -->
-                      <input class="add-to-cart btn btn-default" type="button" value="House Address" onclick="window.location.href='{{route('custom.service.create',$house->id)}}'" />
-                      <input class="add-to-cart btn btn-default" type="button" value="Refund" onclick="window.location.href='{{route('custom.service.refund',$house->id)}}'" />
+                    <form action="{{route('custom.service.store')}}" method="post">
+                      <input type="hidden" name="_token" value="{{csrf_token()}}">
+                      <input type="hidden" value="{{$house->id}}" name="house_id"/>
+                      <input class="add-to-cart btn btn-default" type="submit" value="House Address" />
                     </form> 
+                    <br/>
+                    <input class="add-to-cart btn btn-default" type="button" value="Refund with this house" onclick="window.location.href='{{route('custom.service.refund',$house->id)}}'" />
         </div>
 
           <!-- <p class="vote"><strong>91%</strong> liked this house! <strong>(87 votes)</strong></p> -->
