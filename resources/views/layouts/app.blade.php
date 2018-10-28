@@ -90,14 +90,6 @@
         </nav>
       </div>
     </header>
-    
-
-                    <!-- <ul class="navbar-nav ml-auto"> 
-
-                </div>
-            </div>
-        </nav>-->
-
 
         <footer class="main-footer" style="height:40px; color: white; background: #6C7D80; z-index:1;">
           <!-- To the right -->

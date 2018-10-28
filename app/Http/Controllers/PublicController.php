@@ -25,13 +25,13 @@ class PublicController extends Controller
     public function DisplayHousesOnHOusePage()
     {
         // $houses = House::paginate(6);
-        $houses = House::all();
+        $houses = House::where("status","=",2)->get();
         return view('client.index', compact('houses'));
     }
     public function DisplayHousesOnHomePage()
     {
         // $houses = House::paginate(6);
-        $houses = House::all();
+        $houses = House::where("status","=",2)->get();
         return view('welcome', compact('houses'));
     }
     public function districtHouses($id)

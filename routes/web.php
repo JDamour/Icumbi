@@ -148,6 +148,11 @@ Route::get('/master', function(){
     Route::get('/house', 'PublicController@DisplayHousesOnHOusePage');
     Route::get('/', 'PublicController@DisplayHousesOnHomePage');
     Route::any('/houseShow/{id}', 'PublicController@show')->name('houseshow.show');
+    Route::get('/searchajaxxx', 'PublicController@searchajax');
+    
+
+Route::get('/searchajax','SearchController@index');
+Route::get('/searchaa','SearchController@search');
     Route::any('/search', function(){
         $search = Input::get('search');
         // Search by sector, district, paymentfrequency, amount, No of Rooms
@@ -158,28 +163,27 @@ Route::get('/master', function(){
               $district="";
               if ($search =='gasabo' || $search =='Gasabo') {
                   $district=28;
-                  
               }
               elseif($search =='kicukiro' || $search =='Kicukiro') {
                   $district=29;
-                  
               }
               elseif($search =='nyarugenge' || $search =='Nyarugenge') {
                 $district=30;
             }        
             $house = House::where('numberOfRooms','LIKE','%'.$search.'%')
             ->orWhere('housePrice','LIKE','%'.$search.'%')
-            ->orWhere('paymentfrequency_id','LIKE',$pf)
+            ->orWhere('paymentfrequency_id','LIKE','%'.$search.'%')
             ->orWhere('district_id','LIKE','%'.$district.'%')
             ->orWhere('sector_id','LIKE','%'.$search.'%')
             ->get();
             if(count($house)>0){
                 return view('client.search')->withDetails($house)->withQuery ( $search );
-                
             }
         }
         // dd($house);
+        if ($search=="" || $search==" "){
         return view('client.search')->withMessage("No results found " );
+    }
     });
 
     

@@ -9,14 +9,16 @@
 
             <div class="page-title probootstrap-animate">
               <div class="probootstrap-breadcrumbs">
-                <a href="/">Home</a><a href="/kigali"><span>Kigali</span></a>
+                <a href="/">Home</a><span>Kigali</span></a>
               </div>
               <h1>
               @foreach($houses as $house)
+              
               <?php 
                 $dist="";
                 if ($house->district_id==28) {
-                  echo "Gasabo";
+                  
+                  print "Gasabo";
                 }
                 elseif ($house->district_id==29) {
                   echo "Kicukiro";
@@ -60,55 +62,12 @@
             <div class="probootstrap-card-text">
             <h2 class="probootstrap-card-heading"><a href="{{route('houseshow.show', $house->id)}}">Number of Bed rooms: {{ $house->numberOfRooms }}</a></h2>
             <!-- <h2 class="probootstrap-card-heading"><a href="{{route('houseshow.show', $house->id)}}">Number of Bed rooms: {{ $house->numberOfRooms }}</a></h2> -->
-            <?php
-                      $sector="";
-                      $district="";
-                      
-                      if ($house->sector_id==406){
-                        $sector="Gitega";
-                      }
-                      elseif ($house->sector_id==407){
-                        $sector="Kinyinya";
-                      }
-                      elseif ($house->sector_id==408){
-                        $sector="Kigali";
-                      }
-                      elseif ($house->sector_id==409){
-                        $sector="Kimisagara";
-                      }
-                      elseif ($house->sector_id==410){
-                        $sector="Mageragere";
-                      }
-                      elseif ($house->sector_id==411){
-                        $sector="Muhima";
-                      }
-                      elseif ($house->sector_id==412){
-                        $sector="Nyakabanda";
-                      }
-                      elseif ($house->sector_id==413){
-                        $sector="Nyamirambo";
-                      }
-                      elseif ($house->sector_id==414){
-                        $sector="Rwezamenyo";
-                      }
-                      elseif ($house->sector_id==415){
-                        $sector="Nyarugenge";
-                      }
-                      elseif ($house->sector_id==416){
-                        $sector="Nyaraugunga";
-                      }
-                      elseif ($house->sector_id>395 && $house->sector_id<407){
-                        $sector="ERROR!!! This sector belongs to Kicukiro District";
-                      }
-                      else{
-                        $sector="ERROR!!! This sector belongs to Gasabo District";
-                      }
-                  ?>
+
               <div class="probootstrap-listing-location">
-              <a href="{{route('houseshow.show', $house->id)}}">  <i class="icon-location2"></i> <span>Location: {{ $sector }}  </span>
+              <a href="{{route('houseshow.show', $house->id)}}">  <i class="icon-location2"></i> <span>Location: {{ $house->sector['name'] }}  </span>
               </div>
               <div class="probootstrap-listing-category for-sale"><span>For Rent</span></div>
-              <div class="probootstrap-listing-price"><strong>{{ $house->housePrice }}
+              <div class="probootstrap-listing-price"><strong>{{ $house->housePrice }} {{$house->paymentfrequency['name']}}
               
               </strong></div>
             </div></a>
