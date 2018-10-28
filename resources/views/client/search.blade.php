@@ -25,7 +25,7 @@
   <section class="probootstrap-section probootstrap-section-lighter">
     <h2 style="text-align:center"> <div class="probootstrap-listing-category for-sale"><span>List of Houses matching your search key " <b> {{ $query }} "</b></span></div></h2>
     @if(isset($details))
-  @foreach($details as $house)
+    @foreach($details as $house)
     <div class="container">
       <div class="row">
         <div class="col-md-4 col-sm-6">
