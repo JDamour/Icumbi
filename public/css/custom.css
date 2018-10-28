@@ -319,11 +319,19 @@ img {
                                 flex-grow: 1; }
 
                                 .product-title, .price, .sizes, .colors {
-                                  text-transform: UPPERCASE;
-                                  font-weight: bold; }
+                                  text-transform: none;
+                                  font-size: 17px;
+                                  color: black;
+
+                                }
 
                                   .checked, .price span {
-                                    color: #ff9f1a; }
+                                    color: black;
+                                    text-transform: uppercase;
+                                    font-weight: bold;
+                                    font-size: 16px;
+
+                                     }
 
                                     .product-title, .rating, .product-description, .price, .vote, .sizes {
                                       margin-bottom: 15px; }
@@ -347,17 +355,17 @@ img {
                                                 margin-left: 20px; }
 
                                                 .add-to-cart, .like {
-                                                  background: #ff9f1a;
-                                                  padding: 1.2em 1.5em;
+                                                  background: lightgrey;
+                                                 
                                                   border: none;
-                                                  text-transform: UPPERCASE;
-                                                  font-weight: bold;
-                                                  color: #fff;
+                      
                                                   -webkit-transition: background .3s ease;
                                                   transition: background .3s ease; }
                                                   .add-to-cart:hover, .like:hover {
-                                                    background: #b36800;
-                                                    color: #fff; }
+                                                    /*background: #b36800;*/
+                                                    color: white;
+                                                    background-color: green;
+                                                      }
 
                                                     .not-available {
                                                       text-align: center;
@@ -399,7 +407,20 @@ img {
                                                                             -webkit-transform: scale(1);
                                                                             transform: scale(1); } }
 
+#tablee{
+  padding-bottom: 15px;
+  border-spacing: 23px;
 
+}
+
+.tablerows{
+  padding-bottom: -15px;
+  border-spacing: 23px;
+}
+.form-gap {
+    padding-bottom: 150px;
+    background-image: url(images/design/backgroundimage.jpg);
+}
 /*
  * General styles
  */

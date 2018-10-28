@@ -126,9 +126,9 @@
       </div>
     </div>
     <ul class="slides">
-      <li style="background-image: url(images/HouseUploads/house2.jpg); opacity:1;"></li>
-      <li style="background-image: url(images/HouseUploads/house4.jpg);"></li>
-      <li style="background-image: url(images/HouseUploads/house9.jpg);"></li>
+      <li style="background-image: url(images/design/house2.jpg); opacity:1;"></li>
+      <li style="background-image: url(images/design/house4.jpg);"></li>
+      <li style="background-image: url(images/design/house6.jpg);"></li>
     </ul>
   </section>
   <!-- END: slider  -->
@@ -205,7 +205,7 @@
         <div class="col-md-4 col-sm-6">
           <!-- <a href="/northern" class="probootstrap-hover-overlay"> -->
           <a href="/district/28" class="probootstrap-hover-overlay">
-            <img style="width: 100%; height: 50vh;" src ="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTNU00sittj9DHb2NQ6xOZ5H86W8M6jwUfGO1uQbcFyvNL0Z8BDg" alt="Free Bootstrap Template by uicookies.com" class="img-responsive">
+            <img style="width: 100%; height: 50vh;" src ="images/design/house3.jpg" alt="Free Bootstrap Template by uicookies.com" class="img-responsive">
             <div class="probootstrap-text-overlay">
               <!-- <h3>Northern Province</h3> -->
               <h3>Gasabo District</h3>
@@ -216,10 +216,10 @@
         <div class="col-md-4 col-sm-6">
           <!-- <a href="/eastern" class="probootstrap-hover-overlay"> -->
           <a href="/district/29" class="probootstrap-hover-overlay">
-            <img style="width: 100%; height: 50vh;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4fSpE-Dvarah3A851jqa7WyCvmj2ifuAEPwlkM6V_Vt9gqMwyJQ" alt="Free Bootstrap Template by uicookies.com" class="img-responsive">
+            <img style="width: 100%; height: 50vh;" src="images/design/house4.jpg" alt="Free Bootstrap Template by uicookies.com" class="img-responsive">
             <div class="probootstrap-text-overlay">
               <!-- <h3>Eastern Province</h3> -->
-              <h3>Kickiro District</h3>
+              <h3>Kicukiro District</h3>
               <p>268 Properties</p>
             </div>
           </a>
@@ -227,7 +227,7 @@
         <div class="col-md-4 col-sm-6" name="south">
           <!-- <a href="/southern" class="probootstrap-hover-overlay"> -->
           <a href="/district/30" class="probootstrap-hover-overlay">
-            <img style="width: 100%; height: 50vh;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSoArxpqX_PewtkgYZK-s7Tj3mggRmwDHl7NaTPXVySA7TlUEwe" alt="Free Bootstrap Template by uicookies.com" class="img-responsive">
+            <img style="width: 100%; height: 50vh;" src="images/design/house9.jpg" alt="Free Bootstrap Template by uicookies.com" class="img-responsive">
             <div class="probootstrap-text-overlay">
               <!-- <h3>Southern Province</h3> -->
               <h3>Nyarugennge District</h3>
@@ -296,7 +296,7 @@
 
   <section class="probootstrap-half reverse">
     <div class="image-wrap">
-      <div class="image" style="background-image: url(images/HouseUploads/iteme.jpeg); border-color: white;"></div>
+      <div class="image" style="background-image: url(images/design/iteme.jpeg); border-color: white;"></div>
     </div>
     <div class="text" style="font-family: 'Cormorant Garamond', serif;">
       <p class="mb10 subtitle">Choose us</p>
@@ -366,7 +366,7 @@
   <!-- END: section -->
 
 
-  <footer class="probootstrap-footer probootstrap-bg" style="background-image: url(img/slider_3.jpg);">
+  <footer class="probootstrap-footer probootstrap-bg" style="background-image: url(design/slider_3.jpg);">
     <div class="container">
       <div class="row mb60">
         <div class="col-md-3">
