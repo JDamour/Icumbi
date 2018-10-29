@@ -104,7 +104,7 @@
                     <div class="search-field">
                       <i class="icon-location2"></i>
                       <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                      <input type="text" class="form-control" placeholder="Enter address, ZIP code, Neighborhoods" name="search">
+                      <input type="text" class="form-control" placeholder="Enter Sector, District,Number of rooms price" name="search">
                     </div>
                     <div class="search-category">
                       <i class="icon-chevron-down"></i>
@@ -126,9 +126,9 @@
       </div>
     </div>
     <ul class="slides">
-      <li style="background-image: url(images/HouseUploads/house2.jpg); opacity:1;"></li>
-      <li style="background-image: url(images/HouseUploads/house4.jpg);"></li>
-      <li style="background-image: url(images/HouseUploads/house9.jpg);"></li>
+      <li style="background-image: url(images/design/house2.jpg); opacity:1;"></li>
+      <li style="background-image: url(images/design/house4.jpg);"></li>
+      <li style="background-image: url(images/design/house6.jpg);"></li>
     </ul>
   </section>
   <!-- END: slider  -->
@@ -183,7 +183,7 @@
         <h2 class="mt0 mb50 text-center">Explore Our Neighborhoods</h2>
       </div>
       
-      <div class="row probootstrap-gutter10">
+      <!-- <div class="row probootstrap-gutter10">
         <div class="col-md-6 col-sm-6">
           <a href="/kigali" class="probootstrap-hover-overlay">
             <img style="width: 100%; height: 50vh;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTem5V2NHTNbn1a4LeifPBLff5p6ga2lIspXGJJU3V3rpPcF1E-" alt="Free Bootstrap Template by uicookies.com" class="img-responsive">
@@ -201,30 +201,36 @@
               <p>294 Properties</p>
             </div>
           </a>
-        </div>
+        </div> -->
         <div class="col-md-4 col-sm-6">
-          <a href="/northern" class="probootstrap-hover-overlay">
-            <img style="width: 100%; height: 50vh;" src ="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTNU00sittj9DHb2NQ6xOZ5H86W8M6jwUfGO1uQbcFyvNL0Z8BDg" alt="Free Bootstrap Template by uicookies.com" class="img-responsive">
+          <!-- <a href="/northern" class="probootstrap-hover-overlay"> -->
+          <a href="/district/28" class="probootstrap-hover-overlay">
+            <img style="width: 100%; height: 50vh;" src ="images/design/house3.jpg" alt="Free Bootstrap Template by uicookies.com" class="img-responsive">
             <div class="probootstrap-text-overlay">
-              <h3>Northern Province</h3>
+              <!-- <h3>Northern Province</h3> -->
+              <h3>Gasabo District</h3>
               <p>300 Properties</p>
             </div>
           </a>
         </div>
         <div class="col-md-4 col-sm-6">
-          <a href="/eastern" class="probootstrap-hover-overlay">
-            <img style="width: 100%; height: 50vh;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4fSpE-Dvarah3A851jqa7WyCvmj2ifuAEPwlkM6V_Vt9gqMwyJQ" alt="Free Bootstrap Template by uicookies.com" class="img-responsive">
+          <!-- <a href="/eastern" class="probootstrap-hover-overlay"> -->
+          <a href="/district/29" class="probootstrap-hover-overlay">
+            <img style="width: 100%; height: 50vh;" src="images/design/house4.jpg" alt="Free Bootstrap Template by uicookies.com" class="img-responsive">
             <div class="probootstrap-text-overlay">
-              <h3>Eastern Province</h3>
+              <!-- <h3>Eastern Province</h3> -->
+              <h3>Kicukiro District</h3>
               <p>268 Properties</p>
             </div>
           </a>
         </div>
         <div class="col-md-4 col-sm-6" name="south">
-          <a href="/southern" class="probootstrap-hover-overlay">
-            <img style="width: 100%; height: 50vh;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSoArxpqX_PewtkgYZK-s7Tj3mggRmwDHl7NaTPXVySA7TlUEwe" alt="Free Bootstrap Template by uicookies.com" class="img-responsive">
+          <!-- <a href="/southern" class="probootstrap-hover-overlay"> -->
+          <a href="/district/30" class="probootstrap-hover-overlay">
+            <img style="width: 100%; height: 50vh;" src="images/design/house9.jpg" alt="Free Bootstrap Template by uicookies.com" class="img-responsive">
             <div class="probootstrap-text-overlay">
-              <h3>Southern Province</h3>
+              <!-- <h3>Southern Province</h3> -->
+              <h3>Nyarugennge District</h3>
               <p>342 Properties</p>
             </div>
           </a>
@@ -261,18 +267,18 @@
             <div class="probootstrap-card-media">
             <a href="{{route('houseshow.show', $house->id)}}">
               @foreach($house->uploads as $upload)
-                <img src="/images/HouseUploads/{{ $upload->source }}">
+                <img src="/images/houseUploads/{{ $upload->source }}">
                 @break;
               @endforeach
 
             </div></a>
             <div class="probootstrap-card-text">
-            <h2 class="probootstrap-card-heading"><a href="{{route('houseshow.show', $house->id)}}">House Id: {{ $house->id }}</a></h2>
+            <h2 class="probootstrap-card-heading"><a href="{{route('houseshow.show', $house->id)}}">Number of Bed rooms: {{ $house->numberOfRooms }}</a></h2>
+              <a href="{{route('houseshow.show', $house->id)}}">  <i class="icon-location2"></i> <span>Location:   {{ $house->sector['name'] }}/{{ $house->district['name'] }}</span>
               <div class="probootstrap-listing-location">
-              <a href="{{route('houseshow.show', $house->id)}}">  <i class="icon-location2"></i> <span>Location:   {{ $house->sector['name'] }}</span>
               </div>
               <div class="probootstrap-listing-category for-sale"><span>For Rent</span></div>
-              <div class="probootstrap-listing-price"><strong>{{ $house->housePrice }}/{{ $house->paymentfrequency['name'] }}</strong></div>
+              <div class="probootstrap-listing-price"><strong>{{ $house->housePrice }} {{ $house->paymentfrequency['name'] }}</strong></div>
             </div></a>
              
             
@@ -290,7 +296,7 @@
 
   <section class="probootstrap-half reverse">
     <div class="image-wrap">
-      <div class="image" style="background-image: url(images/HouseUploads/iteme.jpeg); border-color: white;"></div>
+      <div class="image" style="background-image: url(images/design/iteme.jpeg); border-color: white;"></div>
     </div>
     <div class="text" style="font-family: 'Cormorant Garamond', serif;">
       <p class="mb10 subtitle">Choose us</p>
@@ -360,7 +366,7 @@
   <!-- END: section -->
 
 
-  <footer class="probootstrap-footer probootstrap-bg" style="background-image: url(img/slider_3.jpg);">
+  <footer class="probootstrap-footer probootstrap-bg" style="background-image: url(design/slider_3.jpg);">
     <div class="container">
       <div class="row mb60">
         <div class="col-md-3">
