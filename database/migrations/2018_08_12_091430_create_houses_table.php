@@ -18,7 +18,7 @@ class CreateHousesTable extends Migration
             $table->string('houseLocation');
             $table->double('housePrice');
             $table->string('streetCode');
-            $table->enum('status', ['1', '2', '3', '4'])->default('1');
+            $table->enum('status', ['1', '2', '3', '4', '5'])->default('1');
             $table->integer('user_id')->unsigned();
             $table->integer('paymentfrequency_id')->unsigned();
             $table->integer('country_id')->unsigned();
