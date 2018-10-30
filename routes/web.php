@@ -101,6 +101,8 @@ Route::group(['prefix' => 'owner', 'middleware' =>'auth.owner'], function(){
   # house controller
   Route::resource('houses', 'OwnerHouseController');
   Route::get('/houses/delete/{id}', 'OwnerHouseController@delete')->name('owner.houses.delete');
+  Route::get('/houses/toHold/{id}', 'OwnerHouseController@getHouseFromHold')->name('owner.houses.getHouseFromHold');
+  Route::get('/houses/fromHold/{id}', 'OwnerHouseController@putHouseOnHold')->name('owner.houses.putHouseOnHold');
 
   # uploads controller
   Route::get('/uploads/{house_id}', 'OwnerUploadsController@index')->name('owner.uploads.index');

@@ -20,7 +20,7 @@ class ServiceController extends Controller
      */
     public function index()
     {
-        $services = Service::all();
+        $services = Service::all()->sortByDesc('created_at');
         return view('services.index', compact('services'));
 
     }
@@ -38,7 +38,7 @@ class ServiceController extends Controller
     }
 
     public function userIndex() {
-        $services = Auth::user()->services;
+        $services = Auth::user()->services()->orderByDesc('created_at')->get();
         return view('services.userIndex', compact('services')); 
     }
 
