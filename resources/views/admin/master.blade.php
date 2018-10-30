@@ -160,12 +160,11 @@ desired effect
               </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="#"><i class="fa fa-circle-o"></i> New</a></li>
-            <li><a href="#"><i class="fa fa-circle-o"></i> View All</a></li>
-			<li><a href="#"><i class="fa fa-circle-o"></i> Deactivated</a></li>
+            <li><a href="{{action('UserManagementController@create')}}"><i class="fa fa-circle-o"></i> New</a></li>
+            <li><a href="{{action('UserManagementController@index')}}"><i class="fa fa-circle-o"></i> View All</a></li>
           </ul>
         </li>
-		<li class="treeview active">
+		<li class="treeview">
           <a href="#"><i class="fa fa-home"></i> <span>House</span>
             <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
