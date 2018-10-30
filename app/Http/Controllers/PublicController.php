@@ -25,7 +25,7 @@ class PublicController extends Controller
     public function DisplayHousesOnHOusePage()
     {
         // $houses = House::paginate(6);
-        $houses = House::where("status","=",2)->get();
+        $houses = House::where("status","=",2)->paginate(9);
         return view('client.index', compact('houses'));
     }
     public function DisplayHousesOnHomePage()
