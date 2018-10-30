@@ -35,6 +35,7 @@
         <table id="table_houses" class="table table-bordered table-striped">
           <thead>
             <tr>
+              <th>Photo</th>
               <th>Street Code</th>
               <th>Price</th>
               <th>Country</th>
@@ -56,6 +57,10 @@
 
             @foreach ($houses as $house)
             <tr>
+              @foreach($house->uploads as $upload)
+              <td><img src="{{asset('images/HouseUploads/' . $upload->source)}}" width="100px" alt="image" title="image"/></td>
+              @break
+              @endforeach
               <td>{{$house->streetCode}}</td>
               <td>{{$house->housePrice}}</td>
               <td>{{$house->country->name}}</td>
@@ -93,6 +98,12 @@
               @endif
               <td>
                 <span class="label bg-purple"><a style="color:white" href="{{route('houses.show', $house->id)}}">open</a></span>
+                @if($house->status == 5)
+                <span class="label bg-purple"><a style="color:white" href="{{route('owner.houses.getHouseFromHold', $house->id)}}">Unsuspend House</a></span>
+                @endif
+                @if($house->status == 2)
+                <span class="label bg-purple"><a style="color:white" href="{{route('owner.houses.putHouseOnHold', $house->id)}}">Suspend House</a></span>
+                @endif
                 <span class="label bg-maroon"><a style="color:white" href="{{route('owner.houses.delete', $house->id)}}">Delete</a></span></td>
               </tr>
               @endforeach

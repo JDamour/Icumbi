@@ -32,9 +32,11 @@
                     <table id="table_houses" class="table table-bordered table-striped">
                       <thead>
                       <tr>
+                        <th>Photo</th>
+                        <th>Name</th>
                         <th>Email</th>
                         <th>Phone Number</th>
-                        <th>Payment Reference Number</th>
+                        <th>Date Created</th>
                         <th>Action</th>
                       </tr>
                       </thead>
@@ -42,9 +44,14 @@
 
                       @foreach ($services as $service)
                       <tr>
+                        @foreach($service->house->uploads as $upload)
+                        <td><img src="{{asset('images/HouseUploads/' . $upload->source)}}" width="100px" alt="image" title="image"/></td>
+                        @break
+                        @endforeach
                         <td>{{$service->user->firstName}} {{$service->user->lastName}}</td>
+                        <td>{{$service->user->email}}</td>
                         <td>{{$service->user->phoneNumber}}</td>
-                        <td>{{$service->payment_id}}</td>
+                        <td>{{$service->created_at}}</td>
                         <td>
                             <span class="label bg-purple">
                                 <a style="color:white" href="{{route('houses.show', $service->house_id)}}">View House</a>

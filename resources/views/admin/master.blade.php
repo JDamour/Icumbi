@@ -16,6 +16,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <link rel="stylesheet" href="{{asset('bower_components/font-awesome/css/font-awesome.min.css')}}">
   <!-- Ionicons -->
   <link rel="stylesheet" href="{{asset('bower_components/Ionicons/css/ionicons.min.css')}}">
+  <!--datatable styles-->
+  <link rel="stylesheet" href="{{asset('bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css')}}">
   <!--  fancybox-->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">  
   <!-- Theme style -->
@@ -221,7 +223,9 @@ desired effect
 
 <script type="text/javascript">
   $(function () {
-    $('#table_houses').DataTable();
+    $('#table_houses').DataTable({
+      "scrollX" : true
+    });
   })  
   
 </script>
