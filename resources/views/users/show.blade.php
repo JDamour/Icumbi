@@ -25,6 +25,57 @@
         @include('partials.success')
         @include('partials.error')
 
+        <div class="box box-info">
+          <div class="box-header with-border">
+            <div class="row">
+              <div class="col-md-12">
+                <p class="pull-right">
+                  <a class="btn btn-sm bg-olive" href="{{action('UserManagementController@edit', $user->id)}}"> <i class="fa fa-edit"></i> Edit</a>
+                  <a class="btn btn-sm bg-olive" href="#" onclick="deleteUser(event)"> Delete User</a>
+                </p>
+                <form id="deleteUserForm" action="{{action('UserManagementController@destroy', $user->id)}}" method="post">
+                  <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                  <input type="hidden" name="_method" value="DELETE">
+                </form>
+                <script type="text/javascript">
+                  function deleteUser(e) {
+                    e = e || window.event;
+                    e.preventDefault();
+                    if (confirm('Do you want to continue?')) {
+                      document.getElementById('deleteUserForm').submit();
+                    }
+                  }
+                  
+                </script>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-8 col-sm-offset-2">
+                  <table class="table table-bordered table-striped">
+                    <tr><td>First Name: </td> <td>{{$user->firstName}}</td></tr>
+                    <tr><td>Last Name: </td> <td>{{$user->lastName}}</td></tr>
+                    <tr><td>Email Address: </td> <td>{{$user->email}}</td></tr>
+                    <tr><td>Phone Number: </td> <td>{{$user->phoneNumber}}</td></tr>
+                    <tr><td>Role: </td>
+                    <td>
+                      @if ($user->isAdmin())
+                      System Admininstrator
+                      @endif
+                      @if($user->isOwner())
+                      House Owner
+                      @endif
+                      @if($user->isUser())
+                      User
+                      @endif
+                    </td>
+                    </tr>
+                  </table>
+              </div>              
+              </div>
+            </div>
+          </div>
+        </div>
+
 
     </section>
     <!-- /.content -->
