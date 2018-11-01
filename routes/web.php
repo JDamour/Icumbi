@@ -91,16 +91,6 @@ Route::group(['prefix' => 'admin', 'middleware' =>'auth.admin'],function () {
     Route::post('/uploads', 'AdminUploadsController@store')->name('admin.uploads.store') ;
     Route::delete('/uploads/{id}', 'AdminUploadsController@destroy')->name('admin.uploads.delete') ;
 
-
-    // user management controller
-    Route::get('/users', 'UserManagementController@index');
-    Route::get('/users/create', 'UserManagementController@create');
-    Route::get('/users/{id}', 'UserManagementController@show');
-    Route::get('/users/{id}/edit', 'UserManagementController@edit');
-    Route::post('/users', 'UserManagementController@store');
-    Route::put('/users/{id}', 'UserManagementController@update');
-    Route::delete('/users/{id}', 'UserManagementController@destroy');
-
 });
 
 # houseOwner routes
@@ -111,8 +101,6 @@ Route::group(['prefix' => 'owner', 'middleware' =>'auth.owner'], function(){
   # house controller
   Route::resource('houses', 'OwnerHouseController');
   Route::get('/houses/delete/{id}', 'OwnerHouseController@delete')->name('owner.houses.delete');
-  Route::get('/houses/toHold/{id}', 'OwnerHouseController@getHouseFromHold')->name('owner.houses.getHouseFromHold');
-  Route::get('/houses/fromHold/{id}', 'OwnerHouseController@putHouseOnHold')->name('owner.houses.putHouseOnHold');
 
   # uploads controller
   Route::get('/uploads/{house_id}', 'OwnerUploadsController@index')->name('owner.uploads.index');
@@ -160,11 +148,16 @@ Route::get('/master', function(){
     Route::get('/house', 'PublicController@DisplayHousesOnHOusePage');
     Route::get('/', 'PublicController@DisplayHousesOnHomePage');
     Route::any('/houseShow/{id}', 'PublicController@show')->name('houseshow.show');
-    Route::get('/searchajaxxx', 'PublicController@searchajax');
+    // Route::get('/searchajaxxx', 'PublicController@searchajax');
     
+    // Route::get('/tt', function(){
+        // return view('search.test');
+    //     });
+// Route::get('/tt','SearchController@test');
 
-Route::get('/searchajax','SearchController@index');
+Route::get('/aaa','SearchController@index');
 Route::get('/searchaa','SearchController@search');
+
     Route::any('/search', function(){
         $search = Input::get('search');
         // Search by sector, district, paymentfrequency, amount, No of Rooms
