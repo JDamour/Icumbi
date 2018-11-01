@@ -114,7 +114,6 @@
 
                     </form> 
                     <br/>
-                    <input style="width: 15em;" class="add-to-cart btn btn-default" type="button" value="Refund with this house" onclick="window.location.href='{{route('custom.service.refund',$house->id)}}'" />
 
         </div>
 

@@ -22,24 +22,6 @@
   </div>
 </section>
 
-
-  <section class="probootstrap-section probootstrap-section-lighter">
-    <h2 style="text-align:center"> <div class="probootstrap-listing-category for-sale"><span>List of Houses matching your search key " <b> {{ $query }} "</b></span></div></h2>
-    @if(isset($details))
-    @foreach($details as $house)
-    <div class="container">
-      <div class="row">
-        <div class="col-md-4 col-sm-6">
-          <div class="probootstrap-card probootstrap-listing">
-            <div class="probootstrap-card-media">
-              @foreach($house->uploads as $upload)
-              <a href="{{route('houseshow.show', $house->id)}}">
-                  <img src="images/HouseUploads/{{ $upload->source }}">
-              </a>
-                  @break
-              @endforeach
-            </div>
-
 <section class="probootstrap-section probootstrap-section-lighter">
   <h2 style="text-align:center"> <div class="probootstrap-listing-category for-sale"><span>List of houses matching your search key " <b> {{ $query }} "</b></span></div></h2>
   @if(isset($details))
