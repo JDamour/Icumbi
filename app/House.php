@@ -32,12 +32,12 @@ class House extends Model
     ];
     public function reports()
     {
-        return $this->hasMany('App\Report');
+        return $this->hasMany('App\Report')->orderByDesc('created_at');
     }
 
     public function service()
     {
-        return $this->hasMany('App\Service');
+        return $this->hasMany('App\Service')->orderByDesc('created_at');
     }
     public function uploads()
     {

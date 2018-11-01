@@ -16,6 +16,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <link rel="stylesheet" href="{{asset('bower_components/font-awesome/css/font-awesome.min.css')}}">
   <!-- Ionicons -->
   <link rel="stylesheet" href="{{asset('bower_components/Ionicons/css/ionicons.min.css')}}">
+  <!--datatable styles-->
+  <link rel="stylesheet" href="{{asset('bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css')}}">
   <!--  fancybox-->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">  
   <!-- Theme style -->
@@ -158,12 +160,11 @@ desired effect
               </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="#"><i class="fa fa-circle-o"></i> New</a></li>
-            <li><a href="#"><i class="fa fa-circle-o"></i> View All</a></li>
-			<li><a href="#"><i class="fa fa-circle-o"></i> Deactivated</a></li>
+            <li><a href="{{action('UserManagementController@create')}}"><i class="fa fa-circle-o"></i> New</a></li>
+            <li><a href="{{action('UserManagementController@index')}}"><i class="fa fa-circle-o"></i> View All</a></li>
           </ul>
         </li>
-		<li class="treeview active">
+		<li class="treeview">
           <a href="#"><i class="fa fa-home"></i> <span>House</span>
             <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
@@ -221,7 +222,9 @@ desired effect
 
 <script type="text/javascript">
   $(function () {
-    $('#table_houses').DataTable();
+    $('#table_houses').DataTable({
+      "scrollX" : true
+    });
   })  
   
 </script>

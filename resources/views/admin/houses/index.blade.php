@@ -31,9 +31,10 @@
                   </div>
                   <!-- /.box-header -->
                   <div class="box-body" style="width: 100;overflow-x: scroll">
-                    <table id="table_houses" class="table table-bordered table-striped">
+                    <table id="table_houses" class="table table-bordered table-striped dataTable">
                       <thead>
                       <tr>
+                        <th>Photo</th>
                         <th>Owner</th>
                         <th>Street Code</th>
                         <th>Price</th>
@@ -56,6 +57,10 @@
 
                       @foreach ($houses as $house)
                       <tr>
+                        @foreach($house->uploads as $upload)
+                        <td><img src="{{asset('images/HouseUploads/' . $upload->source)}}" width="100px" alt="image" title="image"/></td>
+                        @break
+                        @endforeach
                         <td>{{$house->user->firstName}} {{$house->user->lastName}}</td>
                         <td>{{$house->streetCode}}</td>
                         <td>{{$house->housePrice}}</td>
@@ -89,16 +94,19 @@
                         <td><span class="label label-success">Approved</span></td>
                         @elseif($house->status == 3)
                         <td><span class="label label-success">Booked</span></td>
+                        @elseif($house->status == 5)
+                        <td><span class="label label-success">On Hold</span></td>
                         @else
                         <td><span class="label label-danger">Blocked</span></td>
                         @endif
                         <td>
                           <span class="label bg-purple"><a style="color:white" href="{{route('admin.houses.show', $house->id)}}">open</a></span>
-                          @if($house->status == 1)
-                          <span class="label bg-purple"><a style="color:white" href="{{route('admin.houses.updateStatus', [$house->id, 2])}}">Approve House</a></span>
+                          @if($house->status == 1 || $house->status == 4 || $house->status == 5)
+                          <span class="label bg-purple"><a style="color:white" href="{{route('admin.houses.updateStatus', [$house->id, 2])}}">Approve / Unhold / Unblock House</a></span>
                           @endif
                           @if($house->status == 2)
                           <span class="label bg-purple"><a style="color:white" href="{{route('admin.houses.updateStatus', [$house->id, 4])}}">Block House</a></span>
+                          <span class="label bg-purple"><a style="color:white" href="{{route('admin.houses.updateStatus', [$house->id, 5])}}">Hold House</a></span>
                           @endif
                           <span class="label bg-maroon"><a style="color:white" href="{{route('admin.houses.delete', $house->id)}}">Delete</a></span></td>
                       </tr>

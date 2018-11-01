@@ -50,6 +50,9 @@
           <label class="col-sm-2 control-label" style="text-align:left; color: black; word-spacing: 4px;">Extra</label>
             <div class="col-md-6 col-md-8 col-lg-6" id="tablee">
                 <table style="color: black; word-spacing: 2px;" >
+                <tr class="tablerows">
+                <td> Area : {{$house->length}} X {{$house->width}} </td>
+                 </tr> 
                   <tr class="tablerows">
                     @if ($house->water == 1)
                     <td>  Water inside</td><td><span class="label label-success">True</span></td>
@@ -109,6 +112,7 @@
                     </form> 
                     <br/>
                     <!-- <input style="width: 15em;" class="add-to-cart btn btn-default" type="button" value="Refund with this house" onclick="window.location.href='{{route('custom.service.refund',$house->id)}}'" /> -->
+
 
         </div>
 
