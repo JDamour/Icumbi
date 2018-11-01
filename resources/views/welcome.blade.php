@@ -288,6 +288,7 @@
         </div>
         @endforeach
             </div>
+            {{ $houses->links() }}
           </div>
         </section>
       </div>

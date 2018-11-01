@@ -148,11 +148,16 @@ Route::get('/master', function(){
     Route::get('/house', 'PublicController@DisplayHousesOnHOusePage');
     Route::get('/', 'PublicController@DisplayHousesOnHomePage');
     Route::any('/houseShow/{id}', 'PublicController@show')->name('houseshow.show');
-    Route::get('/searchajaxxx', 'PublicController@searchajax');
+    // Route::get('/searchajaxxx', 'PublicController@searchajax');
     
+    // Route::get('/tt', function(){
+        // return view('search.test');
+    //     });
+// Route::get('/tt','SearchController@test');
 
 Route::get('/searchajax','SearchController@index');
 Route::get('/searchaa','SearchController@search');
+
     Route::any('/search', function(){
         $search = Input::get('search');
         // Search by sector, district, paymentfrequency, amount, No of Rooms

@@ -84,10 +84,7 @@
                       <input type="hidden" name="_token" value="{{csrf_token()}}">
                       <input type="hidden" value="{{$house->id}}" name="house_id"/>
                       <input class="add-to-cart btn btn-default" type="submit" value="House Address" />
-
-                    
-                    
-                    @guest 
+                      @guest 
                         @else
                            @if(Auth::user()->isAdmin())
                               <form >
@@ -111,7 +108,7 @@
 
                     </form> 
                     <br/>
-                    <input style="width: 15em;" class="add-to-cart btn btn-default" type="button" value="Refund with this house" onclick="window.location.href='{{route('custom.service.refund',$house->id)}}'" />
+                    <!-- <input style="width: 15em;" class="add-to-cart btn btn-default" type="button" value="Refund with this house" onclick="window.location.href='{{route('custom.service.refund',$house->id)}}'" /> -->
 
         </div>
 
