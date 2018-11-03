@@ -68,7 +68,7 @@ class AdminHouseController extends Controller
             "width" => $request->input('width')
         ]);
         if ($house) {
-          return redirect()->route('admin.uploads.create', $house->id);
+          return redirect()->route('admin.uploads.create', $house->id)->with('success', 'House Created.');
         } else {
           return back()->withInput();
         }
@@ -138,7 +138,7 @@ class AdminHouseController extends Controller
             "width" => $request->input('width')
         ]);
         if ($house) {
-          return redirect()->route('admin.houses.show', $id);
+          return redirect()->route('admin.houses.show', $id)->with('success', 'House updated.');
         } else {
           return back()->withInput();
         }
@@ -149,7 +149,7 @@ class AdminHouseController extends Controller
             'status' => $status
         ]);
         if ($house) {
-            return redirect()->route('admin.houses.show', $house_id);
+            return redirect()->route('admin.houses.show', $house_id)->with('House status updated.');
         } else {
             return back()->withInput();
         }
@@ -178,7 +178,7 @@ class AdminHouseController extends Controller
             }
         }
         if ($house->delete()) {
-          return redirect()->route('admin.houses.index');
+          return redirect()->route('admin.houses.index')->with('House deleted.');
         } else {
           return back()->withInput();
         }

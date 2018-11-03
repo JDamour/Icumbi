@@ -98,11 +98,11 @@ class User extends Authenticatable
 
     public function house()
     {
-        return $this->hasMany('App\House');
+        return $this->hasMany('App\House')->orderByDesc('created_at');
     }
     public function services()
     {
-        return $this->hasMany('App\Service');
+        return $this->hasMany('App\Service')->orderByDesc('created_at');
     }
 
     // public function messages() {

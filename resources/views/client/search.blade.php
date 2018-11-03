@@ -39,6 +39,7 @@
             @endforeach
           </div>
           <div class="probootstrap-card-text">
+
             <!-- <h2 class="probootstrap-card-heading"><a href="{{route('houseshow.show', $house->id)}}">house id: {{ $house->id }}</a></h2> -->
             
             <h2 class="probootstrap-card-heading"><a href="{{route('houseshow.show', $house->id)}}">Number of Bed rooms: {{ $house->numberOfRooms }}</a></h2>

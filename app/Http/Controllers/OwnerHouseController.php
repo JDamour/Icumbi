@@ -68,7 +68,7 @@ class OwnerHouseController extends Controller
             "width" => $request->input('width')
         ]);
         if ($house) {
-          return redirect()->route('owner.uploads.create', $house->id);
+          return redirect()->route('owner.uploads.create', $house->id)->with('success', 'House created.');
         } else {
           return back()->withInput();
         }
@@ -142,10 +142,47 @@ class OwnerHouseController extends Controller
             "width" => $request->input('width')
         ]);
         if ($house) {
-          return redirect()->route('houses.show', $id);
+          return redirect()->route('houses.show', $id)->with('House updated.');
         } else {
           return back()->withInput();
         }
+    }
+
+    public function updateStatus($house_id, $status) {
+        $house = House::where('id', $house_id)->update([
+            'status' => $status
+        ]);
+        if ($house) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function putHouseOnHold($house_id) {
+        $house = House::where('id', $house_id)->first();
+        if ($house->status == 2) {
+            if ($this->updateStatus($house_id, 5)) {
+                return back()->with('success', 'House is offline');
+            } else {
+                return back()->withErrors(['An error occurred while performing your request. Plese report to customer care.']);
+            }
+        } else {
+            return back()->withErrors(['Sorry, you are not allowed to perform this task.']);
+        }        
+    }
+    public function getHouseFromHold($house_id) {
+        $house = House::where('id', $house_id)->first();
+        if ($house->status == 5) {
+            if ($this->updateStatus($house_id, 2)) {
+                return back()->with('success', 'House is back online');
+            } else {
+                return back()->withErrors(['An error occurred while performing your request. Plese report to customer care.']);
+            }
+        } else {
+            return back()->withErrors(['Sorry, you are not allowed to perform this task.']);
+        }
+        
     }
 
     /**
@@ -173,7 +210,7 @@ class OwnerHouseController extends Controller
             }
         }
         if ($house->delete()) {
-          return redirect()->route('houses.index');
+          return redirect()->route('houses.index')->with('House deleted.');
         } else {
           return back()->withInput();
         }

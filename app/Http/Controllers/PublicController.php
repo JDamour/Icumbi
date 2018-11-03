@@ -12,8 +12,8 @@ use App\Province;
 use App\Paymentfrequency;
 use App\Http\MailController;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Input;
 
 class PublicController extends Controller
 {
@@ -24,14 +24,17 @@ class PublicController extends Controller
      */
     public function DisplayHousesOnHOusePage()
     {
+
         // $houses = House::paginate(6);
-        $houses = House::all();
+        $houses = House::where("status","=",2)->paginate(9);
+
         return view('client.index', compact('houses'));
     }
     public function DisplayHousesOnHomePage()
     {
         // $houses = House::paginate(6);
-        $houses = House::all();
+        // $houses = House::where("status","=",2)->get();
+        $houses = House::where("status","=",2)->paginate(3);
         return view('welcome', compact('houses'));
     }
     public function districtHouses($id)

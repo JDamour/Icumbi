@@ -34,9 +34,12 @@
                     <table id="table_houses" class="table table-bordered table-striped">
                     <thead>
                       <tr>
+                        <th>Photo</th>
                         <th>District</th>
                         <th>Sector</th>
                         <th>Price</th>
+                        <th>Status</th>
+                        <th>Date Created</th>
                         <th>Action</th>
                       </tr>
                       </thead>
@@ -44,10 +47,16 @@
 
                       @foreach ($services as $service)
                       <tr>
+                        @foreach($service->house->uploads as $upload)
+                        <td><img src="{{asset('images/HouseUploads/' . $upload->source)}}" width="100px" alt="image" title="image"/></td>
+                        @break
+                        @endforeach
                         <td>{{$service->house->district->name}}</td>
                         <td>{{$service->house->sector->name}}</td>
+                        <td>0.00</td>
                         @if($service->payment_id != NULL)
                         <td>Paid</td>
+                        <th>{{$service->created_at}}</th>
                         <td>
                             <span class="label bg-purple">
                                 <a style="color:white" href="{{route('custom.service.show', $service->id)}}">View House Details</a>
@@ -55,6 +64,7 @@
                         </td>
                         @else
                         <td>Unpaid</td>
+                        <th>{{$service->created_at}}</th>
                         <td>
                             <span class="label bg-purple">
                                 <a style="color:white" href="#" disabled>View House Details</a>
