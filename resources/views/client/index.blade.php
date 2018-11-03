@@ -39,7 +39,7 @@
             <!-- <h2 class="probootstrap-card-heading"><a href="{{route('houseshow.show', $house->id)}}">House Id: {{ $house->id }}</a></h2> -->
               <div class="probootstrap-listing-location">
               <h2 class="probootstrap-card-heading"><a href="{{route('houseshow.show', $house->id)}}">Number of Bed rooms: {{ $house->numberOfRooms }}</a></h2>
-              <a href="{{route('houseshow.show', $house->id)}}">  <i class="icon-location2"></i> <span>Location:   {{ $house->sector['name'] }}/{{ $house->district['name'] }}</span>
+              <a href="{{route('houseshow.show', $house->id)}}">  <i class="icon-location2"></i> <span>Location:   {{ $house->sector['name'] }}/{{ $house->district['name'] }}</span><br/>
               </div>
               <div class="probootstrap-listing-category for-sale"><span>For Rent</span></div>
               <div class="probootstrap-listing-price"><strong>Price:{{ $house->housePrice }} {{ $house->paymentfrequency['name'] }}</strong></div>
@@ -52,5 +52,6 @@
         </div>
         @endforeach
       </div>
+      {{ $houses->links() }}
     </div>
   </section>
