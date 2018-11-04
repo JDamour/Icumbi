@@ -91,6 +91,7 @@ Route::group(['prefix' => 'admin', 'middleware' =>'auth.admin'],function () {
     Route::post('/uploads', 'AdminUploadsController@store')->name('admin.uploads.store') ;
     Route::delete('/uploads/{id}', 'AdminUploadsController@destroy')->name('admin.uploads.delete') ;
 
+    Route::resource('/','UserManagementController');
 });
 
 # houseOwner routes
