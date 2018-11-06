@@ -1,7 +1,4 @@
-
 @extends('layouts.app')
-
-
   <section class="probootstrap-slider flexslider2 page-inner">
     <div class="overlay"></div>
     <div class="probootstrap-wrap-banner">
@@ -31,12 +28,11 @@
     
               @foreach($house->uploads as $upload)
                 <img src="/images/HouseUploads/{{ $upload->source }}">
-                @break;
+                
               @endforeach
 
             </div></a>
             <div class="probootstrap-card-text">
-            <!-- <h2 class="probootstrap-card-heading"><a href="{{route('houseshow.show', $house->id)}}">House Id: {{ $house->id }}</a></h2> -->
               <div class="probootstrap-listing-location">
               <h2 class="probootstrap-card-heading"><a href="{{route('houseshow.show', $house->id)}}">Number of Bed rooms: {{ $house->numberOfRooms }}</a></h2>
               <a href="{{route('houseshow.show', $house->id)}}">  <i class="icon-location2"></i> <span>Location:   {{ $house->sector['name'] }}/{{ $house->district['name'] }}</span><br/>
@@ -51,7 +47,26 @@
           </div>
         </div>
         @endforeach
+        <!-- <div id='card'></div> -->
       </div>
       {{ $houses->links() }}
     </div>
+    <script type="text/javascript">
+            $('#search').on('keyup',function(){
+                $value=$(this).val();
+                $.ajax({
+                    type : 'get',
+                    url : '{{ URL::to('searchaa') }}',
+                    data:{'searchaa':$value},
+                    success:function(data){
+                        // $('#card').html(data);
+                        // $('tbody').html(data);
+                        $('#card').html(data);
+                    }autocomplete="off";
+                });
+            })
+        </script>
+        <script type="text/javascript">
+            $.ajaxSetup({ headers: { 'csrftoken' : '{{ csrf_token() }}' } });
+        </script>
   </section>
