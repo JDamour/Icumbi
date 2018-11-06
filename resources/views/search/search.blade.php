@@ -1,4 +1,6 @@
-<html>
+@extends('layouts.app')
+@section('title', 'List Houses')
+@section('content')
     <head>
     <meta name="_token" content="{{ csrf_token() }}">
     <title>Live Search</title>
@@ -17,23 +19,28 @@
                     </div>
                     <div class="panel-body">
                     <div class="form-group">
-                    <input type="text" class="form-controller" id="search" name="search"></input>
+                    <input type="text" class="form-controller" id="search1" name="search"></input>
                     </div>
                     
-                        <table class="table table-bordered table-hover">
+                        <!-- <table class="table table-bordered table-hover">
                             <thead>
                                 <tr>
-                                    <th>ID</th>
+                                    <th>Number of Rooms</th>
                                     <th>Price</th>
-                                    <th>House location</th>
-                                    <th>houseOwner</th>
+                                    <th>Sector</th>
+                                    <th>District</th>
+                                    <th>Payment Frequence</th>
                                 </tr>
                             </thead>
                             <tbody>
                             </tbody>
                         </table>
-                    </div>
+                        
+                    </div> -->
+                    
+                    <div id='card'></div>
                 </div>
+
             </div>
         </div>
         <script type="text/javascript">
@@ -44,8 +51,9 @@
                     url : '{{ URL::to('searchaa') }}',
                     data:{'searchaa':$value},
                     success:function(data){
-                        $('tbody').html(data);
-                        
+                        // $('#card').html(data);
+                        // $('tbody').html(data);
+                        $('#card').html(data);
                     }
                 });
             })
@@ -54,4 +62,4 @@
             $.ajaxSetup({ headers: { 'csrftoken' : '{{ csrf_token() }}' } });
         </script>
     </body>
-</html>
+@endsection

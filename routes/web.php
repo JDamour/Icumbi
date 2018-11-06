@@ -156,7 +156,8 @@ Route::get('/master', function(){
     //     });
 // Route::get('/tt','SearchController@test');
 
-Route::get('/aaa','SearchController@index');
+// Route::get('/aaa','SearchController@index');
+Route::get('/searchajax','SearchController@index');
 Route::get('/searchaa','SearchController@search');
 
     Route::any('/search', function(){
