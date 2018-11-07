@@ -44,7 +44,6 @@
                                     <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
                                     <select id="role" class="form-control{{ $errors->has('role') ? ' is-invalid' : '' }}" name="roleId" value="{{ old('role') }}"
                                                                      required autofocus>
-                                                                    <option value="">Role</option>
                                                                     <option value="123">User</option>
                                                                     <option value="Owner">House Owner</option>
                                     </select>
