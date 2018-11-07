@@ -91,7 +91,14 @@ Route::group(['prefix' => 'admin', 'middleware' =>'auth.admin'],function () {
     Route::post('/uploads', 'AdminUploadsController@store')->name('admin.uploads.store') ;
     Route::delete('/uploads/{id}', 'AdminUploadsController@destroy')->name('admin.uploads.delete') ;
 
-    Route::resource('/','UserManagementController');
+    // user management controller
+    Route::get('/users', 'UserManagementController@index');
+    Route::get('/users/create', 'UserManagementController@create');
+    Route::get('/users/{id}', 'UserManagementController@show');
+    Route::get('/users/{id}/edit', 'UserManagementController@edit');
+    Route::post('/users', 'UserManagementController@store');
+    Route::put('/users/{id}', 'UserManagementController@update');
+    Route::delete('/users/{id}', 'UserManagementController@destroy');
 });
 
 # houseOwner routes
