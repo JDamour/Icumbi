@@ -33,13 +33,21 @@
              
              <div class="searchh">
 
-              <form action="/search" method="POST" role="search" class="searchform">
+              <form action="#" method="POST" role="search" class="searchform">
+             <input type="hidden" name="_token" value="{{ csrf_token() }}">
+             <input type="text"  placeholder="Enter Sector, District,Number of rooms price" name="search" id="search">
+              <button type="submit" class="btnn btn-primary btn-sm">Search</button>
+             </form> 
+             </div>
+                <li><a href="/">Home</a></li>
+                
+              <!-- <form action="/search" method="POST" role="search" class="searchform">
              <input type="hidden" name="_token" value="{{ csrf_token() }}">
              <input type="text"  placeholder="Enter Sector, District,Number of rooms price" name="search">
               <button type="submit" class="btnn btn-primary btn-sm">Search</button>
              </form> 
              </div>
-                <li class="active"><a href="/">Home</a></li>
+                <li class="active"><a href="/">Home</a></li> -->
                 <li><a href="/house">House</a></li>
                 <!--   <li><a href="/agents">Agents</a></li> -->
                 <!-- <li><a href="/about">About</a></li> -->
@@ -106,6 +114,24 @@
         </main>
     </div>
 </body>
+    <script type="text/javascript">
+            $('#search').on('keyup',function(){
+                $value=$(this).val();
+                $.ajax({
+                    type : 'get',
+                    url : '{{ URL::to('searchaa') }}',
+                    data:{'searchaa':$value},
+                    success:function(data){
+                        // $('#card').html(data);
+                        // $('tbody').html(data);
+                        $('#card').html(data);
+                    }autocomplete="off";
+                });
+            })
+        </script>
+        <script type="text/javascript">
+            $.ajaxSetup({ headers: { 'csrftoken' : '{{ csrf_token() }}' } });
+        </script>
 
 <script src="{{asset('js/scripts.min.js')}}"></script>
 <script src="{{asset('js/main.min.js')}}"></script>
