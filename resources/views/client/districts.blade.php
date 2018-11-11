@@ -1,5 +1,4 @@
 @extends('layouts.app')
-@section('content')
   <section class="probootstrap-slider flexslider2 page-inner">
     <div class="overlay"></div>
     <div class="probootstrap-wrap-banner">
@@ -11,6 +10,7 @@
                 <a href="/">Home</a><span>Kigali</span></a>
               </div>
               <h1>
+              
               @foreach($houses as $house)
               <?php 
                 $dist="";
@@ -64,4 +64,3 @@
       </div>
     </div>
   </section>
-@endsection
