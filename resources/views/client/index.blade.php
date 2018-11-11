@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
 
+ <!-- <section class="probootstrap-slider flexslider2 page-inner">
+
   <section class="probootstrap-slider flexslider2 page-inner">
 
     <div class="overlay"></div>
@@ -17,8 +19,8 @@
         </div>
       </div>
     </div>
-</section>
 
+  </section> 
 
 <section class="probootstrap-section probootstrap-section-lighter" style="background-color: white; width: 80%;  z-index: 0; margin: 50px;">
   <div class="container" style="background-color: #FCF9F9;">
@@ -50,8 +52,10 @@
           </div>
           @endforeach
         </div>
+
         {{ $houses->links() }}
         </div>
+
 
       </div>
   </section>
@@ -60,7 +64,6 @@
         <div id='card'></div>
      
     </div>
-
 
     <script type="text/javascript">
             $('#search').on('keyup',function(){
@@ -81,3 +84,4 @@
             $.ajaxSetup({ headers: { 'csrftoken' : '{{ csrf_token() }}' } });
         </script>
   </section>
+
