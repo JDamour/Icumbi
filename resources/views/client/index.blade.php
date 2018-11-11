@@ -1,12 +1,5 @@
 @extends('layouts.app')
-
-
-<<<<<<< HEAD
 <section class="probootstrap-slider flexslider2 page-inner">
-
-=======
->>>>>>> 57e413755a6ca34f1f5c03405360766c1bde28b6
-  <section class="probootstrap-slider flexslider2 page-inner">
     <div class="overlay"></div>
     <div class="probootstrap-wrap-banner">
       <div class="container">
