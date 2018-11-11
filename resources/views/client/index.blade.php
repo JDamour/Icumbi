@@ -14,16 +14,17 @@
               <div class="probootstrap-breadcrumbs">
                 <a href="/">Home</a><span>house</span>
               </div>
-              <h1>Houses</h1>
-            </div>
+            <h1>Houses</h1>
           </div>
         </div>
       </div>
     </div>
+
   </section> 
 
 <section class="probootstrap-section probootstrap-section-lighter" style="background-color: white; width: 80%;  z-index: 0; margin: 50px;">
   <div class="container" style="background-color: #FCF9F9;">
+
     <div class="row">
       @foreach($houses as $house)
       <div class="col-md-4 col-sm-6">
@@ -31,15 +32,11 @@
           <div class="probootstrap-card-media">
             <a href="{{route('houseshow.show', $house->id)}}">
               @foreach($house->uploads as $upload)
-
               <img src="/images/HouseUploads/{{ $upload->source }}">
               @break;
-
-                <img src="/images/HouseUploads/{{ $upload->source }}">
-                
-
               @endforeach
             </div></a>
+
             <div class="probootstrap-card-text">
               <div class="probootstrap-listing-location">
                 <h2 class="probootstrap-card-heading"><a href="{{route('houseshow.show', $house->id)}}">Number of Bed rooms: {{ $house->numberOfRooms }}</a></h2>
@@ -59,14 +56,15 @@
         {{ $houses->links() }}
         </div>
 
+
       </div>
   </section>
 
-        @endforeach
-        <!-- <div id='card'></div> -->
-      </div>
-      {{ $houses->links() }}
+      
+        <div id='card'></div>
+     
     </div>
+
     <script type="text/javascript">
             $('#search').on('keyup',function(){
                 $value=$(this).val();
