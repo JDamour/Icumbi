@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 
- <!-- <section class="probootstrap-slider flexslider2 page-inner">
+<section class="probootstrap-slider flexslider2 page-inner">
 
   <section class="probootstrap-slider flexslider2 page-inner">
 
