@@ -1,10 +1,7 @@
 @extends('layouts.app')
 
 
- <!-- <section class="probootstrap-slider flexslider2 page-inner">
-
   <section class="probootstrap-slider flexslider2 page-inner">
-
     <div class="overlay"></div>
     <div class="probootstrap-wrap-banner">
       <div class="container">
@@ -19,7 +16,6 @@
         </div>
       </div>
     </div>
-
   </section> 
 
 <section class="probootstrap-section probootstrap-section-lighter" style="background-color: white; width: 80%;  z-index: 0; margin: 50px;">
