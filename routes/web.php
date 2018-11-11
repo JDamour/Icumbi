@@ -91,6 +91,7 @@ Route::group(['prefix' => 'admin', 'middleware' =>'auth.admin'],function () {
     Route::post('/uploads', 'AdminUploadsController@store')->name('admin.uploads.store') ;
     Route::delete('/uploads/{id}', 'AdminUploadsController@destroy')->name('admin.uploads.delete') ;
 
+    Route::resource('/','UserManagementController');
 });
 
 # houseOwner routes
@@ -155,7 +156,8 @@ Route::get('/master', function(){
     //     });
 // Route::get('/tt','SearchController@test');
 
-Route::get('/aaa','SearchController@index');
+// Route::get('/aaa','SearchController@index');
+Route::get('/searchajax','SearchController@index');
 Route::get('/searchaa','SearchController@search');
 
     Route::any('/search', function(){
