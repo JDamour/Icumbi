@@ -70,10 +70,11 @@
                           <span class="label bg-purple"><a style="color:white" href="{{action('UserManagementController@show', $user->id)}}">open</a></span>
                           
                           <form action="{{action('UserManagementController@destroy', $user->id)}}" method="post">
-                            <span class="label bg-maroon"><a style="color:white" href="#" onclick="deleteUser(event)">Delete</a></span></td>
+                            <span class="label bg-maroon"><a style="color:white" href="#" onclick="deleteUser(event)">Delete</a></span>
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             <input type="hidden" name="_method" value="DELETE">
                           </form>
+                        </td>
                       </tr>
                       @endforeach
                       </tbody>
@@ -82,7 +83,7 @@
                             e = e || window.event;
                             e.preventDefault();
                             if (confirm('Do you want to continue?')) {
-                              e.target.parentElement.submit();
+                              e.target.parentElement.parentElement.submit();
                             }
                           }
                           
