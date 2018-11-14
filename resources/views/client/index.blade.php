@@ -26,10 +26,11 @@
           <div class="probootstrap-card-media">
             <a href="{{route('houseshow.show', $house->id)}}">
               @foreach($house->uploads as $upload)
-              <img src="/images/HouseUploads/{{ $upload->source }}">
+              <img src="{{asset('images/HouseUploads/'.$upload->source)}}" />
               @break;
               @endforeach
-            </div></a>
+            </a>
+            </div>
 
             <div class="probootstrap-card-text">
               <div class="probootstrap-listing-location">
@@ -40,8 +41,9 @@
               <div class="probootstrap-listing-price">
                 <strong>Price:{{ $house->housePrice }} {{ $house->paymentfrequency['name'] }}</strong>
               </div>
-                </a>
+                
             </div>
+            </a>
             </div>
           </div>
           @endforeach

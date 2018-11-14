@@ -22,9 +22,9 @@ use Illuminate\Support\Facades\Input;
 Route::get('sendNotification', 'MailController@sendNotification');
 Route::post('contactmail', 'MailController@ContactMail');
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+  //  return view('welcome');
+// });
 
 Route::get('/service', function () {
     return view('service');
@@ -109,6 +109,8 @@ Route::group(['prefix' => 'owner', 'middleware' =>'auth.owner'], function(){
   # house controller
   Route::resource('houses', 'OwnerHouseController');
   Route::get('/houses/delete/{id}', 'OwnerHouseController@delete')->name('owner.houses.delete');
+  Route::get('/houses/hold/{id}', 'OwnerHouseController@putHouseOnHold')->name('owner.houses.putHouseOnHold');
+  Route::get('/houses/unhold/{id}', 'OwnerHouseController@getHouseFromHold')->name('owner.houses.getHouseFromHold');
 
   # uploads controller
   Route::get('/uploads/{house_id}', 'OwnerUploadsController@index')->name('owner.uploads.index');
@@ -154,6 +156,7 @@ Route::get('/master', function(){
     Route::view('/search-suggestion', '/client.autocomplete');
     Route::get('/client/autocomplete', 'PublicController@searchSuggestion');
     Route::get('/house', 'PublicController@DisplayHousesOnHOusePage');
+    
     Route::get('/', 'PublicController@DisplayHousesOnHomePage');
     Route::any('/houseShow/{id}', 'PublicController@show')->name('houseshow.show');
     // Route::get('/searchajaxxx', 'PublicController@searchajax');

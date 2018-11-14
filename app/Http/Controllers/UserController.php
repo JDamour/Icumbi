@@ -20,7 +20,8 @@ class UserController extends Controller
     public function index()
     {
         //
-        return view('layouts.user');
+        // return view('layouts.user');
+        return redirect()->route('user.services.index');
     }
 
     /**
