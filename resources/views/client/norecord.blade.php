@@ -20,28 +20,20 @@
   <section class="probootstrap-section probootstrap-section-lighter">
     <div class="container">
       <div class="row">
-      @foreach($houses as $house)
         <div class="col-md-4 col-sm-6">
           <div class="probootstrap-card probootstrap-listing">
             <div class="probootstrap-card-media">
-              <a href="{{route('houseshow.show', $house->id)}}">
-                @foreach($house->uploads as $upload)
-                  <img src="/images/HouseUploads/{{ $upload->source }}">
-                  @break;
-                @endforeach
-            </div></a>
+                
+            </div>
             <div class="probootstrap-card-text">
               <div class="probootstrap-listing-location">
-                <h2 class="probootstrap-card-heading"><a href="{{route('houseshow.show', $house->id)}}">Number of Bed rooms: {{ $house->numberOfRooms }}</a></h2>
-                <a href="{{route('houseshow.show', $house->id)}}">  <i class="icon-location2"></i> <span>Location:   {{ $house->sector['name'] }}/{{ $house->district['name'] }}</span><br/>
+                <h1 class="probootstrap-card-heading">No Records Found</h1>
               </div>
-              <div class="probootstrap-listing-category for-sale"><span>For Rent</span></div>
-              <div class="probootstrap-listing-price"><strong>Price:{{ $house->housePrice }} {{ $house->paymentfrequency['name'] }}</strong></div>
-            </div></a>
+              <!-- <div class="probootstrap-listing-category for-sale"><span></span></div> -->
+              <div class="probootstrap-listing-price"><strong></strong></div>
+            </div>
           </div>
         </div>
-        @endforeach
       </div>
-      {{ $houses->links() }}
     </div>
   </section>

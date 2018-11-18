@@ -25,8 +25,7 @@ class CreateOverallHousesViews extends Migration
             LEFT JOIN `districts` ON houses.district_id=districts.id
             LEFT JOIN `sectors` ON  houses.sector_id=sectors.id
             LEFT JOIN `paymentfrequency` ON houses.paymentfrequency_id=paymentfrequency.id
-            LEFT JOIN `uploads` ON houses.id=uploads.house_id
-            
+            LEFT JOIN `uploads` ON houses.id=uploads.house_id GROUP BY houseId
       )
     ");
     }

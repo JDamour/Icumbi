@@ -25,13 +25,30 @@ class PublicController extends Controller
     public function DisplayHousesOnHOusePage()
     {
         // $houses = House::paginate(6);
-        $houses = House::where("status","=",2)->paginate(9);
-        return view('client.index', compact('houses'));
+        $count = House::where("status","=",2)->count();
+        if($count == 0){
+            return view('client.norecord');
+            dd($count);
+        }
+        else {
+            $houses = House::where("status","=",2)->paginate(3);
+            return view('client.index', compact('houses'));
+            dd($count);
+        }
     }
     public function DisplayHousesOnHomePage()
     {
-        $houses = House::where("status","=",2)->paginate(3);
-        return view('welcome', compact('houses'));
+        $count = House::where("status","=",2)->count();
+        if($count == 0){
+            return view('client.norecordHouse');
+            // dd($count);
+        }
+        else {
+            $houses = House::where("status","=",2)->paginate(3);
+            return view('welcome', compact('houses'));
+            // dd($count);
+        }
+        
     }
     public function districtHouses($id)
     {
@@ -69,20 +86,20 @@ class PublicController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function search()
-    {
-        $search = Input::get('search');
-        if ($search != "") {
-            $house = House::where('houselocation','LIKE','%'.$search.'%')
-            ->orWhere('housePrice','LIKE','%'.$search.'%')
-            ->orWhere('paymentfrequency_id','LIKE','%'.$search.'%')
-            ->get();
-        if(count($house)>0)
-            return view('client.search')->withDetails($house)->withQuery ( $search );
+    // public function search()
+    // {
+    //     $search = Input::get('search');
+    //     if ($search != "") {
+    //         $house = House::where('houselocation','LIKE','%'.$search.'%')
+    //         ->orWhere('housePrice','LIKE','%'.$search.'%')
+    //         ->orWhere('paymentfrequency_id','LIKE','%'.$search.'%')
+    //         ->get();
+    //     if(count($house)>0)
+    //         return view('client.search')->withDetails($house)->withQuery ( $search );
 
-        }
-        return view('client.search')->withMessage("No results found " );
-    }
+    //     }
+    //     return view('client.search')->withMessage("No results found " );
+    // }
 
 
     /**
