@@ -33,11 +33,12 @@
              
              <div class="searchh">
 
-              <form action="#" method="POST" role="search" class="searchform">
+              <!-- <form method="POST" role="search" class="searchform"> -->
              <input type="hidden" name="_token" value="{{ csrf_token() }}">
-             <input type="text"  placeholder="Enter Sector, District,Number of rooms price" name="search" id="search">
+             <input type="text" autocomplete="off" placeholder="Enter Sector, District,Number of rooms price" name="search" id="search">
               <button type="submit" class="btnn btn-primary btn-sm">Search</button>
-             </form> 
+              
+             <!-- </form>  -->
              </div>
                 <li><a href="/">Home</a></li>
                 

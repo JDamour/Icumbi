@@ -22,9 +22,21 @@ use Illuminate\Support\Facades\Input;
 Route::get('sendNotification', 'MailController@sendNotification');
 Route::post('contactmail', 'MailController@ContactMail');
 
+
+Route::get('/', function () {
+    return view('welcome');
+});
+Route::get('/norecord', function () {
+    return view('client.norecord');
+});
+Route::get('/norecordHouse', function () {
+    return view('client.norecordHouse');
+});
+
 // Route::get('/', function () {
   //  return view('welcome');
 // });
+
 
 Route::get('/service', function () {
     return view('service');
@@ -74,7 +86,7 @@ Route::group(['prefix' => 'admin', 'middleware' =>'auth.admin'],function () {
 
 
     # house controller
-    // Route::resource('houses', 'AdminHouseController');
+    
     Route::get('/houses/updatestatus/{house_id}/{status}', 'AdminHouseController@updateStatus')->name('admin.houses.updateStatus');
     Route::get('/houses', 'AdminHouseController@index')->name('admin.houses.index');
     Route::get('/houses/create', 'AdminHouseController@create')->name('admin.houses.create');
@@ -145,13 +157,7 @@ Route::get('/master', function(){
     return view('layouts.master');
     });
     
-
     #Public
-    
-    // Route::get('autocomplete-search',array('as'=>'autocomplete.search','uses'=>'AutoCompleteController@index'));
-    // Route::get('autocomplete-ajax',array('as'=>'autocomplete.ajax','uses'=>'AutoCompleteController@ajaxData'));
-
-    //the above routes are test of autocomplete search
     
     Route::view('/search-suggestion', '/client.autocomplete');
     Route::get('/client/autocomplete', 'PublicController@searchSuggestion');
@@ -159,16 +165,9 @@ Route::get('/master', function(){
     
     Route::get('/', 'PublicController@DisplayHousesOnHomePage');
     Route::any('/houseShow/{id}', 'PublicController@show')->name('houseshow.show');
-    // Route::get('/searchajaxxx', 'PublicController@searchajax');
-    
-    // Route::get('/tt', function(){
-        // return view('search.test');
-    //     });
-// Route::get('/tt','SearchController@test');
 
-// Route::get('/aaa','SearchController@index');
-Route::get('/searchajax','SearchController@index');
-Route::get('/searchaa','SearchController@search');
+    Route::get('/searchajax','SearchController@index');
+    Route::get('/searchaa','SearchController@search');
 
     Route::any('/search', function(){
         $search = Input::get('search');
@@ -186,7 +185,14 @@ Route::get('/searchaa','SearchController@search');
               }
               elseif($search =='nyarugenge' || $search =='Nyarugenge') {
                 $district=30;
-            }        
+            }
+            // $house_views=DB::table('views_overall_houses')->where('districtName','LIKE','%'.$request->searchaa."%")
+            //         ->orWhere('sectorName','LIKE','%'.$request->searchaa."%")
+            //         ->orWhere('price','LIKE','%'.$request->searchaa."%")
+            //         ->orWhere('paymentFrequency','LIKE','%'.$request->searchaa."%")
+            //         ->groupBy('houseId')
+            //         ->get();
+            
             $house = House::where('numberOfRooms','LIKE','%'.$search.'%')
             ->orWhere('housePrice','LIKE','%'.$search.'%')
             ->orWhere('paymentfrequency_id','LIKE','%'.$search.'%')
@@ -202,11 +208,9 @@ Route::get('/searchaa','SearchController@search');
         return view('client.search')->withMessage("No results found " );
     }
     });
-
-    
     Route::get('/province/{id}', 'PublicController@provinceHouses');
-    // Route::get('/southern', 'PublicController@south');
     Route::get('/district/{id}', 'PublicController@districtHouses');
+    // Route::get('/southern', 'PublicController@south');
 
 #user routes
 Route::group(['middleware' => 'auth.user'], function(){

@@ -21,16 +21,16 @@
 
     <div class="row">
       @foreach($houses as $house)
-      <div class="col-md-4 col-sm-6">
-        <div class="probootstrap-card probootstrap-listing">
-          <div class="probootstrap-card-media">
-            <a href="{{route('houseshow.show', $house->id)}}">
-              @foreach($house->uploads as $upload)
-              <img src="{{asset('images/HouseUploads/'.$upload->source)}}" />
-              @break;
-              @endforeach
-            </a>
-            </div>
+
+        <div class="col-md-4 col-sm-6">
+          <div class="probootstrap-card probootstrap-listing">
+            <div class="probootstrap-card-media">
+              <a href="{{route('houseshow.show', $house->id)}}">
+                @foreach($house->uploads as $upload)
+                  <img src="/images/HouseUploads/{{ $upload->source }}">
+                  @break;
+                @endforeach
+            </div></a>
 
             <div class="probootstrap-card-text">
               <div class="probootstrap-listing-location">
@@ -38,20 +38,16 @@
                 <a href="{{route('houseshow.show', $house->id)}}">  <i class="icon-location2"></i> <span>Location:   {{ $house->sector['name'] }}/{{ $house->district['name'] }}</span><br/>
               </div>
               <div class="probootstrap-listing-category for-sale"><span>For Rent</span></div>
-              <div class="probootstrap-listing-price">
-                <strong>Price:{{ $house->housePrice }} {{ $house->paymentfrequency['name'] }}</strong>
-              </div>
-                
-            </div>
-            </a>
-            </div>
+
+              <div class="probootstrap-listing-price"><strong>Price:{{ $house->housePrice }} {{ $house->paymentfrequency['name'] }}</strong></div>
+            </div></a>
+
           </div>
           @endforeach
         </div>
 
         {{ $houses->links() }}
         </div>
-
 
       </div>
   </section>
@@ -61,23 +57,4 @@
      
     </div>
 
-    <script type="text/javascript">
-            $('#search').on('keyup',function(){
-                $value=$(this).val();
-                $.ajax({
-                    type : 'get',
-                    url : '{{ URL::to('searchaa') }}',
-                    data:{'searchaa':$value},
-                    success:function(data){
-                        // $('#card').html(data);
-                        // $('tbody').html(data);
-                        $('#card').html(data);
-                    }autocomplete="off";
-                });
-            })
-        </script>
-        <script type="text/javascript">
-            $.ajaxSetup({ headers: { 'csrftoken' : '{{ csrf_token() }}' } });
-        </script>
   </section>
-

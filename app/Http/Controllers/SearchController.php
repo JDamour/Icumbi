@@ -10,27 +10,47 @@ class SearchController extends Controller
 {
    public function index()
     {
-    return view('search.search');
-    // dd($house);
+        $houses =House::where('status',2)->get();
+    return view('search.search', compact('houses'));
     }
 
     public function search(Request $request) 
     { 
+        $test = "0 Houses Found";
         if($request->ajax())
         { 
             $card="";
-            $houses=DB::table('houses')
-            // ->join('uploads', 'uploads.house_id','=', 'houses.id')
-            ->get();// dd($houses);
-            if($houses){
-                    $house_views=DB::table('views_overall_houses')->where('districtName','LIKE','%'.$request->searchaa."%")
+            $carddd="";
+            $count=DB::table('views_overall_houses')->where('districtName','LIKE','%'.$request->searchaa."%")
                     ->orWhere('sectorName','LIKE','%'.$request->searchaa."%")
                     ->orWhere('price','LIKE','%'.$request->searchaa."%")
                     ->orWhere('paymentFrequency','LIKE','%'.$request->searchaa."%")
+                    ->groupBy('houseId')
+                    ->count();
+                $house_views=DB::table('views_overall_houses')->where('districtName','LIKE','%'.$request->searchaa."%")
+                    ->orWhere('sectorName','LIKE','%'.$request->searchaa."%")
+                    ->orWhere('price','LIKE','%'.$request->searchaa."%")
+                    ->orWhere('paymentFrequency','LIKE','%'.$request->searchaa."%")
+                    ->groupBy('houseId')
                     ->get();
                     if($house_views)
                     {
-                                foreach ($house_views as $key => $house_view) {
+                        if ($count == 0) {
+                            $carddd .=' 
+                                <div class="col-md-4 col-sm-6">
+                                <div class="probootstrap-card probootstrap-listing">
+                                    <div class="probootstrap-card-media">
+                                    </div>
+                                    <div class="probootstrap-card-text">
+                                        <h1 class="probootstrap-card-heading">0 Houses Found</h1>
+                                       <div class="probootstrap-listing-price"><strong></strong></div>
+                                    </div>
+                                </div>
+                                </div>';
+                    return Response($carddd);
+                        }
+                        else {
+                            foreach ($house_views as $key => $house_view) {
                                 $card .=' 
                                 <a href="'.route('houseshow.show', $house_view->houseId).'"><div class="col-md-4 col-sm-6">
                                 <div class="probootstrap-card probootstrap-listing">
@@ -45,12 +65,14 @@ class SearchController extends Controller
                                     </div>
                                 </div>
                                 </div></a>';
-                                
                             }
                         return Response($card);
+                        }
+                            
                     }
-                }
-            }
+                    
+                    
         }
-    }
-
+        
+    } 
+}
