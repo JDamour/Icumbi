@@ -110,9 +110,9 @@
         </footer>
 
 
-        <main class="py-4">
+        <!-- <main class="py-4">
             @yield('content')
-        </main>
+        </main> -->
     </div>
 </body>
     <script type="text/javascript">

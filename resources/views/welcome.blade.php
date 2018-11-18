@@ -29,8 +29,7 @@
           <ul class="probootstrap-main-nav">
             <li class="active"><a href="/">Home</a></li>
             <li><a href="/house">Houses</a></li>
-          <!--   <li><a href="/agent">Agents</a></li>
-            <li><a href="/about">About</a></li> -->
+        
             <li><a href="/contact">Contact</a></li>
                         <!-- Authentication Links -->
                         @guest
@@ -118,7 +117,7 @@
                 </div>
               </form>
               
-             <!--  <p class="mb0 text-left"><small>A free HTML5 template by <a href="https://uicookies.com/">uicookies.com</a> under license <a href="https://uicookies.com/license">Creative Commons 3.0</a></small> </p> -->
+          
             </div>
 
           </div>
@@ -183,25 +182,7 @@
         <h2 class="mt0 mb50 text-center">Explore Our Neighborhoods</h2>
       </div>
       
-      <!-- <div class="row probootstrap-gutter10">
-        <div class="col-md-6 col-sm-6">
-          <a href="/kigali" class="probootstrap-hover-overlay">
-            <img style="width: 100%; height: 50vh;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTem5V2NHTNbn1a4LeifPBLff5p6ga2lIspXGJJU3V3rpPcF1E-" alt="Free Bootstrap Template by uicookies.com" class="img-responsive">
-            <div class="probootstrap-text-overlay">
-              <h3>Kigali City</h3>
-              <p>430 Houses</p>
-            </div>
-          </a>
-        </div>
-        <div class="col-md-6 col-sm-6">
-          <a href="/western" class="probootstrap-hover-overlay">
-             <img style="width: 100%; height: 50vh;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZAeiR_D38ColSjKBlTwPl5TvwBBO0dxqyGUVpxNp-GOSupWlh" class="img-responsive">
-            <div class="probootstrap-text-overlay">
-              <h3>Western Province</h3>
-              <p>294 Properties</p>
-            </div>
-          </a>
-        </div> -->
+    
         <div class="col-md-4 col-sm-6">
           <!-- <a href="/northern" class="probootstrap-hover-overlay"> -->
           <a href="/district/28" class="probootstrap-hover-overlay">
@@ -267,7 +248,7 @@
             <div class="probootstrap-card-media">
             <a href="{{route('houseshow.show', $house->id)}}">
               @foreach($house->uploads as $upload)
-                <img src="/images/houseUploads/{{ $upload->source }}">
+                <img src="{{asset('images/HouseUploads/'.$upload->source)}}">
                 @break;
               @endforeach
               </a>

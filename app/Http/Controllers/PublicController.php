@@ -54,7 +54,7 @@ class PublicController extends Controller
     {
        $houses = House::where("district_id","=",$id)->get();
         return view('client.districts', compact('houses'));
-        // dd($house);
+        // dd($houses);
     }
     public function provinceHouses($id)
     {

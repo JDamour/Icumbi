@@ -103,9 +103,7 @@
                 @endif
                 @if($house->status == 2)
                 <span class="label bg-purple">
-                  {{--<a style="color:white" href="{{route('#', $house->id)}}">--}}
-                  <a href="#">
-                    Suspend House</a></span>
+                  <a style="color:white" href="{{route('owner.houses.putHouseOnHold', $house->id)}}">Suspend House</a></span>
                 @endif
                 <span class="label bg-maroon"><a style="color:white" href="{{route('owner.houses.delete', $house->id)}}">Delete</a></span></td>
               </tr>

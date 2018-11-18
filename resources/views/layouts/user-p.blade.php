@@ -150,7 +150,7 @@ desired effect
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">Navigation</li>
         <!-- Optionally, you can add icons to the links -->
-        <li class=""><a href="#"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
+        <!-- <li class=""><a href="#"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li> -->
         <li><a href="{{route('user.services.index')}}"><i class="fa fa-dollar"></i> <span>Booked Houses</span></a></li>
         <li class="treeview">
           <a href="#"><i class="fa fa-envelope"></i> <span>Report</span>
