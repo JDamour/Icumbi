@@ -10,7 +10,6 @@
                 <a href="/">Home</a><span>Kigali</span></a>
               </div>
               <h1>
-              
               @foreach($houses as $house)
               <?php 
                 $dist="";
@@ -24,6 +23,7 @@
                   echo "Nyarugenge";
                 }
               ?>
+              @break;
               @endforeach
               </h1>
             </div>
@@ -47,8 +47,6 @@
             </div></a>
             <div class="probootstrap-card-text">
             <h2 class="probootstrap-card-heading"><a href="{{route('houseshow.show', $house->id)}}">Number of Bed rooms: {{ $house->numberOfRooms }}</a></h2>
-            <!-- <h2 class="probootstrap-card-heading"><a href="{{route('houseshow.show', $house->id)}}">Number of Bed rooms: {{ $house->numberOfRooms }}</a></h2> -->
-
               <div class="probootstrap-listing-location">
               <a href="{{route('houseshow.show', $house->id)}}">  <i class="icon-location2"></i> <span>Location: {{ $house->sector['name'] }}  </span>
               </div>

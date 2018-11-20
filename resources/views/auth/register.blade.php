@@ -1,6 +1,5 @@
 @extends('layouts.app')
 
-@section('content')
 <div class="container-fluid" style=" margin-top: 80px; width:100vw;background-image: url(images/design/backgroundimage.jpg); background-position: cover; background-size: cover">
 
             <div class="row main">
@@ -121,4 +120,4 @@
                    </div>
         </div>
 </div>
-@endsection
+<!-- @endsection -->

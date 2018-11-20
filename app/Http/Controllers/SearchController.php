@@ -11,9 +11,8 @@ class SearchController extends Controller
    public function index()
     {
         $houses =House::where('status',2)->get();
-    return view('search.search', compact('houses'));
+        return view('search.search', compact('houses'));
     }
-
     public function search(Request $request) 
     { 
         $test = "0 Houses Found";
@@ -47,7 +46,8 @@ class SearchController extends Controller
                                     </div>
                                 </div>
                                 </div>';
-                    return Response($carddd);
+                                // dd($count);
+                            return Response($carddd);
                         }
                         else {
                             foreach ($house_views as $key => $house_view) {
@@ -66,12 +66,11 @@ class SearchController extends Controller
                                 </div>
                                 </div></a>';
                             }
+                            // dd($count);
                         return Response($card);
                         }
                             
                     }
-                    
-                    
         }
         
     } 
