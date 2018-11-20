@@ -31,7 +31,7 @@ class PublicController extends Controller
             dd($count);
         }
         else {
-            $houses = House::where("status","=",2)->paginate(3);
+            $houses = House::where("status","=",2)->paginate(9);
             return view('client.index', compact('houses'));
             dd($count);
         }
@@ -44,7 +44,7 @@ class PublicController extends Controller
             // dd($count);
         }
         else {
-            $houses = House::where("status","=",2)->paginate(3);
+            $houses = House::where("status","=",2)->paginate(9);
             return view('welcome', compact('houses'));
             // dd($count);
         }
@@ -80,28 +80,7 @@ class PublicController extends Controller
         $uploads = Upload::all();
         return view('client.province.kigali', compact('uploads'));
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    // public function search()
-    // {
-    //     $search = Input::get('search');
-    //     if ($search != "") {
-    //         $house = House::where('houselocation','LIKE','%'.$search.'%')
-    //         ->orWhere('housePrice','LIKE','%'.$search.'%')
-    //         ->orWhere('paymentfrequency_id','LIKE','%'.$search.'%')
-    //         ->get();
-    //     if(count($house)>0)
-    //         return view('client.search')->withDetails($house)->withQuery ( $search );
-
-    //     }
-    //     return view('client.search')->withMessage("No results found " );
-    // }
-
-
+    
     /**
      * Store a newly created resource in storage.
      *
