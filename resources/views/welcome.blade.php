@@ -103,23 +103,21 @@
                     <div class="search-field">
                       <i class="icon-location2"></i>
                       <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                      <input type="text" class="form-control" placeholder="Enter Sector, District,Number of rooms price" name="search">
+                      <input type="text" class="form-control" autocomplete="off"
+                              placeholder="Enter Sector, District,Number of rooms price" name="search" autocomplete="off">
                     </div>
                     <div class="search-category">
                       <i class="icon-chevron-down"></i>
                       <select name="#" id="" class="form-control">
                         <option value="">For Rent</option>
-                        <option value="">For Sale</option>
+                        <!-- <option value="">For Sale</option> -->
                       </select>
                     </div>
                   </div>
                   <button class="btn btn-success" type="submit"><i class="icon-magnifying-glass t2"></i> Start Search</button>
                 </div>
               </form>
-              
-          
             </div>
-
           </div>
         </div>
       </div>
@@ -181,8 +179,6 @@
       <div class="row heading">
         <h2 class="mt0 mb50 text-center">Explore Our Neighborhoods</h2>
       </div>
-      
-    
         <div class="col-md-4 col-sm-6">
           <!-- <a href="/northern" class="probootstrap-hover-overlay"> -->
           <a href="/district/28" class="probootstrap-hover-overlay">
@@ -257,7 +253,7 @@
             <h2 class="probootstrap-card-heading"><a href="{{route('houseshow.show', $house->id)}}">Number of Bed rooms: {{ $house->numberOfRooms }}</a></h2>
               <a href="{{route('houseshow.show', $house->id)}}">  <i class="icon-location2"></i> <span>Location:   {{ $house->sector['name'] }}/{{ $house->district['name'] }}</span>
               <div class="probootstrap-listing-category for-sale"><span>For Rent</span></div>
-              <div class="probootstrap-listing-price"><strong>{{ $house->housePrice }} {{ $house->paymentfrequency['name'] }}</strong></div>
+              <div class="probootstrap-listing-price"><strong>{{ $house->housePrice }}Frw {{ $house->paymentfrequency['name'] }}</strong></div>
             </div></a>
              
             

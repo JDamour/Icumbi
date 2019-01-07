@@ -51,7 +51,7 @@
               <a href="{{route('houseshow.show', $house->id)}}">  <i class="icon-location2"></i> <span>Location: {{ $house->sector['name'] }}  </span>
               </div>
               <div class="probootstrap-listing-category for-sale"><span>For Rent</span></div>
-              <div class="probootstrap-listing-price"><strong>{{ $house->housePrice }} {{$house->paymentfrequency['name']}}
+              <div class="probootstrap-listing-price"><strong>{{ $house->housePrice }}Frw {{$house->paymentfrequency['name']}}
               </strong></div>
             </div></a>
             <div class="probootstrap-card-extra">
