@@ -22,6 +22,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">  
   <!-- Theme style -->
   <link rel="stylesheet" href="{{asset('css/AdminLTE.min.css')}}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.min.css" />
   <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
         page. However, you can choose any other skin. Make sure you
         apply the skin class to the body tag so the changes take effect. -->
@@ -214,6 +215,8 @@ desired effect
 
 <script src="{{asset('js/jquery.dataTables.min.js')}}"></script>
 <script src="{{asset('js/dataTables.bootstrap.min.js')}}"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
 <!-- SlimScroll -->
 <script src="{{asset('js/jquery.slimscroll.min.js')}}"></script>
@@ -227,6 +230,16 @@ desired effect
     });
   })  
   
+</script>
+
+<script>
+  //Date picker
+  $('#datepicker').datepicker({
+    autoclose: true
+  });
+  $('#datepicker2').datepicker({
+    autoclose: true
+  })
 </script>
 
 <!--Start of Tawk.to Script-->

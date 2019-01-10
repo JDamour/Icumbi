@@ -22,7 +22,8 @@
       <!--------------------------
         | Your Page Content Here |
         -------------------------->
-
+        @include('partials.success')
+        @include('partials.error')
         <div class="box box-info">
             <div class="box-header with-border">
               <h3 class="box-title">Update House</h3>
