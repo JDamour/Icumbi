@@ -34,6 +34,40 @@
                   </div>
                   <!-- /.box-header -->
                   <div class="box-body" style="width: 100;">
+
+                    <div class="box box-primary">
+                      <form class="form-inline" action="{{route('admin.users.filter')}}" method="post">
+                      <div class="box-body">
+                      <div class="form-group">
+                        <label>From:</label>
+                        <div class="input-group date">
+                          <div class="input-group-addon">
+                            <i class="fa fa-calendar"></i>
+                          </div>
+                          <input type="text" class="form-control pull-right" id="datepicker" autocomplete="off" name="from">
+                        </div>
+                        <!-- /.input group -->
+                      </div>
+                      <div class="form-group">
+                        <label>To:</label>
+                        <div class="input-group date">
+                          <div class="input-group-addon">
+                            <i class="fa fa-calendar"></i>
+                          </div>
+                          <input type="text" class="form-control pull-right" id="datepicker2" autocomplete="off" name="to">
+                        </div>
+                        <!-- /.input group -->
+                      </div>
+                      <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                      <div class="form-group">
+                      <button type="submit" class="btn btn-info">Filter</button>
+                      </div>
+                      </div>
+                      </form>
+
+                    </div>
+
+
                     <table id="table_houses" class="table table-bordered table-striped">
                       <thead>
                       <tr>
