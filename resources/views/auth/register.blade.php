@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 <div class="container-fluid" style=" margin-top: 80px; width:100vw;background-image: url(images/design/backgroundimage.jpg); background-position: cover; background-size: cover">
 
             <div class="row main">

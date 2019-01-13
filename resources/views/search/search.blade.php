@@ -7,12 +7,10 @@
     
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-    
     </head>
-    
-        <body>
-            <div class="container">
-                <div class="row">
+    <body>
+        <div class="container">
+            <div class="row">
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h3>Houses info </h3>
@@ -21,8 +19,7 @@
                     <div class="form-group">
                     <!-- <input type="text" class="form-controller" id="search1" name="search"></input> -->
                     </div>
-                    
-                        <!-- <table class="table table-bordered table-hover">
+                    <!--<table class="table table-bordered table-hover">
                             <thead>
                                 <tr>
                                     <th>Number of Rooms</th>
@@ -35,9 +32,7 @@
                             <tbody>
                             </tbody>
                         </table>
-                        
                     </div> -->
-                    
                     <div id='card'>
                         <div class="container">
                             <div class="row">
@@ -57,7 +52,7 @@
                                         <a href="{{route('houseshow.show', $house->id)}}">  <i class="icon-location2"></i> <span>Location:   {{ $house->sector['name'] }}/{{ $house->district['name'] }}</span><br/>
                                     </div>
                                     <div class="probootstrap-listing-category for-sale"><span>For Rent</span></div>
-                                    <div class="probootstrap-listing-price"><strong>Price:{{ $house->housePrice }} {{ $house->paymentfrequency['name'] }}</strong></div>
+                                    <div class="probootstrap-listing-price"><strong>Price:{{ $house->housePrice }}Frw {{ $house->paymentfrequency['name'] }}</strong></div>
                                     </div></a>
                                 </div>
                                 </div>
@@ -65,7 +60,6 @@
                             </div>
                         </div>
                     </div>
-                    
                 </div>
             </div>
         </div>
@@ -83,8 +77,8 @@
                     }
                 });
             })
-        </script>
-        <script type="text/javascript">
+         </script>
+         <script type="text/javascript">
             $.ajaxSetup({ headers: { 'csrftoken' : '{{ csrf_token() }}' } });
         </script>
     </body>

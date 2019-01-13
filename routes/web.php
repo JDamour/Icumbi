@@ -169,8 +169,11 @@ Route::get('/master', function(){
     Route::get('/', 'PublicController@DisplayHousesOnHomePage');
     Route::any('/houseShow/{id}', 'PublicController@show')->name('houseshow.show');
 
-    Route::get('/searchajax','SearchController@index');
-    Route::get('/searchaa','SearchController@search');
+    // Route::get('/searchajax','SearchController@index');
+    // Route::get('/searchaa','SearchController@search');
+
+    Route::get('/searchajax','PublicController@index');
+    Route::get('/searchaa','PublicController@search');
 
     Route::any('/search', function(){
         $search = Input::get('search');

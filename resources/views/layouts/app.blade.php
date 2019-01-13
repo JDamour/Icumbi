@@ -7,9 +7,9 @@
     <meta name="description" content="Free Bootstrap Theme by uicookies.com">
     <meta name="keywords" content="free website templates, free bootstrap themes, free template, free bootstrap, free website template">
     <link href="https://fonts.googleapis.com/css?family=Old+Standard+TT" rel="stylesheet">
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <link rel="stylesheet" href="{{asset('css/styles-merged.css')}}">
     <link rel="stylesheet" href="{{asset('css/style.min.css')}}">
     <link rel="stylesheet" href="{{asset('css/custom.css')}}">
@@ -18,7 +18,6 @@
   <body>
 
   <!-- START: header -->
-  
   <div class="probootstrap-loader"></div>
 
   <header role="banner" class="probootstrap-header">
@@ -27,18 +26,14 @@
         <a href="#" class="probootstrap-burger-menu visible-xs" ><i>Menu</i></a>
         <nav role="navigation" class="probootstrap-nav hidden-xs .navbar-fixed-top">
           <ul class="probootstrap-main-nav">
-
              <div class="search">
-
-             
              <div class="searchh">
-
-              <!-- <form method="POST" role="search" class="searchform"> -->
+              <form action="/searchajax">
              <input type="hidden" name="_token" value="{{ csrf_token() }}">
-             <input type="text" autocomplete="off" placeholder="Enter Sector, District,Number of rooms price" name="search" id="search">
-              <button type="submit" class="btnn btn-primary btn-sm">Search</button>
-              
-             <!-- </form>  -->
+             <input type="text" autocomplete="off"
+                    placeholder="Enter Sector, District,Number of rooms price" name="search" id="search">
+             <button type="submit" class="btnn btn-primary btn-sm">Search</button>
+             </form> 
              </div>
                 <li><a href="/">Home</a></li>
                 
@@ -48,7 +43,7 @@
               <button type="submit" class="btnn btn-primary btn-sm">Search</button>
              </form> 
              </div>
-                <li class="active"><a href="/">Home</a></li> -->
+                <li class="active"><a href="/">Home</a></li> 271637-->
                 <li><a href="/house">House</a></li>
                 <!--   <li><a href="/agents">Agents</a></li> -->
                 <!-- <li><a href="/about">About</a></li> -->
