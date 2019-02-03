@@ -19,3 +19,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::apiResource('houses', 'api\HouseController',[
     'as' => 'v1'
 ]);
+
+Route::group(['prefix => houses'], function(){
+    Route::apiResource('/{house}/photos', 'api\UploadController');
+});

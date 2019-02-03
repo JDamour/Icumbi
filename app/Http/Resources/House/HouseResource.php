@@ -36,6 +36,10 @@ class HouseResource extends JsonResource
                 "bathroom" => $this->bathroom,
                 "toilet" => $this->toilet,
                 "fenced" => $this->fenced,
+                "link" =>
+                    [
+                        "href" => route('photos.index', $this->id)
+                    ]
             ];
     }
 }
