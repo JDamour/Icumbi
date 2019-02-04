@@ -23,3 +23,10 @@ Route::apiResource('houses', 'api\HouseController',[
 Route::group(['prefix => houses'], function(){
     Route::apiResource('/{house}/photos', 'api\UploadController');
 });
+
+Route::post('login', 'api\AuthController@login');
+Route::post('register', 'api\AuthController@register');
+
+Route::group(['middleware' => 'auth:api'], function(){
+Route::post('details', 'api\AuthController@details');
+    });
