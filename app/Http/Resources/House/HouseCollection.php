@@ -23,6 +23,7 @@ class HouseCollection extends ResourceCollection
                     'id'=>$house->id,
                     'Location'=>$house->houseLocation,
                     'Price'=>$house->housePrice,
+                    'photo' =>$house->uploads,
                     'link' =>[
                         'href'=>route('v1.houses.show', $house->id)
                     ],

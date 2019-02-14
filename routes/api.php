@@ -29,4 +29,6 @@ Route::post('register', 'api\AuthController@register');
 
 Route::group(['middleware' => 'auth:api'], function(){
 Route::post('details', 'api\AuthController@details');
+    Route::post('user/houses', 'api\AuthController@userHouses');
     });
+

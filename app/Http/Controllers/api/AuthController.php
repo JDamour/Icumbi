@@ -8,6 +8,9 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use App\House;
+use App\Http\Resources\House\HouseResource as HouseResource;
+use App\Http\Resources\House\HouseCollection as HouseCollection;
 use Validator;
 
 class AuthController extends Controller
@@ -84,9 +87,18 @@ return response()->json(['success'=>$success], $this-> successStatus);
      *
      * @return \Illuminate\Http\Response
      */
-    public function details()
+
+        public function details()
     {
         $user = Auth::user();
         return response()->json(['success' => $user], $this-> successStatus);
     }
+
+    public function userHouses()
+    {
+        $user = Auth::user();
+          $houses = $user->house;
+        return new HouseCollection(HouseResource::collection($houses));
+    }
+
 }
