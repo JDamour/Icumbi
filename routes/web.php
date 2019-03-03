@@ -178,7 +178,7 @@ Route::get('/master', function(){
             $sector="";
             $district="";
             $pf="";
-        if ($search != "") {
+        if ($search != ' ') {
               $district="";
               if ($search =='gasabo' || $search =='Gasabo') {
                   $district=28;
@@ -205,11 +205,14 @@ Route::get('/master', function(){
             if(count($house)>0){
                 return view('client.search')->withDetails($house)->withQuery ( $search );
             }
+            else{
+                return view('client.norecord');
+            }
         }
         // dd($house);
-        if ($search=="" || $search==" "){
-        return view('client.search')->withMessage("No results found " );
-    }
+    //     if ($search=="" || $search==" "){
+    //     return view('client.search')->withMessage("No results found " );
+    // }
     });
     Route::get('/province/{id}', 'PublicController@provinceHouses');
     Route::get('/district/{id}', 'PublicController@districtHouses');
