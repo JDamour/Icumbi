@@ -37,7 +37,6 @@ class AuthController extends Controller
         $phonePattern = '/\s*(?:\+?(\d{1,3}))?([-. (]*(\d{3})[-. )]*)?((\d{3})[-. ]*(\d{2,4})(?:[-.x ]*(\d+))?)\s*/';
 
         $validator = Validator::make($request->all(), [
-
             'firstName' => 'required|string|max:255',
             'lastName' => 'required|string|max:255',
             'phoneNumber' => 'required|unique:users|min:10|max:15|regex:' . $phonePattern,
@@ -45,28 +44,27 @@ class AuthController extends Controller
             'password' => 'required|string|min:6|confirmed',
             'roleId' => 'required',
         ]);
-if ($validator->fails()) {
+        if ($validator->fails()) {
             return response()->json(['error'=>$validator->errors()], 401);
         }
-//$input = $request->all();
-//
-//        $input['password'] = bcrypt($input['password']);
-//        $user = User::create($input);
-//        $success['token'] =  $user->createToken('MyApp')-> accessToken;
-//        $success['name'] =  $user->name;
-//return response()->json(['success'=>$success], $this-> successStatus);
-//    }
+        //$input = $request->all();
+        //
+        //        $input['password'] = bcrypt($input['password']);
+        //        $user = User::create($input);
+        //        $success['token'] =  $user->createToken('MyApp')-> accessToken;
+        //        $success['name'] =  $user->name;
+        //return response()->json(['success'=>$success], $this-> successStatus);
+        //    }
 
-   $data = $request->all();
-    $user = User::create([
-    'firstName' => $data['firstName'],
-    'lastName' => $data['lastName'],
-    'phoneNumber' => $data['phoneNumber'],
-    'email' => $data['email'],
-    'password' => Hash::make($data['password']),
-]);
-        switch($data['roleId'])
-        {
+        $data = $request->all();
+        $user = User::create([
+            'firstName' => $data['firstName'],
+            'lastName' => $data['lastName'],
+            'phoneNumber' => $data['phoneNumber'],
+            'email' => $data['email'],
+            'password' => Hash::make($data['password']),
+        ]);
+        switch($data['roleId']) {
             case 'Admin':
                 $role = Role::where('name', 'Admin')->first();
                 break;
@@ -77,25 +75,23 @@ if ($validator->fails()) {
                 $role = Role::where('name', 'User')->first();
         }
         $user->assignRole($role);
-$success['token'] =  $user->createToken('MyApp')-> accessToken;
+        $success['token'] =  $user->createToken('MyApp')-> accessToken;
         $success['email'] =  $user->email;
-return response()->json(['success'=>$success], $this-> successStatus);
+        return response()->json(['success'=>$success], $this-> successStatus);
     }
 
-/**
+    /**
      * details api
      *
      * @return \Illuminate\Http\Response
      */
 
-        public function details()
-    {
+    public function details() {
         $user = Auth::user();
         return response()->json(['success' => $user], $this-> successStatus);
     }
 
-    public function userHouses()
-    {
+    public function userHouses() {
         $user = Auth::user();
           $houses = $user->house;
         return new HouseCollection(HouseResource::collection($houses));
