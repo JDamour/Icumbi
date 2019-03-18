@@ -18,7 +18,28 @@ class UserManagementController extends Controller
     public function index()
     {
         //
-        $users = User::all()->sortByDesc('created_at');
+        $from = \date_format(date_sub(date_create(date('Y-m-d')), date_interval_create_from_date_string('7 days')), 'Y-m-d');
+        $to = date('Y-m-d');
+        $users = User::whereBetween('created_at', [$from, $to])->get()->sortByDesc('created_at');
+        return view('users.index', compact('users'));
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function search(Request $request)
+    {
+        //
+        $request->validate([
+            "from" => "bail|required|date",
+            "to" => "required|date"
+        ]);
+        $from = \date_format(\date_create($request->input('from')), 'Y-m-d');
+        $to = \date_format(\date_create($request->input('to')), 'Y-m-d');
+
+        $users = User::whereBetween('created_at', [$from, $to])->get()->sortByDesc('created_at');
         return view('users.index', compact('users'));
     }
 

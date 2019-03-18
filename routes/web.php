@@ -83,6 +83,7 @@ Route::group(['prefix' => 'admin', 'middleware' =>'auth.admin'],function () {
 
     #Service controller
     Route::get('/services', 'ServiceController@index')->name('admin.services.index');
+    Route::post('/services/filter', 'ServiceController@search')->name('admin.services.filter');
 
 
     # house controller
@@ -96,6 +97,7 @@ Route::group(['prefix' => 'admin', 'middleware' =>'auth.admin'],function () {
     Route::put('/houses/{id}', 'AdminHouseController@update')->name('admin.houses.update');
     Route::delete('/houses/{id}', 'AdminHouseController@destroy')->name('admin.houses.destroy');
     Route::get('/houses/delete/{id}', 'AdminHouseController@delete')->name('admin.houses.delete');
+    Route::post('/houses/filter', 'AdminHouseController@search')->name('admin.houses.filter');
 
     # uploads controller
     Route::get('/uploads/{house_id}', 'AdminUploadsController@index')->name('admin.uploads.index');
@@ -111,6 +113,7 @@ Route::group(['prefix' => 'admin', 'middleware' =>'auth.admin'],function () {
     Route::post('/users', 'UserManagementController@store');
     Route::put('/users/{id}', 'UserManagementController@update');
     Route::delete('/users/{id}', 'UserManagementController@destroy');
+    Route::post('/users/filter', 'UserManagementController@search')->name('admin.users.filter');
 });
 
 # houseOwner routes
