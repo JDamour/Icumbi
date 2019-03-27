@@ -33,6 +33,8 @@ Route::get('/provinces', function() {
         "count" => Province::count()
     ]);
 });
+Route::get('province/{id}', 'api\ProvinceController@index');
+
 
 
 // API House Functions
