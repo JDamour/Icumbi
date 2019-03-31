@@ -158,8 +158,8 @@ desired effect
               </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="{{route('houses.create')}}"><i class="fa fa-circle-o"></i> New</a></li>
-            <li><a href="{{route('houses.index')}}"><i class="fa fa-circle-o"></i> View All</a></li>
+            <li><a href="{{action('OwnerHouseController@create')}}"><i class="fa fa-circle-o"></i> New</a></li>
+            <li><a href="{{action('OwnerHouseController@index')}}"><i class="fa fa-circle-o"></i> View All</a></li>
           </ul>
         </li>
 		<li><a href="{{route('owner.services.index')}}"><i class="fa fa-dollar"></i> <span>Services</span></a></li>
