@@ -19,12 +19,13 @@ class ProvinceController extends Controller
     public function index($id)
     {
         $province= Province::find($id);
-        $districts[] = District::where("province_id",$id)->get();
+        $districts = District::where("province_id",$id)->get();
         $count = District::where("province_id",$id)->count();
         switch ($id) {
             case 1:
-            return response()->json([
+            return response()->json([ 
                 "Districts" => $count,
+                "id"=>$id,
                 "name" => "Amajyaruguru",
                 "districts"=>$districts,
                 
@@ -33,13 +34,15 @@ class ProvinceController extends Controller
             case 3:
             return response()->json([
                 "Districts" => $count,
-                "name" => "Iburasiravuba",
+                "id"=>$id,
+                "name" => "Iburasirazuba",
                 "districts"=>$districts,
                 ]);
                 break;
             case 4:
             return response()->json([
                 "Districts" => $count,
+                "id"=>$id,
                 "name" => "Uburengerazuba",
                 "districts"=>$districts,
                 ]);
@@ -47,6 +50,7 @@ class ProvinceController extends Controller
             case 2:
             return response()->json([
                 "Districts" => $count,
+                "id"=>$id,
                 "name" => "Amajyepfo",
                 "districts"=>$districts,
                 ]);
@@ -54,6 +58,7 @@ class ProvinceController extends Controller
             case 5:
             return response()->json([
                 "Districts" => $count,
+                "id"=>$id,
                 "name" => "Kigali",
                 "districts"=>$districts,
                 ]);
@@ -66,8 +71,6 @@ class ProvinceController extends Controller
                 break;
         }
         
-        //
-        // return UploadResource::collection($house->uploads);
     }
 
     /**
