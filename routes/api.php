@@ -36,7 +36,16 @@ Route::get('/provinces', function() {
     ]);
 });
 Route::middleware('auth:api')->get('user/{id}', function($id) {
-   return (new UserResource(User::find($id))) ;
+    $user = User::find($id);
+    if ($user) {
+        return (new UserResource($user)) ;
+    } else {
+        return response()->json([
+            "status" => "404",
+            "description" => "user not found"
+        ], 404);
+    }
+   
 });
 
 
@@ -55,8 +64,8 @@ Route::group(["prefix" => "service"], function() {
     Route::post('/book', 'api\ServiceController@bookHouse');
 });
 
-
-
+Route::post('password/email', 'Auth\ForgotPasswordController@getResetToken');
+Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 
 
 
@@ -81,7 +90,4 @@ Route::group(["prefix" => "service"], function() {
 // Route::group(['middleware' => 'auth:api'], function(){
 //     Route::post('user/houses', 'api\AuthController@userHouses');
 // });
-
-Route::post('password/email', 'Auth\ForgotPasswordController@getResetToken');
-Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 
