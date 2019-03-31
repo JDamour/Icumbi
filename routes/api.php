@@ -2,7 +2,9 @@
 
 use Illuminate\Http\Request;
 use App\Http\Resources\House\ProvinceResource;
+use App\Http\Resources\House\UserResource;
 use App\Province;
+use App\User;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -32,6 +34,9 @@ Route::get('/provinces', function() {
     ->additional([
         "count" => Province::count()
     ]);
+});
+Route::middleware('auth:api')->get('user/{id}', function($id) {
+   return (new UserResource(User::find($id))) ;
 });
 
 
