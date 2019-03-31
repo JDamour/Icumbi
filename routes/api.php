@@ -32,3 +32,6 @@ Route::post('details', 'api\AuthController@details');
     Route::post('user/houses', 'api\AuthController@userHouses');
     });
 
+Route::post('password/email', 'Auth\ForgotPasswordController@getResetToken');
+Route::post('password/reset', 'Auth\ResetPasswordController@reset');
+
