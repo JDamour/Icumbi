@@ -189,16 +189,16 @@
               $h="";
               $h1="";
               $h2="";
-              $count =DB::table('Houses')->where("district_id",28)->count();
+              $count =DB::table('Houses')->where('status' , 2)->where("district_id",28)->count();
               $h=$count;
-              $count =DB::table('Houses')->where("district_id",29)->count();
+              $count =DB::table('Houses')->where('status' , 2)->where("district_id",29)->count();
               $h1=$count;
-              $count =DB::table('Houses')->where("district_id",30)->count();
+              $count =DB::table('Houses')->where('status' , 2)->where("district_id",30)->count();
               $h2=$count;
               // dd($h);
               ?>
               <h3>Gasabo District</h3>
-              <p>{{$h}} Properties</p>
+              <p>{{$h}} Avalilable Houses</p>
             </div>
           </a>
         </div>
@@ -209,7 +209,7 @@
             <div class="probootstrap-text-overlay">
               <!-- <h3>Eastern Province</h3> -->
               <h3>Kicukiro District</h3>
-              <p>{{$h1}} Properties</p>
+              <p>{{$h1}} Avalilable Houses</p>
             </div>
           </a>
         </div>
@@ -220,7 +220,7 @@
             <div class="probootstrap-text-overlay">
               <!-- <h3>Southern Province</h3> -->
               <h3>Nyarugennge District</h3>
-              <p>{{$h2}} Properties</p>
+              <p>{{$h2}} Avalilable Houses</p>
             </div>
           </a>
         </div>

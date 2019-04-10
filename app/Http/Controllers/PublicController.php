@@ -120,7 +120,8 @@ class PublicController extends Controller
     }
     public function districtHouses($id)
     {
-       $houses = House::where("district_id","=",$id)->get();
+       $houses = House::where('status' , 2)->where("district_id","=",$id)->get();
+    // $houses = House::where("district_id","=",$id)->get();
         return view('client.districts', compact('houses'));
         // dd($houses);
     }
