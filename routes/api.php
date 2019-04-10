@@ -34,19 +34,21 @@ Route::get('/provinces', function() {
     ->additional([
         "count" => Province::count()
     ]);
-});
-Route::middleware('auth:api')->get('user/{id}', function($id) {
-    $user = User::find($id);
-    if ($user) {
-        return (new UserResource($user)) ;
-    } else {
-        return response()->json([
-            "status" => "404",
-            "description" => "user not found"
-        ], 404);
-    }
+}); 
+Route::get('province/{id}', 'api\ProvinceController@index');
+
+ // Route::middleware('auth:api')->get('user/{id}', function($id) {
+//     $user = User::find($id);
+//     if ($user) {
+//         return (new UserResource($user)) ;
+//     } else {
+//         return response()->json([
+//             "status" => "404",
+//             "description" => "user not found"
+//         ], 404);
+//     }
    
-});
+// }); 
 
 
 // API House Functions

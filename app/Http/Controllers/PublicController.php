@@ -83,36 +83,45 @@ class PublicController extends Controller
         }
         
     } 
+    public function test(){
+        // $houses = House::where("status","=",2)->paginate(2);
+        // return view('client.test', compact('houses'));
+        $h="";
+        $count = House::where("district_id",28)->count();
+        $h=$count;
+        dd($h);
+    }
     public function DisplayHousesOnHOusePage()
     {
-        // $houses = House::paginate(6);
         $count = House::where("status","=",2)->count();
         if($count == 0){
             return view('client.norecord');
             dd($count);
         }
         else {
-            $houses = House::where("status","=",2)->paginate(9);
+            $houses = House::where("status","=",2)->paginate(3);
             return view('client.index', compact('houses'));
             dd($count);
         }
     }
     public function DisplayHousesOnHomePage()
     {
+        
         $count = House::where("status","=",2)->count();
         if($count == 0){
             return view('client.norecordHouse');
             // dd($count);
         }
         else {
-            $houses = House::where("status","=",2)->paginate(9);
+            $houses = House::where("status","=",2)->paginate(3);
             return view('welcome', compact('houses'));
             // dd($count);
         }
     }
     public function districtHouses($id)
     {
-       $houses = House::where("district_id","=",$id)->get();
+       $houses = House::where('status' , 2)->where("district_id","=",$id)->get();
+    // $houses = House::where("district_id","=",$id)->get();
         return view('client.districts', compact('houses'));
         // dd($houses);
     }

@@ -1,5 +1,4 @@
 @extends('layouts.app')
-<!-- @section('content') -->
 <section class="probootstrap-slider flexslider2 page-inner">
   <div class="overlay"></div>
     <div class="probootstrap-wrap-banner">
@@ -18,8 +17,6 @@
   </section> 
 <section class="probootstrap-section probootstrap-section-lighter" style="background-color: white; width: 80%;  z-index: 0; margin: 50px;">
 <div class="container" style="background-color: #FCF9F9;">
-
-    <div id='card'>
     <div class="container">
       <div class="row">
         @foreach($houses as $house)
@@ -46,8 +43,40 @@
       </div>
       {{ $houses->links() }}
     </div>
+    <div id='card'>
+    
       </div>
 </div>
-      
+      <script type="text/javascript">
+            $('#search').on('keyup',function(){
+                $value=$(this).val();
+                $.ajax({
+                    type : 'get',
+                    url : '{{ URL::to('searchaa') }}',
+                    data:{'searchaa':$value},
+                    success:function(data){
+                        // $('tbody').html(data);
+                        $('#card').html(data);
+                    }
+                });
+            })
+        </script>
+        <script type="text/javascript">
+            $.ajaxSetup({ headers: { 'csrftoken' : '{{ csrf_token() }}' } });
+        </script>
   </section>
-  <!-- @section('content') -->
+
+  <!-- back up -->
+  welcomeblade
+  <?php
+              $h="";
+              $h1="";
+              $h2="";
+              $count =DB::table('Houses')->where("district_id",28)->count();
+              $h=$count;
+              $count =DB::table('Houses')->where("district_id",29)->count();
+              $h1=$count;
+              $count =DB::table('Houses')->where("district_id",30)->count();
+              $h2=$count;
+              // dd($h);
+              ?>

@@ -185,8 +185,20 @@
             <img style="width: 100%; height: 50vh;" src ="images/design/house3.jpg" alt="Free Bootstrap Template by uicookies.com" class="img-responsive">
             <div class="probootstrap-text-overlay">
               <!-- <h3>Northern Province</h3> -->
+              <?php
+              $h="";
+              $h1="";
+              $h2="";
+              $count =DB::table('Houses')->where('status' , 2)->where("district_id",28)->count();
+              $h=$count;
+              $count =DB::table('Houses')->where('status' , 2)->where("district_id",29)->count();
+              $h1=$count;
+              $count =DB::table('Houses')->where('status' , 2)->where("district_id",30)->count();
+              $h2=$count;
+              // dd($h);
+              ?>
               <h3>Gasabo District</h3>
-              <p>300 Properties</p>
+              <p>{{$h}} Avalilable Houses</p>
             </div>
           </a>
         </div>
@@ -197,7 +209,7 @@
             <div class="probootstrap-text-overlay">
               <!-- <h3>Eastern Province</h3> -->
               <h3>Kicukiro District</h3>
-              <p>268 Properties</p>
+              <p>{{$h1}} Avalilable Houses</p>
             </div>
           </a>
         </div>
@@ -208,7 +220,7 @@
             <div class="probootstrap-text-overlay">
               <!-- <h3>Southern Province</h3> -->
               <h3>Nyarugennge District</h3>
-              <p>342 Properties</p>
+              <p>{{$h2}} Avalilable Houses</p>
             </div>
           </a>
         </div>
