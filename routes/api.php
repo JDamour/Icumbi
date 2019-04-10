@@ -2,7 +2,9 @@
 
 use Illuminate\Http\Request;
 use App\Http\Resources\House\ProvinceResource;
+use App\Http\Resources\House\UserResource;
 use App\Province;
+use App\User;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -32,9 +34,21 @@ Route::get('/provinces', function() {
     ->additional([
         "count" => Province::count()
     ]);
-});
+}); 
 Route::get('province/{id}', 'api\ProvinceController@index');
 
+ // Route::middleware('auth:api')->get('user/{id}', function($id) {
+//     $user = User::find($id);
+//     if ($user) {
+//         return (new UserResource($user)) ;
+//     } else {
+//         return response()->json([
+//             "status" => "404",
+//             "description" => "user not found"
+//         ], 404);
+//     }
+   
+// }); 
 
 
 // API House Functions
@@ -52,8 +66,8 @@ Route::group(["prefix" => "service"], function() {
     Route::post('/book', 'api\ServiceController@bookHouse');
 });
 
-
-
+Route::post('password/email', 'Auth\ForgotPasswordController@getResetToken');
+Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 
 
 

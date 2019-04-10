@@ -21,7 +21,7 @@ class AdminHouseController extends Controller
         //
 
         $from = \date_format(date_sub(date_create(date('Y-m-d')), date_interval_create_from_date_string('7 days')), 'Y-m-d');
-        $to = date('Y-m-d');
+        $to = date('Y-m-d', strtotime('+1 day'));
         $houses = House::whereBetween('created_at', [$from, $to])->get()->sortByDesc('created_at');
         
         return view('admin.houses.index', compact('houses'));
@@ -42,7 +42,7 @@ class AdminHouseController extends Controller
             "to" => "required|date"
         ]);
         $from = \date_format(\date_create($request->input('from')), 'Y-m-d');
-        $to = \date_format(\date_create($request->input('to')), 'Y-m-d');
+        $to = \date_format(date_add(\date_create($request->input('to')), date_interval_create_from_date_string('1 day')), 'Y-m-d');
         $houses = House::whereBetween('created_at', [$from, $to])->get()->sortByDesc('created_at');
         
         return view('admin.houses.index', compact('houses'));

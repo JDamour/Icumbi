@@ -24,6 +24,8 @@ class ServiceHouseResource extends JsonResource {
                 "street" => $this->house->streetCode,
                 "ownerFName" => $this->user->firstName,
                 "ownerLName" => $this->user->lastName,
+                "ownerPhoneNumber" => $this->user->phoneNumber,
+                "ownerEmail" => $this->user->email,
                 "status" => $this->house->status,
                 "paymentfrequency" => $this->house->paymentfrequency->name,
                 "country" => $this->house->country->name,

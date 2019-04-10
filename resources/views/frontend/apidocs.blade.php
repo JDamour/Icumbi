@@ -173,6 +173,14 @@ pre code {
                     <a href="#request-authentication-user">User</a>
                 </li>
                 
+                <li>
+                    <a href="#request-authentication-reset-token">Reset Token</a>
+                </li>
+                
+                <li>
+                    <a href="#request-authentication-reset-password">Reset Password</a>
+                </li>
+                
             </ul>
         </li>
         
@@ -187,6 +195,10 @@ pre code {
                 
                 <li>
                     <a href="#request-houses-show">show</a>
+                </li>
+                
+                <li>
+                    <a href="#request-houses-house-owner">House Owner</a>
                 </li>
                 
             </ul>
@@ -546,6 +558,276 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjI1MDIzYzIxMj
                         <hr>
                     </div>
                     
+                    
+                    <div class="request">
+
+                        <h4 id="request-authentication-reset-token">
+                            Reset Token
+                            <a href="#request-authentication-reset-token"><i class="glyphicon glyphicon-link"></i></a>
+                        </h4>
+
+                        <div><p>Get password reset token</p>
+</div>
+
+                        <div>
+                            <ul class="nav nav-tabs" role="tablist">
+                                <li role="presentation" class="active"><a href="#request-authentication-reset-token-example-curl" data-toggle="tab">Curl</a></li>
+                                <li role="presentation"><a href="#request-authentication-reset-token-example-http" data-toggle="tab">HTTP</a></li>
+                            </ul>
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="request-authentication-reset-token-example-curl">
+                                    <pre><code class="hljs curl">curl -X POST -H "Content-Type: application/json" -H "Accept: application/json" -d '{
+	"email": "roiry25@gmail.com"
+}' "http://localhost:8000/api/password/email"</code></pre>
+                                </div>
+                                <div class="tab-pane" id="request-authentication-reset-token-example-http">
+                                    <pre><code class="hljs http">POST /api/password/email HTTP/1.1
+Host: localhost:8000
+Content-Type: application/json
+Accept: application/json
+
+{
+	"email": "roiry25@gmail.com"
+}</code></pre>
+                                </div>
+                            </div>
+                        </div>
+
+                        
+                        <div>
+                            <ul class="nav nav-tabs" role="tablist">
+                                
+                                <li role="presentation" class="active">
+                                    <a href="#request-authentication-reset-token-responses-806a43ff-146c-9f12-0afd-c5a2cc802efb" data-toggle="tab">
+                                        
+                                            Reset Token
+                                        
+                                    </a>
+                                </li>
+                                
+                                <li role="presentation">
+                                    <a href="#request-authentication-reset-token-responses-1ea9674f-6bff-ac39-852a-fb6a78f63bcb" data-toggle="tab">
+                                        
+                                            Reset Token
+                                        
+                                    </a>
+                                </li>
+                                
+                            </ul>
+                            <div class="tab-content">
+                                
+                                <div class="tab-pane active" id="request-authentication-reset-token-responses-806a43ff-146c-9f12-0afd-c5a2cc802efb">
+                                    <table class="table table-bordered">
+                                        <tr><th style="width: 20%;">Status</th><td>200 </td></tr>
+                                        
+                                        <tr><th style="width: 20%;">cache-control</th><td>no-cache, private</td></tr>
+                                        
+                                        <tr><th style="width: 20%;">connection</th><td>close</td></tr>
+                                        
+                                        <tr><th style="width: 20%;">content-type</th><td>application/json</td></tr>
+                                        
+                                        <tr><th style="width: 20%;">date</th><td>Sun, 31 Mar 2019 10:34:01 +0000, Sun, 31 Mar 2019 10:34:01 GMT</td></tr>
+                                        
+                                        <tr><th style="width: 20%;">host</th><td>localhost:8000</td></tr>
+                                        
+                                        <tr><th style="width: 20%;">x-powered-by</th><td>PHP/7.2.15-0ubuntu0.18.04.2</td></tr>
+                                        
+                                        <tr><th style="width: 20%;">x-ratelimit-limit</th><td>60</td></tr>
+                                        
+                                        <tr><th style="width: 20%;">x-ratelimit-remaining</th><td>58</td></tr>
+                                        
+                                        
+                                            
+                                            <tr><td class="response-text-sample" colspan="2">
+                                                <pre><code>{
+    "data": {
+        "token": "45c9fa102befca6d68b444a8cc2a09124d76199e51dc97011b2636c65fb3465e"
+    },
+    "message": null
+}</code></pre>
+                                            </td></tr>
+                                            
+                                        
+                                    </table>
+                                </div>
+                                
+                                <div class="tab-pane" id="request-authentication-reset-token-responses-1ea9674f-6bff-ac39-852a-fb6a78f63bcb">
+                                    <table class="table table-bordered">
+                                        <tr><th style="width: 20%;">Status</th><td>400 </td></tr>
+                                        
+                                        <tr><th style="width: 20%;">cache-control</th><td>no-cache, private</td></tr>
+                                        
+                                        <tr><th style="width: 20%;">connection</th><td>close</td></tr>
+                                        
+                                        <tr><th style="width: 20%;">content-type</th><td>application/json</td></tr>
+                                        
+                                        <tr><th style="width: 20%;">date</th><td>Sun, 31 Mar 2019 10:36:10 +0000, Sun, 31 Mar 2019 10:36:10 GMT</td></tr>
+                                        
+                                        <tr><th style="width: 20%;">host</th><td>localhost:8000</td></tr>
+                                        
+                                        <tr><th style="width: 20%;">x-powered-by</th><td>PHP/7.2.15-0ubuntu0.18.04.2</td></tr>
+                                        
+                                        <tr><th style="width: 20%;">x-ratelimit-limit</th><td>60</td></tr>
+                                        
+                                        <tr><th style="width: 20%;">x-ratelimit-remaining</th><td>59</td></tr>
+                                        
+                                        
+                                            
+                                            <tr><td class="response-text-sample" colspan="2">
+                                                <pre><code>{
+    "data": null,
+    "message": "We can't find a user with that e-mail address."
+}</code></pre>
+                                            </td></tr>
+                                            
+                                        
+                                    </table>
+                                </div>
+                                
+                            </div>
+                        </div>
+                        
+
+                        <hr>
+                    </div>
+                    
+                    
+                    <div class="request">
+
+                        <h4 id="request-authentication-reset-password">
+                            Reset Password
+                            <a href="#request-authentication-reset-password"><i class="glyphicon glyphicon-link"></i></a>
+                        </h4>
+
+                        <div><p>Reset user password</p>
+</div>
+
+                        <div>
+                            <ul class="nav nav-tabs" role="tablist">
+                                <li role="presentation" class="active"><a href="#request-authentication-reset-password-example-curl" data-toggle="tab">Curl</a></li>
+                                <li role="presentation"><a href="#request-authentication-reset-password-example-http" data-toggle="tab">HTTP</a></li>
+                            </ul>
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="request-authentication-reset-password-example-curl">
+                                    <pre><code class="hljs curl">curl -X POST -H "Content-Type: application/json" -H "Accept: application/json" -d '{
+	"email": "roiry25@gmail.com",
+	"password": "peaceall",
+	"password_confirmation": "peaceall",
+	"token": "f88852a5ef681d3f9368f60f86aab1e4f0d65aa37f85ccded677a37921093617"
+}' "http://localhost:8000/api/password/reset"</code></pre>
+                                </div>
+                                <div class="tab-pane" id="request-authentication-reset-password-example-http">
+                                    <pre><code class="hljs http">POST /api/password/reset HTTP/1.1
+Host: localhost:8000
+Content-Type: application/json
+Accept: application/json
+
+{
+	"email": "roiry25@gmail.com",
+	"password": "peaceall",
+	"password_confirmation": "peaceall",
+	"token": "f88852a5ef681d3f9368f60f86aab1e4f0d65aa37f85ccded677a37921093617"
+}</code></pre>
+                                </div>
+                            </div>
+                        </div>
+
+                        
+                        <div>
+                            <ul class="nav nav-tabs" role="tablist">
+                                
+                                <li role="presentation" class="active">
+                                    <a href="#request-authentication-reset-password-responses-5dccecb6-dda8-0d78-2756-cc7e4c137bdd" data-toggle="tab">
+                                        
+                                            Reset Password fail
+                                        
+                                    </a>
+                                </li>
+                                
+                                <li role="presentation">
+                                    <a href="#request-authentication-reset-password-responses-54f99e4d-426f-225d-0cda-617b120e74c9" data-toggle="tab">
+                                        
+                                            Reset Password success
+                                        
+                                    </a>
+                                </li>
+                                
+                            </ul>
+                            <div class="tab-content">
+                                
+                                <div class="tab-pane active" id="request-authentication-reset-password-responses-5dccecb6-dda8-0d78-2756-cc7e4c137bdd">
+                                    <table class="table table-bordered">
+                                        <tr><th style="width: 20%;">Status</th><td>200 </td></tr>
+                                        
+                                        <tr><th style="width: 20%;">cache-control</th><td>no-cache, private</td></tr>
+                                        
+                                        <tr><th style="width: 20%;">connection</th><td>close</td></tr>
+                                        
+                                        <tr><th style="width: 20%;">content-type</th><td>application/json</td></tr>
+                                        
+                                        <tr><th style="width: 20%;">date</th><td>Sun, 31 Mar 2019 10:42:20 +0000, Sun, 31 Mar 2019 10:42:20 GMT</td></tr>
+                                        
+                                        <tr><th style="width: 20%;">host</th><td>localhost:8000</td></tr>
+                                        
+                                        <tr><th style="width: 20%;">x-powered-by</th><td>PHP/7.2.15-0ubuntu0.18.04.2</td></tr>
+                                        
+                                        <tr><th style="width: 20%;">x-ratelimit-limit</th><td>60</td></tr>
+                                        
+                                        <tr><th style="width: 20%;">x-ratelimit-remaining</th><td>59</td></tr>
+                                        
+                                        
+                                            
+                                            <tr><td class="response-text-sample" colspan="2">
+                                                <pre><code>{
+    "data": "roiry25@gmail.com",
+    "message": "This password reset token is invalid."
+}</code></pre>
+                                            </td></tr>
+                                            
+                                        
+                                    </table>
+                                </div>
+                                
+                                <div class="tab-pane" id="request-authentication-reset-password-responses-54f99e4d-426f-225d-0cda-617b120e74c9">
+                                    <table class="table table-bordered">
+                                        <tr><th style="width: 20%;">Status</th><td>200 </td></tr>
+                                        
+                                        <tr><th style="width: 20%;">cache-control</th><td>no-cache, private</td></tr>
+                                        
+                                        <tr><th style="width: 20%;">connection</th><td>close</td></tr>
+                                        
+                                        <tr><th style="width: 20%;">content-type</th><td>application/json</td></tr>
+                                        
+                                        <tr><th style="width: 20%;">date</th><td>Sun, 31 Mar 2019 10:45:33 +0000, Sun, 31 Mar 2019 10:45:33 GMT</td></tr>
+                                        
+                                        <tr><th style="width: 20%;">host</th><td>localhost:8000</td></tr>
+                                        
+                                        <tr><th style="width: 20%;">x-powered-by</th><td>PHP/7.2.15-0ubuntu0.18.04.2</td></tr>
+                                        
+                                        <tr><th style="width: 20%;">x-ratelimit-limit</th><td>60</td></tr>
+                                        
+                                        <tr><th style="width: 20%;">x-ratelimit-remaining</th><td>58</td></tr>
+                                        
+                                        
+                                            
+                                            <tr><td class="response-text-sample" colspan="2">
+                                                <pre><code>{
+    "data": null,
+    "message": "Your password has been reset!"
+}</code></pre>
+                                            </td></tr>
+                                            
+                                        
+                                    </table>
+                                </div>
+                                
+                            </div>
+                        </div>
+                        
+
+                        <hr>
+                    </div>
+                    
 
                 </div>
                 
@@ -881,6 +1163,133 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjI1MDIzYzIxMj
                                                 <pre><code>{
     "status": "404",
     "description": "house not found"
+}</code></pre>
+                                            </td></tr>
+                                            
+                                        
+                                    </table>
+                                </div>
+                                
+                            </div>
+                        </div>
+                        
+
+                        <hr>
+                    </div>
+                    
+                    
+                    <div class="request">
+
+                        <h4 id="request-houses-house-owner">
+                            House Owner
+                            <a href="#request-houses-house-owner"><i class="glyphicon glyphicon-link"></i></a>
+                        </h4>
+
+                        <div><p>Get house owner details</p>
+</div>
+
+                        <div>
+                            <ul class="nav nav-tabs" role="tablist">
+                                <li role="presentation" class="active"><a href="#request-houses-house-owner-example-curl" data-toggle="tab">Curl</a></li>
+                                <li role="presentation"><a href="#request-houses-house-owner-example-http" data-toggle="tab">HTTP</a></li>
+                            </ul>
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="request-houses-house-owner-example-curl">
+                                    <pre><code class="hljs curl">curl -X GET -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjI1MDIzYzIxMjljYzI0MWExZjIwNTE2MmEzYTNkNDIxOGYzNjQ5YjkzODMyNWJhZWYwN2M0ZTc5ZjVhZTNiMWNjYzBhYjU4MzE4ODQ4ZDUzIn0.eyJhdWQiOiIxIiwianRpIjoiMjUwMjNjMjEyOWNjMjQxYTFmMjA1MTYyYTNhM2Q0MjE4ZjM2NDliOTM4MzI1YmFlZjA3YzRlNzlmNWFlM2IxY2NjMGFiNTgzMTg4NDhkNTMiLCJpYXQiOjE1NTI4MzgxNTcsIm5iZiI6MTU1MjgzODE1NywiZXhwIjoxNTg0NDYwNTU3LCJzdWIiOiI0Iiwic2NvcGVzIjpbXX0.nkVeTbbqdRZCHjx1Uy-RG9Yn1BUCXl3Og3Rhxh9lP8tOXy12AMayEFyaBTVAk3F5L2HO34D48l-Rkow6K7QDJlqiWs8ofaoVdtQL6dA31eGpbIGyroeLQ8RX_4MbLzhA3cPPWIB8BVnvtUJOIppfDTZMi7xBE_fFOJX5AI-_YrhFfxiCGa1vcDkQlAKo_cA4RMMmjEmUUWNXFFtXxDNerCo_0KT_WiaxRhcbsa0ABXZ_bkqjv_JhIf_MhmS4k1fTTH0_hNd5DJxSW8bygwn3Emvw4svbIryR4fM3AXTqPj8AnZAfCs_Unn7Qu5urdRBM2y-TiD9DrbqPySPY5TLbpEEI-w1Lu964BfxxMmY7rUTrfNz3zE7y6Ha8v853iFKdzf_qQvxAmjCtviJueTxsNZY6uosz9j1gXbQ9svCXZ01bFc-j818CGK6mwJiWXnkstsR8Lw2um4AXagKpuMdKRO0G3w6-ZqUG3Vqm3sqh2DvxJMQ-oba4LviiSR73OOSIG6K4Om1okq8mA2ft_DAewAQfr7sGYoqGHsUlnQ_FvwU0SowHsi5QX8K0KNVJJ_ZFZPOrirmC_nbpSF0N3CA7YQIHbrppZuRhD0bLsaLLALmxbpiSYBvpW-PZrJQqHmfrckmHH5ViQyMIXAxUf3ztCdorXgU1i-r0HhZT4mWVLjQ" "http://localhost:8000/api/user/1"</code></pre>
+                                </div>
+                                <div class="tab-pane" id="request-houses-house-owner-example-http">
+                                    <pre><code class="hljs http">GET /api/user/1 HTTP/1.1
+Host: localhost:8000
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjI1MDIzYzIxMjljYzI0MWExZjIwNTE2MmEzYTNkNDIxOGYzNjQ5YjkzODMyNWJhZWYwN2M0ZTc5ZjVhZTNiMWNjYzBhYjU4MzE4ODQ4ZDUzIn0.eyJhdWQiOiIxIiwianRpIjoiMjUwMjNjMjEyOWNjMjQxYTFmMjA1MTYyYTNhM2Q0MjE4ZjM2NDliOTM4MzI1YmFlZjA3YzRlNzlmNWFlM2IxY2NjMGFiNTgzMTg4NDhkNTMiLCJpYXQiOjE1NTI4MzgxNTcsIm5iZiI6MTU1MjgzODE1NywiZXhwIjoxNTg0NDYwNTU3LCJzdWIiOiI0Iiwic2NvcGVzIjpbXX0.nkVeTbbqdRZCHjx1Uy-RG9Yn1BUCXl3Og3Rhxh9lP8tOXy12AMayEFyaBTVAk3F5L2HO34D48l-Rkow6K7QDJlqiWs8ofaoVdtQL6dA31eGpbIGyroeLQ8RX_4MbLzhA3cPPWIB8BVnvtUJOIppfDTZMi7xBE_fFOJX5AI-_YrhFfxiCGa1vcDkQlAKo_cA4RMMmjEmUUWNXFFtXxDNerCo_0KT_WiaxRhcbsa0ABXZ_bkqjv_JhIf_MhmS4k1fTTH0_hNd5DJxSW8bygwn3Emvw4svbIryR4fM3AXTqPj8AnZAfCs_Unn7Qu5urdRBM2y-TiD9DrbqPySPY5TLbpEEI-w1Lu964BfxxMmY7rUTrfNz3zE7y6Ha8v853iFKdzf_qQvxAmjCtviJueTxsNZY6uosz9j1gXbQ9svCXZ01bFc-j818CGK6mwJiWXnkstsR8Lw2um4AXagKpuMdKRO0G3w6-ZqUG3Vqm3sqh2DvxJMQ-oba4LviiSR73OOSIG6K4Om1okq8mA2ft_DAewAQfr7sGYoqGHsUlnQ_FvwU0SowHsi5QX8K0KNVJJ_ZFZPOrirmC_nbpSF0N3CA7YQIHbrppZuRhD0bLsaLLALmxbpiSYBvpW-PZrJQqHmfrckmHH5ViQyMIXAxUf3ztCdorXgU1i-r0HhZT4mWVLjQ</code></pre>
+                                </div>
+                            </div>
+                        </div>
+
+                        
+                        <div>
+                            <ul class="nav nav-tabs" role="tablist">
+                                
+                                <li role="presentation" class="active">
+                                    <a href="#request-houses-house-owner-responses-6a51f493-087c-7cce-aaec-52d7361fe90c" data-toggle="tab">
+                                        
+                                            House Owner success
+                                        
+                                    </a>
+                                </li>
+                                
+                                <li role="presentation">
+                                    <a href="#request-houses-house-owner-responses-4496cedf-bc0d-4b69-17c3-8b352fccd18a" data-toggle="tab">
+                                        
+                                            House Owner fail
+                                        
+                                    </a>
+                                </li>
+                                
+                            </ul>
+                            <div class="tab-content">
+                                
+                                <div class="tab-pane active" id="request-houses-house-owner-responses-6a51f493-087c-7cce-aaec-52d7361fe90c">
+                                    <table class="table table-bordered">
+                                        <tr><th style="width: 20%;">Status</th><td>200 </td></tr>
+                                        
+                                        <tr><th style="width: 20%;">cache-control</th><td>no-cache, private</td></tr>
+                                        
+                                        <tr><th style="width: 20%;">connection</th><td>close</td></tr>
+                                        
+                                        <tr><th style="width: 20%;">content-type</th><td>application/json</td></tr>
+                                        
+                                        <tr><th style="width: 20%;">date</th><td>Sun, 31 Mar 2019 10:46:34 +0000, Sun, 31 Mar 2019 10:46:34 GMT</td></tr>
+                                        
+                                        <tr><th style="width: 20%;">host</th><td>localhost:8000</td></tr>
+                                        
+                                        <tr><th style="width: 20%;">x-powered-by</th><td>PHP/7.2.15-0ubuntu0.18.04.2</td></tr>
+                                        
+                                        <tr><th style="width: 20%;">x-ratelimit-limit</th><td>60</td></tr>
+                                        
+                                        <tr><th style="width: 20%;">x-ratelimit-remaining</th><td>59</td></tr>
+                                        
+                                        
+                                            
+                                            <tr><td class="response-text-sample" colspan="2">
+                                                <pre><code>{
+    "id": 1,
+    "firstname": "Alliance",
+    "lastname": "Peace",
+    "email": "roiry25@gmail.com",
+    "phone": "0786729197"
+}</code></pre>
+                                            </td></tr>
+                                            
+                                        
+                                    </table>
+                                </div>
+                                
+                                <div class="tab-pane" id="request-houses-house-owner-responses-4496cedf-bc0d-4b69-17c3-8b352fccd18a">
+                                    <table class="table table-bordered">
+                                        <tr><th style="width: 20%;">Status</th><td>404 </td></tr>
+                                        
+                                        <tr><th style="width: 20%;">cache-control</th><td>no-cache, private</td></tr>
+                                        
+                                        <tr><th style="width: 20%;">connection</th><td>close</td></tr>
+                                        
+                                        <tr><th style="width: 20%;">content-type</th><td>application/json</td></tr>
+                                        
+                                        <tr><th style="width: 20%;">date</th><td>Sun, 31 Mar 2019 10:50:11 +0000, Sun, 31 Mar 2019 10:50:11 GMT</td></tr>
+                                        
+                                        <tr><th style="width: 20%;">host</th><td>localhost:8000</td></tr>
+                                        
+                                        <tr><th style="width: 20%;">x-powered-by</th><td>PHP/7.2.15-0ubuntu0.18.04.2</td></tr>
+                                        
+                                        <tr><th style="width: 20%;">x-ratelimit-limit</th><td>60</td></tr>
+                                        
+                                        <tr><th style="width: 20%;">x-ratelimit-remaining</th><td>59</td></tr>
+                                        
+                                        
+                                            
+                                            <tr><td class="response-text-sample" colspan="2">
+                                                <pre><code>{
+    "status": "404",
+    "description": "user not found"
 }</code></pre>
                                             </td></tr>
                                             
