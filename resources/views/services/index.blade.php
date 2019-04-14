@@ -11,7 +11,7 @@
         <small>List</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Service</a></li>
+        <li><a href="{{url('admin/services')}}"><i class="fa fa-dashboard"></i> Service</a></li>
         <li class="active">view all</li>
       </ol>
     </section>

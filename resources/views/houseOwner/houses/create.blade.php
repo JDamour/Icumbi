@@ -9,7 +9,7 @@
         <small>Create</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> house</a></li>
+        <li><a href="{{url('owner/houses')}}"><i class="fa fa-dashboard"></i> house</a></li>
         <li class="active">new</li>
       </ol>
     </section>

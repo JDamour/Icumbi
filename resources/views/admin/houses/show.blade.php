@@ -11,7 +11,7 @@
         <small>Display</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> house</a></li>
+        <li><a href="{{route('admin.houses.index')}}"><i class="fa fa-dashboard"></i> house</a></li>
         <li class="active">show</li>
       </ol>
     </section>
