@@ -19,20 +19,6 @@
                     <div class="form-group">
                     <!-- <input type="text" class="form-controller" id="search1" name="search"></input> -->
                     </div>
-                    <!--<table class="table table-bordered table-hover">
-                            <thead>
-                                <tr>
-                                    <th>Number of Rooms</th>
-                                    <th>Price</th>
-                                    <th>Sector</th>
-                                    <th>District</th>
-                                    <th>Payment Frequence</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            </tbody>
-                        </table>
-                    </div> -->
                     <div id='card'>
                         <div class="container">
                             <div class="row">
@@ -60,7 +46,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                <!-- </div> -->
             </div>
         </div>
         <script type="text/javascript">
