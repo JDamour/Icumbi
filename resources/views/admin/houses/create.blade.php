@@ -247,7 +247,7 @@
                   </div>
                 </div>
                 <input type="hidden" name="houseLocation" value="" id="houseLocation">
-                <script src="http://maps.google.com/maps/api/js"></script>
+                <script src="https://maps.google.com/maps/api/js"></script>
                 <script src="{{asset('js/gmaps.js')}}"></script>
                 <script type="text/javascript">
                   function updateHouseLocationSetInfoWindow() {

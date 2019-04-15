@@ -44,13 +44,24 @@
 
                       @foreach ($services as $service)
                       <tr>
+                        @if($service->house)
                         @foreach($service->house->uploads as $upload)
                         <td><img src="{{asset('images/HouseUploads/' . $upload->source)}}" width="100px" alt="image" title="image"/></td>
                         @break
                         @endforeach
+                        @else
+                        <td>House no longer available</td>
+                        @endif
+
+                        @if($service->user)
                         <td>{{$service->user->firstName}} {{$service->user->lastName}}</td>
                         <td>{{$service->user->email}}</td>
                         <td>{{$service->user->phoneNumber}}</td>
+                        @else
+                        <td>user not available</td>
+                        <td>user not available</td>
+                        <td>user not available</td>
+                        @endif
                         <td>{{$service->created_at}}</td>
                         <td>
                             <span class="label bg-purple">

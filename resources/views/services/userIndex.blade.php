@@ -47,12 +47,18 @@
 
                       @foreach ($services as $service)
                       <tr>
+                        @if ($service->house)
                         @foreach($service->house->uploads as $upload)
                         <td><img src="{{asset('images/HouseUploads/' . $upload->source)}}" width="100px" alt="image" title="image"/></td>
                         @break
                         @endforeach
                         <td>{{$service->house->district->name}}</td>
                         <td>{{$service->house->sector->name}}</td>
+                        @else
+                        <td>House not available</td>
+                        <td>House not available</td>
+                        <td>House not available</td>
+                        @endif
                         <td>0.00</td>
                         @if($service->payment_id != NULL)
                         <td>Paid</td>
@@ -67,7 +73,7 @@
                         <th>{{$service->created_at}}</th>
                         <td>
                             <span class="label bg-purple">
-                                <a style="color:white" href="#" disabled>View House Details</a>
+                                <a style="color:white" href="{{action('PublicController@show')}}" disabled>View House Details</a>
                             </span>
                         </td>
                         @endif

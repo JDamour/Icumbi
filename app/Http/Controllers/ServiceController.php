@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Service;
 use App\House;
 use App\Payment;
+use App\View;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\HouseBookingMail;
@@ -201,6 +202,7 @@ class ServiceController extends Controller
                     "house" => $house //,
                     // "payment" => $payment
                 ];
+                $this->recordView($service->house_id);
 
                 if ($house /*&& $payment*/) {
                     return view('services.show', compact('data'));
@@ -306,5 +308,27 @@ class ServiceController extends Controller
             return view('custom404');
         }
 
+    }
+
+    private function recordView($id) {
+        // record house view
+        $ip = $_SERVER['REMOTE_ADDR'];
+        $views = \App\View::where('ip_address', $ip)->orderBy('created_at', 'desc')->first();
+        if ($views) {
+            $current_timestamp = $_SERVER['REQUEST_TIME'];
+            $latest_timestamp = strtotime($views->created_at);
+            $time_diff = $latest_timestamp + (60 * 60 * 5);
+            if ($time_diff < $current_timestamp) {
+                $view = View::create([
+                    "ip_address" => $ip,
+                    "house_id" => $id
+                ]);
+            }
+        } else {
+            $view = \App\View::create([
+                "ip_address" => $ip,
+                "house_id" => $id
+            ]);
+        }
     }
 }

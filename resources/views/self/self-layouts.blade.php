@@ -16,10 +16,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <link rel="stylesheet" href="{{asset('css/font-awesome.min.css')}}">
   <!-- Ionicons -->
   <link rel="stylesheet" href="{{asset('css/Ionicons/css/ionicons.min.css')}}">
+  <!--datatable styles-->
+  <link rel="stylesheet" href="{{asset('css/dataTables.bootstrap.min.css')}}">
   <!--  fancybox-->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">  
   <!-- Theme style -->
   <link rel="stylesheet" href="{{asset('css/AdminLTE.min.css')}}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.min.css" />
   <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
         page. However, you can choose any other skin. Make sure you
         apply the skin class to the body tag so the changes take effect. -->
@@ -62,11 +65,11 @@ desired effect
   <header class="main-header">
 
     <!-- Logo -->
-    <a href="/" class="logo">
+    <a href="{{action('PublicController@DisplayHousesOnHomePage')}}" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>I</b>app</span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>Icumbi</b></span>
+      <span class="logo-lg"><b>Icumbi</b> app</span>
     </a>
 
     <!-- Header Navbar -->
@@ -84,6 +87,7 @@ desired effect
 
           <!-- Notifications Menu -->
           
+          <!-- Tasks Menu -->
          
           <!-- User Account Menu -->
           <li class="dropdown user user-menu">
@@ -92,24 +96,34 @@ desired effect
               <!-- The user image in the navbar-->
               <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9-cOiD6RJ2wCYMxHAWZCS6GDdwsCAQ61V_mLzUNsQeACHR8OCqA" class="user-image" alt="User Image">
               <!-- hidden-xs hides the username on small devices so only the image appears. -->
-              <span class="hidden-xs">{{ Auth::user()->firstName.' '.Auth::user()->lastName }}</span>
+              <span  style="text-transform: capitalize" class="hidden-xs">{{ Auth::user()->firstName.' '.Auth::user()->lastName }}</span>
             </a>
             <ul class="dropdown-menu">
               <!-- The user image in the menu -->
               <li class="user-header">
                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9-cOiD6RJ2wCYMxHAWZCS6GDdwsCAQ61V_mLzUNsQeACHR8OCqA" class="img-circle" alt="User Image">
 
-                <p>
-                  {{ Auth::user()->firstName.' '.Auth::user()->lastName }} - House Owner
+                <p  style="text-transform: capitalize">
+                  {{ Auth::user()->firstName.' '.Auth::user()->lastName }} - @if (Auth::user()->isAdmin())
+                      System Admininstrator
+                      @endif
+                      @if(Auth::user()->isOwner())
+                      House Owner
+                      @endif
+                      @if(Auth::user()->isUser())
+                      User
+                      @endif
+                  
                 </p>
               </li>
               <!-- Menu Body -->
-
+             
               <!-- Menu Footer-->
               <li class="user-footer">
-              <div class="pull-left">
+                <div class="pull-left">
                     <a href="{{action('UserSelfController@show')}}" class="btn btn-default btn-flat">Profile</a>
                 </div>
+
                 <div class="pull-right">
                   <a class="btn btn-default btn-flat"href="{{ route('logout') }}"
                        onclick="event.preventDefault();
@@ -128,68 +142,42 @@ desired effect
       </div>
     </nav>
   </header>
-  <!-- Left side column. contains the logo and sidebar -->
 
-  <aside class="main-sidebar">
-  <section class="sidebar">
+    <aside class="main-sidebar">
 
-    <ul class="sidebar-menu" data-widget="tree">
-      <li class="header">Navigation</li>
-      <!-- Optionally, you can add icons to the links -->
-      
-      <!-- <li class="treeview active">
-        <a href="#"><i class="fa fa-home"></i> <span>House</span>
-          <span class="pull-right-container">
-            <i class="fa fa-angle-left pull-right"></i>
-          </span>
-        </a>
-        <ul class="treeview-menu">
-          <li><a href="{{ route('houses.create') }}"><i class="fa fa-circle-o"></i> New</a></li>
-          <li><a href="{{ route('houses.index') }}"><i class="fa fa-circle-o"></i> View All</a></li>
-        </ul>
-      </li>
-      <li><a href="{{ route('owner.services.index') }}"><i class="fa fa-dollar"></i> <span>Services</span></a></li> -->
-    </ul>
-    <!-- /.sidebar-menu -->
-  </section>
-  
-  <!-- /.sidebar -->
-</aside>
-    
+        <!-- sidebar: style can be found in sidebar.less -->
+        <section class="sidebar">
 
-    <!-- /.sidebar -->
+            <!-- Sidebar user panel (optional) -->
+            <div class="user-panel">
+                <div class="pull-left image">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9-cOiD6RJ2wCYMxHAWZCS6GDdwsCAQ61V_mLzUNsQeACHR8OCqA" class="user-image" alt="User Image">
+                </div>
+                <div class="pull-left info">
+                <p style="text-transform: capitalize">{{ Auth::user()->firstName.' '.Auth::user()->lastName }}</p>
+                <!-- Status -->
+                <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+                </div>
+            </div>
 
+            <!-- Sidebar Menu -->
+            <ul class="sidebar-menu" data-widget="tree">
+              <li class="header">Navigation</li>
+              <!-- Optionally, you can add icons to the links -->
+              @php
+              if (Auth::user()->isAdmin())
+              $r = route('admin.houses.index');
+              if(Auth::user()->isOwner())
+              $r = action('OwnerHouseController@index');
+              if(Auth::user()->isUser())
+              $r = action('UserController@index');
+              @endphp
+              <li class=""><a href="{{$r}}"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
+            </ul>
+        </section>
+    </aside>
 
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-     <!--  <h1>
-        Page Header
-        <small>Optional description</small>
-      </h1>
-      <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
-        <li class="active">Here</li>
-      </ol> -->
-    </section>
-
-    <!-- Main content -->
-    <section class="content container-fluid">
-
-      <!--------------------------
-        | Your Page Content Here |
-        -------------------------->
-         @include('partials.success')
-         @include('partials.error')
          @yield('content')
-          
-
-    </section>
-   
-    <!-- /.content -->
-  </div>
-  <!-- /.content-wrapper -->
 
   <!-- Main Footer -->
   <footer class="main-footer">
@@ -198,15 +186,15 @@ desired effect
       <!-- Anything you want -->
     </div>
     <!-- Default to the left -->
-    <strong>Copyright &copy; 2018 <a href="#">Icumbi app</a>.</strong> All rights reserved.
+    <strong>Copyright &copy; {{date('Y')}} <a href="#">Icumbi app</a>.</strong> All rights reserved.
   </footer>
 
   <!-- Control Sidebar -->
-
+ 
   <!-- /.control-sidebar -->
   <!-- Add the sidebar's background. This div must be placed
   immediately after the control sidebar -->
-
+ 
 </div>
 <!-- ./wrapper -->
 
@@ -217,10 +205,12 @@ desired effect
 <!-- Bootstrap 3.3.7 -->
 <script src="{{asset('js/bootstrap.min.js')}}"></script>
 <!-- AdminLTE App -->
-<script src="{{asset('dist/js/adminlte.min.js')}}"></script>
+<script src="{{asset('js/adminlte.min.js')}}"></script>
 
 <script src="{{asset('js/jquery.dataTables.min.js')}}"></script>
 <script src="{{asset('js/dataTables.bootstrap.min.js')}}"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
 <!-- SlimScroll -->
 <script src="{{asset('js/jquery.slimscroll.min.js')}}"></script>
@@ -229,10 +219,43 @@ desired effect
 
 <script type="text/javascript">
   $(function () {
-    $('#table_houses').DataTable();
+    $('#table_houses').DataTable({
+      "scrollX" : true
+    });
   })  
   
 </script>
+
+<script>
+  //Date picker
+  $('#datepicker').datepicker({
+    autoclose: true
+  });
+  $('#datepicker2').datepicker({
+    autoclose: true
+  })
+</script>
+
+<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+    var name = '{{ Auth::user()->firstName}}'
+    var email = '{{ Auth::user()->email}}'
+ var Tawk_API=Tawk_API||{};
+    Tawk_API.visitor = {
+name : name,
+email : email
+};
+Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/5bb638f3b033e9743d0250d7/default';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+<!--End of Tawk.to Script-->
 
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
      Both of these plugins are recommended to enhance the
