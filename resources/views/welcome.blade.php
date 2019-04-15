@@ -189,11 +189,11 @@
               $h="";
               $h1="";
               $h2="";
-              $count =DB::table('Houses')->where('status' , 2)->where("district_id",28)->count();
+              $count =DB::table('houses')->where('status' , 2)->where("district_id",28)->count();
               $h=$count;
-              $count =DB::table('Houses')->where('status' , 2)->where("district_id",29)->count();
+              $count =DB::table('houses')->where('status' , 2)->where("district_id",29)->count();
               $h1=$count;
-              $count =DB::table('Houses')->where('status' , 2)->where("district_id",30)->count();
+              $count =DB::table('houses')->where('status' , 2)->where("district_id",30)->count();
               $h2=$count;
               // dd($h);
               ?>

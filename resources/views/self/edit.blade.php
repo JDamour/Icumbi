@@ -1,4 +1,4 @@
-@extends('admin.master')
+@extends('self.self-layouts')
 @section('title', 'update user')
 @section('content')
   
@@ -34,7 +34,7 @@
                 </div>
                 <!-- /.box-header -->
                 <!-- form start -->
-                <form role="form" action="{{action('UserManagementController@update', $data['user']->id)}}" method="POST">
+                <form role="form" action="{{action('UserSelfController@update')}}" method="POST">
                   <div class="box-body">
                     <div class="form-group">
                       <label for="inputfname">First Name <span class="text-danger">*</span></label>
@@ -63,9 +63,11 @@
                     <div class="form-group">
                       <label>Role <span class="text-danger">*</span></label>
                       <select class="form-control" name="role">
-                        @foreach($data['roles'] as $role)
-                          <option value="{{$role->id}}">{{$role->name}}</option>
-                        @endforeach
+                          <option value="User">User</option>
+                          <option value="Owner">House Owner</option>
+                          @if (Auth::user()->isAdmin())
+                            <option value="Owner">System Adminstrator</option>
+                          @endif
                       </select>
                     </div>
                   </div>
