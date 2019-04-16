@@ -63,7 +63,7 @@
       <div class="row copyright">
         <div class="col-md-6">
           <div class="probootstrap-footer-widget">
-            <p>&copy; 2018 <a href="tres.rw">Trust Engineering Solutions</a></p>
+            <p>&copy; {{date('Y')}} <a href="tres.rw">Trust Engineering Solutions</a></p>
           </div>
         </div>
         <div class="col-md-6">

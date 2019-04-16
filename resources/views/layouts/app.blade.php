@@ -97,7 +97,7 @@
     </header>
 
         <footer class="main-footer" style="height:40px; color: white; background: #6C7D80; z-index:1;">
-          <strong>Copyright &copy; 2018 <a href="#" style="color: white;">ITEME</a>.</strong> All rights reserved.
+          <strong>Copyright &copy; {{date('Y')}} <a href="#" style="color: white;">ITEME</a>.</strong> All rights reserved.
         </footer>
 
 

@@ -109,7 +109,9 @@ desired effect
              
               <!-- Menu Footer-->
               <li class="user-footer">
-                
+              <div class="pull-left">
+                  <a href="{{action('UserSelfController@show')}}" class="btn btn-default btn-flat">Profile</a>
+                </div>
                 <div class="pull-right">
                   <a class="btn btn-default btn-flat"href="{{ route('logout') }}"
                        onclick="event.preventDefault();
@@ -178,7 +180,7 @@ desired effect
       <!-- Anything you want -->
     </div>
     <!-- Default to the left -->
-    <strong>Copyright &copy; 2018 <a href="#">Icumbi app</a>.</strong> All rights reserved.
+    <strong>Copyright &copy; {{date('Y')}} <a href="#">Icumbi app</a>.</strong> All rights reserved.
   </footer>
 
   <!-- Control Sidebar -->

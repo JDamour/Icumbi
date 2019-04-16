@@ -116,6 +116,14 @@ Route::group(['prefix' => 'admin', 'middleware' =>'auth.admin'],function () {
     Route::post('/users/filter', 'UserManagementController@search')->name('admin.users.filter');
 });
 
+# Selg
+Route::group(['prefix' => 'self', 'middleware' => 'auth'], function() {
+    Route::get('/self/view', 'UserSelfController@show');
+    Route::get('/self/edit', 'UserSelfController@edit');
+    Route::put('/self/update', 'UserSelfController@update');
+    Route::delete('/self/delete', 'UserSelfController@destroy');
+});
+
 # houseOwner routes
 Route::group(['prefix' => 'owner', 'middleware' =>'auth.owner'], function(){
 

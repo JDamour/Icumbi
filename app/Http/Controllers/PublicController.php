@@ -9,6 +9,7 @@ use App\Uploads;
 use App\Sector;
 use App\District;
 use App\Province;
+use App\View;
 use App\Paymentfrequency;
 use App\Http\MailController;
 use Illuminate\Http\Request;
@@ -164,6 +165,27 @@ class PublicController extends Controller
     // }
     public function show($id)
     {
+
+        // record house view
+        
+        $ip = $_SERVER['REMOTE_ADDR'];
+        $views = View::where('ip_address', $ip)->orderBy('created_at', 'desc')->first();
+        if ($views) {
+            $current_timestamp = $_SERVER['REQUEST_TIME'];
+            $latest_timestamp = strtotime($views->created_at);
+            $time_diff = $latest_timestamp + (60 * 60 * 5);
+            if ($time_diff < $current_timestamp) {
+                $view = View::create([
+                    "ip_address" => $ip,
+                    "house_id" => $id
+                ]);
+            }
+        } else {
+            $view = View::create([
+                "ip_address" => $ip,
+                "house_id" => $id
+            ]);
+        }
         //
         $house = House::find($id);
         

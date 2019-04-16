@@ -180,6 +180,8 @@ class ServiceController extends Controller {
     }
 
     public function showBookedHouse($service) {
+        \Log::info("show booked house api function");
+        \Log::info("user id: " . Auth::user()->id);
 
         // return house full details
         $service = Service::where([
