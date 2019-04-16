@@ -168,6 +168,7 @@ Route::get('/master', function(){
     
     Route::get('/', 'PublicController@DisplayHousesOnHomePage');
     Route::any('/houseShow/{id}', 'PublicController@show')->name('houseshow.show');
+    // Route::get('/houseShow/{id}', ['uses' => PublicController@show, 'middleware' => 'AuthResource']);
 
     // Route::get('/searchajax','SearchController@index');
     // Route::get('/searchaa','SearchController@search');

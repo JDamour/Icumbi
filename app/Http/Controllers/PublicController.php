@@ -99,7 +99,7 @@ class PublicController extends Controller
             dd($count);
         }
         else {
-            $houses = House::where("status","=",2)->paginate(3);
+            $houses = House::where("status","=",2)->paginate(9);
             return view('client.index', compact('houses'));
             dd($count);
         }
@@ -155,11 +155,25 @@ class PublicController extends Controller
     {
         //
     }
+    // public function show($id)
+    // {
+    //     //
+    //     $house = House::find($id)->where("status", 2);
+    //     return view('client.show', compact('house'));
+    //     // return view('client.show', ['house'=>$house]);
+    // }
     public function show($id)
     {
         //
         $house = House::find($id);
+        
+        if($status=2){
+
         return view('client.show', compact('house'));
+        }
+        else{
+            return view('client.norecordHouse');
+        }
         // return view('client.show', ['house'=>$house]);
     }
     public function showw($id)
