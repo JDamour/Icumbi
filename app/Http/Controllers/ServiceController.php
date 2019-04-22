@@ -72,37 +72,29 @@ class ServiceController extends Controller
      */
     public function create($house_id)
     {
-        // show service payment form
-        $service = Service::where('house_id', $house_id)
-            ->orderBy('updated_at', 'desc')
-            ->first();
-
-        if ($service) {
-            $current_timestamp = $_SERVER['REQUEST_TIME'];
-            $latest_timestamp = strtotime($service->updated_at);
-            $time_diff = $latest_timestamp + (2 * 24 * 60 * 60);
-            if ($current_timestamp > $time_diff) {
+        // @todo show payment form here
+        $house = House::find($house_id);
+        if ($house) {
+            if ($house->status == 2) {
+                // hoouse is not booked
                 $data = [
                     "house_id" => $house_id,
                     "booked" => false
                 ];
                 return view('services.create', compact('data'));
-            } else {
+            } else if ($house->status == 3) {
+                // house booked
                 $data = [
                     "house_id" => $house_id,
                     "booked" => true
                 ];
                 return view('services.create', compact('data'));
+            } else {
+                abort(404);
             }
-
         } else {
-            $data = [
-                "house_id" => $house_id,
-                "booked" => false
-            ];
-            return view('services.create', compact('data'));
-        }
-        
+            abort(404);
+        }        
     }
 
     /**
@@ -113,25 +105,25 @@ class ServiceController extends Controller
      */
     public function store(Request $request)
     {
-        // record client details
-        $service = Service::where('house_id', $request->input('house_id'))
-            ->orderBy('updated_at', 'desc')
-            ->first();
-
-        if ($service) {
-            $current_timestamp = $_SERVER['REQUEST_TIME'];
-            $latest_timestamp = strtotime($service->updated_at);
-            $time_diff = $latest_timestamp + (2 * 24 * 60 * 60);
-
-
-            if ($current_timestamp > $time_diff) {
+        $house = House::find($request->input("house_id"));
+        if ($house) {
+            if ($house->status == 2) {
+                // hoouse is not booked
                 try {
-                    $service = Service::create([
-                        "user_id" => Auth::user()->id,
-                        "house_id" => $request->input('house_id'),
-                        "payment_id" => "100"
-                    ]);
-                } catch(Exception $e) {
+                    $service = \DB::transaction(function() use ($request, &$house) {
+                        $service = Service::create([
+                            "user_id" => Auth::user()->id,
+                            "house_id" => $request->input('house_id'),
+                            "payment_id" => "100"
+                        ]);
+
+                        $house->status = 3;
+                        $house->save();
+
+                        return $service;
+                    });
+                } catch(\Exception $e) {
+                    \Log::error($e->getMessage());
                     return back()->withInput();
                 }
                 
@@ -144,35 +136,17 @@ class ServiceController extends Controller
                     return redirect()->route('custom.service.show', $service->id);
                 } else {
                     // return to house form with errors
-                    return back()->withErrors(['House Booking Failed. Contact customer care.']);
+                    return back()->withErrors(['House Booking Failed. Please Contact Customer Care.']);
                 }
-            } else {
+            } else if ($house->status == 3) {
+                // house booked
                 return back()->withErrors(['House is already booked.']);
+            } else {
+                abort(404);
             }
         } else {
-            try {
-                $service = Service::create([
-                    "user_id" => Auth::user()->id,
-                    "house_id" => $request->input('house_id'),
-                    "payment_id" => "100"
-                ]);
-            } catch(Exception $e) {
-                return back()->withInput();
-            }
-            
-            
-            // save client's service and send email if payment was successful
-            // redirect to display service 
-            if ($service) {
-                Mail::to($service->house->user->email)->send(new HouseBookingMail(route('custom.service.show', $service->id)));
-                Mail::to($service->user->email)->send(new HouseBookingMail(route('custom.service.show', $service->id)));
-                return redirect()->route('custom.service.show', $service->id);
-            } else {
-                // return to house form with errors
-                return back()->withErrors(['House Booking Failed. Please Contact Customer Care.']);
-            }
-        }
-        
+            abort(404);
+        }        
     }
 
     /**
@@ -186,6 +160,9 @@ class ServiceController extends Controller
         //disaply house after was succesful
         $service = Service::find($service);
         if ($service) {
+            if($service->user_id != Auth::user()->id) {
+                abort(403);
+            }
             // check if the service is not more than two days old.
             $current_timestamp = $_SERVER['REQUEST_TIME'];
             $latest_timestamp = strtotime($service->updated_at);
@@ -194,15 +171,19 @@ class ServiceController extends Controller
                 // return service timed out error
                 return view('services.timeout');
             }
-            // if ($service->payment_id) {
 
-                $house = House::find($service->house_id);
+            $house = House::find($service->house_id);
+
+            if ($house->status != 3) {
+                return view('services.timeout');
+            }
+            // if ($service->payment_id) {
                 //$payment = Payment::find($service->payment_id);
                 $data = [
                     "house" => $house //,
                     // "payment" => $payment
                 ];
-                $this->recordView($service->house_id);
+                $this->recordView($house->id);
 
                 if ($house /*&& $payment*/) {
                     return view('services.show', compact('data'));
@@ -210,9 +191,10 @@ class ServiceController extends Controller
             // } else {
             //     // @todo redirect to payment page
             // }
+        } else {
+            // service does not exist
+            abort(404);
         }
-        
-        // @todo show error page
     }
 
     /**
@@ -244,31 +226,48 @@ class ServiceController extends Controller
 
         if ($service) {
             
-            // check if the service is not more than two days old.
-            $current_timestamp = $_SERVER['REQUEST_TIME'];
-            $latest_timestamp = strtotime($service->updated_at);
-            $time_diff = $latest_timestamp + (2 * 24 * 60 * 60);
+            $oldHouse = House::find($service->house_id);
 
-            if ($current_timestamp > $time_diff){
+            if ($oldHouse->status != 3){
                 // return service timed out error
                 return view('services.timeout');
             }
-            
-            if ($service->refunded == false) {
-                return view('custom404');
+
+            $newHouse = House::find($request->input('house_id'));
+            if ($newHouse->housePrice > $oldHouse->housePrice) {
+                return back()->withErrors(['This house has a different price range.']);
             }
 
-            $update = Service::where('id', $service->id)->update([
-                "refunded" => "true",
-                "house_id" => $request->input("house_id")
-            ]);
+            try {
+
+                $update = \DB::transaction(function () use ($request, $service, $newHouse, $oldHouse) {
+                    $oldHouse->status = 2;
+                    $oldHouse->save();
+
+                    $newHouse->status = 3;
+                    $newHouse->save();
+
+                    $update = Service::where('id', $service->id)->update([
+                        "refunded" => "true",
+                        "house_id" => $request->input("house_id")
+                    ]);
+
+                    return $update;
+
+                });
+
+            } catch (PDOException $e) {
+                return back()->withErrors(['An error occurred. Please contact customer care.']);
+            }
+
+            
             if ($update) {
                 Mail::to($service->house->user->email)->send(new HouseBookingMail(route('custom.service.show', $service->id)));
                 Mail::to($service->user->email)->send(new HouseBookingMail(route('custom.service.show', $service->id)));
                 return redirect()->route('custom.service.show', $service->id);
             }
         } else {
-            return view('custom404');
+            return back()->withErrors(['House has already been refunded.']);
         }
     }
 
@@ -313,7 +312,10 @@ class ServiceController extends Controller
     private function recordView($id) {
         // record house view
         $ip = $_SERVER['REMOTE_ADDR'];
-        $views = \App\View::where('ip_address', $ip)->orderBy('created_at', 'desc')->first();
+        $views = \App\View::where([
+            'ip_address' => $ip,
+            "house_id" => $id
+        ])->orderBy('created_at', 'desc')->first();
         if ($views) {
             $current_timestamp = $_SERVER['REQUEST_TIME'];
             $latest_timestamp = strtotime($views->created_at);
