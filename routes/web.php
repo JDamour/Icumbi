@@ -116,6 +116,14 @@ Route::group(['prefix' => 'admin', 'middleware' =>'auth.admin'],function () {
     Route::post('/users/filter', 'UserManagementController@search')->name('admin.users.filter');
 });
 
+# Selg
+Route::group(['prefix' => 'self', 'middleware' => 'auth'], function() {
+    Route::get('/self/view', 'UserSelfController@show');
+    Route::get('/self/edit', 'UserSelfController@edit');
+    Route::put('/self/update', 'UserSelfController@update');
+    Route::delete('/self/delete', 'UserSelfController@destroy');
+});
+
 # houseOwner routes
 Route::group(['prefix' => 'owner', 'middleware' =>'auth.owner'], function(){
 
@@ -168,6 +176,7 @@ Route::get('/master', function(){
     
     Route::get('/', 'PublicController@DisplayHousesOnHomePage');
     Route::any('/houseShow/{id}', 'PublicController@show')->name('houseshow.show');
+    // Route::get('/houseShow/{id}', ['uses' => PublicController@show, 'middleware' => 'AuthResource']);
 
     // Route::get('/searchajax','SearchController@index');
     // Route::get('/searchaa','SearchController@search');
@@ -181,7 +190,7 @@ Route::get('/master', function(){
             $sector="";
             $district="";
             $pf="";
-        if ($search != "") {
+        if ($search != ' ') {
               $district="";
               if ($search =='gasabo' || $search =='Gasabo') {
                   $district=28;
@@ -208,11 +217,14 @@ Route::get('/master', function(){
             if(count($house)>0){
                 return view('client.search')->withDetails($house)->withQuery ( $search );
             }
+            else{
+                return view('client.norecord');
+            }
         }
         // dd($house);
-        if ($search=="" || $search==" "){
-        return view('client.search')->withMessage("No results found " );
-    }
+    //     if ($search=="" || $search==" "){
+    //     return view('client.search')->withMessage("No results found " );
+    // }
     });
     Route::get('/province/{id}', 'PublicController@provinceHouses');
     Route::get('/district/{id}', 'PublicController@districtHouses');

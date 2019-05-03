@@ -74,7 +74,7 @@
                   <div class="box-footer">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <input type="hidden" name="_method" value="PUT">
-                    <button type="submit" class="btn btn-success">Create</button>
+                    <button type="submit" class="btn btn-success">Update</button>
                   </div>
                 </form>
             </div>

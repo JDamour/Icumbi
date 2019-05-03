@@ -11,7 +11,7 @@
         <small>List</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Service</a></li>
+        <li><a href="{{url('admin/services')}}"><i class="fa fa-dashboard"></i> Service</a></li>
         <li class="active">view all</li>
       </ol>
     </section>
@@ -79,13 +79,22 @@
                       <tbody>
 
                       @foreach ($services as $service)
+                      if ()
                       <tr>
                         @foreach($service->house->uploads as $upload)
                         <td><img src="{{asset('images/HouseUploads/' . $upload->source)}}" width="100px" alt="image" title="image"/></td>
                         @break
                         @endforeach
+                        @if ($service->user)
                         <td>{{$service->user->firstName}} {{$service->user->lastName}}</td>
+                        @else
+                        <td> User No longer Available</td>
+                        @endif
+                        @if($service->house)
                         <td>{{$service->house->user->firstName}} {{$service->house->user->lastName}} </td>
+                        $else
+                        <td>House no longer available</td>
+                        @endif
                         <td>0.00</td>
                         @if($service->payment_id != NULL)
                         <td>Paid</td>

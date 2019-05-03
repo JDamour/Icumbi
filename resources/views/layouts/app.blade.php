@@ -35,6 +35,7 @@
              <button type="submit" class="btnn btn-primary btn-sm">Search</button>
              </form> 
              </div>
+                <li><a href="/searchajax">search by parameters</a></li>
                 <li><a href="/">Home</a></li>
                 
               <!-- <form action="/search" method="POST" role="search" class="searchform">
@@ -96,12 +97,7 @@
     </header>
 
         <footer class="main-footer" style="height:40px; color: white; background: #6C7D80; z-index:1;">
-          <!-- To the right -->
-          <div class="pull-right hidden-xs">
-            <!-- Anything you want -->
-          </div>
-          <!-- Default to the left -->
-          <strong>Copyright &copy; 2018 <a href="#" style="color: white;">ITEME</a>.</strong> All rights reserved.
+          <strong>Copyright &copy; {{date('Y')}} <a href="#" style="color: white;">ITEME</a>.</strong> All rights reserved.
         </footer>
 
 
@@ -110,24 +106,7 @@
         </main> -->
     </div>
 </body>
-    <script type="text/javascript">
-            $('#search').on('keyup',function(){
-                $value=$(this).val();
-                $.ajax({
-                    type : 'get',
-                    url : '{{ URL::to('searchaa') }}',
-                    data:{'searchaa':$value},
-                    success:function(data){
-                        // $('#card').html(data);
-                        // $('tbody').html(data);
-                        $('#card').html(data);
-                    }autocomplete="off";
-                });
-            })
-        </script>
-        <script type="text/javascript">
-            $.ajaxSetup({ headers: { 'csrftoken' : '{{ csrf_token() }}' } });
-        </script>
+    
 
 <script src="{{asset('js/scripts.min.js')}}"></script>
 <script src="{{asset('js/main.min.js')}}"></script>

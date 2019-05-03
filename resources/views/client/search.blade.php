@@ -2,8 +2,6 @@
 @extends('layouts.app')
 @section('title', 'search')
 @section('link')
-@endsection
-@section('content')
 <section class="probootstrap-slider flexslider2 page-inner" style="background-image: url(images/design/image6); font-color: red;">
   <div class="overlay"></div>
   <div class="probootstrap-wrap-banner">
@@ -23,7 +21,7 @@
 </section>
 
 <section class="probootstrap-section probootstrap-section-lighter">
-  <h2 style="text-align:center"> <div class="probootstrap-listing-category for-sale"><span>List of houses matching your search key " <b> {{ $query }} "</b></span></div></h2>
+  <h2 style="text-align:center"> <div class="probootstrap-listing-category for-sale"><span>List of houses matching your search key " <b> {{ $query }} </b>"</span></div></h2>
   @if(isset($details))
   @foreach($details as $house)
   <div class="container">
@@ -54,5 +52,6 @@
       </div>
     </div>
   </section>
+  
   @endif
-  @endsection
+  

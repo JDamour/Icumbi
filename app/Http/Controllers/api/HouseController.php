@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\House\HouseResource as HouseResource;
 use App\Http\Resources\House\HouseCollection as HouseCollection;
 use App\Http\Requests\HouseFormRequest;
+use Auth;
 
 
 class HouseController extends Controller
@@ -137,5 +138,20 @@ class HouseController extends Controller
         {
             return response(null, 204);
         }
+    }
+
+    public function userHouses()
+    {
+//        if(Auth::check()){
+//
+            $user = Auth::user();
+//          $houses = $user->house;
+////        return new HouseCollection(HouseResource::collection($houses));
+//        return dd($houses);
+//        }
+//
+////        return "not logged in";
+        return response()->json(['success' => $user]);
+
     }
 }
