@@ -239,3 +239,7 @@ Route::get('/agents', 'clientController@agents');
 Route::get('/properties', 'clientController@properties');
 Route::get('/about', 'clientController@about');
 Route::get('/contact', 'clientController@contact');
+
+// Payment route
+Route::get('/api/payment', 'ApiPaymentController@postRemoteData');
+Route::get('/api/payment/callback', 'ApiPaymentController@getRemoteData');
