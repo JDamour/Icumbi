@@ -176,6 +176,7 @@ Route::get('/master', function(){
     
     Route::get('/', 'PublicController@DisplayHousesOnHomePage');
     Route::any('/houseShow/{id}', 'PublicController@show')->name('houseshow.show');
+    // Route::get('/houseShow/{id}', ['uses' => PublicController@show, 'middleware' => 'AuthResource']);
 
     // Route::get('/searchajax','SearchController@index');
     // Route::get('/searchaa','SearchController@search');
@@ -250,3 +251,7 @@ Route::get('/agents', 'clientController@agents');
 Route::get('/properties', 'clientController@properties');
 Route::get('/about', 'clientController@about');
 Route::get('/contact', 'clientController@contact');
+
+// Payment route
+Route::get('/api/payment', 'ApiPaymentController@postRemoteData');
+Route::get('/api/payment/callback', 'ApiPaymentController@getRemoteData');

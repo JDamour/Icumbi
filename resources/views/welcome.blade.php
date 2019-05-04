@@ -139,7 +139,7 @@
               <img src="img/flaticon/svg/001-prize.svg" class="svg" alt="Free HTML5 Template by uicookies.com">
             </div>
             <div class="probootstrap-card-text">
-              <h2 class="probootstrap-card-heading">Award Winning Brooker</h2>
+              <h2 class="probootstrap-card-heading">Award Winning Broker</h2>
               <p>Win different amazing prices by registering as many houses as possible</p>
               <p><a href="#">Find out more</a></p>
             </div>
@@ -234,8 +234,8 @@
   <section class="probootstrap-section probootstrap-bg" style="background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhgaDqc9rEnNNt9CnqMIKxhPfGmLmw7AUpdZgsj1dkt7OlANXKRQ);">
     <div class="container text-center probootstrap-animate" data-animate-effect="fadeIn">
       <h2 class="heading" style="font-family: 'Old Standard TT', serif;">Best Home &amp; Properties</h2>
-      <p class="sub-heading">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-      <p><a href="#" class="btn btn-primary mb10">Find out more</a></p>
+      <p class="sub-heading">Use ICUMBI to find the house of your dreams</p>
+      <p><a href="/house" class="btn btn-primary mb10">Find out more</a></p>
     </div>
   </section>
   <!-- END: section -->
@@ -335,7 +335,7 @@
         <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 probootstrap-animate">
           <div class="service text-center">
             <div class="icon"><i class="icon-home3"></i></div>
-            <h2 class="heading">Brook A Property</h2>
+            <h2 class="heading">Brok A Property</h2>
             <p>Earn different prices and commissions by assisting different house owners in the registration processes</p>
           </div>
         </div>
@@ -380,11 +380,11 @@
           <div class="probootstrap-footer-widget">
             <h4 class="heading">Popular Cities</h4>
             <ul class="stack-link">
-              <li><a href="#">Nyarugenge <small>(320 properties)</small></a></li>
-              <li><a href="#">Gasabo <small>(294 properties)</small></a></li>
-              <li><a href="#">Kicukiro <small>(300 properties)</small></a></li>
-              <li><a href="#">Rwamagana <small>(268 properties)</small></a></li>
-              <li><a href="#">Huye <small>(342 properties)</small></a></li>
+              <li><a href="#">Nyarugenge <small>({{$h2}} Avalilable Houses)</small></a></li>
+              <li><a href="#">Gasabo <small>({{$h}} Avalilable Houses)</small></a></li>
+              <li><a href="#">Kicukiro <small>({{$h1}} Avalilable Houses)</small></a></li>
+              <!-- <li><a href="#">Rwamagana <small>(268 properties)</small></a></li>
+              <li><a href="#">Huye <small>(342 properties)</small></a></li> -->
             </ul>
           </div> 
         </div>
@@ -404,7 +404,7 @@
       <div class="row copyright">
         <div class="col-md-6">
           <div class="probootstrap-footer-widget">
-            <p>&copy; 2018 <a href="">Iteme</a></p>
+            <p>&copy; 2019 <a href="">Iteme</a></p>
           </div>
         </div>
         <div class="col-md-6">
