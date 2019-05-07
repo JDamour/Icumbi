@@ -9,8 +9,12 @@ use App\View;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\HouseBookingMail;
-
 use Illuminate\Http\Request;
+use App\Http\RestCurl;
+use App\Mail\makePayment;
+
+
+
 
 class ServiceController extends Controller
 {
@@ -55,7 +59,8 @@ class ServiceController extends Controller
             foreach($house->service as $service) {
                 array_push($services, $service);
             }
-        }
+        }	
+
         return view('services.ownerIndex', compact('services'));
 
     }
@@ -113,8 +118,7 @@ class ServiceController extends Controller
                     $service = \DB::transaction(function() use ($request, &$house) {
                         $service = Service::create([
                             "user_id" => Auth::user()->id,
-                            "house_id" => $request->input('house_id'),
-                            "payment_id" => "100"
+                            "house_id" => $request->input('house_id')
                         ]);
 
                         $house->status = 3;
@@ -131,9 +135,23 @@ class ServiceController extends Controller
                 // save client's service and send email if payment was successful
                 // redirect to display service 
                 if ($service) {
-                    Mail::to($service->house->user->email)->send(new HouseBookingMail(route('custom.service.show', $service->id)));
-                    Mail::to($service->user->email)->send(new HouseBookingMail(route('custom.service.show', $service->id)));
-                    return redirect()->route('custom.service.show', $service->id);
+                    try {
+                        $amount = ((float)$house->housePrice * (float)\env("CHARGE_PERCENTAGE")) / 100;
+                        $res = $this->sendPayment($amount, $service->id, $this->formatPhoneNumber($service->user->phoneNumber));
+                        $res = $res["data"];
+                        \Log::info("Payment status: " . $res->description);
+                        if ($res->code == "200") {
+                            Mail::to($service->user->email)->send(new makePayment());
+                            return redirect()->route('user.services.index')->with("success", "Payment status: " . strtolower($res->description)
+                        . ". Please make your payment in the next 3 minutes.");
+                        }
+
+                        return redirect()->route('user.services.index')->with("success", "Payment status: " . strtolower($res->description));
+                    } catch(\Exception $e) {
+                        \Log::error("There was an error sending payment.");
+                        \Log::debug("Error details: " . $e->getMessage());
+                        return redirect()->route('user.services.index')->with("success", "Payment request failed. Please wait 5 minutes and retry again.");
+                    }
                 } else {
                     // return to house form with errors
                     return back()->withErrors(['House Booking Failed. Please Contact Customer Care.']);
@@ -177,20 +195,23 @@ class ServiceController extends Controller
             if ($house->status != 3) {
                 return view('services.timeout');
             }
-            // if ($service->payment_id) {
-                //$payment = Payment::find($service->payment_id);
+            if ($service->payment_id) {
+                $payment = Payment::find($service->payment_id);
                 $data = [
-                    "house" => $house //,
-                    // "payment" => $payment
+                    "house" => $house,
+                    "payment" => $payment
                 ];
                 $this->recordView($house->id);
 
-                if ($house /*&& $payment*/) {
+                if ($house && $payment) {
                     return view('services.show', compact('data'));
+                } else {
+                    abort(403);
                 }
-            // } else {
-            //     // @todo redirect to payment page
-            // }
+            } else {
+                // @todo redirect to payment page
+                abort(403);
+            }
         } else {
             // service does not exist
             abort(404);
@@ -284,11 +305,48 @@ class ServiceController extends Controller
     
     
     // this is the function called the payment api
-    public function callback(Request $request, Service $service) {
-        // need to check payment api workings
-        // @todo insert payment details in the database
-        // @todo update service table add payment id
-        // @todo send email to client and show payment status to client
+    public function callback(Request $request) {
+        $request->validate([
+            "transactionId" => "transactionId",
+            "paidAmount" => "required",
+            "status" => "required",
+            "statusDescription" => "required"
+        ]);
+
+        $payment_mode = \App\Payment_mode::where('name', 'MobileMoney')->first();
+
+        if ($payment_mode){} else {
+            $payment_mode = 1;
+        }
+
+        try {
+            $payment = \DB::transaction(function() use ($request, $payment_mode) {
+                $payment = Payment::create([
+                    "spTransactionId" => $request->input("spTransactionId"),
+                    "walletTransactionId" => $request->input("walletTransactionId"),
+                    "chargedCommission" => $request->input("chargedCommission"),
+                    "currency" => $request->input("currency"),
+                    "amount" => $request->input("paidAmount"),
+                    "transactionStatus" => $request->input("status"),
+                    "transactionStatusDesc" => $request->input("statusDescription"),
+                    "orderNumber" => $request->input("transactionId"),
+                    "payment_mode" => $payment_mode
+                ]);
+
+                if ($request->input("transactionId") == "200") {
+                    $service = Service::find($request->transactionId);
+                    $service->payment_id = $payment->id;
+                    $service->save();
+
+                    Mail::to($service->house->user->email)->send(new HouseBookingMail(route('custom.service.show', $service->id)));
+                    Mail::to($service->user->email)->send(new HouseBookingMail(route('custom.service.show', $service->id)));
+                }
+
+                return $payment;
+            });
+        } catch(\Exception $e) {
+            \Log::error($e->getMessage());
+        }
     }
 
     public function refund(Request $request, $house_id) {
@@ -307,6 +365,38 @@ class ServiceController extends Controller
             return view('custom404');
         }
 
+    }
+
+    private function sendPayment($amount, $serviceID, $phoneNumber) {
+        $callbackUrl = \url('/service/callback');
+        $merchant = \env("MOMO_MERCHANT_ID");
+        \Log::debug("Amount is " . $amount);
+        $req = [
+            'telephoneNumber' => $phoneNumber, // iyi ni number yumukiriya ugiye kwishyura
+            'amount' => $amount, //cash agiye kwishyurwa
+            'organizationId' => $merchant, // merchantId yacu
+            'description' => 'Payment for booking house services', // description
+            'callbackUrl' => $callbackUrl, //redirect Url
+            'transactionId' => $serviceID, // iyi ni id transaction yacu ya payment
+        ];
+        $reqUrl = "https://opay-api.oltranz.com/opay/paymentrequest";
+
+
+        $response = RestCurl::post($reqUrl,  $req);
+        if ($response["data"]->code == "401") {
+            $service = Service::find($serviceID);
+            $house = $service->house;
+            $house->status = 2;
+            \Log::info("Payment request failed. Putting house back to status 2");
+            try {
+                $house->save();
+            } catch (\Exception $e) {
+                \Log::error("Updating house failed.");
+                \Log::error("Error details: " . $e->getMessage());
+            }
+        }
+
+        return $response;
     }
 
     private function recordView($id) {
@@ -332,5 +422,37 @@ class ServiceController extends Controller
                 "house_id" => $id
             ]);
         }
+    }
+
+    /**
+     * return an internationally formatted phone number
+     * @param string $phone the formatted or unformatted phone number
+     * @return string
+     */
+
+    private function formatPhoneNumber($MSISDN, $internationalMode = false) {
+        $formattedMSISDN = NULL;
+        //Get the international country code
+        $countryCode = "250";
+        
+
+        //Sanitize the phone number || Strip non digits
+        $formattedMSISDN = preg_replace('/[^0-9\s]/', "", $MSISDN);
+
+        //If international format, strip the leading 0
+        if (substr($formattedMSISDN, 0, 1) == 0 && strlen($formattedMSISDN) == 10) {
+            $formattedMSISDN = substr_replace($formattedMSISDN, "", 0, 1);
+        }
+        
+        if(strlen($formattedMSISDN) <= 9 && strlen($formattedMSISDN) > 0) {
+            $formattedMSISDN = $countryCode  . $formattedMSISDN;
+        }
+        
+        if($internationalMode) {
+            $formattedMSISDN = '+' . $formattedMSISDN;
+        }
+
+        //FormattedMSISDN
+        return $formattedMSISDN;
     }
 }

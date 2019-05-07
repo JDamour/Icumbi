@@ -23,6 +23,8 @@
       <!--------------------------
         | Your Page Content Here |
         -------------------------->
+        @include('partials.success')
+        @include('partials.error')
         <div class="row">
             <div class="col-sm-10 col-sm-offset-1">
                 <div class="box">
@@ -59,8 +61,8 @@
                         <td>House not available</td>
                         <td>House not available</td>
                         @endif
-                        <td>0.00</td>
                         @if($service->payment_id != NULL)
+                        <td>$service->payment->amount</td>
                         <td>Paid</td>
                         <th>{{$service->created_at}}</th>
                         <td>
@@ -69,11 +71,12 @@
                             </span>
                         </td>
                         @else
+                        <td>0.00</td>
                         <td>Unpaid</td>
                         <th>{{$service->created_at}}</th>
                         <td>
                             <span class="label bg-purple">
-                                <a style="color:white" href="{{action('PublicController@show')}}" disabled>View House Details</a>
+                                <a style="color:white" href="{{action('PublicController@show', $service->house_id)}}" disabled>View House Details</a>
                             </span>
                         </td>
                         @endif

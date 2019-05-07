@@ -15,13 +15,18 @@ class CreatePaymentsTable extends Migration
     {
         Schema::create('payments', function (Blueprint $table) {
             $table->increments('paymentId');
-            $table->string('paymentReference');
-            $table->string('cardNumber');
+            $table->string('paymentReference')->nullable();
+            $table->string('spTransactionId')->nullable();
+            $table->string('walletTransactionId')->nullable();
+            $table->string('chargedCommission')->nullable();
+            $table->string('currency')->nullable();
+            $table->string('cardNumber')->nullable();
             $table->string('amount');
             $table->string('transactionStatus');
-            $table->string('receiptNumber');
-            $table->string('cardExpireDate');
-            $table->string('orderNumber');
+            $table->string('transactionStatusDesc')->nullable();
+            $table->string('receiptNumber')->nullable();
+            $table->string('cardExpireDate')->nullable();
+            $table->string('orderNumber')->nullable();
             $table->integer('payment_mode')->unsigned();
             $table->timestamps();
 

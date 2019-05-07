@@ -238,10 +238,9 @@ Route::group(['middleware' => 'auth.user'], function(){
     # user service routes
     Route::get('/service/create/{house_id}', 'ServiceController@create')->name('custom.service.create');
     Route::post('/service', 'ServiceController@store')->name('custom.service.store');
-    Route::post('/service/callback/{service_id}', 'ServiceController@callback')->name('custom.service.callback');
     Route::get('/service/refund/{house_id}', 'ServiceController@refund')->name('custom.service.refund');
     Route::put('/service/{service_id}', 'ServiceController@update')->name('custom.service.update');
-    Route::get('user/services', 'ServiceController@userIndex')->name('user.services.index');
+    Route::get('/user/services', 'ServiceController@userIndex')->name('user.services.index');
     Route::get('/service/{service_id}', 'ServiceController@show')->name('custom.service.show');
 });
 
@@ -255,3 +254,4 @@ Route::get('/contact', 'clientController@contact');
 // Payment route
 Route::get('/api/payment', 'ApiPaymentController@postRemoteData');
 Route::get('/api/payment/callback', 'ApiPaymentController@getRemoteData');
+Route::post('/service/callback', 'ServiceController@callback')->name('custom.service.callback');
