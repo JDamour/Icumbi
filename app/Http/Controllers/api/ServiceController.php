@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\HouseBookingMail;
+use App\Http\RestCurl;
+use App\Mail\makePayment;
 use App\Http\Resources\House\ServiceResource;
 use App\Http\Resources\House\ServiceHouseResource;
 
@@ -46,26 +48,46 @@ class ServiceController extends Controller {
                         $service = Service::create([
                             "user_id" => $user->id,
                             "house_id" => $house->id,
-                            "refunded" => "false",
-                            "payment_id" => "100"
+                            "refunded" => "false"
                         ]);
                     });
 
+                    try {
+                        $amount = ((float)$house->housePrice * (float)\env("CHARGE_PERCENTAGE")) / 100;
+                        $res = $this->sendPayment($amount, $service->id, $this->formatPhoneNumber($service->user->phoneNumber));
+                        $res = $res["data"];
+                        \Log::info("Payment status: " . $res->description);
+                        if ($res->code == "200") {
+                            Mail::to($service->user->email)->send(new makePayment());
 
-                    return response()->json([
-                        "status" => 200,
-                        "description" => "House booked successfully",
-                        "serviceID" => $service->id
-                    ], 200);
-                    
-                    
-                    
+                            return response()->json([
+                                "status" => 200,
+                                "description" => "House booked successfully",
+                                "serviceID" => $service->id
+                            ], 200);
+                        }
+
+                        return response()->json([
+                            "status" => "500",
+                            "description" => "Contact your API provider. " . $res->description
+                        ], 500);
+
+                    } catch(\Exception $e) {
+                        \Log::error("There was an error sending payment.");
+                        \Log::debug("Error details: " . $e->getMessage());
+
+                        return response()->json([
+                            "status" => "500",
+                            "description" => "Contact your API provider " . $e->getMessage()
+                        ], 500);
+                    }
                 } catch(\Exception $e) {
+                    \Log::debug("Error details: " . $e->getMessage());
 
                     // problem with sending email or saving in the db
                     return response()->json([
                         "status" => "500",
-                        "description" => "Contact your API provider " . $e->getMessage()
+                        "description" => "Contact your API provider."
                     ], 500);
                 }
                 
@@ -196,16 +218,19 @@ class ServiceController extends Controller {
                     "description" => "Service timeout"
                 ], 403);
             }
-            // if ($service->payment_id) {
+            if ($service->payment_id) {
                 $this->recordView($service->house_id);
                 //$payment = Payment::find($service->payment_id);
 
                 if ($service->house /*&& $payment*/) {
                     return new ServiceHouseResource($service);
                 }
-            // } else {
-            //     // @todo redirect to payment page
-            // }
+            } else {
+                return response()->json([
+                    "status" => "403",
+                    "description" => "Please make a payment first"
+                ], 404);
+            }
         } else {
             return response()->json([
                 "status" => "404",
@@ -234,6 +259,39 @@ class ServiceController extends Controller {
         ]);
     }
 
+    private function sendPayment($amount, $serviceID, $phoneNumber) {
+        $callbackUrl = \url('/service/callback');
+        $merchant = \env("MOMO_MERCHANT_ID");
+
+        \Log::debug("Amount is " . $amount);
+        $req = [
+            'telephoneNumber' => $phoneNumber, // iyi ni number yumukiriya ugiye kwishyura
+            'amount' => $amount, //cash agiye kwishyurwa
+            'organizationId' => $merchant, // merchantId yacu
+            'description' => 'Payment for booking house services', // description
+            'callbackUrl' => $callbackUrl, //redirect Url
+            'transactionId' => $serviceID, // iyi ni id transaction yacu ya payment
+        ];
+        $reqUrl = "https://opay-api.oltranz.com/opay/paymentrequest";
+
+
+        $response = RestCurl::post($reqUrl,  $req);
+        if ($response["data"]->code == "401") {
+            $service = Service::find($serviceID);
+            $house = $service->house;
+            $house->status = 2;
+            \Log::info("Payment request failed. Putting house back to status 2");
+            try {
+                $house->save();
+            } catch (\Exception $e) {
+                \Log::error("Updating house failed.");
+                \Log::error("Error details: " . $e->getMessage());
+            }
+        }
+
+        return $response;
+    }
+
     private function recordView($id) {
         // record house view
         $ip = $_SERVER['REMOTE_ADDR'];
@@ -254,5 +312,37 @@ class ServiceController extends Controller {
                 "house_id" => $id
             ]);
         }
+    }
+
+    /**
+     * return an internationally formatted phone number
+     * @param string $phone the formatted or unformatted phone number
+     * @return string
+     */
+
+    private function formatPhoneNumber($MSISDN, $internationalMode = false) {
+        $formattedMSISDN = NULL;
+        //Get the international country code
+        $countryCode = "250";
+        
+
+        //Sanitize the phone number || Strip non digits
+        $formattedMSISDN = preg_replace('/[^0-9\s]/', "", $MSISDN);
+
+        //If international format, strip the leading 0
+        if (substr($formattedMSISDN, 0, 1) == 0 && strlen($formattedMSISDN) == 10) {
+            $formattedMSISDN = substr_replace($formattedMSISDN, "", 0, 1);
+        }
+        
+        if(strlen($formattedMSISDN) <= 9 && strlen($formattedMSISDN) > 0) {
+            $formattedMSISDN = $countryCode  . $formattedMSISDN;
+        }
+        
+        if($internationalMode) {
+            $formattedMSISDN = '+' . $formattedMSISDN;
+        }
+
+        //FormattedMSISDN
+        return $formattedMSISDN;
     }
 }
